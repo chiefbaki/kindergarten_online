@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/resources/resources.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Эко Маркет",
-          style: AppFonts.s24w700,
+          style: AppFonts.s24w700.copyWith(color: AppColors.fontColor),
         ),
       ),
       body: Center(

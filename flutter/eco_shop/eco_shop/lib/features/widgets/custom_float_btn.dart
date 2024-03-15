@@ -65,26 +65,26 @@ class _CustomFloatBtnState extends State<CustomFloatBtn> {
                                   child: ListView(
                                     children: const [
                                       BagItem(),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      BagItem(),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      BagItem(),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      BagItem(),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      BagItem(),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      BagItem(),
+                                      // const SizedBox(
+                                      //   height: 12,
+                                      // ),
+                                      // BagItem(),
+                                      // const SizedBox(
+                                      //   height: 12,
+                                      // ),
+                                      // BagItem(),
+                                      // const SizedBox(
+                                      //   height: 12,
+                                      // ),
+                                      // BagItem(),
+                                      // const SizedBox(
+                                      //   height: 12,
+                                      // ),
+                                      // BagItem(),
+                                      // const SizedBox(
+                                      //   height: 12,
+                                      // ),
+                                      // BagItem(),
                                     ],
                                   ),
                                 ),
