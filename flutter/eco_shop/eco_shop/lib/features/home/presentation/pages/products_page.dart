@@ -4,12 +4,12 @@ import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:eco_shop/features/widgets/add_btn.dart';
 import 'package:eco_shop/features/widgets/arrow_btn.dart';
-import 'package:eco_shop/features/widgets/bag_item.dart';
 import 'package:eco_shop/features/widgets/circle_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/custom_float_btn.dart';
 import 'package:eco_shop/features/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+
 
 @RoutePage()
 class ProductsPage extends StatefulWidget {

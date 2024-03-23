@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
-import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:eco_shop/features/widgets/bag_item.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
+import '../../../core/utils/resources/resources.dart';
 
 @RoutePage()
 class BagPage extends StatelessWidget {
@@ -112,7 +112,32 @@ class BagPage extends StatelessWidget {
                   const SizedBox(
                     height: 156,
                   ),
-                  CustomBtn(onPressed: () {}, title: "Оформить заказ"),
+                  CustomBtn(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return AlertDialog(
+                                contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                                content: Center(
+                                  child: SizedBox(
+                                    height: 400,
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          Images.curt,
+                                          width: 200,
+                                          height: 224,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            });
+                      },
+                      title: "Оформить заказ"),
                   const SizedBox(
                     height: 20,
                   ),
