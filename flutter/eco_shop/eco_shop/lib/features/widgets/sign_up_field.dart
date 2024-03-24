@@ -7,12 +7,15 @@ class SignUpField extends StatefulWidget {
   final bool obscureText;
   final Function() onPressed;
   final TextEditingController controller;
-
+  final FocusNode focusNode;
+  final Function()? onTap;
   const SignUpField(
       {super.key,
       required this.hintText,
       required this.controller,
       required this.onPressed,
+      required this.focusNode,
+      this.onTap,
       this.obscureText = false});
 
   @override
@@ -26,11 +29,15 @@ class _SignUpFieldState extends State<SignUpField> {
       height: 54,
       width: 320,
       child: TextField(
+        enableInteractiveSelection: false,
+        autofocus: false,
+        onTap: widget.onTap,
+        focusNode: widget.focusNode,
         cursorColor: AppColors.black,
         obscureText: widget.obscureText,
         style: AppFonts.s16w500,
         controller: widget.controller,
-        decoration: InputDecoration(
+        decoration: InputDecoration(         
             suffixIcon: IconButton(
                 onPressed: widget.onPressed,
                 icon: Icon(

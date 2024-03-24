@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
@@ -16,16 +17,47 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController login = TextEditingController();
+  final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
+  final TextEditingController name = TextEditingController();
+  final TextEditingController lastName = TextEditingController();
+  final TextEditingController confirmPassword = TextEditingController();
+
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     login.dispose();
+    email.dispose();
     password.dispose();
+    confirmPassword.dispose();
+    lastName.dispose();
   }
 
-  bool obscureText = true;
+  final FocusNode passwordFocusNode = FocusNode();
+  final FocusNode confirmPasswordFocusNode = FocusNode();
+  bool switcher = false;
+  void _checkPass() {
+    setState(() {
+      switcher = password.text == confirmPassword.text;
+          
+    });
+  }
+
+  void router() {
+    context.router.push(const HomeRoute());
+  }
+
+  bool obscureText1 = true;
+  bool obscureText2 = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    password.addListener(_checkPass);
+    confirmPassword.addListener(_checkPass);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             Container(
               width: 400,
-              height: 400,
+              height: MediaQuery.of(context).size.height * 0.6,
               decoration: BoxDecoration(
                   color: AppColors.white,
                   boxShadow: const [
@@ -48,11 +80,32 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     const Text(
-                      "Авторизация",
+                      "Регистрация",
                       style: AppFonts.s24w700,
                     ),
                     const SizedBox(
-                      height: 18,
+                      height: 28,
+                    ),
+                    SignInField(
+                      hintText: "Имя",
+                      controller: name,
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    SignInField(
+                      hintText: "Фамилия",
+                      controller: lastName,
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    SignInField(
+                      hintText: "Почта",
+                      controller: email,
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     SignInField(
                       hintText: "Логин",
@@ -62,11 +115,33 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 6,
                     ),
                     SignUpField(
+                      onTap: () {
+                        switcher = false;
+                      },
+                      focusNode: passwordFocusNode,
                       hintText: "Пароль",
                       controller: password,
-                      obscureText: obscureText,
+                      obscureText: obscureText1,
                       onPressed: () {
-                        obscureText = !obscureText;
+                        obscureText1 = !obscureText1;
+                        setState(() {});
+                      },
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    SignUpField(
+                      onTap: () {
+                        setState(() {
+                          switcher = false;
+                        });
+                      },
+                      focusNode: confirmPasswordFocusNode,
+                      hintText: "Подтвердите пароль",
+                      controller: confirmPassword,
+                      obscureText: obscureText2,
+                      onPressed: () {
+                        obscureText2 = !obscureText2;
                         setState(() {});
                       },
                     ),
@@ -75,23 +150,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     SizedBox(
                         width: 320,
-                        child: CustomBtn(onPressed: () {}, title: "Войти")),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    Text(
-                      "или",
-                      style: AppFonts.s16w500
-                          .copyWith(color: AppColors.articleColor),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text("Создать аккаунт",
-                            style: AppFonts.s16w600
-                                .copyWith(color: AppColors.articleColor))),
+                        child: CustomBtn(
+                            onPressed: switcher ? router : null,
+                            title: "Создать")),
                   ],
                 ),
               ),

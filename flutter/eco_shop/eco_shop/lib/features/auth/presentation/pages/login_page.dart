@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/features/widgets/auth_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/sign_in_field.dart';
 import 'package:eco_shop/features/widgets/sign_up_field.dart';
@@ -18,9 +19,24 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController login = TextEditingController();
   final TextEditingController password = TextEditingController();
+
+  bool _isButtonActive = false;
+  void _checkPass() {
+    setState(() {
+      _isButtonActive =
+          (password.text.isNotEmpty && password.text.length >= 8) &&
+              login.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    password.addListener(_checkPass);
+  }
+
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     login.dispose();
     password.dispose();
@@ -53,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: AppFonts.s24w700,
                     ),
                     const SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     SignInField(
                       hintText: "Логин",
@@ -63,6 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 6,
                     ),
                     SignUpField(
+                      focusNode: FocusNode(),
                       hintText: "Пароль",
                       controller: password,
                       obscureText: obscureText,
@@ -76,7 +93,13 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(
                         width: 320,
-                        child: CustomBtn(onPressed: () {}, title: "Войти")),
+                        child: CustomBtn(
+                            onPressed: _isButtonActive
+                                ? () {
+                                    context.router.push(const HomeRoute());
+                                  }
+                                : null,
+                            title: "Войти")),
                     const SizedBox(
                       height: 28,
                     ),
@@ -88,13 +111,25 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    TextButton(
-                        onPressed: () {
-                          context.router.push(const RegisterRoute());
-                        },
-                        child: Text("Создать аккаунт",
-                            style: AppFonts.s16w600
-                                .copyWith(color: AppColors.articleColor))),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AuthBtn(
+                          onPressed: () => context.router.push(
+                            const RegisterRoute(),
+                          ),
+                          title: "Создать аккаунт.",
+                          color: AppColors.ligthGrey,
+                        ),
+                        AuthBtn(
+                          onPressed: () => context.router.push(
+                            const RegisterRoute(),
+                          ),
+                          title: "Не помните пароль?",
+                          color: AppColors.labelColor,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

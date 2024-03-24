@@ -10,6 +10,6 @@ class AppRouter extends $AppRouter {
         ]),
         AutoRoute(page: ProductsRoute.page,),
         AutoRoute(page: LoginRoute.page, initial: true),
-        AutoRoute(page: RegisterRoute.page,),
+        AutoRoute(page: RegisterRoute.page, ),
       ];
 }
