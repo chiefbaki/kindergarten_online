@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_shop/core/config/routes/app_router.gr.dart';
+import 'package:eco_shop/core/config/settings/shared_prefences/shared_repository_impl.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/constants/app_consts.dart';
+import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_bloc.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/pin_code_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class ConfirmEmailPage extends StatefulWidget {
@@ -30,6 +34,28 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
 
   String currentText = "";
 
+  void router() {
+    context.router.push(const DashboardRoute());
+  }
+
+  String pinToUpper(String pin) {
+    return pin.toUpperCase();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getValue();
+  }
+
+  String email = "";
+
+  void getValue() async {
+    final SharedPrefsImpl _prefs = SharedPrefsImpl();
+    email = await _prefs.getValue(key: AppConsts.emailKey);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +69,11 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 100,),
-                    const Text(
-                      "Сообщение отправлено на почту ik509331@gmail.com",
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    Text(
+                      "Сообщение отправлено на почту $email",
                       style: AppFonts.s20w700,
                       textAlign: TextAlign.center,
                     ),
@@ -68,7 +96,28 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                   ],
                 ),
                 const Spacer(),
-                CustomBtn(onPressed: () {}, title: "Продолжить")
+                BlocListener<EmailConfirmBloc, EmailConfirmState>(
+                  listener: (context, state) {
+                    if (state is EmailConfirmLoading) {
+                      debugPrint("LOADING");
+                    } else if (state is EmailConfirmSuccess) {
+                      router();
+                    } else if (state is EmailConfirmFailure) {
+                      debugPrint(state.error);
+                    }
+                  },
+                  child: CustomBtn(
+                      onPressed: () {
+                        BlocProvider.of<EmailConfirmBloc>(context).add(
+                            GetConfirm(
+                                code: pinToUpper(_pinOne.text) +
+                                    pinToUpper(_pinTwo.text) +
+                                    pinToUpper(_pinThree.text) +
+                                    pinToUpper(_pinFour.text)));
+                        print(pinToUpper(_pinOne.text));
+                      },
+                      title: "Продолжить"),
+                )
               ],
             ),
           ),

@@ -2,14 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:eco_shop/features/auth/data/models/login_dto.dart';
 import 'package:eco_shop/features/auth/data/models/register_dto.dart';
 
-
 class RegisterRepUseCase {
-  
   final Dio _dio;
-  RegisterRepUseCase({required Dio dio})
-      :_dio = dio;
+  RegisterRepUseCase({required Dio dio}) : _dio = dio;
 
-  
   Future<Map<String, dynamic>> getRegister(
       {required String email,
       required String password,
@@ -37,8 +33,10 @@ class RegisterRepUseCase {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> getConfirm({required String code}) async{
-    final Response response = await _dio.post("http://localhost:5050/api/v1/email/verify?email=");
+  Future<Map<String, dynamic>> getConfirm({required String code}) async {
+    final Response response = await _dio.post(
+        "http://localhost:5050/api/v1/email/verify",
+        data: {"code": code});
     return response.data;
   }
 }

@@ -1,7 +1,7 @@
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 
 class PinCodeField extends StatelessWidget {
   final TextEditingController controller;
@@ -18,6 +18,13 @@ class PinCodeField extends StatelessWidget {
             controller: controller,
             cursorColor: Colors.black,
             cursorHeight: 10,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Field is empty";
+              } else {
+                return null;
+              }
+            },
             onChanged: (value) {
               if (value.length == 1) {
                 FocusScope.of(context).nextFocus();

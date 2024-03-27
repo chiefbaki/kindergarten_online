@@ -16,7 +16,7 @@ class GetRegister extends RegisterEvent {
     required this.password,
   });
   @override
-  List<Object?> get props => [email, username];
+  List<Object?> get props => [email, username, phoneNumber, password];
 }
 
 class GetLogin extends RegisterEvent {
@@ -26,13 +26,6 @@ class GetLogin extends RegisterEvent {
   GetLogin(
       {required this.email, required this.password, required this.username});
   @override
-  List<Object?> get props => [email, username];
-}
-
-class GetConfirm extends RegisterEvent {
-  final String code;
-  GetConfirm({required this.code});
-  
-  @override
   List<Object?> get props => [];
 }
+

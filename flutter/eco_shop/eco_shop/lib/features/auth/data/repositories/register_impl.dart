@@ -18,6 +18,7 @@ class AuthImplentation implements AuthRepositoryInterface {
         phoneNumber: phoneNumber);
   }
 
+  @override
   Future<Map<String, dynamic>> getLogin(
       {required String email,
       required String password,
