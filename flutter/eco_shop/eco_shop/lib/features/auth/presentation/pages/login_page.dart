@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 6,
                     ),
                     SignUpField(
-                      focusNode: FocusNode(),
+                      
                       hintText: "Пароль",
                       controller: password,
                       obscureText: obscureText,
@@ -119,14 +119,14 @@ class _LoginPageState extends State<LoginPage> {
                             const RegisterRoute(),
                           ),
                           title: "Создать аккаунт.",
-                          color: AppColors.ligthGrey,
+                          color: AppColors.articleColor,
                         ),
                         AuthBtn(
                           onPressed: () => context.router.push(
                             const RegisterRoute(),
                           ),
                           title: "Не помните пароль?",
-                          color: AppColors.labelColor,
+                          color: AppColors.blue,
                         ),
                       ],
                     ),

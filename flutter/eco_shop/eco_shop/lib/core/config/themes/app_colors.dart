@@ -10,4 +10,5 @@ abstract class AppColors {
   static const Color labelColor = Color(0xffD2D1D5);
   static const Color fontColor = Color(0xff1F1F1F);
   static const Color articleColor = Color(0xffACABAD);
+  static const Color blue = Color(0xff5B86E5);
 }

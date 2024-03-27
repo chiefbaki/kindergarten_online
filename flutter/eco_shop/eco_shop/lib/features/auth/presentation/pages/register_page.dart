@@ -2,10 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/sign_in_field.dart';
 import 'package:eco_shop/features/widgets/sign_up_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class RegisterPage extends StatefulWidget {
@@ -19,8 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController login = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
-  final TextEditingController name = TextEditingController();
-  final TextEditingController lastName = TextEditingController();
+  final TextEditingController phoneNumber = TextEditingController();
   final TextEditingController confirmPassword = TextEditingController();
 
   @override
@@ -30,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
     email.dispose();
     password.dispose();
     confirmPassword.dispose();
-    lastName.dispose();
+    phoneNumber.dispose();
   }
 
   final FocusNode passwordFocusNode = FocusNode();
@@ -39,12 +40,11 @@ class _RegisterPageState extends State<RegisterPage> {
   void _checkPass() {
     setState(() {
       switcher = password.text == confirmPassword.text;
-          
     });
   }
 
   void router() {
-    context.router.push(const HomeRoute());
+    context.router.push(const ConfirmEmailRoute());
   }
 
   bool obscureText1 = true;
@@ -87,15 +87,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 28,
                     ),
                     SignInField(
-                      hintText: "Имя",
-                      controller: name,
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    SignInField(
-                      hintText: "Фамилия",
-                      controller: lastName,
+                      hintText: "Логин",
+                      controller: login,
                     ),
                     const SizedBox(
                       height: 6,
@@ -105,11 +98,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: email,
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 6,
                     ),
                     SignInField(
-                      hintText: "Логин",
-                      controller: login,
+                      hintText: "Номер телефона",
+                      controller: phoneNumber,
                     ),
                     const SizedBox(
                       height: 6,
@@ -148,11 +141,34 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 28,
                     ),
-                    SizedBox(
-                        width: 320,
-                        child: CustomBtn(
-                            onPressed: switcher ? router : null,
-                            title: "Создать")),
+                    BlocListener<RegisterBloc, RegisterState>(
+                      listener: (context, state) {
+                        if (state is RegisterLoading) {
+                          debugPrint("loading");
+                        } else if (state is RegisterSuccess) {
+                          debugPrint(state.success.values.toString());
+                          Future.delayed(const Duration(seconds: 2),(){
+                            router();
+                          });
+                        } else if (state is RegisterError) {
+                          debugPrint(state.error);
+                        }
+                      },
+                      child: SizedBox(
+                          width: 320,
+                          child: CustomBtn(
+                              onPressed: switcher
+                                  ? () async {
+                                      BlocProvider.of<RegisterBloc>(context)
+                                          .add(GetRegister(
+                                              email: email.text,
+                                              username: login.text,
+                                              phoneNumber: phoneNumber.text,
+                                              password: password.text));
+                                    }
+                                  : null,
+                              title: "Создать")),
+                    ),
                   ],
                 ),
               ),

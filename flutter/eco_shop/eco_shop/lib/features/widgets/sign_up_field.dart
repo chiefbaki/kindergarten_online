@@ -7,14 +7,14 @@ class SignUpField extends StatefulWidget {
   final bool obscureText;
   final Function() onPressed;
   final TextEditingController controller;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
   final Function()? onTap;
   const SignUpField(
       {super.key,
       required this.hintText,
       required this.controller,
       required this.onPressed,
-      required this.focusNode,
+      this.focusNode,
       this.onTap,
       this.obscureText = false});
 
