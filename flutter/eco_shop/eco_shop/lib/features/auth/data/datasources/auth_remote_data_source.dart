@@ -41,7 +41,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       required String username}) async {
     final Response response = await dio.post(
         "http://localhost:5050/api/v1/auth/login",
-        data: LoginDto(email: email, username: username, password: password)
+        data: LoginDto(username: username, password: password)
             .toMap());
     return response.data;
   }

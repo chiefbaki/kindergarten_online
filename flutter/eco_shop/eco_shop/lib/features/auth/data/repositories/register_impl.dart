@@ -1,9 +1,10 @@
+import 'package:eco_shop/features/auth/data/models/login_response_dto.dart';
 import 'package:eco_shop/features/auth/domain/repositories/register_rep.dart';
 import 'package:eco_shop/features/auth/domain/usecases/register_usecase.dart';
 
 class AuthImplentation implements AuthRepositoryInterface {
-  final RegisterRepUseCase _useCase;
-  AuthImplentation({required RegisterRepUseCase useCase}) : _useCase = useCase;
+  final AuthRepUseCase _useCase;
+  AuthImplentation({required AuthRepUseCase useCase}) : _useCase = useCase;
 
   @override
   Future<Map<String, dynamic>> getRegister(
@@ -19,12 +20,12 @@ class AuthImplentation implements AuthRepositoryInterface {
   }
 
   @override
-  Future<Map<String, dynamic>> getLogin(
-      {required String email,
+  Future<LoginResponseDto> getLogin(
+      {
       required String password,
       required String username}) async {
     return await _useCase.getLogin(
-        email: email, password: password, username: username);
+        password: password, username: username);
   }
 
   @override

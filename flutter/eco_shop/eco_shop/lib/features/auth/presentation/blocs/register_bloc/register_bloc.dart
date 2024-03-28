@@ -5,8 +5,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eco_shop/features/auth/domain/repositories/register_rep.dart';
 import 'package:meta/meta.dart';
-part 'auth_event.dart';
-part 'auth_state.dart';
+part 'register_event.dart';
+part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final AuthRepositoryInterface _repository;
@@ -18,7 +18,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         _prefs = prefs,
         super(RegisterInitial()) {
     _getRegister();
-    _getLogin();
   }
 
   void _getRegister() {
@@ -38,20 +37,4 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     });
   }
 
-
-  void _getLogin() {
-    return on<GetLogin>((event, emit) async {
-      emit(RegisterLoading());
-      try {
-        final Map<String, dynamic> success = await _repository.getLogin(
-          email: event.email,
-          password: event.password,
-          username: event.username,
-        );
-        emit(RegisterSuccess(success: success));
-      } catch (e) {
-        emit(RegisterError(error: e.toString()));
-      }
-    });
-  }
 }

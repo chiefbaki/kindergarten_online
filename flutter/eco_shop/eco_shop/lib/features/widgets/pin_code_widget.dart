@@ -9,7 +9,6 @@ class PinCodeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int index = 0;
     return Form(
       child: SizedBox(
           width: 56,

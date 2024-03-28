@@ -6,11 +6,11 @@ import 'package:eco_shop/features/auth/domain/entities/login_entity.dart';
 class LoginDto extends LoginEntity {
   
   const LoginDto(
-      {required super.email, required super.username, required super.password});
+      {required super.username, required super.password});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'email': email,
+
       'username': username,
       'password': password,
     };

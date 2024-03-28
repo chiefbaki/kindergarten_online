@@ -1,11 +1,10 @@
-part of 'auth_bloc.dart';
+part of 'register_bloc.dart';
 
 @immutable
 sealed class RegisterState extends Equatable {}
 
 final class RegisterInitial extends RegisterState {
   @override
-  // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 }
 

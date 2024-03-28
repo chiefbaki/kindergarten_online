@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:eco_shop/features/auth/data/models/login_dto.dart';
+import 'package:eco_shop/features/auth/data/models/login_response_dto.dart';
 import 'package:eco_shop/features/auth/data/models/register_dto.dart';
 
-class RegisterRepUseCase {
+class AuthRepUseCase {
   final Dio _dio;
-  RegisterRepUseCase({required Dio dio}) : _dio = dio;
+  AuthRepUseCase({required Dio dio}) : _dio = dio;
 
   Future<Map<String, dynamic>> getRegister(
       {required String email,
@@ -22,15 +23,15 @@ class RegisterRepUseCase {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> getLogin(
-      {required String email,
+  Future<LoginResponseDto> getLogin(
+      {
       required String password,
       required String username}) async {
     final Response response = await _dio.post(
         "http://localhost:5050/api/v1/auth/login",
-        data: LoginDto(email: email, username: username, password: password)
-            .toMap());
-    return response.data;
+        data: LoginDto(username: username, password: password).toMap());
+    print(response.data.runtimeType);
+    return LoginResponseDto.fromMap(response.data);
   }
 
   Future<Map<String, dynamic>> getConfirm({required String code}) async {
