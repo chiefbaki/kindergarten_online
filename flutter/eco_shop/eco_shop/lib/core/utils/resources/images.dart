@@ -19,10 +19,14 @@ class Images {
   static const String icon2 = 'assets/images/icon2.png';
   static const String icon3 = 'assets/images/icon3.png';
   static const String icon4 = 'assets/images/icon4.png';
+  static const String infoBbg = 'assets/images/info_bbg.png';
+  static const String instagram = 'assets/images/instagram.png';
   static const String leftArrow = 'assets/images/left_arrow.png';
   static const String location = 'assets/images/location.png';
+  static const String phone = 'assets/images/phone.png';
   static const String rectangle = 'assets/images/rectangle.png';
   static const String search01 = 'assets/images/search-01.png';
   static const String smallApple = 'assets/images/smallApple.png';
   static const String trash = 'assets/images/trash.png';
+  static const String whatsapp = 'assets/images/whatsapp.png';
 }

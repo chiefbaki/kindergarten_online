@@ -7,13 +7,16 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: DashboardRoute.page, initial: true, children: [
           AutoRoute(
-              page: HomeRoute.page, fullscreenDialog: true, initial: true),
+            page: HomeRoute.page,
+            fullscreenDialog: true,
+          ),
           AutoRoute(
             page: BagRoute.page,
           ),
           AutoRoute(
             page: HistoryRoute.page,
-          )
+          ),
+          AutoRoute(page: InfoRoute.page, initial: true)
         ]),
 
         // Products page

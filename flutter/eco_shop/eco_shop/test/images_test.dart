@@ -21,11 +21,15 @@ void main() {
     expect(File(Images.icon2).existsSync(), isTrue);
     expect(File(Images.icon3).existsSync(), isTrue);
     expect(File(Images.icon4).existsSync(), isTrue);
+    expect(File(Images.infoBbg).existsSync(), isTrue);
+    expect(File(Images.instagram).existsSync(), isTrue);
     expect(File(Images.leftArrow).existsSync(), isTrue);
     expect(File(Images.location).existsSync(), isTrue);
+    expect(File(Images.phone).existsSync(), isTrue);
     expect(File(Images.rectangle).existsSync(), isTrue);
     expect(File(Images.search01).existsSync(), isTrue);
     expect(File(Images.smallApple).existsSync(), isTrue);
     expect(File(Images.trash).existsSync(), isTrue);
+    expect(File(Images.whatsapp).existsSync(), isTrue);
   });
 }

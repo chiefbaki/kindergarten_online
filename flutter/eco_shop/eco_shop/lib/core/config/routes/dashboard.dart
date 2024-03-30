@@ -12,7 +12,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [HomeRoute(), BagRoute(), HistoryRoute(), HomeRoute()],
+      routes: const [HomeRoute(), BagRoute(), HistoryRoute(), InfoRoute()],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,
         child: child,
