@@ -67,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             Container(
               width: 400,
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.525,
               decoration: BoxDecoration(
                   color: AppColors.white,
                   boxShadow: const [

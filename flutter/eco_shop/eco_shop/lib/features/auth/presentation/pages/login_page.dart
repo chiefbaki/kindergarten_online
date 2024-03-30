@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Container(
               width: 400,
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.43,
               decoration: BoxDecoration(
                   color: AppColors.white,
                   boxShadow: const [
@@ -133,12 +133,12 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () => context.router.push(
                             const RegisterRoute(),
                           ),
-                          title: "Создать аккаунт.",
+                          title: "Создать аккаунт",
                           color: AppColors.articleColor,
                         ),
                         AuthBtn(
                           onPressed: () => context.router.push(
-                            const RegisterRoute(),
+                            const RecoveryRoute(),
                           ),
                           title: "Не помните пароль?",
                           color: AppColors.blue,

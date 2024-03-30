@@ -1,14 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/extensions/uri_launch.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:eco_shop/features/widgets/info_btn.dart';
 import 'package:flutter/material.dart';
 
+
 @RoutePage()
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,8 @@ class InfoPage extends StatelessWidget {
                     children: [
                       Text(
                         "Инфо",
-                        style: AppFonts.s18w500.copyWith(color: AppColors.white),
+                        style:
+                            AppFonts.s18w500.copyWith(color: AppColors.white),
                       )
                     ],
                   ),
@@ -61,7 +63,9 @@ class InfoPage extends StatelessWidget {
                     InfoBtn(
                       title: "Позвонить",
                       img: Images.phone,
-                      onPressed: () {},
+                      onPressed: () {
+                        uriLaunch(link: "tel:+996-501-59-44-44");
+                      },
                     ),
                     const SizedBox(
                       height: 12,
@@ -69,7 +73,11 @@ class InfoPage extends StatelessWidget {
                     InfoBtn(
                       title: "WhatsApp",
                       img: Images.whatsapp,
-                      onPressed: () {},
+                      onPressed: () {
+                        uriLaunch(
+                            link:
+                                "https://api.whatsapp.com/send?phone=996501594444");
+                      },
                     ),
                     const SizedBox(
                       height: 12,
@@ -77,7 +85,10 @@ class InfoPage extends StatelessWidget {
                     InfoBtn(
                       title: "Instagram",
                       img: Images.instagram,
-                      onPressed: () {},
+                      onPressed: () {
+                        uriLaunch(
+                            link: "https://www.instagram.com/accounts/login/");
+                      },
                     ),
                   ],
                 ),
