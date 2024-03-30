@@ -13,7 +13,7 @@ class AuthRepUseCase {
       required String username,
       required String phoneNumber}) async {
     final Response response = await _dio.post(
-        "http://localhost:5050/api/v1/auth/register",
+        "auth/register",
         data: RegisterDto(
                 email: email,
                 password: password,
@@ -28,7 +28,7 @@ class AuthRepUseCase {
       required String password,
       required String username}) async {
     final Response response = await _dio.post(
-        "http://localhost:5050/api/v1/auth/login",
+        "auth/login",
         data: LoginDto(username: username, password: password).toMap());
     print(response.data.runtimeType);
     return LoginResponseDto.fromMap(response.data);
@@ -36,7 +36,7 @@ class AuthRepUseCase {
 
   Future<Map<String, dynamic>> getConfirm({required String code}) async {
     final Response response = await _dio.post(
-        "http://localhost:5050/api/v1/email/verify",
+        "email/verify",
         data: {"code": code});
     return response.data;
   }

@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:dio/dio.dart";
+import "package:eco_shop/core/utils/constants/api_consts.dart";
 import "package:flutter/foundation.dart";
 
 class DioSettings {
@@ -10,6 +11,7 @@ class DioSettings {
 
   Dio dio = Dio(
     BaseOptions(
+      baseUrl: ApiConts.apiPath,
       contentType: "application/json",
       headers: {
         "Accept": "application/json",

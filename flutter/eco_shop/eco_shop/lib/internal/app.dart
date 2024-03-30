@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => LoginBloc(
+              prefs: RepositoryProvider.of<SharedPrefsImpl>(context),
                 repository: RepositoryProvider.of<AuthImplentation>(context)),
           ),
           BlocProvider(

@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
-import 'package:eco_shop/resources/resources.dart';
+import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -12,7 +12,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [HomeRoute(), BagRoute(), HomeRoute(), HomeRoute()],
+      routes: const [HomeRoute(), BagRoute(), HistoryRoute(), HomeRoute()],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,
         child: child,

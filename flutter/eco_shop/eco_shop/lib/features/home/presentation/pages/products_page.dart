@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
@@ -9,7 +10,6 @@ import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/custom_float_btn.dart';
 import 'package:eco_shop/features/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
-
 
 @RoutePage()
 class ProductsPage extends StatefulWidget {
@@ -41,13 +41,17 @@ class _ProductsPageState extends State<ProductsPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                const Row(
+                Row(
                   children: [
-                    ArrowBtn(),
-                    SizedBox(
+                    ArrowBtn(
+                      onPressed: () {
+                        context.router.replace(const HomeRoute());
+                      },
+                    ),
+                    const SizedBox(
                       width: 105,
                     ),
-                    Text(
+                    const Text(
                       "Продукты",
                       style: AppFonts.s18w500,
                     )
@@ -120,7 +124,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                       child: Center(
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 16, vertical: 12),
+                                              horizontal: 16, vertical: 13),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,

@@ -18,12 +18,7 @@ class SignInField extends StatelessWidget {
     return SizedBox(
       height: 54,
       width: 320,
-      child: TextFormField( 
-        validator: (value) {
-          if (value!.isEmpty) {
-            return "Enter $hintText";
-          }
-        },
+      child: TextFormField(
         style: AppFonts.s16w500,
         cursorColor: AppColors.black,
         controller: controller,
