@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/extensions/controller_listeners.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/register_bloc/register_bloc.dart';
+import 'package:eco_shop/features/widgets/arrow_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/sign_in_field.dart';
 import 'package:eco_shop/features/widgets/sign_up_field.dart';
@@ -36,26 +38,23 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final FocusNode passwordFocusNode = FocusNode();
   final FocusNode confirmPasswordFocusNode = FocusNode();
-  bool switcher = false;
-  void _checkPass() {
-    setState(() {
-      switcher = password.text == confirmPassword.text;
-    });
-  }
 
   void router() {
     context.router.push(const ConfirmEmailRoute());
   }
 
-  bool obscureText1 = true;
-  bool obscureText2 = true;
+  bool obscureText = true;
 
   @override
   void initState() {
     super.initState();
 
-    password.addListener(_checkPass);
-    confirmPassword.addListener(_checkPass);
+    password.addListener(() {
+      checkPassRegister(setState, password.text, confirmPassword.text);
+    });
+    confirmPassword.addListener(() {
+      checkPassRegister(setState, password.text, confirmPassword.text);
+    });
   }
 
   @override
@@ -79,9 +78,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
                 child: Column(
                   children: [
-                    const Text(
-                      "Регистрация",
-                      style: AppFonts.s24w700,
+                    Row(
+                      children: [
+                        ArrowBtn(onPressed: () {
+                          context.router.maybePop(const LoginRoute());
+                        }),
+                        const Text(
+                          "Регистрация",
+                          style: AppFonts.s24w700,
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 28,
@@ -114,9 +120,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       focusNode: passwordFocusNode,
                       hintText: "Пароль",
                       controller: password,
-                      obscureText: obscureText1,
+                      obscureText: obscureText,
                       onPressed: () {
-                        obscureText1 = !obscureText1;
+                        obscureText = !obscureText;
                         setState(() {});
                       },
                     ),
@@ -132,11 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       focusNode: confirmPasswordFocusNode,
                       hintText: "Подтвердите пароль",
                       controller: confirmPassword,
-                      obscureText: obscureText2,
-                      onPressed: () {
-                        obscureText2 = !obscureText2;
-                        setState(() {});
-                      },
+                      obscureText: obscureText,
                     ),
                     const SizedBox(
                       height: 28,
@@ -147,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           debugPrint("loading");
                         } else if (state is RegisterSuccess) {
                           debugPrint(state.success.values.toString());
-                          Future.delayed(const Duration(seconds: 1),(){
+                          Future.delayed(const Duration(seconds: 1), () {
                             router();
                           });
                         } else if (state is RegisterError) {

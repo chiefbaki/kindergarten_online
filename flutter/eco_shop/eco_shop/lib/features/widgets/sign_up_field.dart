@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class SignUpField extends StatefulWidget {
   final String hintText;
   final bool obscureText;
-  final Function() onPressed;
+  final Function()? onPressed;
   final TextEditingController controller;
   final FocusNode? focusNode;
   final Function()? onTap;
@@ -13,7 +13,7 @@ class SignUpField extends StatefulWidget {
       {super.key,
       required this.hintText,
       required this.controller,
-      required this.onPressed,
+      this.onPressed,
       this.focusNode,
       this.onTap,
       this.obscureText = false});
@@ -37,13 +37,17 @@ class _SignUpFieldState extends State<SignUpField> {
         obscureText: widget.obscureText,
         style: AppFonts.s16w500,
         controller: widget.controller,
-        decoration: InputDecoration(         
-            suffixIcon: IconButton(
-                onPressed: widget.onPressed,
-                icon: Icon(
-                  widget.obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: AppColors.fontColor,
-                )),
+        decoration: InputDecoration(
+            suffixIcon: widget.onPressed == null
+                ? const SizedBox()
+                : IconButton(
+                    onPressed: widget.onPressed,
+                    icon: Icon(
+                      widget.obscureText
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: AppColors.fontColor,
+                    )),
             fillColor: AppColors.textFieldColor,
             filled: true,
             hintText: widget.hintText,

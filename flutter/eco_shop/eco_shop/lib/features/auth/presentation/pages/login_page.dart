@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/extensions/controller_listeners.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_bloc.dart';
 import 'package:eco_shop/features/widgets/auth_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
@@ -22,19 +23,12 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController login = TextEditingController();
   final TextEditingController password = TextEditingController();
 
-  bool _isButtonActive = false;
-  void _checkPass() {
-    setState(() {
-      _isButtonActive =
-          (password.text.isNotEmpty && password.text.length >= 8) &&
-              login.text.isNotEmpty;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
-    password.addListener(_checkPass);
+    password.addListener(() {
+      checkPassLogin(setState, password.text, login.text);
+    });
   }
 
   @override
@@ -100,12 +94,35 @@ class _LoginPageState extends State<LoginPage> {
                           context.router.push(const DashboardRoute());
                         } else if (state is LoginFailure) {
                           debugPrint(state.error.toUpperCase());
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Неверный логин или пароль",
+                                    style: AppFonts.s20w700,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  actions: [
+                                    Center(
+                                      child: SizedBox(
+                                        width: 280,
+                                        child: CustomBtn(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            title: "Нажмите, чтобы закрыть"),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              });
                         }
                       },
                       child: SizedBox(
                           width: 320,
                           child: CustomBtn(
-                              onPressed: _isButtonActive
+                              onPressed: isButtonActive
                                   ? () {
                                       BlocProvider.of<LoginBloc>(context).add(
                                           GetLogin(

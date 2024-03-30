@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/features/widgets/arrow_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/sign_in_field.dart';
 import 'package:flutter/material.dart';
@@ -57,9 +59,16 @@ class _RecoveryPageState extends State<RecoveryPage> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
                 child: Column(
                   children: [
-                    const Text(
-                      "Восстановление пароля",
-                      style: AppFonts.s24w700,
+                    Row(
+                      children: [
+                        ArrowBtn(onPressed: (){
+                          context.router.maybePop(const LoginRoute());
+                        }),
+                        const Text(
+                          "Восстановление пароля",
+                          style: AppFonts.s24w700,
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 28,
