@@ -4,6 +4,8 @@ import 'package:eco_shop/core/config/settings/shared_prefences/shared_repository
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/constants/app_consts.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_bloc.dart';
+import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_event.dart';
+import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_state.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/pin_code_widget.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +40,12 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
     context.router.push(const DashboardRoute());
   }
 
-  String pinToUpper(String pin) {
-    return pin.toUpperCase();
+  String pinToUpper(List<String> pinCode) {
+    String temp = "";
+    for (var element in pinCode) {
+      temp += element;
+    }
+    return temp.toUpperCase();
   }
 
   @override
@@ -98,23 +104,25 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                 const Spacer(),
                 BlocListener<EmailConfirmBloc, EmailConfirmState>(
                   listener: (context, state) {
-                    if (state is EmailConfirmLoading) {
-                      debugPrint("LOADING");
-                    } else if (state is EmailConfirmSuccess) {
-                      router();
-                    } else if (state is EmailConfirmFailure) {
-                      debugPrint(state.error);
-                    }
+                    state.when(
+                        initial: () => debugPrint("initial"),
+                        loading: () => debugPrint("loading"),
+                        success: (success) {
+                          debugPrint(success);
+                          router();
+                        },
+                        failure: (error) => debugPrint(error));
                   },
                   child: CustomBtn(
                       onPressed: () {
-                        BlocProvider.of<EmailConfirmBloc>(context).add(
-                            GetConfirm(
-                                code: pinToUpper(_pinOne.text) +
-                                    pinToUpper(_pinTwo.text) +
-                                    pinToUpper(_pinThree.text) +
-                                    pinToUpper(_pinFour.text)));
-                        print(pinToUpper(_pinOne.text));
+                        BlocProvider.of<EmailConfirmBloc>(context)
+                            .add(GetConfirm(
+                                code: pinToUpper([
+                          _pinOne.text,
+                          _pinTwo.text,
+                          _pinThree.text,
+                          _pinFour.text,
+                        ])));
                       },
                       title: "Продолжить"),
                 )

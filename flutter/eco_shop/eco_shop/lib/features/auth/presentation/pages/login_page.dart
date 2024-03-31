@@ -4,6 +4,8 @@ import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/extensions/controller_listeners.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_bloc.dart';
+import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_event.dart';
+import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_state.dart';
 import 'package:eco_shop/features/widgets/auth_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/sign_in_field.dart';
@@ -20,21 +22,21 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController login = TextEditingController();
+  final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     password.addListener(() {
-      checkPassLogin(setState, password.text, login.text);
+      checkPassLogin(setState, password.text, email.text);
     });
   }
 
   @override
   void dispose() {
     super.dispose();
-    login.dispose();
+    email.dispose();
     password.dispose();
   }
 
@@ -68,8 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                       height: 28,
                     ),
                     SignInField(
-                      hintText: "Логин",
-                      controller: login,
+                      hintText: "Email",
+                      controller: email,
                     ),
                     const SizedBox(
                       height: 6,
@@ -88,12 +90,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     BlocListener<LoginBloc, LoginState>(
                       listener: (context, state) {
-                        if (state is LoginLoading) {
-                          debugPrint("Loading login");
-                        } else if (state is LoginSuccess) {
+                        state.when(initial: () {
+                          debugPrint("initial");
+                        }, loading: () {
+                          debugPrint("loading");
+                        }, success: (model) {
+                          debugPrint("${model.email}\n${model.accessToken}");
                           context.router.push(const DashboardRoute());
-                        } else if (state is LoginFailure) {
-                          debugPrint(state.error.toUpperCase());
+                        }, failure: (error) {
+                          debugPrint(error);
                           showDialog(
                               context: context,
                               builder: (context) {
@@ -117,17 +122,17 @@ class _LoginPageState extends State<LoginPage> {
                                   ],
                                 );
                               });
-                        }
+                        });
                       },
                       child: SizedBox(
                           width: 320,
                           child: CustomBtn(
                               onPressed: isButtonActive
                                   ? () {
-                                      BlocProvider.of<LoginBloc>(context).add(
-                                          GetLogin(
-                                              password: password.text,
-                                              username: login.text));
+                                      context.read<LoginBloc>().add(
+                                          LoginEvent.login(
+                                              email: email.text,
+                                              password: password.text));
                                     }
                                   : null,
                               title: "Войти")),

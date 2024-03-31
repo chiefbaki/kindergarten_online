@@ -24,14 +24,12 @@ class AuthDataSourceImpl implements AuthDataSource {
       required String password,
       required String username,
       required String phoneNumber}) async {
-    final Response response = await dio.post(
-        "http://localhost:5050/api/v1/auth/register",
-        data: RegisterDto(
-                email: email,
-                password: password,
-                phoneNumber: phoneNumber,
-                username: username)
-            .toJson());
+    final Response response =
+        await dio.post("http://localhost:5050/api/v1/auth/register",
+            data: RegisterDto(
+              email: email,
+              password: password,
+            ).toJson());
     return response.data;
   }
 
@@ -41,8 +39,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       required String username}) async {
     final Response response = await dio.post(
         "http://localhost:5050/api/v1/auth/login",
-        data: LoginDto(username: username, password: password)
-            .toMap());
+        data: LoginDto(email: email, password: password).toMap());
     return response.data;
   }
 }

@@ -278,6 +278,7 @@ class _ProductsPageState extends State<ProductsPage> {
           ),
         ),
       ),
+      resizeToAvoidBottomInset: false,
       floatingActionButton: const CustomFloatBtn(
         sum: "396",
       ),
