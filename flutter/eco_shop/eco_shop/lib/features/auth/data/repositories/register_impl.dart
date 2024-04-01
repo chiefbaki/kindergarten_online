@@ -10,10 +10,12 @@ class AuthImplentation implements AuthRepositoryInterface {
   Future<Map<String, dynamic>> getRegister({
     required String email,
     required String password,
+    required String username
   }) async {
     return await _useCase.getRegister(
       email: email,
       password: password,
+      username: username
     );
   }
 

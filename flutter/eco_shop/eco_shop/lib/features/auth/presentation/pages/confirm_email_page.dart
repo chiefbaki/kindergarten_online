@@ -57,8 +57,8 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
   String email = "";
 
   void getValue() async {
-    final SharedPrefsImpl _prefs = SharedPrefsImpl();
-    email = await _prefs.getValue(key: AppConsts.emailKey);
+    final SharedPrefsImpl prefs = SharedPrefsImpl();
+    email = await prefs.getValue(key: AppConsts.emailKey);
     setState(() {});
   }
 

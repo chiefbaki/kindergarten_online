@@ -10,11 +10,13 @@ class AuthRepUseCase {
   Future<Map<String, dynamic>> getRegister({
     required String email,
     required String password,
+    required String username,
   }) async {
     final Response response = await _dio.post("auth/register",
         data: RegisterDto(
           email: email,
           password: password,
+          username: username,
         ).toJson());
     return response.data;
   }
@@ -23,7 +25,6 @@ class AuthRepUseCase {
       {required String password, required String email}) async {
     final Response response = await _dio.post("auth/login",
         data: LoginDto(email: email, password: password).toMap());
-    print(response.data.runtimeType);
     return LoginResponseDto.fromMap(response.data);
   }
 

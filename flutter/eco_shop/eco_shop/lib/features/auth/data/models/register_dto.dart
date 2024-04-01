@@ -6,7 +6,7 @@ class RegisterDto extends RegisterEntity {
   const RegisterDto({
     required super.email,
     required super.password,
-    
+    required super.username
   });
 
   Map<String, dynamic> tojson() {
@@ -20,6 +20,7 @@ class RegisterDto extends RegisterEntity {
   factory RegisterDto.fromJson(Map<String, dynamic> json) {
     return RegisterDto(
         email: json["email"],
+        username: json["username"],
         password: json["password"],
 );
   }

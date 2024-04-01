@@ -23,6 +23,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _email = TextEditingController();
+  final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
 
@@ -30,6 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void dispose() {
     super.dispose();
     _email.dispose();
+    _username.dispose();
     _password.dispose();
     _confirmPassword.dispose();
   }
@@ -91,8 +93,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 28,
                     ),
                     SignInField(
-                      hintText: "Почта",
+                      hintText: "Email",
                       controller: _email,
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    SignInField(
+                      hintText: "Логин",
+                      controller: _username,
                     ),
                     const SizedBox(
                       height: 6,
@@ -150,7 +159,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                       BlocProvider.of<RegisterBloc>(context)
                                           .add(GetRegister(
                                               email: _email.text,
-                                              password: _password.text));
+                                              password: _password.text,
+                                              username: _username.text));
                                     }
                                   : null,
                               title: "Создать")),

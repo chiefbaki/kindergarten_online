@@ -29,6 +29,7 @@ class AuthDataSourceImpl implements AuthDataSource {
             data: RegisterDto(
               email: email,
               password: password,
+              username: username
             ).toJson());
     return response.data;
   }

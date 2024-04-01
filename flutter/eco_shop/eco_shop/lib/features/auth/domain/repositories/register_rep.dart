@@ -4,6 +4,7 @@ abstract interface class AuthRepositoryInterface {
   Future<Map<String, dynamic>> getRegister(
       {required String email,
       required String password,
+      required String username
       });
 
   Future<LoginResponseDto> getLogin(

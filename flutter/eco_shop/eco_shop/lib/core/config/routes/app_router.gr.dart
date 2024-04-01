@@ -25,11 +25,13 @@ import 'package:eco_shop/features/history/presentation/pages/history_page.dart'
     as _i4;
 import 'package:eco_shop/features/history/presentation/pages/ordered_product_page.dart'
     as _i9;
+import 'package:eco_shop/features/home/data/models/products_dto.dart' as _i15;
 import 'package:eco_shop/features/home/presentation/pages/home_page.dart'
     as _i5;
 import 'package:eco_shop/features/home/presentation/pages/products_page.dart'
     as _i10;
 import 'package:eco_shop/features/info/presentation/info_page.dart' as _i6;
+import 'package:flutter/material.dart' as _i14;
 
 abstract class $AppRouter extends _i13.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -91,9 +93,14 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     ProductsRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductsRouteArgs>(
+          orElse: () => const ProductsRouteArgs());
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i10.ProductsPage(),
+        child: _i10.ProductsPage(
+          key: args.key,
+          productList: args.productList,
+        ),
       );
     },
     RecoveryRoute.name: (routeData) {
@@ -239,16 +246,40 @@ class OrderedProductRoute extends _i13.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.ProductsPage]
-class ProductsRoute extends _i13.PageRouteInfo<void> {
-  const ProductsRoute({List<_i13.PageRouteInfo>? children})
-      : super(
+class ProductsRoute extends _i13.PageRouteInfo<ProductsRouteArgs> {
+  ProductsRoute({
+    _i14.Key? key,
+    List<_i15.ProductsDto>? productList,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
           ProductsRoute.name,
+          args: ProductsRouteArgs(
+            key: key,
+            productList: productList,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ProductsRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i13.PageInfo<ProductsRouteArgs> page =
+      _i13.PageInfo<ProductsRouteArgs>(name);
+}
+
+class ProductsRouteArgs {
+  const ProductsRouteArgs({
+    this.key,
+    this.productList,
+  });
+
+  final _i14.Key? key;
+
+  final List<_i15.ProductsDto>? productList;
+
+  @override
+  String toString() {
+    return 'ProductsRouteArgs{key: $key, productList: $productList}';
+  }
 }
 
 /// generated route for

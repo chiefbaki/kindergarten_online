@@ -21,5 +21,5 @@ part "register_event.freezed.dart";
 @freezed
 class RegisterEvent with _$RegisterEvent {
   const factory RegisterEvent.register(
-      {required String email, required String password}) = GetRegister;
+      {required String email, required String password, required String username}) = GetRegister;
 }

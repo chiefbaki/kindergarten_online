@@ -95,7 +95,8 @@ class _LoginPageState extends State<LoginPage> {
                         }, loading: () {
                           debugPrint("loading");
                         }, success: (model) {
-                          debugPrint("${model.email}\n${model.accessToken}");
+                          // debugPrint(model.email);
+                          // debugPrint(model.accessToken);
                           context.router.push(const DashboardRoute());
                         }, failure: (error) {
                           debugPrint(error);

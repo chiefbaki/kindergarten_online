@@ -6,6 +6,9 @@ import 'package:eco_shop/features/auth/data/repositories/register_impl.dart';
 import 'package:eco_shop/features/auth/domain/usecases/register_usecase.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_bloc.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_bloc.dart';
+import 'package:eco_shop/features/home/data/repositories/products_impl.dart';
+import 'package:eco_shop/features/home/domain/usecases/products_usecase.dart';
+import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../features/auth/presentation/blocs/register_bloc/register_bloc.dart';
@@ -22,6 +25,15 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => DioSettings(),
+        ),
+        RepositoryProvider(
+          create: (context) => ProductsUseCase(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => ProductsImpl(
+              useCase: RepositoryProvider.of<ProductsUseCase>(context)),
         ),
         RepositoryProvider(
           create: (context) => AuthRepUseCase(
@@ -42,13 +54,16 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => LoginBloc(
-              prefs: RepositoryProvider.of<SharedPrefsImpl>(context),
+                prefs: RepositoryProvider.of<SharedPrefsImpl>(context),
                 repository: RepositoryProvider.of<AuthImplentation>(context)),
           ),
           BlocProvider(
             create: (context) => EmailConfirmBloc(
-                
                 repository: RepositoryProvider.of<AuthImplentation>(context)),
+          ),
+          BlocProvider(
+            create: (context) => ProductsBloc(
+                repository: RepositoryProvider.of<ProductsImpl>(context)),
           ),
         ],
         child: MaterialApp.router(

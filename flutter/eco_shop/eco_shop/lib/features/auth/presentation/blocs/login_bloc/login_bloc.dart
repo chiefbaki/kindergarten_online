@@ -29,6 +29,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         );
         _prefs.saveValue(
             key: AppConsts.accessToken, value: loginModel.accessToken);
+        // String value = await _prefs.getValue(key: AppConsts.accessToken);
         emit(LoginState.success(loginResponse: loginModel));
       } catch (e) {
         emit(LoginState.failure(error: e.toString()));

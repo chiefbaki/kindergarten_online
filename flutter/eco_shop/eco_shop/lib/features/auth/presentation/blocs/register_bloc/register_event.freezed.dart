@@ -18,19 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RegisterEvent {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) register,
+    required TResult Function(String email, String password, String username)
+        register,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? register,
+    TResult? Function(String email, String password, String username)? register,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? register,
+    TResult Function(String email, String password, String username)? register,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +64,7 @@ abstract class $RegisterEventCopyWith<$Res> {
           RegisterEvent value, $Res Function(RegisterEvent) then) =
       _$RegisterEventCopyWithImpl<$Res, RegisterEvent>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String email, String password, String username});
 }
 
 /// @nodoc
@@ -80,6 +82,7 @@ class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? username = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -89,6 +92,10 @@ class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -102,7 +109,7 @@ abstract class _$$GetRegisterImplCopyWith<$Res>
       __$$GetRegisterImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password});
+  $Res call({String email, String password, String username});
 }
 
 /// @nodoc
@@ -118,6 +125,7 @@ class __$$GetRegisterImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? username = null,
   }) {
     return _then(_$GetRegisterImpl(
       email: null == email
@@ -128,6 +136,10 @@ class __$$GetRegisterImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -135,16 +147,19 @@ class __$$GetRegisterImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetRegisterImpl implements GetRegister {
-  const _$GetRegisterImpl({required this.email, required this.password});
+  const _$GetRegisterImpl(
+      {required this.email, required this.password, required this.username});
 
   @override
   final String email;
   @override
   final String password;
+  @override
+  final String username;
 
   @override
   String toString() {
-    return 'RegisterEvent.register(email: $email, password: $password)';
+    return 'RegisterEvent.register(email: $email, password: $password, username: $username)';
   }
 
   @override
@@ -154,11 +169,13 @@ class _$GetRegisterImpl implements GetRegister {
             other is _$GetRegisterImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.username, username) ||
+                other.username == username));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, email, password, username);
 
   @JsonKey(ignore: true)
   @override
@@ -169,27 +186,28 @@ class _$GetRegisterImpl implements GetRegister {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) register,
+    required TResult Function(String email, String password, String username)
+        register,
   }) {
-    return register(email, password);
+    return register(email, password, username);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? register,
+    TResult? Function(String email, String password, String username)? register,
   }) {
-    return register?.call(email, password);
+    return register?.call(email, password, username);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? register,
+    TResult Function(String email, String password, String username)? register,
     required TResult orElse(),
   }) {
     if (register != null) {
-      return register(email, password);
+      return register(email, password, username);
     }
     return orElse();
   }
@@ -226,12 +244,15 @@ class _$GetRegisterImpl implements GetRegister {
 abstract class GetRegister implements RegisterEvent {
   const factory GetRegister(
       {required final String email,
-      required final String password}) = _$GetRegisterImpl;
+      required final String password,
+      required final String username}) = _$GetRegisterImpl;
 
   @override
   String get email;
   @override
   String get password;
+  @override
+  String get username;
   @override
   @JsonKey(ignore: true)
   _$$GetRegisterImplCopyWith<_$GetRegisterImpl> get copyWith =>

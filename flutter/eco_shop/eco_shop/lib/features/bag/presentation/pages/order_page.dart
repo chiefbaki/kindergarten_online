@@ -161,7 +161,7 @@ class _OrderPageState extends State<OrderPage> {
             title: "Заказ №343565657 оформлен",
             btn: CustomBtn(
               onPressed: () {
-                context.router.replace(const ProductsRoute());
+                context.router.replace(ProductsRoute());
               },
               title: "Перейти в магазин",
             ),

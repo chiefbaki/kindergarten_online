@@ -25,6 +25,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         final Map<String, dynamic> success = await _repository.getRegister(
           email: event.email,
           password: event.password,
+          username: event.username
         );
         _prefs.saveValue(key: AppConsts.emailKey, value: event.email);
         emit(RegisterState.success(success: success));

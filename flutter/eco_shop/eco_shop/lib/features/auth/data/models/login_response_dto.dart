@@ -21,7 +21,7 @@ class LoginResponseDto extends LoginResponseEntity {
       id: map['id'] ?? "",
       email: map['email'] ?? "",
       username: map['username'] ?? "",
-      accessToken: map['accessToken'] ?? "",
+      accessToken: map['access_token'] ?? "error token",
     );
   }
 
