@@ -6,18 +6,21 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
+  final Function(String) onSubmitted;
   const CustomTextField({
     super.key,
-    required this.controller
+    required this.controller,
+    required this.onSubmitted
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 54,
       child: TextField(
         controller: controller,
+        onSubmitted: onSubmitted,
         decoration: InputDecoration(
+
             fillColor: AppColors.textFieldColor,
             filled: true,
             hintText: "Быстрый поиск",

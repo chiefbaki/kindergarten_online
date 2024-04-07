@@ -1,13 +1,13 @@
 import 'package:eco_shop/features/home/data/models/products_dto.dart';
-import 'package:eco_shop/features/home/domain/repositories/products_rep.dart';
+import 'package:eco_shop/features/home/domain/usecases/products_usecase.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_event.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  final ProductsRep _repository;
-  ProductsBloc({required ProductsRep repository})
-      : _repository = repository,
+  final ProductsUseCase _useCase;
+  ProductsBloc({required ProductsUseCase useCase})
+      : _useCase = useCase,
         super(const ProductsState.inital()) {
     _getProducts();
   }
@@ -16,8 +16,8 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     return on<GetProducts>((event, emit) async {
       emit(const ProductsState.loading());
       try {
-        final List<ProductsDto> products = await _repository.getProducts(
-            byName: event.byName, byCategory: event.byCategory);
+        final List<ProductsDto> products =
+            await _useCase(event.byCategory, event.byName);
 
         emit(ProductsState.success(products: products));
       } catch (e) {

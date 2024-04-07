@@ -3,18 +3,18 @@ import 'package:equatable/equatable.dart';
 
 class HomeProductsDto extends Equatable {
   final String? img;
-  final String? title;
-  const HomeProductsDto({required this.img, required this.title});
+  final String? category;
+  const HomeProductsDto({required this.img, required this.category});
 
   static List<HomeProductsDto> getProducts = const [
-        HomeProductsDto(img: Images.home, title: 'Фрукты'),
-        HomeProductsDto(img: Images.hom1, title: 'Сухофрукты'),
-        HomeProductsDto(img: Images.home2, title: 'Овощи'),
-        HomeProductsDto(img: Images.home4, title: 'Зелень'),
-        HomeProductsDto(img: Images.home5, title: 'Чай кофе'),
-        HomeProductsDto(img: Images.home3, title: 'Молочные продукты'),
+        HomeProductsDto(img: Images.home, category: 'Fruits'),
+        HomeProductsDto(img: Images.hom1, category: 'Dried_fruits'),
+        HomeProductsDto(img: Images.home2, category: 'Vegetables'),
+        HomeProductsDto(img: Images.home4, category: 'Greenery'),
+        HomeProductsDto(img: Images.home5, category: 'Tea_Coffee'),
+        HomeProductsDto(img: Images.home3, category: 'Milk_products'),
       ];
 
   @override
-  List<Object?> get props => [img, title];
+  List<Object?> get props => [img, category];
 }

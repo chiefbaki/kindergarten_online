@@ -1,26 +1,17 @@
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
+import 'package:eco_shop/features/home/data/models/products_dto.dart';
 import 'package:eco_shop/features/widgets/add_btn.dart';
 import 'package:eco_shop/features/widgets/circle_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatefulWidget {
-  final int id;
-  final String name;
-  final String img;
-  final int price;
-  final int quantity;
-  final String category;
+  final ProductsDto products;
   const ProductItem(
       {super.key,
-      required this.id,
-      required this.name,
-      required this.img,
-      required this.price,
-      required this.quantity,
-      required this.category});
+      required this.products});
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -31,77 +22,75 @@ class _ProductItemState extends State<ProductItem> {
   bool isVisibleBottom = true;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: 200,
-        decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 240, 240, 240),
-            borderRadius: BorderRadius.circular(16)),
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InkWell(
-                  onTap: () {
-                    customModelBottomSheet(context);
-                  },
-                  child: Image.asset(
-                    Images.apple,
-                    
-                  )),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                widget.name,
-                style: AppFonts.s14w500.copyWith(color: AppColors.fontColor),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              Text(
-                widget.price.toString(),
-                style: AppFonts.s20w700.copyWith(color: AppColors.green),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              isVisible
-                  ? Center(
+    return Container(
+      decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 240, 240, 240),
+          borderRadius: BorderRadius.circular(16)),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+                onTap: () {
+                  customModelBottomSheet(context, widget.products);
+                },
+                child: Image.asset(
+                  Images.apple,
+                )),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(
+              widget.products.name,
+              style: widget.products.name.length >= 9
+                  ? AppFonts.s11w500.copyWith(color: AppColors.fontColor)
+                  : AppFonts.s14w500.copyWith(color: AppColors.fontColor),
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            Text(
+              widget.products.price.toString(),
+              style: AppFonts.s20w700.copyWith(color: AppColors.green),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            isVisible
+                ? Center(
                     child: AddBtn(
-                        onPressed: () {
-                          setState(() {
-                            isVisible = !isVisible;
-                          });
-                        },
-                      ),
-                  )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CircleBtn(
-                          onTap: () {},
-                          icon: Icons.remove,
-                        ),
-                        Text(
-                          widget.quantity.toString(),
-                          style: AppFonts.s18w500,
-                        ),
-                        CircleBtn(
-                          onTap: () {},
-                          icon: Icons.add,
-                        ),
-                      ],
+                      onPressed: () {
+                        setState(() {
+                          isVisible = !isVisible;
+                        });
+                      },
                     ),
-            ],
-          ),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleBtn(
+                        onTap: () {},
+                        icon: Icons.remove,
+                      ),
+                      Text(
+                        widget.products.quantity.toString(),
+                        style: AppFonts.s18w500,
+                      ),
+                      CircleBtn(
+                        onTap: () {},
+                        icon: Icons.add,
+                      ),
+                    ],
+                  ),
+          ],
         ),
       ),
     );
   }
 
-  Future<dynamic> customModelBottomSheet(BuildContext context) {
+  Future<dynamic> customModelBottomSheet(BuildContext context, ProductsDto products) {
     return showModalBottomSheet(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -120,7 +109,7 @@ class _ProductItemState extends State<ProductItem> {
                     children: [
                       Image.asset(Images.apple),
                       Text(
-                        "Яблоко красная радуга сладкая",
+                        products.name,
                         style: AppFonts.s24w700
                             .copyWith(color: AppColors.fontColor),
                         textAlign: TextAlign.start,
@@ -129,7 +118,7 @@ class _ProductItemState extends State<ProductItem> {
                         height: 8,
                       ),
                       Text(
-                        "56 c шт",
+                        "${products.price} c шт",
                         style:
                             AppFonts.s24w700.copyWith(color: AppColors.green),
                       ),
@@ -137,7 +126,7 @@ class _ProductItemState extends State<ProductItem> {
                         height: 8,
                       ),
                       Text(
-                        "Cочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.",
+                        products.description,
                         style: AppFonts.s16w400
                             .copyWith(color: AppColors.articleColor),
                       ),
@@ -161,8 +150,8 @@ class _ProductItemState extends State<ProductItem> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text(
-                                        "112 с",
+                                      Text(
+                                        "${products.price} с",
                                         style: AppFonts.s24w700,
                                       ),
                                       const SizedBox(

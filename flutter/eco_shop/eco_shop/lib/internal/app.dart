@@ -27,13 +27,14 @@ class MyApp extends StatelessWidget {
           create: (context) => DioSettings(),
         ),
         RepositoryProvider(
-          create: (context) => ProductsUseCase(
+          create: (context) => ProductsImpl(
             dio: RepositoryProvider.of<DioSettings>(context).dio,
           ),
         ),
         RepositoryProvider(
-          create: (context) => ProductsImpl(
-              useCase: RepositoryProvider.of<ProductsUseCase>(context)),
+          create: (context) => ProductsUseCase(
+            repository: RepositoryProvider.of<ProductsImpl>(context),
+          ),
         ),
         RepositoryProvider(
           create: (context) => AuthRepUseCase(
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => ProductsBloc(
-                repository: RepositoryProvider.of<ProductsImpl>(context)),
+                useCase: RepositoryProvider.of<ProductsUseCase>(context)),
           ),
         ],
         child: MaterialApp.router(
