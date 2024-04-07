@@ -92,13 +92,16 @@ class _ProductItemState extends State<ProductItem> {
 
   Future<dynamic> customModelBottomSheet(BuildContext context, ProductsDto products) {
     return showModalBottomSheet(
+      isScrollControlled: true,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         context: context,
         builder: (BuildContext context) {
           return SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
             child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.62,
               width: double.infinity,
               child: Center(
                 child: Padding(
@@ -130,6 +133,7 @@ class _ProductItemState extends State<ProductItem> {
                         style: AppFonts.s16w400
                             .copyWith(color: AppColors.articleColor),
                       ),
+                      const Spacer(),
                       Container(
                         height: 79,
                         decoration: const BoxDecoration(
@@ -163,7 +167,7 @@ class _ProductItemState extends State<ProductItem> {
                                         width: 41,
                                       ),
                                       const Text(
-                                        "2",
+                                        "1",
                                         style: AppFonts.s18w500,
                                       ),
                                       const SizedBox(

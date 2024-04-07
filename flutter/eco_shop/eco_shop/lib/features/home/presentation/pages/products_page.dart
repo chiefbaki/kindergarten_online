@@ -27,6 +27,9 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   void initState() {
     super.initState();
+    context
+        .read<ProductsBloc>()
+        .add(const ProductsEvent.getProductsByCatByName(byCategory: "all"));
   }
 
   @override
