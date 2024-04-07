@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_shop/core/config/routes/app_router.gr.dart';
+import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
+import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:eco_shop/features/home/data/models/products_dto.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_bloc.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_event.dart';
@@ -51,7 +54,7 @@ class _ProductsPageState extends State<ProductsPage> {
                   children: [
                     ArrowBtn(
                       onPressed: () {
-                        context.router.maybePop();
+                        context.router.popUntil((route) => route == const HomeRoute());
                       },
                     ),
                     const SizedBox(
@@ -74,7 +77,7 @@ class _ProductsPageState extends State<ProductsPage> {
                     });
                     context.read<ProductsBloc>().add(
                         ProductsEvent.getProductsByCatByName(
-                            byName: value[0].toUpperCase()));
+                            byName: value));
                     updateCategoryByIndex(
                         productName: value,
                         state: setState,
@@ -89,16 +92,16 @@ class _ProductsPageState extends State<ProductsPage> {
                 const SizedBox(
                   height: 24,
                 ),
-                BlocBuilder<ProductsBloc, ProductsState>(
-                  builder: (context, state) {
-                    return state.when(
-                        inital: () => const SizedBox(),
-                        loading: () => const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                        success: (success) {
-                          return Expanded(
-                            child: GridView.builder(
+                Flexible(
+                  child: BlocBuilder<ProductsBloc, ProductsState>(
+                    builder: (context, state) {
+                      return state.when(
+                          inital: () => const SizedBox(),
+                          loading: () => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                          success: (success) {
+                            return GridView.builder(
                               shrinkWrap: true,
                               itemCount: success.length,
                               gridDelegate:
@@ -116,14 +119,27 @@ class _ProductsPageState extends State<ProductsPage> {
                                   products: success[index],
                                 );
                               },
-                            ),
-                          );
-                        },
-                        failure: (error) => Text(error));
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
+                            );
+                          },
+                          failure: (error) => Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      Images.curt,
+                                      width: 168.5,
+                                      height: 200,
+                                    ),
+                                    Text(
+                                      "Ничего не нашли",
+                                      style: AppFonts.s16w600.copyWith(
+                                          color: AppColors.articleColor),
+                                    )
+                                  ],
+                                ),
+                              ));
+                    },
+                  ),
                 ),
               ],
             ),

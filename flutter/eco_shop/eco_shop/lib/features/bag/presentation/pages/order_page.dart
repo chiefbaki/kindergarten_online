@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
 import 'package:eco_shop/features/widgets/arrow_btn.dart';
-import 'package:eco_shop/features/widgets/custom_alert_dialog.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:eco_shop/features/widgets/order_text_field.dart';
 import 'package:flutter/material.dart';
@@ -131,41 +131,11 @@ class _OrderPageState extends State<OrderPage> {
                       showCustomDialog(context);
                     },
                     title: "Заказать доставку"),
-                const SizedBox(
-                  height: 16,
-                ),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  Future<dynamic> showCustomDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return CustomAlertDialog(
-            widget: Column(
-              children: [
-                const SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  "Дата и время 07.07.2023 12:46",
-                  style: AppFonts.s16w400.copyWith(color: AppColors.ligthGrey),
-                ),
-              ],
-            ),
-            title: "Заказ №343565657 оформлен",
-            btn: CustomBtn(
-              onPressed: () {
-                context.router.replace(ProductsRoute());
-              },
-              title: "Перейти в магазин",
-            ),
-          );
-        });
   }
 }
