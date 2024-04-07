@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
-import 'package:eco_shop/core/utils/extensions/uri_launch.dart';
+import 'package:eco_shop/core/utils/resources/uri_launch.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:eco_shop/features/widgets/info_btn.dart';
 import 'package:flutter/material.dart';

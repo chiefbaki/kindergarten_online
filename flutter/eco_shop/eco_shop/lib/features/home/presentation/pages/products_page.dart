@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
 import 'package:eco_shop/features/home/data/models/products_dto.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_bloc.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_event.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_state.dart';
 import 'package:eco_shop/features/widgets/arrow_btn.dart';
+import 'package:eco_shop/features/widgets/custom_choice_chip.dart';
 import 'package:eco_shop/features/widgets/custom_float_btn.dart';
 import 'package:eco_shop/features/widgets/custom_text_field.dart';
 import 'package:eco_shop/features/widgets/product_items.dart';
@@ -26,9 +27,6 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   void initState() {
     super.initState();
-    // context
-    //     .read<ProductsBloc>()
-    //     .add(const ProductsEvent.getProductsByCatByName());
   }
 
   @override
@@ -36,18 +34,6 @@ class _ProductsPageState extends State<ProductsPage> {
     super.dispose();
     _controller.dispose();
   }
-
-  final List<String> _choiceData = [
-    "Все",
-    "Fruits",
-    "Dried_fruits",
-    "Vegetables",
-    "Milk_products",
-    "Tea_Coffee",
-    "Greenery"
-  ];
-
-  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -81,48 +67,22 @@ class _ProductsPageState extends State<ProductsPage> {
                   controller: _controller,
                   onSubmitted: (value) {
                     setState(() {
-                      _selectedIndex = 0;
+                      selectedIndex = 0;
                     });
                     context.read<ProductsBloc>().add(
-                        ProductsEvent.getProductsByCatByName(byName: value));
-                    _updateCategoryByIndex(productName: value);
+                        ProductsEvent.getProductsByCatByName(
+                            byName: value[0].toUpperCase()));
+                    updateCategoryByIndex(
+                        productName: value,
+                        state: setState,
+                        selectedIndex: selectedIndex,
+                        choiceData: choiceData);
                   },
                 ),
                 const SizedBox(
                   height: 6,
                 ),
-                SizedBox(
-                  height: 50,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _choiceData.length,
-                    itemBuilder: ((context, index) {
-                      return ChoiceChip(
-                        side: const BorderSide(color: AppColors.ligthGrey),
-                        backgroundColor: Colors.white,
-                        selectedColor: AppColors.green,
-                        label: Text(
-                          _choiceData[index],
-                          style: AppFonts.s16w500
-                              .copyWith(color: AppColors.ligthGrey),
-                        ),
-                        labelStyle:
-                            AppFonts.s16w500.copyWith(color: Colors.white),
-                        selected: _selectedIndex == index,
-                        onSelected: (val) {
-                          _selectedIndex = index;
-                          setState(() {});
-                          context.read<ProductsBloc>().add(
-                              ProductsEvent.getProductsByCatByName(
-                                  byCategory: _choiceData[index]));
-                        },
-                      );
-                    }),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      width: 8,
-                    ),
-                  ),
-                ),
+                const CustomChoiceChip(),
                 const SizedBox(
                   height: 24,
                 ),
@@ -172,37 +132,5 @@ class _ProductsPageState extends State<ProductsPage> {
         sum: "396",
       ),
     );
-  }
-
-  void _updateCategoryByIndex({required String productName}) {
-    Map<String, String> productCategoryMap = {
-      "яблоко": "Fruits",
-      "груша": "Fruits",
-      "клубника": "Fruits",
-      "манго": "Fruits",
-      "апельсины": "Fruits",
-      "вишня": "Fruits",
-      "изюм": "Dried_fruits",
-      "помидоры": "Vegetables",
-      "огурцы": "Vegetables",
-      "лук": "Vegetables",
-      "морковь": "Vegetables",
-      "перец": "Vegetables",
-      "молоко": "Milk_products",
-      "йогурт": "Milk_products",
-      "кофе": "Tea_Coffee",
-      "чай": "Tea_Coffee",
-      "укроп": "Greenery",
-      "петрушка": "Tea_Coffee",
-    };
-
-    productCategoryMap.forEach((key, value) {
-      if (productName.toLowerCase().contains(key)) {
-        String category = value;
-        setState(() {
-          _selectedIndex = _choiceData.indexOf(category);
-        });
-      }
-    });
   }
 }

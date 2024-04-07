@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
-import 'package:eco_shop/core/utils/extensions/controller_listeners.dart';
+import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_bloc.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_event.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_state.dart';

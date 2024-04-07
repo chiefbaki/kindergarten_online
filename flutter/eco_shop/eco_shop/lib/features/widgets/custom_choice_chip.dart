@@ -15,40 +15,34 @@ class CustomChoiceChip extends StatefulWidget {
 }
 
 class _CustomChoiceChipState extends State<CustomChoiceChip> {
-  final List<String> _choiceData = [
-    "Все",
-    "Fruits",
-    "Dried_fruits",
-    "Vegetables",
-    "Milk_products",
-    "Tea_Coffee",
-    "Greenery"
-  ];
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
       child: ListView.separated(
+        padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
-        itemCount: _choiceData.length,
+        itemCount: choiceData.length,
         itemBuilder: ((context, index) {
           return ChoiceChip(
             side: const BorderSide(color: AppColors.ligthGrey),
             backgroundColor: Colors.white,
             selectedColor: AppColors.green,
             label: Text(
-              _choiceData[index],
-              style: AppFonts.s16w500.copyWith(color: AppColors.ligthGrey),
+              choiceData[index],
+              style: AppFonts.s16w500.copyWith(
+                  color: selectedIndex == index
+                      ? AppColors.white
+                      : AppColors.ligthGrey),
             ),
             labelStyle: AppFonts.s16w500.copyWith(color: Colors.white),
-            selected: _selectedIndex == index,
+            selected: selectedIndex == index,
             onSelected: (val) {
-              _selectedIndex = index;
+              selectedIndex = index;
               setState(() {});
               context.read<ProductsBloc>().add(
                   ProductsEvent.getProductsByCatByName(
-                      byCategory: _choiceData[index]));
+                      byCategory: choiceData[index]));
             },
           );
         }),
@@ -59,3 +53,15 @@ class _CustomChoiceChipState extends State<CustomChoiceChip> {
     );
   }
 }
+
+final List<String> choiceData = [
+  "all",
+  "Fruits",
+  "Dried_fruits",
+  "Vegetables",
+  "Milk_products",
+  "Tea_Coffee",
+  "Greenery"
+];
+
+int selectedIndex = 0;
