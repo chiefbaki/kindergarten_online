@@ -22,8 +22,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  final TextEditingController email =
+      TextEditingController(text: "ik509331@gmail.com");
+  final TextEditingController password =
+      TextEditingController(text: "2002kurbanov");
 
   @override
   void initState() {
@@ -81,8 +83,9 @@ class _LoginPageState extends State<LoginPage> {
                       controller: password,
                       obscureText: obscureText,
                       onPressed: () {
-                        obscureText = !obscureText;
-                        setState(() {});
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
                       },
                     ),
                     const SizedBox(
@@ -95,8 +98,6 @@ class _LoginPageState extends State<LoginPage> {
                         }, loading: () {
                           debugPrint("loading");
                         }, success: (model) {
-                          // debugPrint(model.email);
-                          // debugPrint(model.accessToken);
                           context.router.push(const DashboardRoute());
                         }, failure: (error) {
                           debugPrint(error);

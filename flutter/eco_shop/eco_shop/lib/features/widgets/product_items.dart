@@ -1,11 +1,14 @@
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
 import 'package:eco_shop/features/home/data/models/products_dto.dart';
+import 'package:eco_shop/features/home/presentation/blocs/basket_add_bloc/basket_add_bloc.dart';
 import 'package:eco_shop/features/widgets/add_btn.dart';
 import 'package:eco_shop/features/widgets/circle_btn.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductItem extends StatefulWidget {
   final ProductsDto products;
@@ -56,12 +59,27 @@ class _ProductItemState extends State<ProductItem> {
             ),
             isVisible
                 ? Center(
-                    child: AddBtn(
-                      onPressed: () {
-                        setState(() {
-                          isVisible = !isVisible;
-                        });
+                    child: BlocListener<BasketAddBloc, BasketAddState>(
+                      listener: (context, state) {
+                        state.when(
+                            initial: () => const SizedBox(),
+                            loading: () => print("loading"),
+                            success: () => print("success"),
+                            failure: (e) {
+                              showBagDialog(context);
+                            });
                       },
+                      child: AddBtn(
+                        onPressed: () {
+                          setState(() {
+                            isVisible = !isVisible;
+                          });
+                          context.read<BasketAddBloc>().add(
+                              BasketAddEvent.started(
+                                  productId: widget.products.id,
+                                  quantity: widget.products.quantity));
+                        },
+                      ),
                     ),
                   )
                 : Row(

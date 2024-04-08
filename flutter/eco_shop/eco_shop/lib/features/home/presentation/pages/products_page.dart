@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
-import 'package:eco_shop/features/home/data/models/products_dto.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_bloc.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_event.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_state.dart';
 import 'package:eco_shop/features/widgets/arrow_btn.dart';
 import 'package:eco_shop/features/widgets/custom_choice_chip.dart';
+import 'package:eco_shop/features/widgets/custom_circle_progress.dart';
 import 'package:eco_shop/features/widgets/custom_float_btn.dart';
 import 'package:eco_shop/features/widgets/custom_text_field.dart';
 import 'package:eco_shop/features/widgets/product_items.dart';
@@ -18,8 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class ProductsPage extends StatefulWidget {
-  final List<ProductsDto>? productList;
-  const ProductsPage({super.key, this.productList});
+  final String? categoryFromHome;
+  const ProductsPage({super.key, this.categoryFromHome});
 
   @override
   State<ProductsPage> createState() => _ProductsPageState();
@@ -30,9 +29,8 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<ProductsBloc>()
-        .add(const ProductsEvent.getProductsByCatByName(byCategory: "all"));
+    context.read<ProductsBloc>().add(ProductsEvent.getProductsByCatByName(
+        byCategory: widget.categoryFromHome ?? "all"));
   }
 
   @override
@@ -49,12 +47,13 @@ class _ProductsPageState extends State<ProductsPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     ArrowBtn(
                       onPressed: () {
-                        context.router.popUntil((route) => route == const HomeRoute());
+                        context.router.maybePop();
                       },
                     ),
                     const SizedBox(
@@ -76,8 +75,7 @@ class _ProductsPageState extends State<ProductsPage> {
                       selectedIndex = 0;
                     });
                     context.read<ProductsBloc>().add(
-                        ProductsEvent.getProductsByCatByName(
-                            byName: value));
+                        ProductsEvent.getProductsByCatByName(byName: value));
                     updateCategoryByIndex(
                         productName: value,
                         state: setState,
@@ -98,7 +96,7 @@ class _ProductsPageState extends State<ProductsPage> {
                       return state.when(
                           inital: () => const SizedBox(),
                           loading: () => const Center(
-                                child: CircularProgressIndicator(),
+                                child: CustomCircleProgress(),
                               ),
                           success: (success) {
                             return GridView.builder(

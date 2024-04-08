@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
+import 'package:eco_shop/core/utils/resources/controller_listeners.dart';
 import 'package:eco_shop/features/widgets/bag_item.dart';
-import 'package:eco_shop/features/widgets/custom_alert_dialog.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
 
@@ -118,7 +118,7 @@ class BagPage extends StatelessWidget {
                       onPressed: () {
                         tempVar < 300
                             ? context.router.push(const OrderRoute())
-                            : showCustomDialog(context);
+                            : showBagDialog(context);
                       },
                       title: "Оформить заказ"),
                   const SizedBox(
@@ -131,22 +131,5 @@ class BagPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<dynamic> showCustomDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) {
-          return CustomAlertDialog(
-            title: "Заказ может быть при покупке свыше 300 с",
-            btn: CustomBtn(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                title: "Закрыть"),
-            height: 400,
-          );
-        });
   }
 }

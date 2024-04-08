@@ -25,7 +25,6 @@ import 'package:eco_shop/features/history/presentation/pages/history_page.dart'
     as _i4;
 import 'package:eco_shop/features/history/presentation/pages/ordered_product_page.dart'
     as _i9;
-import 'package:eco_shop/features/home/data/models/products_dto.dart' as _i15;
 import 'package:eco_shop/features/home/presentation/pages/home_page.dart'
     as _i5;
 import 'package:eco_shop/features/home/presentation/pages/products_page.dart'
@@ -99,7 +98,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         routeData: routeData,
         child: _i10.ProductsPage(
           key: args.key,
-          productList: args.productList,
+          categoryFromHome: args.categoryFromHome,
         ),
       );
     },
@@ -249,13 +248,13 @@ class OrderedProductRoute extends _i13.PageRouteInfo<void> {
 class ProductsRoute extends _i13.PageRouteInfo<ProductsRouteArgs> {
   ProductsRoute({
     _i14.Key? key,
-    List<_i15.ProductsDto>? productList,
+    String? categoryFromHome,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           ProductsRoute.name,
           args: ProductsRouteArgs(
             key: key,
-            productList: productList,
+            categoryFromHome: categoryFromHome,
           ),
           initialChildren: children,
         );
@@ -269,16 +268,16 @@ class ProductsRoute extends _i13.PageRouteInfo<ProductsRouteArgs> {
 class ProductsRouteArgs {
   const ProductsRouteArgs({
     this.key,
-    this.productList,
+    this.categoryFromHome,
   });
 
   final _i14.Key? key;
 
-  final List<_i15.ProductsDto>? productList;
+  final String? categoryFromHome;
 
   @override
   String toString() {
-    return 'ProductsRouteArgs{key: $key, productList: $productList}';
+    return 'ProductsRouteArgs{key: $key, categoryFromHome: $categoryFromHome}';
   }
 }
 

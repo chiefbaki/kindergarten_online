@@ -2,10 +2,10 @@ import 'package:eco_shop/core/config/settings/shared_prefences/shared_repository
 import 'package:eco_shop/core/utils/constants/app_consts.dart';
 import 'package:eco_shop/features/auth/domain/repositories/register_rep.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_event.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eco_shop/features/auth/data/models/login_response_dto.dart';
 import 'login_state.dart';
-
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepositoryInterface _repository;
@@ -29,7 +29,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         );
         _prefs.saveValue(
             key: AppConsts.accessToken, value: loginModel.accessToken);
-        // String value = await _prefs.getValue(key: AppConsts.accessToken);
+        String value = await _prefs.getValue(key: AppConsts.accessToken);
+        debugPrint(value.toString());
         emit(LoginState.success(loginResponse: loginModel));
       } catch (e) {
         emit(LoginState.failure(error: e.toString()));

@@ -5,9 +5,22 @@ import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
+        // Authentification pages
+        AutoRoute(
+          page: LoginRoute.page,
+        ),
+        AutoRoute(
+          page: RegisterRoute.page,
+        ),
+        AutoRoute(
+          page: ConfirmEmailRoute.page,
+        ),
+        AutoRoute(
+          page: RecoveryRoute.page,
+        ),
+        // Dashboard
         AutoRoute(page: DashboardRoute.page, children: [
-          AutoRoute(
-              page: HomeRoute.page, ),
+          AutoRoute(page: HomeRoute.page, initial: true),
           AutoRoute(
             page: BagRoute.page,
           ),
@@ -22,20 +35,8 @@ class AppRouter extends $AppRouter {
         // Products page
         AutoRoute(
           page: ProductsRoute.page,
-          initial: true
+          initial: true,
         ),
-        // Authentification pages
-        AutoRoute(
-          page: ConfirmEmailRoute.page,
-        ),
-        AutoRoute(
-          page: LoginRoute.page,
-        ),
-        AutoRoute(
-          page: RegisterRoute.page,
-        ),
-
-        AutoRoute(page: RecoveryRoute.page,),
         // Ordered product page
         AutoRoute(
           page: OrderedProductRoute.page,

@@ -6,8 +6,11 @@ import 'package:eco_shop/features/auth/data/repositories/register_impl.dart';
 import 'package:eco_shop/features/auth/domain/usecases/register_usecase.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_bloc.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_bloc.dart';
+import 'package:eco_shop/features/home/data/repositories/basket_add_impl.dart';
 import 'package:eco_shop/features/home/data/repositories/products_impl.dart';
+import 'package:eco_shop/features/home/domain/usecases/basket_add_usecase.dart';
 import 'package:eco_shop/features/home/domain/usecases/products_usecase.dart';
+import 'package:eco_shop/features/home/presentation/blocs/basket_add_bloc/basket_add_bloc.dart';
 import 'package:eco_shop/features/home/presentation/blocs/products_bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +28,16 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => DioSettings(),
+        ),
+        RepositoryProvider(
+          create: (context) => BasketAddImpl(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => BasketAddUseCase(
+            repository: RepositoryProvider.of<BasketAddImpl>(context),
+          ),
         ),
         RepositoryProvider(
           create: (context) => ProductsImpl(
@@ -65,6 +78,10 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => ProductsBloc(
                 useCase: RepositoryProvider.of<ProductsUseCase>(context)),
+          ),
+          BlocProvider(
+            create: (context) => BasketAddBloc(
+                useCase: RepositoryProvider.of<BasketAddUseCase>(context)),
           ),
         ],
         child: MaterialApp.router(

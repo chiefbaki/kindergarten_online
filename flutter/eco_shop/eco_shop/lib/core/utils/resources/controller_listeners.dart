@@ -197,3 +197,22 @@ Future<dynamic> orderBottomSheet(BuildContext context) {
         );
       });
 }
+
+Future<dynamic> showBagDialog(BuildContext context) {
+  return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return Builder(builder: (context) {
+          return CustomAlertDialog(
+            title: "Заказ может быть при покупке свыше 300 с",
+            btn: CustomBtn(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                title: "Закрыть"),
+            height: 400,
+          );
+        });
+      });
+}
