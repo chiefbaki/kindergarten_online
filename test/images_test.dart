@@ -5,6 +5,23 @@ import 'package:kindergarten_online/core/utils/resources//resources.dart';
 
 void main() {
   test('images assets test', () {
+    expect(File(Images.back).existsSync(), isTrue);
+    expect(File(Images.backLogin).existsSync(), isTrue);
+    expect(File(Images.camera).existsSync(), isTrue);
+    expect(File(Images.chatIcon).existsSync(), isTrue);
+    expect(File(Images.check).existsSync(), isTrue);
+    expect(File(Images.contactIcon).existsSync(), isTrue);
+    expect(File(Images.dropDown).existsSync(), isTrue);
+    expect(File(Images.iconArrowRight).existsSync(), isTrue);
+    expect(File(Images.ideaIcon).existsSync(), isTrue);
+    expect(File(Images.infoIcon).existsSync(), isTrue);
+    expect(File(Images.newsIcon).existsSync(), isTrue);
     expect(File(Images.pencil).existsSync(), isTrue);
+    expect(File(Images.prodIcon).existsSync(), isTrue);
+    expect(File(Images.questionIcon).existsSync(), isTrue);
+    expect(File(Images.registrBack).existsSync(), isTrue);
+    expect(File(Images.scheduleIcon).existsSync(), isTrue);
+    expect(File(Images.settingsIcon).existsSync(), isTrue);
+    expect(File(Images.uchetIcon).existsSync(), isTrue);
   });
 }

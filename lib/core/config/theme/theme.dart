@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 
 ThemeData theme() {
   return ThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: outlineBorder(),
+        focusedBorder: outlineBorder(),
+      ),
+      scaffoldBackgroundColor: AppColors.white,
+      useMaterial3: false,
       fontFamily: AppFonts.inter,
       textTheme: const TextTheme(
         displayLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         displayMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-        displaySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+        displaySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+        titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
       ));
 }
 
+OutlineInputBorder outlineBorder() {
+  return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: AppColors.lightGrey));
+}
 // displayLarge = displayLarge ?? headline1,
 //        displayMedium = displayMedium ?? headline2,
 //        displaySmall = displaySmall ?? headline3,
