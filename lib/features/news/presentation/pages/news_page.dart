@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/news_item.dart';
 import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
@@ -36,11 +35,9 @@ class NewsPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: CustomFloatBtn(
-          icon: const Icon(Icons.abc),
-          onPressed: () {
-            context.router.push(const MenuRoute());
-          }),
+      floatingActionButton: const CustomFloatBtn(
+        isToSwitch: true,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

@@ -1,12 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/services/data/products_model.dart';
-import 'package:kindergarten_online/features/services/presentation/widgets/favorite_btn.dart';
-import 'package:kindergarten_online/features/services/presentation/widgets/services_btn.dart';
+import 'package:kindergarten_online/features/services/presentation/widgets/product_item.dart';
+import 'package:kindergarten_online/features/widgets/services_btn.dart';
 import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 
@@ -47,7 +45,9 @@ class ServicesPage extends StatelessWidget {
                             ServicesBtn(
                               textStyle: textStyle,
                               name: "Избранное",
-                              onPressed: () {},
+                              onPressed: () {
+                                context.router.push(const FavouriteRoute());
+                              },
                               color: AppColors.navyBlue,
                             ),
                           ],
@@ -55,35 +55,7 @@ class ServicesPage extends StatelessWidget {
                         SizedBox(
                           height: 27.h,
                         ),
-                        Expanded(
-                            child: GridView.builder(
-                                itemCount: ProductsModel.items.length,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        mainAxisSpacing: 15,
-                                        crossAxisSpacing: 15,
-                                        childAspectRatio: 1),
-                                itemBuilder: (_, index) => Container(
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(ProductsModel
-                                                  .items[index].img))),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(2.0),
-                                            child: FavoriteBtn(
-                                              onPressed: () {},
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )))
+                        const ProductItem()
                       ],
                     ),
                   ),
@@ -93,11 +65,9 @@ class ServicesPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: CustomFloatBtn(
-          icon: const Icon(Icons.abc),
-          onPressed: () {
-            context.router.push(const MenuRoute());
-          }),
+      floatingActionButton: const CustomFloatBtn(
+        isToSwitch: true,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

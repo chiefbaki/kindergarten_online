@@ -4,6 +4,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/main_page.d
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/menu_page.dart';
+import 'package:kindergarten_online/features/favourite/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/services_page.dart';
 part 'app_router.gr.dart';
@@ -34,6 +35,10 @@ class AppRouter extends _$AppRouter {
         // News
         AutoRoute(page: NewsRoute.page),
         // Services
-        AutoRoute(page: ServicesRoute.page, initial: true)
+        AutoRoute(
+          page: ServicesRoute.page,
+        ),
+        // Favourite
+        AutoRoute(page: FavouriteRoute.page, initial: true),
       ];
 }
