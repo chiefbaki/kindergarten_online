@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
                     children: [
                       CustomBtn(
                           onPressed: () {
-                            context.router.push(const HomeRoute());
+                            context.router.push(const CameraRoute());
                           },
                           name: "Вход"),
                       SizedBox(

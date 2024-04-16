@@ -26,10 +26,11 @@ class MainPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                width: 100.w,
-                height: 100.h,
-                decoration: const BoxDecoration(color: AppColors.grey),
+              ClipOval(
+                child: Image.asset(
+                  Images.ava,
+                  width: 100,
+                ),
               ),
               SizedBox(
                 height: 50.h,
