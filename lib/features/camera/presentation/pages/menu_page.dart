@@ -27,17 +27,15 @@ class MenuPage extends StatelessWidget {
               );
             }),
       ),
-      floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 76),
-          child: CustomFloatBtn(
-            onPressed: () {
-              context.router.maybePop();
-            },
-            icon: const Icon(
-              Icons.close,
-              color: AppColors.lightBlue,
-            ),
-          )),
+      floatingActionButton: CustomFloatBtn(
+        onPressed: () {
+          context.router.maybePop();
+        },
+        icon: const Icon(
+          Icons.close,
+          color: AppColors.lightBlue,
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

@@ -9,15 +9,16 @@ class CustomFloatBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.blue,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15))),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 11),
-          child: icon
-        ));
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 76),
+      child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.blue,
+              padding: const EdgeInsets.all(12),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15))),
+          child: icon),
+    );
   }
 }

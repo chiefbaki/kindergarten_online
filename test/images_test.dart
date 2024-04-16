@@ -17,6 +17,8 @@ void main() {
     expect(File(Images.check).existsSync(), isTrue);
     expect(File(Images.contactIcon).existsSync(), isTrue);
     expect(File(Images.dropDown).existsSync(), isTrue);
+    expect(File(Images.five).existsSync(), isTrue);
+    expect(File(Images.four).existsSync(), isTrue);
     expect(File(Images.gamezone).existsSync(), isTrue);
     expect(File(Images.iconArrowRight).existsSync(), isTrue);
     expect(File(Images.ideaIcon).existsSync(), isTrue);
@@ -25,6 +27,7 @@ void main() {
     expect(File(Images.line).existsSync(), isTrue);
     expect(File(Images.newsAva).existsSync(), isTrue);
     expect(File(Images.newsIcon).existsSync(), isTrue);
+    expect(File(Images.one).existsSync(), isTrue);
     expect(File(Images.pencil).existsSync(), isTrue);
     expect(File(Images.prodIcon).existsSync(), isTrue);
     expect(File(Images.questionIcon).existsSync(), isTrue);
@@ -32,6 +35,9 @@ void main() {
     expect(File(Images.registrBack).existsSync(), isTrue);
     expect(File(Images.scheduleIcon).existsSync(), isTrue);
     expect(File(Images.settingsIcon).existsSync(), isTrue);
+    expect(File(Images.six).existsSync(), isTrue);
+    expect(File(Images.three).existsSync(), isTrue);
+    expect(File(Images.two).existsSync(), isTrue);
     expect(File(Images.uchetIcon).existsSync(), isTrue);
   });
 }

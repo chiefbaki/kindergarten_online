@@ -57,13 +57,11 @@ class CameraPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 76),
-          child: CustomFloatBtn(
-              onPressed: () {
-                context.router.push(const MenuRoute());
-              },
-              icon: const Icon(Icons.abc))),
+      floatingActionButton: CustomFloatBtn(
+          onPressed: () {
+            context.router.push(const MenuRoute());
+          },
+          icon: const Icon(Icons.abc)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

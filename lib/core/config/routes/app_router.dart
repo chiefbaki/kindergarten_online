@@ -5,6 +5,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/registr_pag
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/menu_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
+import 'package:kindergarten_online/features/services/presentation/pages/services_page.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig()
@@ -26,15 +27,13 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: CameraRoute.page,
         ),
-
         // Menu
         AutoRoute(
           page: MenuRoute.page,
         ),
-
         // News
-        AutoRoute(
-          page: NewsRoute.page, initial: true
-        )
+        AutoRoute(page: NewsRoute.page),
+        // Services
+        AutoRoute(page: ServicesRoute.page, initial: true)
       ];
 }
