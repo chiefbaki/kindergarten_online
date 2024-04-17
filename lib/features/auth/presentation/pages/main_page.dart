@@ -15,6 +15,7 @@ class MainPage extends StatelessWidget {
     final textStyle = Theme.of(context).textTheme;
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Center(
           child: Column(
             children: [
@@ -22,7 +23,7 @@ class MainPage extends StatelessWidget {
                 children: [
                   Image.asset(
                     Images.pencil,
-                    height: 250.h,
+                    height: 200.h,
                   ),
                 ],
               ),
@@ -48,14 +49,15 @@ class MainPage extends StatelessWidget {
                     .copyWith(color: AppColors.lightGrey),
                 textAlign: TextAlign.center,
               ),
+              SizedBox(
+                height: 10.h,
+              ),
               Stack(
                 children: [
-                  Image.asset(
-                    Images.back,
-                  ),
+                  Image.asset(Images.back),
                   Positioned(
-                    bottom: 380,
-                    left: 80,
+                    bottom: 270,
+                    left: 100,
                     child: CustomBtn(
                       name: "Вход",
                       onPressed: () {
@@ -64,8 +66,8 @@ class MainPage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 310,
-                    left: 80,
+                    bottom: 200,
+                    left: 100,
                     child: CustomBtn(
                       name: "Регистрация",
                       onPressed: () {

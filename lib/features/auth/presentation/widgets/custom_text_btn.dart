@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class CustomTextBtn extends StatelessWidget {
-  final Function() onPressed;
+  final Function()? onPressed;
   final String name;
   const CustomTextBtn({
     super.key,

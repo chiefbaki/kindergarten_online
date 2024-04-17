@@ -12,8 +12,28 @@ import 'package:kindergarten_online/features/auth/presentation/widgets/phone_tex
 import 'package:kindergarten_online/features/auth/presentation/widgets/text_field_drop.dart';
 
 @RoutePage()
-class RegistrPage extends StatelessWidget {
+class RegistrPage extends StatefulWidget {
   const RegistrPage({super.key});
+
+  @override
+  State<RegistrPage> createState() => _RegistrPageState();
+}
+
+class _RegistrPageState extends State<RegistrPage> {
+  final _phone = TextEditingController();
+  final _password = TextEditingController();
+  final _kindergarten = TextEditingController();
+  final _group = TextEditingController();
+  bool _obscureText = true;
+
+  @override
+  void dispose() {
+    super.dispose();
+    _phone.dispose();
+    _password.dispose();
+    _kindergarten.dispose();
+    _group.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +56,7 @@ class RegistrPage extends StatelessWidget {
                     height: 10.h,
                   ),
                   PhoneTextField(
+                    controller: _phone,
                     textStyle: textStyle,
                     hintText: "+996 (555) 555-555",
                   ),
@@ -49,9 +70,15 @@ class RegistrPage extends StatelessWidget {
                     height: 10.h,
                   ),
                   CustomTextField(
+                      controller: _password,
                       textStyle: textStyle,
                       hintText: "Введите пароль",
-                      onPressed: () {}),
+                      obscureText: _obscureText,
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      }),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -108,7 +135,8 @@ class RegistrPage extends StatelessWidget {
             ),
             Image.asset(
               Images.registrBack,
-            )
+              fit: BoxFit.fill,
+            ),
           ],
         ),
       ),

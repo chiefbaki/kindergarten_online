@@ -9,6 +9,7 @@ void main() {
     expect(File(Images.ava).existsSync(), isTrue);
     expect(File(Images.back).existsSync(), isTrue);
     expect(File(Images.backLogin).existsSync(), isTrue);
+    expect(File(Images.backOne).existsSync(), isTrue);
     expect(File(Images.bedroom).existsSync(), isTrue);
     expect(File(Images.cab).existsSync(), isTrue);
     expect(File(Images.cab2).existsSync(), isTrue);

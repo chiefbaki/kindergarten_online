@@ -14,9 +14,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         // Main
-        AutoRoute(
-          page: MainRoute.page,
-        ),
+        AutoRoute(page: MainRoute.page, ),
         // Auth
         AutoRoute(
           page: LoginRoute.page,
@@ -37,8 +35,11 @@ class AppRouter extends _$AppRouter {
         // Services
         AutoRoute(
           page: ServicesRoute.page,
+          initial: true
         ),
         // Favourite
-        AutoRoute(page: FavouriteRoute.page, initial: true),
+        AutoRoute(
+          page: FavouriteRoute.page,
+        ),
       ];
 }

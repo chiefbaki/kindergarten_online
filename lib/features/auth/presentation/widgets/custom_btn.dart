@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class CustomBtn extends StatelessWidget {
@@ -14,11 +13,12 @@ class CustomBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 237.w,
-      height: 50.h,
       child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
+              minimumSize: const Size(237, 50),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.5, horizontal: 73.5),
               backgroundColor: AppColors.blue,
               shadowColor: AppColors.black.withOpacity(0.8),
               shape: RoundedRectangleBorder(

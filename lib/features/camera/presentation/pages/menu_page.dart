@@ -23,11 +23,13 @@ class MenuPage extends StatelessWidget {
                 textStyle: textStyle,
                 img: MenuItem.items[index].img,
                 title: MenuItem.items[index].name,
+                route: MenuItem.items[index].route,
               );
             }),
       ),
       floatingActionButton: const CustomFloatBtn(
         isToSwitch: false,
+        icon: Icon(Icons.close),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
