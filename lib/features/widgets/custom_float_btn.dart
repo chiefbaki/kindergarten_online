@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/core/utils/resources/functions.dart';
 
 class CustomFloatBtn extends StatelessWidget {
   final Widget icon;
@@ -11,12 +11,13 @@ class CustomFloatBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.only(bottom: 76),
       child: ElevatedButton(
           onPressed: isToSwitch
               ? () {
-                  context.router.push(const MenuRoute());
+                  customBottomSheet(context, textStyle);
                 }
               : () {
                   context.router.maybePop();

@@ -39,12 +39,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MainPage(),
       );
     },
-    MenuRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const MenuPage(),
-      );
-    },
     NewsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -118,20 +112,6 @@ class MainRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MenuPage]
-class MenuRoute extends PageRouteInfo<void> {
-  const MenuRoute({List<PageRouteInfo>? children})
-      : super(
-          MenuRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MenuRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

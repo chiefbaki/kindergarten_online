@@ -112,9 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                               loading: () => const Center(
                                     child: CircularProgressIndicator.adaptive(),
                                   ),
-                              success: (entity) {
-                                debugPrint(entity.access);
-                                debugPrint(entity.refresh);
+                              success: () {
                                 context.router.push(const CameraRoute());
                               },
                               failure: (e) {

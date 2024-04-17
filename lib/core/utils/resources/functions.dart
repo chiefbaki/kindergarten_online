@@ -1,7 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_btn.dart';
+import 'package:kindergarten_online/features/camera/data/menu_item_model.dart';
+import 'package:kindergarten_online/features/widgets/menu_card.dart';
+import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 
 Future<dynamic> wrongLoginDialog(BuildContext context, TextTheme textStyle) {
   return showDialog(
@@ -44,4 +49,42 @@ Future<dynamic> wrongLoginDialog(BuildContext context, TextTheme textStyle) {
           ),
         );
       });
+}
+
+Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle) {
+  return showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: AppColors.white,
+    builder: (BuildContext context) {
+      return Padding(
+        padding:
+            const EdgeInsets.only(left: 58, right: 58, top: 155, bottom: 40),
+        child: Column(
+          children: [
+            Expanded(
+              child: GridView.builder(
+                  itemCount: MenuItem.items.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 34,
+                      crossAxisSpacing: 25),
+                  itemBuilder: (_, index) {
+                    return MenuCard(
+                      textStyle: textStyle,
+                      img: MenuItem.items[index].img,
+                      title: MenuItem.items[index].name,
+                      route: MenuItem.items[index].route,
+                    );
+                  }),
+            ),
+            const CustomFloatBtn(
+              isToSwitch: false,
+              icon: Icon(Icons.close),
+            )
+          ],
+        ),
+      );
+    },
+  );
 }
