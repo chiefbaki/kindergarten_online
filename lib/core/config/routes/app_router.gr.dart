@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const NewsPage(),
       );
     },
+    PoliticsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PoliticsPage(),
+      );
+    },
     RegistrRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -67,6 +73,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ServicesPage(),
+      );
+    },
+    SettingsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingsPage(),
       );
     },
   };
@@ -143,6 +155,20 @@ class NewsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PoliticsPage]
+class PoliticsRoute extends PageRouteInfo<void> {
+  const PoliticsRoute({List<PageRouteInfo>? children})
+      : super(
+          PoliticsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PoliticsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [RegistrPage]
 class RegistrRoute extends PageRouteInfo<void> {
   const RegistrRoute({List<PageRouteInfo>? children})
@@ -194,6 +220,20 @@ class ServicesRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ServicesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

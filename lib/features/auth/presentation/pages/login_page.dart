@@ -58,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
     _newPhoneNumber.dispose();
     for (var element in _controllers) {
       element.dispose();
+      debugPrint("controllers re disposed");
     }
   }
 
@@ -86,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   PhoneTextField(
                     controller: _phone,
                     textStyle: textStyle,
-                    hintText: "+996 (555) 555-555",
+                    hintText: "Введите номер",
                   ),
                   SizedBox(
                     height: 20.h,
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                   CustomTextField(
                     controller: _password,
                     textStyle: textStyle,
-                    hintText: "Пароль",
+                    hintText: "Введите пароль",
                     obscureText: _obscureText,
                     onPressed: () {
                       setState(() {
@@ -141,33 +142,36 @@ class _LoginPageState extends State<LoginPage> {
                                 debugPrint(e);
                               });
                         },
-                        child: CustomBtn(
-                            onPressed: () {
-                              context.read<LoginCubit>().login(
-                                  phone: _phone.text, password: _password.text);
-                            },
-                            name: "Вход"),
+                        child: Center(
+                          child: CustomBtn(
+                              onPressed: () {
+                                context.read<LoginCubit>().login(
+                                    phone: _phone.text,
+                                    password: _password.text);
+                              },
+                              name: "Вход"),
+                        ),
                       ),
                       SizedBox(
                         height: 20.h,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Еще нет аккаунта?",
-                            style: textStyle.displaySmall!
-                                .copyWith(color: AppColors.lightGrey),
-                          ),
-                          CustomTextBtn(
-                            textStyle: textStyle,
-                            onPressed: () {
-                              context.router.push(const RegistrRoute());
-                            },
-                            name: "Зарегистрируйтесь",
-                          )
-                        ],
-                      )
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     Text(
+                      //       "Еще нет аккаунта?",
+                      //       style: textStyle.displaySmall!
+                      //           .copyWith(color: AppColors.lightGrey),
+                      //     ),
+                      //     CustomTextBtn(
+                      //       textStyle: textStyle,
+                      //       onPressed: () {
+                      //         context.router.push(const RegistrRoute());
+                      //       },
+                      //       name: "Зарегистрируйтесь",
+                      //     )
+                      //   ],
+                      // )
                     ],
                   ),
                 ],
@@ -214,7 +218,6 @@ class _LoginPageState extends State<LoginPage> {
         });
   }
 
-
   Future<dynamic> resetPasswordSheet(
       BuildContext context, TextTheme textStyle) {
     return showModalBottomSheet(
@@ -245,6 +248,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: CustomBtn(
                         onPressed: () {
                           Navigator.pop(context);
+                          _newPhoneNumber.clear();
                           checkPinCodeSheet(context);
                         },
                         name: "Восстановить пароль"),
@@ -258,6 +262,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<dynamic> checkPinCodeSheet(BuildContext context) {
     return showModalBottomSheet(
+      
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         context: context,
         builder: (context) {
@@ -276,7 +281,13 @@ class _LoginPageState extends State<LoginPage> {
                               ))
                           .toList()),
                   const Spacer(),
-                  CustomBtn(onPressed: () {}, name: "Сбросить пароль")
+                  CustomBtn(
+                      onPressed: () {
+                        for (var element in _controllers) {
+                          element.clear();
+                        }
+                      },
+                      name: "Сбросить пароль")
                 ],
               ),
             ),

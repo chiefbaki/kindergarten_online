@@ -1,5 +1,5 @@
 name: kindergarten_online
-description: "A new Flutter project."
+description: "Kindergarten online is program for parents who cares about their child"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -73,9 +74,9 @@ dependencies:
   
   
 dev_dependencies:
-  flutter_localizations:
-    sdk: flutter
   flutter_test:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
   intl: ^0.18.1
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -95,7 +96,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

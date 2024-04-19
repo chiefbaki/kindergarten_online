@@ -65,16 +65,16 @@ class MainPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  Positioned(
-                    bottom: 200,
-                    left: 100,
-                    child: CustomBtn(
-                      name: "Регистрация",
-                      onPressed: () {
-                        context.router.push(const RegistrRoute());
-                      },
-                    ),
-                  ),
+                  // Positioned(
+                  //   bottom: 200,
+                  //   left: 100,
+                  //   child: CustomBtn(
+                  //     name: "Регистрация",
+                  //     onPressed: () {
+                  //       context.router.push(const RegistrRoute());
+                  //     },
+                  //   ),
+                  // ),
                 ],
               )
             ],

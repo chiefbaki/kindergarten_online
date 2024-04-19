@@ -42,11 +42,11 @@ class MenuItem {
     MenuItem(
         img: Images.infoIcon,
         name: "Справочная информация",
-        route: const CameraRoute()),
+        route: const PoliticsRoute()),
     MenuItem(
         img: Images.settingsIcon,
         name: "Настройка приложения",
-        route: const CameraRoute()),
+        route: const SettingsRoute()),
     MenuItem(
         img: Images.questionIcon,
         name: "Вопрос техподдержке",
