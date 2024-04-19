@@ -19,6 +19,18 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   final _oldPassword = TextEditingController();
   final _newPassword = TextEditingController();
   final _confirmNewPassword = TextEditingController();
+
+  bool _isOldPassNotVisible = true;
+  bool _isNewsPassNotVisible = true;
+
+  @override
+  void dispose() {
+    super.dispose();
+    _oldPassword.dispose();
+    _newPassword.dispose();
+    _confirmNewPassword.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
@@ -46,7 +58,12 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     CustomTextField(
                         textStyle: textStyle,
                         hintText: "Старый пароль",
-                        onPressed: () {},
+                        obscureText: _isOldPassNotVisible,
+                        onPressed: () {
+                          setState(() {
+                            _isOldPassNotVisible = !_isOldPassNotVisible;
+                          });
+                        },
                         controller: _oldPassword),
                     SizedBox(
                       height: 20.h,
@@ -61,8 +78,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     ),
                     CustomTextField(
                         textStyle: textStyle,
-                        hintText: "Старый пароль",
-                        onPressed: () {},
+                        hintText: "Новый пароль",
+                        obscureText: _isNewsPassNotVisible,
+                        onPressed: () {
+                          setState(() {
+                            _isNewsPassNotVisible = !_isNewsPassNotVisible;
+                          });
+                        },
                         controller: _newPassword),
                     SizedBox(
                       height: 20.h,
@@ -77,8 +99,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     ),
                     CustomTextField(
                         textStyle: textStyle,
-                        hintText: "Старый пароль",
-                        onPressed: () {},
+                        obscureText: _isNewsPassNotVisible,
+                        hintText: "Подтверждение нового пароля",
                         controller: _confirmNewPassword),
                     SizedBox(
                       height: 25.h,
