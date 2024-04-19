@@ -1,5 +1,5 @@
 import 'package:kindergarten_online/features/auth/data/local/token_storage.dart';
-import 'package:kindergarten_online/features/auth/domain/entity/response/token_entity.dart';
+import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
 import 'package:kindergarten_online/features/auth/domain/repositories/token_rep.dart';
 
 class TokenImpl implements TokenRepository {

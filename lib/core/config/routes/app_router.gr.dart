@@ -51,6 +51,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegistrPage(),
       );
     },
+    ResetRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ResetPage(),
+      );
+    },
+    ScheduleRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SchedulePage(),
+      );
+    },
     ServicesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -140,6 +152,34 @@ class RegistrRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RegistrRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ResetPage]
+class ResetRoute extends PageRouteInfo<void> {
+  const ResetRoute({List<PageRouteInfo>? children})
+      : super(
+          ResetRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ResetRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SchedulePage]
+class ScheduleRoute extends PageRouteInfo<void> {
+  const ScheduleRoute({List<PageRouteInfo>? children})
+      : super(
+          ScheduleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ScheduleRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

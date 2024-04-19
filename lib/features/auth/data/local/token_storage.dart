@@ -1,6 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kindergarten_online/core/config/constants/storage_constants.dart';
-import 'package:kindergarten_online/features/auth/domain/entity/response/token_entity.dart';
+import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
 
 class TokenStorage {
   final FlutterSecureStorage _storage;

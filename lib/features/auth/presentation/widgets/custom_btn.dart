@@ -25,10 +25,15 @@ class CustomBtn extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15))),
           child: Text(
             name,
-            style: Theme.of(context)
-                .textTheme
-                .displayMedium!
-                .copyWith(color: AppColors.white),
+            style: name.length < 14
+                ? Theme.of(context)
+                    .textTheme
+                    .displayMedium!
+                    .copyWith(color: AppColors.white)
+                : Theme.of(context)
+                    .textTheme
+                    .displaySmall!
+                    .copyWith(color: AppColors.white),
           )),
     );
   }

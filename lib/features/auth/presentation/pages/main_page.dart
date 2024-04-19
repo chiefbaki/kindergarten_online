@@ -23,13 +23,13 @@ class MainPage extends StatelessWidget {
                 children: [
                   Image.asset(
                     Images.pencil,
-                    height: 200.h,
+                    height: 180.h,
                   ),
                 ],
               ),
               ClipOval(
                 child: Image.asset(
-                  Images.ava,
+                  Images.img,
                   width: 100,
                 ),
               ),

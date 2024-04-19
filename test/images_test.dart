@@ -9,7 +9,6 @@ void main() {
     expect(File(Images.ava).existsSync(), isTrue);
     expect(File(Images.back).existsSync(), isTrue);
     expect(File(Images.backLogin).existsSync(), isTrue);
-    expect(File(Images.backOne).existsSync(), isTrue);
     expect(File(Images.bedroom).existsSync(), isTrue);
     expect(File(Images.cab).existsSync(), isTrue);
     expect(File(Images.cab2).existsSync(), isTrue);
@@ -23,6 +22,7 @@ void main() {
     expect(File(Images.gamezone).existsSync(), isTrue);
     expect(File(Images.iconArrowRight).existsSync(), isTrue);
     expect(File(Images.ideaIcon).existsSync(), isTrue);
+    expect(File(Images.img).existsSync(), isTrue);
     expect(File(Images.infoIcon).existsSync(), isTrue);
     expect(File(Images.kitchen).existsSync(), isTrue);
     expect(File(Images.line).existsSync(), isTrue);

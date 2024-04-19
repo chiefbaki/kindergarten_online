@@ -12,6 +12,7 @@ import 'package:kindergarten_online/features/auth/presentation/widgets/custom_bt
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_field.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/phone_text_field.dart';
+import 'package:kindergarten_online/features/auth/presentation/widgets/pin_code_widget.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -22,9 +23,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _phone =
-      TextEditingController(text: "996990552219");
-  final TextEditingController _password = TextEditingController(text: "0514");
+  final _phone = TextEditingController(text: "996990552219");
+  final _password = TextEditingController(text: "0514");
+  final _newPhoneNumber = TextEditingController();
+  final List<TextEditingController> _controllers =
+      List.generate(6, (index) => TextEditingController());
+
   bool _obscureText = true;
 
   bool isNotEmptyField = false;
@@ -51,6 +55,10 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
     _phone.dispose();
     _password.dispose();
+    _newPhoneNumber.dispose();
+    for (var element in _controllers) {
+      element.dispose();
+    }
   }
 
   @override
@@ -99,6 +107,19 @@ class _LoginPageState extends State<LoginPage> {
                         _obscureText = !_obscureText;
                       });
                     },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CustomTextBtn(
+                        textStyle: textStyle,
+                        onPressed: () {
+                          resetDataSheet(context, textStyle);
+                        },
+                        name: "Не помните пароль или номер?",
+                        color: AppColors.grey,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 55.h,
@@ -159,5 +180,107 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> resetDataSheet(BuildContext context, TextTheme textStyle) {
+    return showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        context: context,
+        builder: (BuildContext context) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.25,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 44, horizontal: 44),
+              child: Column(
+                children: [
+                  CustomTextBtn(
+                      textStyle: textStyle,
+                      onPressed: () {
+                        Navigator.pop(context);
+                        resetPasswordSheet(context, textStyle);
+                      },
+                      name: "Восстановить пароль"),
+                  const Divider(
+                    color: AppColors.grey,
+                  ),
+                  CustomTextBtn(
+                      textStyle: textStyle,
+                      onPressed: () {},
+                      name: "Восстановить номер"),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+
+  Future<dynamic> resetPasswordSheet(
+      BuildContext context, TextTheme textStyle) {
+    return showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        context: context,
+        builder: (context) {
+          return Padding(
+            padding: const EdgeInsets.all(44),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Номер телефона:",
+                    style: textStyle.displaySmall!
+                        .copyWith(color: AppColors.black),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  PhoneTextField(
+                      textStyle: textStyle,
+                      hintText: "Номер телефона: ",
+                      controller: _newPhoneNumber),
+                  const Spacer(),
+                  Center(
+                    child: CustomBtn(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          checkPinCodeSheet(context);
+                        },
+                        name: "Восстановить пароль"),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Future<dynamic> checkPinCodeSheet(BuildContext context) {
+    return showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        context: context,
+        builder: (context) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+              child: Column(
+                children: [
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: _controllers
+                          .map((e) => Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: PinCodeWidget(controller: e),
+                              ))
+                          .toList()),
+                  const Spacer(),
+                  CustomBtn(onPressed: () {}, name: "Сбросить пароль")
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
