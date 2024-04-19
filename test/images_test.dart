@@ -20,7 +20,7 @@ void main() {
     expect(File(Images.five).existsSync(), isTrue);
     expect(File(Images.four).existsSync(), isTrue);
     expect(File(Images.gamezone).existsSync(), isTrue);
-    expect(File(Images.iconRight).existsSync(), isTrue);
+    expect(File(Images.iconArrowRight).existsSync(), isTrue);
     expect(File(Images.iconRight).existsSync(), isTrue);
     expect(File(Images.ideaIcon).existsSync(), isTrue);
     expect(File(Images.img).existsSync(), isTrue);
@@ -34,6 +34,7 @@ void main() {
     expect(File(Images.prodIcon).existsSync(), isTrue);
     expect(File(Images.questionIcon).existsSync(), isTrue);
     expect(File(Images.rectangle).existsSync(), isTrue);
+    expect(File(Images.rectangleAcc).existsSync(), isTrue);
     expect(File(Images.registrBack).existsSync(), isTrue);
     expect(File(Images.scheduleIcon).existsSync(), isTrue);
     expect(File(Images.settingsIcon).existsSync(), isTrue);

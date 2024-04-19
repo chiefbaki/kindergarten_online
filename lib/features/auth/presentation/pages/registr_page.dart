@@ -8,8 +8,8 @@ import 'package:kindergarten_online/features/auth/presentation/widgets/custom_ap
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_field.dart';
-import 'package:kindergarten_online/features/auth/presentation/widgets/phone_text_field.dart';
-import 'package:kindergarten_online/features/auth/presentation/widgets/text_field_drop.dart';
+import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
+import 'package:kindergarten_online/features/widgets/text_field_drop.dart';
 
 @RoutePage()
 class RegistrPage extends StatefulWidget {
@@ -24,6 +24,8 @@ class _RegistrPageState extends State<RegistrPage> {
   final _password = TextEditingController();
   final _kindergarten = TextEditingController();
   final _group = TextEditingController();
+  final _nameAndAddress = TextEditingController();
+
   bool _obscureText = true;
 
   @override
@@ -33,6 +35,7 @@ class _RegistrPageState extends State<RegistrPage> {
     _password.dispose();
     _kindergarten.dispose();
     _group.dispose();
+    _nameAndAddress.dispose();
   }
 
   @override
@@ -89,6 +92,7 @@ class _RegistrPageState extends State<RegistrPage> {
                   TextFieldDrop(
                     textStyle: textStyle,
                     hintText: "Название и адрес",
+                    controller: _nameAndAddress,
                   ),
                   SizedBox(
                     height: 20.h,
@@ -100,6 +104,7 @@ class _RegistrPageState extends State<RegistrPage> {
                   TextFieldDrop(
                     textStyle: textStyle,
                     hintText: "Выберите группу/класс",
+                    controller: _group,
                   ),
                   SizedBox(
                     height: 20.h,

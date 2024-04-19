@@ -6,6 +6,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/reset_page.
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/favourite/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
+import 'package:kindergarten_online/features/profile/presentation/pages/personal_account_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/politics_info_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/settings_page.dart';
 import 'package:kindergarten_online/features/schedule/presentation/pages/schedule_page.dart';
@@ -21,9 +22,7 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
         ),
         // Auth
-        AutoRoute(
-          page: LoginRoute.page,
-        ),
+        AutoRoute(page: LoginRoute.page,),
         AutoRoute(
           page: RegistrRoute.page,
         ),
@@ -51,10 +50,14 @@ class AppRouter extends _$AppRouter {
           page: ScheduleRoute.page,
         ),
         // Profile
-        AutoRoute(page: SettingsRoute.page, initial: true),
+        AutoRoute(
+          page: SettingsRoute.page,
+        ),
         // Politics info
         AutoRoute(
           page: PoliticsRoute.page,
-        )
+        ),
+        // Personal account 
+        AutoRoute(page: PersonalAccountRoute.page, initial: true)
       ];
 }

@@ -18,6 +18,7 @@ class Images {
   static const String five = 'assets/images/five.png';
   static const String four = 'assets/images/four.png';
   static const String gamezone = 'assets/images/gamezone.png';
+  static const String iconArrowRight = 'assets/images/icon-arrow-right.svg';
   static const String iconRight = 'assets/images/iconRight.png';
   static const String ideaIcon = 'assets/images/ideaIcon.png';
   static const String img = 'assets/images/img.png';
@@ -31,6 +32,7 @@ class Images {
   static const String prodIcon = 'assets/images/prod_icon.png';
   static const String questionIcon = 'assets/images/questionIcon.png';
   static const String rectangle = 'assets/images/rectangle.png';
+  static const String rectangleAcc = 'assets/images/rectangleAcc.png';
   static const String registrBack = 'assets/images/registrBack.png';
   static const String scheduleIcon = 'assets/images/schedule_icon.png';
   static const String settingsIcon = 'assets/images/settingsIcon.png';

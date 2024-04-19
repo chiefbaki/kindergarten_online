@@ -4,19 +4,20 @@ import 'package:kindergarten_online/core/utils/resources/resources.dart';
 
 class TextFieldDrop extends StatelessWidget {
   final String hintText;
-  const TextFieldDrop({
-    super.key,
-    required this.textStyle,
-    required this.hintText
-  });
+  final TextEditingController controller;
+  const TextFieldDrop(
+      {super.key,
+      required this.textStyle,
+      required this.hintText,
+      required this.controller});
 
   final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: textStyle.displaySmall!
-          .copyWith(color: AppColors.lightGrey),
+      controller: controller,
+      style: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: Image.asset(
@@ -24,10 +25,9 @@ class TextFieldDrop extends StatelessWidget {
           width: 16,
           height: 8,
         ),
-        hintStyle: textStyle.displaySmall!
-            .copyWith(color: AppColors.lightGrey),
-        contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15, vertical: 12),
+        hintStyle: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
       ),
     );
   }

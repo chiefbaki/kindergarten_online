@@ -11,7 +11,7 @@ import 'package:kindergarten_online/features/auth/presentation/widgets/custom_ap
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_field.dart';
-import 'package:kindergarten_online/features/auth/presentation/widgets/phone_text_field.dart';
+import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/pin_code_widget.dart';
 
 @RoutePage()
