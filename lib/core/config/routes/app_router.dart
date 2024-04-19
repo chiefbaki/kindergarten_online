@@ -23,9 +23,7 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
         ),
         // Auth
-        AutoRoute(
-          page: LoginRoute.page,
-        ),
+        AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(
           page: RegistrRoute.page,
         ),
@@ -66,6 +64,8 @@ class AppRouter extends _$AppRouter {
         ),
 
         // Change password page
-        AutoRoute(page: ChangePasswordRoute.page, initial: true)
+        AutoRoute(
+          page: ChangePasswordRoute.page,
+        )
       ];
 }
