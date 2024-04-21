@@ -3,7 +3,6 @@ import 'package:eco_shop/core/config/routes/app_router.gr.dart';
 import 'package:eco_shop/core/config/themes/app_colors.dart';
 import 'package:eco_shop/core/config/themes/app_fonts.dart';
 import 'package:eco_shop/core/utils/resources/resources.dart';
-import 'package:eco_shop/features/widgets/bag_item.dart';
 import 'package:eco_shop/features/widgets/custom_alert_dialog.dart';
 import 'package:eco_shop/features/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +120,7 @@ Future<dynamic> orderBottomSheet(BuildContext context) {
                   height: MediaQuery.of(context).size.height * 0.3,
                   child: ListView(
                     children: const [
-                      BagItem(),
+                      // BagItem(),
                     ],
                   ),
                 ),

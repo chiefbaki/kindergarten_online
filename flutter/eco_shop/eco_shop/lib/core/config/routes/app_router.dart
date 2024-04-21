@@ -19,10 +19,13 @@ class AppRouter extends $AppRouter {
           page: RecoveryRoute.page,
         ),
         // Dashboard
-        AutoRoute(page: DashboardRoute.page, children: [
-          AutoRoute(page: HomeRoute.page, initial: true),
+        AutoRoute(page: DashboardRoute.page, initial: true, children: [
+          AutoRoute(
+            page: HomeRoute.page,
+          ),
           AutoRoute(
             page: BagRoute.page,
+            initial: true,
           ),
           AutoRoute(
             page: HistoryRoute.page,
@@ -35,7 +38,6 @@ class AppRouter extends $AppRouter {
         // Products page
         AutoRoute(
           page: ProductsRoute.page,
-          initial: true,
         ),
         // Ordered product page
         AutoRoute(

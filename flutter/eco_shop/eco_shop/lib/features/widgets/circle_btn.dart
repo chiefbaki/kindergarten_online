@@ -15,7 +15,7 @@ class CircleBtn extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: CircleAvatar(
-        radius: 16,
+        radius: 13,
         backgroundColor: AppColors.green,
         child: Icon(
           icon,

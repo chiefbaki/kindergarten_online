@@ -6,6 +6,12 @@ import 'package:eco_shop/features/auth/data/repositories/register_impl.dart';
 import 'package:eco_shop/features/auth/domain/usecases/register_usecase.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/email_confirm_bloc/email_confirm_bloc.dart';
 import 'package:eco_shop/features/auth/presentation/blocs/login_bloc/login_bloc.dart';
+import 'package:eco_shop/features/bag/data/repositories/delete_card_impl.dart';
+import 'package:eco_shop/features/bag/data/repositories/shopping_card_impl.dart';
+import 'package:eco_shop/features/bag/domain/usecases/delete_card_usecase.dart';
+import 'package:eco_shop/features/bag/domain/usecases/shopping_card_usecase.dart';
+import 'package:eco_shop/features/bag/presentation/bloc/delete_card/delete_card_bloc.dart';
+import 'package:eco_shop/features/bag/presentation/bloc/shopping_card/shopping_card_bloc.dart';
 import 'package:eco_shop/features/home/data/repositories/basket_add_impl.dart';
 import 'package:eco_shop/features/home/data/repositories/products_impl.dart';
 import 'package:eco_shop/features/home/domain/usecases/basket_add_usecase.dart';
@@ -28,6 +34,26 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => DioSettings(),
+        ),
+        RepositoryProvider(
+          create: (context) => DeleteCardImpl(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => DeleteCardUseCase(
+            repository: RepositoryProvider.of<DeleteCardImpl>(context),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => ShoppingCardImpl(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => ShoppingCardUseCase(
+            repository: RepositoryProvider.of<ShoppingCardImpl>(context),
+          ),
         ),
         RepositoryProvider(
           create: (context) => BasketAddImpl(
@@ -62,6 +88,10 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
+            create: (context) => DeleteCardBloc(
+                useCase: RepositoryProvider.of<DeleteCardUseCase>(context)),
+          ),
+          BlocProvider(
             create: (context) => RegisterBloc(
                 prefs: RepositoryProvider.of<SharedPrefsImpl>(context),
                 repository: RepositoryProvider.of<AuthImplentation>(context)),
@@ -82,6 +112,10 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => BasketAddBloc(
                 useCase: RepositoryProvider.of<BasketAddUseCase>(context)),
+          ),
+          BlocProvider(
+            create: (context) => ShoppingCardBloc(
+                useCase: RepositoryProvider.of<ShoppingCardUseCase>(context)),
           ),
         ],
         child: MaterialApp.router(
