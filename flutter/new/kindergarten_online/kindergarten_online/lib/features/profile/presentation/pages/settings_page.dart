@@ -9,6 +9,7 @@ import 'package:kindergarten_online/features/profile/presentation/widgets/exit_b
 import 'package:kindergarten_online/features/profile/presentation/widgets/text_with_arrow.dart';
 import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class SettingsPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
           padding: const EdgeInsets.symmetric(vertical: 25),
           child: Column(
             children: [
-              NavBar(textStyle: textStyle, text: "Настройки"),
+              NavBar(textStyle: textStyle, text: S.of(context).Settings),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
@@ -43,7 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Аккаунт",
+                              S.of(context).account,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -54,13 +55,13 @@ class _SettingsPageState extends State<SettingsPage> {
                             TextWithArrow(
                               textStyle: textStyle,
                               onPressed: () {},
-                              name: "Редактировать профиль",
+                              name: S.of(context).editProfile,
                             ),
                             const CustomDivider(),
                             TextWithArrow(
                               textStyle: textStyle,
                               onPressed: () {},
-                              name: "Изменить пароль",
+                              name: S.of(context).changePassword,
                             ),
                           ],
                         ),
@@ -76,7 +77,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Уведомления",
+                              S.of(context).notifications,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -86,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             const CustomDivider(),
                             CustomSwitchTile(
                               textStyle: textStyle,
-                              name: "Сообщения в чате",
+                              name: S.of(context).chatMessages,
                               isSelected: messagesInChat,
                               onChanged: (p0) {
                                 setState(() {
@@ -97,7 +98,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             const CustomDivider(),
                             CustomSwitchTile(
                               textStyle: textStyle,
-                              name: "Новое событие в ленте",
+                              name: S.of(context).newsEvents,
                               isSelected: newEvent,
                               onChanged: (p0) {
                                 setState(() {
@@ -108,7 +109,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             const CustomDivider(),
                             TextWithArrow(
                                 textStyle: textStyle,
-                                name: "Фон чата",
+                                name: S.of(context).chatBackground,
                                 onPressed: () {}),
                           ],
                         ),
@@ -124,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: Row(
                           children: [
                             Text(
-                              "Тема приложения",
+                              S.of(context).applicationTheme,
                               style: textStyle.titleSmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -145,7 +146,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                       size: 34,
                                     )),
                                 Text(
-                                  "Светлая",
+                                  S.of(context).light,
                                   style: textStyle.displaySmall!
                                       .copyWith(color: AppColors.white),
                                 )
@@ -166,12 +167,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         children: [
                           TextWithArrow(
                               textStyle: textStyle,
-                              name: "Правила использования",
+                              name: S.of(context).termsofUse,
                               onPressed: () {}),
                           const CustomDivider(),
                           TextWithArrow(
                               textStyle: textStyle,
-                              name: "Политика конфиденциальности",
+                              name: S.of(context).privacyPolicy,
                               onPressed: () {})
                         ],
                       ),
@@ -182,6 +183,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ExitBtn(
                       textStyle: textStyle,
                       onPressed: () {},
+                      text: S.of(context).logOut,
                     )
                   ],
                 ),

@@ -69,12 +69,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegistrPage(),
       );
     },
-    ResetRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ResetPage(),
-      );
-    },
+    
     ScheduleRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,

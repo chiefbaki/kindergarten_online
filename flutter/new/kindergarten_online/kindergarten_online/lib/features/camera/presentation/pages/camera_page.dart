@@ -5,6 +5,7 @@ import 'package:kindergarten_online/features/camera/data/cameras_position_model.
 import 'package:kindergarten_online/features/camera/presentation/widgets/choice_chip_list.dart';
 import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class CameraPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class CameraPage extends StatelessWidget {
             children: [
               NavBar(
                 textStyle: textStyle,
-                text: "Камеры",
+                text: S.of(context).cameras,
               ),
               SizedBox(
                 height: 25.h,

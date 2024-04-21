@@ -5,6 +5,8 @@ import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
+
 
 @RoutePage()
 class MainPage extends StatelessWidget {
@@ -37,14 +39,14 @@ class MainPage extends StatelessWidget {
                 height: 50.h,
               ),
               Text(
-                "Добро пожаловать!",
+                S.of(context).welcome,
                 style: textStyle.displayLarge,
               ),
               SizedBox(
                 height: 10.h,
               ),
               Text(
-                "Для пользования нашего приложения\nвыполните вход или зарегистрируйтесь,\nесли Вы у нас впервые.",
+                S.of(context).mainPageAdvice,
                 style: textStyle.displaySmall!
                     .copyWith(color: AppColors.lightGrey),
                 textAlign: TextAlign.center,
@@ -59,7 +61,7 @@ class MainPage extends StatelessWidget {
                     bottom: 270,
                     left: 100,
                     child: CustomBtn(
-                      name: "Вход",
+                      name: S.of(context).enter,
                       onPressed: () {
                         context.router.push(const LoginRoute());
                       },

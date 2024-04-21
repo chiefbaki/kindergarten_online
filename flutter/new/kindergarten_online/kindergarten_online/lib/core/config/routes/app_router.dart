@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/login_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
-import 'package:kindergarten_online/features/auth/presentation/pages/reset_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/favourite/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
@@ -24,16 +23,16 @@ class AppRouter extends _$AppRouter {
           initial: true
         ),
         // Auth
-        AutoRoute(page: LoginRoute.page, ),
         AutoRoute(
-          page: RegistrRoute.page,
+          page: LoginRoute.page,
         ),
         AutoRoute(
-          page: ResetRoute.page,
+          page: RegistrRoute.page,
         ),
         // Camera
         AutoRoute(
           page: CameraRoute.page,
+          
         ),
         // News
         AutoRoute(
@@ -46,6 +45,7 @@ class AppRouter extends _$AppRouter {
         // Favourite
         AutoRoute(
           page: FavouriteRoute.page,
+          
         ),
         // Schedule
         AutoRoute(
@@ -54,6 +54,7 @@ class AppRouter extends _$AppRouter {
         // Profile
         AutoRoute(
           page: SettingsRoute.page,
+          
         ),
         // Politics info
         AutoRoute(
@@ -62,6 +63,7 @@ class AppRouter extends _$AppRouter {
         // Personal account
         AutoRoute(
           page: PersonalAccountRoute.page,
+          
         ),
 
         // Change password page

@@ -5,6 +5,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/features/widgets/services_btn.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class FavouritePage extends StatelessWidget {
@@ -19,7 +20,7 @@ class FavouritePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 25),
           child: Column(
             children: [
-              NavBar(textStyle: textStyle, text: "Избранные"),
+              NavBar(textStyle: textStyle, text: S.of(context).favourites),
               SizedBox(
                 height: 25.h,
               ),
@@ -33,12 +34,12 @@ class FavouritePage extends StatelessWidget {
                         children: [
                           ServicesBtn(
                             textStyle: textStyle,
-                            name: "Сначала новые",
+                            name: S.of(context).newOnesFirst,
                             onPressed: () {},
                           ),
                           ServicesBtn(
                             textStyle: textStyle,
-                            name: "Сначала старые",
+                            name: S.of(context).oldOnesFirst,
                             onPressed: () {},
                             color: AppColors.navyBlue,
                           ),
@@ -49,7 +50,7 @@ class FavouritePage extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              "Раздел пока пуст",
+                              S.of(context).thisSectionIsStillEmpty,
                               style: textStyle.displayLarge!
                                   .copyWith(color: AppColors.black),
                             ),
@@ -57,7 +58,7 @@ class FavouritePage extends StatelessWidget {
                               height: 10.h,
                             ),
                             Text(
-                              "В этом окне будут отображаться\nВаши избранные объявления.",
+                              S.of(context).thisWindowWillDisplay,
                               textAlign: TextAlign.center,
                               style: textStyle.titleSmall,
                             )

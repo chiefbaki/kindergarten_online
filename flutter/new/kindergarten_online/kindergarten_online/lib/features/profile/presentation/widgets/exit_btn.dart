@@ -3,7 +3,8 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class ExitBtn extends StatelessWidget {
   final Function() onPressed;
-  const ExitBtn({super.key, required this.textStyle, required this.onPressed});
+  final String text;
+  const ExitBtn({super.key, required this.textStyle, required this.onPressed, required this.text});
 
   final TextTheme textStyle;
 
@@ -18,7 +19,7 @@ class ExitBtn extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20))),
         child: Text(
-          "Выйти из аккаунта",
+          text,
           style: textStyle.titleSmall!.copyWith(color: AppColors.white),
         ));
   }

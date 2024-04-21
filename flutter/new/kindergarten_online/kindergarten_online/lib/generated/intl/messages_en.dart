@@ -21,5 +21,51 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "applicationTheme":
+            MessageLookupByLibrary.simpleMessage("Application theme"),
+        "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "chatBackground":
+            MessageLookupByLibrary.simpleMessage("Chat background"),
+        "chatMessages": MessageLookupByLibrary.simpleMessage("Chat messages"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "enter": MessageLookupByLibrary.simpleMessage("Enter"),
+        "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
+        "forgetPassOrNumber":
+            MessageLookupByLibrary.simpleMessage("Forget password or number?"),
+        "gender": MessageLookupByLibrary.simpleMessage("Gender:"),
+        "inputNumber": MessageLookupByLibrary.simpleMessage("Input number"),
+        "inputPassword": MessageLookupByLibrary.simpleMessage("Input password"),
+        "lastname": MessageLookupByLibrary.simpleMessage("Lastname:"),
+        "light": MessageLookupByLibrary.simpleMessage("light"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
+        "mainPageAdvice": MessageLookupByLibrary.simpleMessage(
+            "To use our app please\nsign in or sign up,\nif your are the first time."),
+        "middleName": MessageLookupByLibrary.simpleMessage("Middlename:"),
+        "name": MessageLookupByLibrary.simpleMessage("Name:"),
+        "newOnesFirst": MessageLookupByLibrary.simpleMessage("New ones first"),
+        "news": MessageLookupByLibrary.simpleMessage("News"),
+        "newsEvents":
+            MessageLookupByLibrary.simpleMessage("New event in the feed"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Old ones first"),
+        "password": MessageLookupByLibrary.simpleMessage("Password:"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number:"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "restoreNumber":
+            MessageLookupByLibrary.simpleMessage("Restore the number"),
+        "restorePassword":
+            MessageLookupByLibrary.simpleMessage("Restore the password"),
+        "termsofUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
+        "thisSectionIsStillEmpty":
+            MessageLookupByLibrary.simpleMessage("This section is still empty"),
+        "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
+            "This window will display\nYour favorite advertisements."),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome!")
+      };
 }

@@ -8,6 +8,7 @@ import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/features/widgets/text_field_drop.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class PersonalAccountPage extends StatefulWidget {
@@ -44,7 +45,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                NavBar(textStyle: textStyle, text: "Аккаунт"),
+                NavBar(textStyle: textStyle, text: S.of(context).account),
                 SizedBox(
                   height: 40.h,
                 ),
@@ -75,7 +76,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Имя:",
+                              S.of(context).name,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -84,14 +85,14 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             ),
                             PersonalInfoField(
                               textStyle: textStyle,
-                              hintText: "Имя",
+                              hintText: S.of(context).name,
                               controller: _name,
                             ),
                             SizedBox(
                               height: 20.h,
                             ),
                             Text(
-                              "Фамилия:",
+                              S.of(context).lastname,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -100,14 +101,14 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             ),
                             PersonalInfoField(
                               textStyle: textStyle,
-                              hintText: "Фамилия",
+                              hintText: S.of(context).lastname,
                               controller: _lastName,
                             ),
                             SizedBox(
                               height: 20.h,
                             ),
                             Text(
-                              "Отчество:",
+                              S.of(context).middleName,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -116,14 +117,14 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             ),
                             PersonalInfoField(
                               textStyle: textStyle,
-                              hintText: "Отчество",
+                              hintText: S.of(context).middleName,
                               controller: _middleName,
                             ),
                             SizedBox(
                               height: 20.h,
                             ),
                             Text(
-                              "Пол:",
+                              S.of(context).gender,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -132,14 +133,14 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             ),
                             TextFieldDrop(
                               textStyle: textStyle,
-                              hintText: "Пол",
+                              hintText: S.of(context).gender,
                               controller: _gender,
                             ),
                             SizedBox(
                               height: 20.h,
                             ),
                             Text(
-                              "Номер телефона:",
+                              S.of(context).phoneNumber,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
@@ -148,7 +149,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             ),
                             PhoneTextField(
                                 textStyle: textStyle,
-                                hintText: "Номер телефона",
+                                hintText: S.of(context).phoneNumber,
                                 controller: _phone)
                           ],
                         ),

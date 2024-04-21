@@ -13,6 +13,7 @@ import 'package:kindergarten_online/features/auth/presentation/widgets/custom_te
 import 'package:kindergarten_online/features/widgets/custom_text_field.dart';
 import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/pin_code_widget.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: CustomAppBar(
         textStyle: textStyle,
-        title: "Вход",
+        title: S.of(context).enter,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -78,30 +79,30 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Номер телефона:",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                  Text(S.of(context).phoneNumber,
+                      style: textStyle.displaySmall!
+                          .copyWith(color: AppColors.black)),
                   SizedBox(
                     height: 10.h,
                   ),
                   PhoneTextField(
                     controller: _phone,
                     textStyle: textStyle,
-                    hintText: "Введите номер",
+                    hintText: S.of(context).inputNumber,
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  const Text("Пароль:",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                  Text(S.of(context).password,
+                      style: textStyle.displaySmall!
+                          .copyWith(color: AppColors.black)),
                   SizedBox(
                     height: 10.h,
                   ),
                   CustomTextField(
                     controller: _password,
                     textStyle: textStyle,
-                    hintText: "Введите пароль",
+                    hintText: S.of(context).inputPassword,
                     obscureText: _obscureText,
                     onPressed: () {
                       setState(() {
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           resetDataSheet(context, textStyle);
                         },
-                        name: "Не помните пароль или номер?",
+                        name: S.of(context).forgetPassOrNumber,
                         color: AppColors.grey,
                       ),
                     ],
@@ -149,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                                     phone: _phone.text,
                                     password: _password.text);
                               },
-                              name: "Вход"),
+                              name: S.of(context).enter),
                         ),
                       ),
                       SizedBox(
@@ -203,14 +204,14 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pop(context);
                         resetPasswordSheet(context, textStyle);
                       },
-                      name: "Восстановить пароль"),
+                      name: S.of(context).restorePassword),
                   const Divider(
                     color: AppColors.grey,
                   ),
                   CustomTextBtn(
                       textStyle: textStyle,
                       onPressed: () {},
-                      name: "Восстановить номер"),
+                      name: S.of(context).restoreNumber),
                 ],
               ),
             ),
@@ -232,7 +233,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Номер телефона:",
+                    S.of(context).phoneNumber,
                     style: textStyle.displaySmall!
                         .copyWith(color: AppColors.black),
                   ),
@@ -241,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   PhoneTextField(
                       textStyle: textStyle,
-                      hintText: "Номер телефона: ",
+                      hintText: S.of(context).phoneNumber,
                       controller: _newPhoneNumber),
                   const Spacer(),
                   Center(
@@ -251,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                           _newPhoneNumber.clear();
                           checkPinCodeSheet(context);
                         },
-                        name: "Восстановить пароль"),
+                        name: S.of(context).restorePassword),
                   ),
                 ],
               ),
@@ -262,7 +263,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<dynamic> checkPinCodeSheet(BuildContext context) {
     return showModalBottomSheet(
-      
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         context: context,
         builder: (context) {
@@ -287,7 +287,7 @@ class _LoginPageState extends State<LoginPage> {
                           element.clear();
                         }
                       },
-                      name: "Сбросить пароль")
+                      name: S.of(context).resetPassword)
                 ],
               ),
             ),

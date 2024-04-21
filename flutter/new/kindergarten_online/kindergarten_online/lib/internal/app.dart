@@ -1,10 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/theme.dart';
 import 'package:kindergarten_online/core/di/locator.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => locator<LoginCubit>(),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: MaterialApp.router(
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate
+          ],
+          title: "Kindergarten online",
+          supportedLocales: S.delegate.supportedLocales,
+          locale: const Locale("kg"),
+          debugShowCheckedModeBanner: false,
+          routerConfig: AppRouter().config(),
+          theme: theme(),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
 
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
@@ -59,35 +100,3 @@ import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit
 //     );
 //   }
 // }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => locator<LoginCubit>(),
-      child: ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        child: MaterialApp.router(
-          title: "Kindergarten online",
-          localeResolutionCallback: (locale, supportedLocales) {
-            for (var supportedLocale in supportedLocales) {
-              if (supportedLocale.languageCode == locale?.languageCode &&
-                  supportedLocale.countryCode == locale?.countryCode) {
-                return supportedLocale;
-              }
-            }
-            return supportedLocales.first;
-          },
-          supportedLocales: const [Locale("kg", "KG"), Locale("ru", "RU")],
-          debugShowCheckedModeBanner: false,
-          routerConfig: AppRouter().config(),
-          theme: theme(),
-        ),
-      ),
-    );
-  }
-}

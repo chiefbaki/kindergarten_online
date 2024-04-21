@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/news_item.dart';
 import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class NewsPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class NewsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 25),
           child: Column(
             children: [
-              NavBar(textStyle: textStyle, text: "Новости"),
+              NavBar(textStyle: textStyle, text: S.of(context).news),
               SizedBox(
                 height: 25.h,
               ),
