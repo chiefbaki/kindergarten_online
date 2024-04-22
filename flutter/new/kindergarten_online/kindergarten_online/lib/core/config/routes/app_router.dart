@@ -5,7 +5,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/registr_pag
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/favourite/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
-import 'package:kindergarten_online/features/profile/presentation/pages/change_password_page.dart';
+import 'package:kindergarten_online/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/personal_account_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/politics_info_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/settings_page.dart';
@@ -20,19 +20,15 @@ class AppRouter extends _$AppRouter {
         // Main
         AutoRoute(
           page: MainRoute.page,
-          initial: true
         ),
         // Auth
-        AutoRoute(
-          page: LoginRoute.page,
-        ),
+        AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(
           page: RegistrRoute.page,
         ),
         // Camera
         AutoRoute(
           page: CameraRoute.page,
-          
         ),
         // News
         AutoRoute(
@@ -45,7 +41,6 @@ class AppRouter extends _$AppRouter {
         // Favourite
         AutoRoute(
           page: FavouriteRoute.page,
-          
         ),
         // Schedule
         AutoRoute(
@@ -54,7 +49,6 @@ class AppRouter extends _$AppRouter {
         // Profile
         AutoRoute(
           page: SettingsRoute.page,
-          
         ),
         // Politics info
         AutoRoute(
@@ -63,12 +57,11 @@ class AppRouter extends _$AppRouter {
         // Personal account
         AutoRoute(
           page: PersonalAccountRoute.page,
-          
         ),
 
         // Change password page
         AutoRoute(
-          page: ChangePasswordRoute.page,
+          page: EditProfileRoute.page,
         )
       ];
 }

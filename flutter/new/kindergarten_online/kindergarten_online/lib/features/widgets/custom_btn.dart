@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class CustomBtn extends StatelessWidget {
-  final Function() onPressed;
+  final Function()? onPressed;
   final String name;
   const CustomBtn({
     super.key,
@@ -20,6 +20,7 @@ class CustomBtn extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(vertical: 16.5, horizontal: 73.5),
               backgroundColor: AppColors.blue,
+              disabledBackgroundColor: AppColors.lightGrey,
               shadowColor: AppColors.black.withOpacity(0.8),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15))),

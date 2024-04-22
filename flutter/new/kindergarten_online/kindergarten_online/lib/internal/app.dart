@@ -6,6 +6,8 @@ import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/theme.dart';
 import 'package:kindergarten_online/core/di/locator.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,8 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => locator<LoginCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => locator<LoginCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<ProfileCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<EditProfileCubit>(),
+        ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         minTextAdapt: true,
@@ -28,7 +40,7 @@ class MyApp extends StatelessWidget {
           ],
           title: "Kindergarten online",
           supportedLocales: S.delegate.supportedLocales,
-          locale: const Locale("kg"),
+          locale: const Locale("en"),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().config(),
           theme: theme(),

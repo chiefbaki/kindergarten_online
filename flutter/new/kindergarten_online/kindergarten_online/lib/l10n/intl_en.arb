@@ -18,7 +18,7 @@
   "thisWindowWillDisplay": "This window will display\nYour favorite advertisements.",
   "news": "News",
   "Settings": "Settings",
-  "account": "Account",
+  "account": "My Account",
   "editProfile": "Edit Profile",
   "changePassword": "Change Password",
   "notifications": "Notifications",
@@ -33,5 +33,10 @@
   "name": "Name:",
   "lastname": "Lastname:",
   "middleName": "Middlename:",
-  "gender": "Gender:"
+  "gender": "Gender:",
+  "inputName": "Input name",
+  "inputLastName": "Input lastname",
+  "inputMiddleName": "Input middle name",
+  "saveTheChanges": "Save the changes",
+  "dataChanged": "Data changed"
 }

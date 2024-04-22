@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
+
 abstract class DataState<T> {
   final T? data; // success
-  final String? message; // errorMessage
+  final DioException? message; // errorMessage
 
   const DataState({
     this.data,

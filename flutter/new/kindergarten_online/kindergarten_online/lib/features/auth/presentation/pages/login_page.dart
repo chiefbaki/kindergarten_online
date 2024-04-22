@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: CircularProgressIndicator.adaptive(),
                                   ),
                               success: () {
-                                context.router.push(const CameraRoute());
+                                context.router.push(const EditProfileRoute());
                               },
                               failure: (e) {
                                 wrongLoginDialog(context, textStyle);
@@ -145,11 +145,13 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Center(
                           child: CustomBtn(
-                              onPressed: () {
-                                context.read<LoginCubit>().login(
-                                    phone: _phone.text,
-                                    password: _password.text);
-                              },
+                              onPressed: isNotEmptyField
+                                  ? () {
+                                      context.read<LoginCubit>().login(
+                                          phone: _phone.text,
+                                          password: _password.text);
+                                    }
+                                  : null,
                               name: S.of(context).enter),
                         ),
                       ),

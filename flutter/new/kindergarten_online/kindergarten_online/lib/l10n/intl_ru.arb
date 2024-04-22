@@ -18,7 +18,7 @@
   "thisWindowWillDisplay": "В этом окне будут отображаться\nВаши избранные объявления.",
   "news": "Новости",
   "Settings": "Настройки",
-  "account": "Аккаунт",
+  "account": "Мой Аккаунт",
   "editProfile": "Редактировать профиль",
   "changePassword": "Изменить пароль",
   "notifications": "Уведомления",
@@ -33,5 +33,10 @@
   "name": "Имя:",
   "lastname": "Фамилия:",
   "middleName": "Отчество:",
-  "gender": "Пол:"
+  "gender": "Пол:",
+  "inputName": "Введите имя",
+  "inputLastName": "Введите фамилию",
+  "inputMiddleName": "Введите отчество",
+  "saveTheChanges": "Сохранить изменения",
+  "sex": "Данные изменены"
 }

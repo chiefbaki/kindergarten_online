@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "account": MessageLookupByLibrary.simpleMessage("My Account"),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Application theme"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
@@ -32,12 +32,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatBackground":
             MessageLookupByLibrary.simpleMessage("Chat background"),
         "chatMessages": MessageLookupByLibrary.simpleMessage("Chat messages"),
+        "dataChanged": MessageLookupByLibrary.simpleMessage("Data changed"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "enter": MessageLookupByLibrary.simpleMessage("Enter"),
         "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
         "forgetPassOrNumber":
             MessageLookupByLibrary.simpleMessage("Forget password or number?"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender:"),
+        "inputLastName": MessageLookupByLibrary.simpleMessage("Input lastname"),
+        "inputMiddleName":
+            MessageLookupByLibrary.simpleMessage("Input middle name"),
+        "inputName": MessageLookupByLibrary.simpleMessage("Input name"),
         "inputNumber": MessageLookupByLibrary.simpleMessage("Input number"),
         "inputPassword": MessageLookupByLibrary.simpleMessage("Input password"),
         "lastname": MessageLookupByLibrary.simpleMessage("Lastname:"),
@@ -61,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Restore the number"),
         "restorePassword":
             MessageLookupByLibrary.simpleMessage("Restore the password"),
+        "saveTheChanges":
+            MessageLookupByLibrary.simpleMessage("Save the changes"),
         "termsofUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
         "thisSectionIsStillEmpty":
             MessageLookupByLibrary.simpleMessage("This section is still empty"),

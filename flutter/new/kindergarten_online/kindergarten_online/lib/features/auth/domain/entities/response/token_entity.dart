@@ -1,5 +1,5 @@
 class TokenEntity {
-  final String refresh;
-  final String access;
-  TokenEntity({required this.refresh, required this.access});
+  final String? refresh;
+  final String? access;
+  TokenEntity({this.refresh, this.access});
 }

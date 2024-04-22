@@ -18,6 +18,10 @@ class CustomTextBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: onPressed,
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
         child: Text(
           name,
           style: textStyle.displaySmall!.copyWith(color: color),

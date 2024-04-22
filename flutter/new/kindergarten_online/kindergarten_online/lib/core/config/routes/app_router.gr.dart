@@ -21,10 +21,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CameraPage(),
       );
     },
-    ChangePasswordRoute.name: (routeData) {
+    EditProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ChangePasswordPage(),
+        child: const EditProfilePage(),
       );
     },
     FavouriteRoute.name: (routeData) {
@@ -69,7 +69,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegistrPage(),
       );
     },
-    
     ScheduleRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -106,15 +105,15 @@ class CameraRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ChangePasswordPage]
-class ChangePasswordRoute extends PageRouteInfo<void> {
-  const ChangePasswordRoute({List<PageRouteInfo>? children})
+/// [EditProfilePage]
+class EditProfileRoute extends PageRouteInfo<void> {
+  const EditProfileRoute({List<PageRouteInfo>? children})
       : super(
-          ChangePasswordRoute.name,
+          EditProfileRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'ChangePasswordRoute';
+  static const String name = 'EditProfileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -213,20 +212,6 @@ class RegistrRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RegistrRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [ResetPage]
-class ResetRoute extends PageRouteInfo<void> {
-  const ResetRoute({List<PageRouteInfo>? children})
-      : super(
-          ResetRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ResetRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

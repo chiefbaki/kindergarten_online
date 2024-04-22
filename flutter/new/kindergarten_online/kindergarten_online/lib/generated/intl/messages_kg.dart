@@ -22,6 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("Редактировать профиль"),
+        "inputLastName":
+            MessageLookupByLibrary.simpleMessage("Введите фамилию"),
+        "inputMiddleName":
+            MessageLookupByLibrary.simpleMessage("Введите отчество"),
+        "inputName": MessageLookupByLibrary.simpleMessage("Введите имя"),
+        "saveTheChanges":
+            MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "welcome": MessageLookupByLibrary.simpleMessage("Кош келиниздер!")
       };
 }

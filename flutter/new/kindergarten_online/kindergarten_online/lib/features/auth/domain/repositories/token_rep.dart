@@ -1,9 +1,9 @@
-import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
+import 'package:kindergarten_online/features/auth/data/dto/response/token_dto.dart';
 
 abstract interface class TokenRepository {
-  Future<void> saveToken({required TokenEntity entity});
+  Future<void> saveToken({required TokenDto entity});
 
-  Future<TokenEntity?> getToken();
+  Future<TokenDto> getToken();
 
   Future<String> getBearerToken();
 

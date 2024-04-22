@@ -4,7 +4,7 @@ part 'token_dto.g.dart';
 
 @JsonSerializable()
 class TokenDto extends TokenEntity {
-  TokenDto({required super.refresh, required super.access});
+  TokenDto({String? refresh, String? access});
 
   factory TokenDto.fromJson(Map<String, dynamic> json) =>
       _$TokenDtoFromJson(json);

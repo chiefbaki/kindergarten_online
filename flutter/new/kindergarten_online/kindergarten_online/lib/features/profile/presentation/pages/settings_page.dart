@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/colored_container.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
@@ -43,18 +44,20 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              S.of(context).account,
-                              style: textStyle.displaySmall!
-                                  .copyWith(color: AppColors.white),
-                            ),
-                            SizedBox(
-                              height: 10.h,
+                            TextWithArrow(
+                              textStyle: textStyle,
+                              onPressed: () {
+                                context.router
+                                    .push(const PersonalAccountRoute());
+                              },
+                              name: S.of(context).account,
                             ),
                             const CustomDivider(),
                             TextWithArrow(
                               textStyle: textStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                context.router.push(const EditProfileRoute());
+                              },
                               name: S.of(context).editProfile,
                             ),
                             const CustomDivider(),

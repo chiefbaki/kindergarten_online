@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Настройки"),
-        "account": MessageLookupByLibrary.simpleMessage("Аккаунт"),
+        "account": MessageLookupByLibrary.simpleMessage("Мой Аккаунт"),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Тема приложения"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
@@ -39,6 +39,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
             "Не помните пароль или номер?"),
         "gender": MessageLookupByLibrary.simpleMessage("Пол:"),
+        "inputLastName":
+            MessageLookupByLibrary.simpleMessage("Введите фамилию"),
+        "inputMiddleName":
+            MessageLookupByLibrary.simpleMessage("Введите отчество"),
+        "inputName": MessageLookupByLibrary.simpleMessage("Введите имя"),
         "inputNumber": MessageLookupByLibrary.simpleMessage("Введите номер"),
         "inputPassword": MessageLookupByLibrary.simpleMessage("Введите пароль"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия:"),
@@ -64,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Восстановить номер"),
         "restorePassword":
             MessageLookupByLibrary.simpleMessage("Восстановить пароль"),
+        "saveTheChanges":
+            MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Правила использования"),
         "thisSectionIsStillEmpty":

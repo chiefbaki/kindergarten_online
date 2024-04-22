@@ -240,10 +240,10 @@ class S {
     );
   }
 
-  /// `Account`
+  /// `My Account`
   String get account {
     return Intl.message(
-      'Account',
+      'My Account',
       name: 'account',
       desc: '',
       args: [],
@@ -395,6 +395,56 @@ class S {
     return Intl.message(
       'Gender:',
       name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input name`
+  String get inputName {
+    return Intl.message(
+      'Input name',
+      name: 'inputName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input lastname`
+  String get inputLastName {
+    return Intl.message(
+      'Input lastname',
+      name: 'inputLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input middle name`
+  String get inputMiddleName {
+    return Intl.message(
+      'Input middle name',
+      name: 'inputMiddleName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save the changes`
+  String get saveTheChanges {
+    return Intl.message(
+      'Save the changes',
+      name: 'saveTheChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data changed`
+  String get dataChanged {
+    return Intl.message(
+      'Data changed',
+      name: 'dataChanged',
       desc: '',
       args: [],
     );
