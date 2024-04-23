@@ -4,6 +4,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:kindergarten_online/features/auth/data/dto/response/token_dto.dart";
 import "package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 class DioSettings {
   final GetTokenUseCase _useCase;
@@ -27,9 +28,11 @@ class DioSettings {
 
   Future<void> setup() async {
     final Interceptors interceptors = dio.interceptors;
-    final TokenDto token = await _useCase.call();
-    debugPrint("ACCESS TOKEN ${token.access}");
-
+    // final TokenDto token = await _useCase.call();
+    final prefs = await SharedPreferences.getInstance();
+    final access = prefs.getString("access");
+    debugPrint("hello");
+    // print("ACCESS TOKEN DIO ${token.access}");
     interceptors.clear();
 
     final LogInterceptor logInterceptor = LogInterceptor(
@@ -40,11 +43,13 @@ class DioSettings {
     final QueuedInterceptorsWrapper headerInterceptors =
         QueuedInterceptorsWrapper(
       onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-        options.headers["Authorization"] =
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0MzY3ODQxLCJpYXQiOjE3MTM3NjMwNDEsImp0aSI6IjVmZmZjMTU2MjkwMTRmYTc5M2I2YjFmZGIxOWMzMDc5IiwidXNlcl9pZCI6MX0.RmyBNI0MZi_hWQUei93vTfwXBRqwDTcVba8ZtUaNBoY";
+        options.headers["Authorization"] = "Bearer ${access}";
         return handler.next(options);
       },
       onError: (DioException error, ErrorInterceptorHandler handler) {
+        if (error.response?.statusCode == 401) {
+          "";
+        }
         handler.next(error);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) =>

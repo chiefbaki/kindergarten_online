@@ -45,6 +45,19 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MainPage(),
       );
     },
+    NewsDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<NewsDetailsRouteArgs>(
+          orElse: () => const NewsDetailsRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NewsDetailsPage(
+          key: args.key,
+          date: args.date,
+          title: args.title,
+          content: args.content,
+        ),
+      );
+    },
     NewsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -158,6 +171,54 @@ class MainRoute extends PageRouteInfo<void> {
   static const String name = 'MainRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NewsDetailsPage]
+class NewsDetailsRoute extends PageRouteInfo<NewsDetailsRouteArgs> {
+  NewsDetailsRoute({
+    Key? key,
+    String? date,
+    String? title,
+    String? content,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsDetailsRoute.name,
+          args: NewsDetailsRouteArgs(
+            key: key,
+            date: date,
+            title: title,
+            content: content,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsDetailsRoute';
+
+  static const PageInfo<NewsDetailsRouteArgs> page =
+      PageInfo<NewsDetailsRouteArgs>(name);
+}
+
+class NewsDetailsRouteArgs {
+  const NewsDetailsRouteArgs({
+    this.key,
+    this.date,
+    this.title,
+    this.content,
+  });
+
+  final Key? key;
+
+  final String? date;
+
+  final String? title;
+
+  final String? content;
+
+  @override
+  String toString() {
+    return 'NewsDetailsRouteArgs{key: $key, date: $date, title: $title, content: $content}';
+  }
 }
 
 /// generated route for

@@ -20,7 +20,7 @@ class CustomBtn extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(vertical: 16.5, horizontal: 73.5),
               backgroundColor: AppColors.blue,
-              disabledBackgroundColor: AppColors.lightGrey,
+              disabledBackgroundColor: AppColors.lightBlue,
               shadowColor: AppColors.black.withOpacity(0.8),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15))),

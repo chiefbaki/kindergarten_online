@@ -38,5 +38,6 @@
   "inputLastName": "Input lastname",
   "inputMiddleName": "Input middle name",
   "saveTheChanges": "Save the changes",
-  "dataChanged": "Data changed"
+  "dataChanged": "Data changed",
+  "newsline": "News line"
 }

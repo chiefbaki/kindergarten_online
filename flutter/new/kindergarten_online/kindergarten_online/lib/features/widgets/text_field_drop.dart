@@ -24,7 +24,7 @@ class TextFieldDrop extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: Image.asset(
-          Images.dropDown,
+          Imgs.dropDown,
           width: 16,
           height: 8,
         ),

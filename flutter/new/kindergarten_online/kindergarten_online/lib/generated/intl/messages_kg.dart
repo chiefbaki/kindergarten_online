@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputMiddleName":
             MessageLookupByLibrary.simpleMessage("Введите отчество"),
         "inputName": MessageLookupByLibrary.simpleMessage("Введите имя"),
+        "newsline": MessageLookupByLibrary.simpleMessage("Лента новостей"),
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "welcome": MessageLookupByLibrary.simpleMessage("Кош келиниздер!")

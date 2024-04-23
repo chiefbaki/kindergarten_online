@@ -31,5 +31,5 @@ package: core/utils/resources/
 
 groups:
   - path: assets/images
-    class_name: Images
+    class_name: Imgs
     types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp, .svg ]

@@ -9,6 +9,6 @@ class SaveTokenUseCase implements UseCase<void, TokenDto> {
 
   @override
   Future<void> call({required TokenDto param}) async {
-    _repository.saveToken(entity: param);
+    await _repository.saveToken(entity: param);
   }
 }

@@ -139,7 +139,7 @@ class _RegistrPageState extends State<RegistrPage> {
               ),
             ),
             Image.asset(
-              Images.registrBack,
+              Imgs.registrBack,
               fit: BoxFit.fill,
             ),
           ],

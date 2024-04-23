@@ -1,11 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
-part 'token_dto.g.dart';
+class TokenDto {
+  String? access;
+  String? refresh;
+  TokenDto({required this.refresh, required this.access});
 
-@JsonSerializable()
-class TokenDto extends TokenEntity {
-  TokenDto({String? refresh, String? access});
-
-  factory TokenDto.fromJson(Map<String, dynamic> json) =>
-      _$TokenDtoFromJson(json);
+  TokenDto.fromJson(Map<String, dynamic> json) {
+    access = json["access"];
+    refresh = json["refresh"];
+  }
 }

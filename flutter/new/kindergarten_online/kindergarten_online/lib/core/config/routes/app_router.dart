@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/login_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/favourite/presentation/pages/favourite_page.dart';
+import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/personal_account_page.dart';
@@ -22,7 +24,9 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
         ),
         // Auth
-        AutoRoute(page: LoginRoute.page, initial: true),
+        AutoRoute(
+          page: LoginRoute.page,
+        ),
         AutoRoute(
           page: RegistrRoute.page,
         ),
@@ -33,7 +37,9 @@ class AppRouter extends _$AppRouter {
         // News
         AutoRoute(
           page: NewsRoute.page,
+          initial: true
         ),
+        AutoRoute(page: NewsDetailsRoute.page, ),
         // Services
         AutoRoute(
           page: ServicesRoute.page,

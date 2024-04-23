@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "news": MessageLookupByLibrary.simpleMessage("News"),
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("New event in the feed"),
+        "newsline": MessageLookupByLibrary.simpleMessage("News line"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Old ones first"),
         "password": MessageLookupByLibrary.simpleMessage("Password:"),

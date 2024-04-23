@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "news": MessageLookupByLibrary.simpleMessage("Новости"),
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("Новое событие в ленте"),
+        "newsline": MessageLookupByLibrary.simpleMessage("Лента новостей"),
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Сначала старые"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль:"),

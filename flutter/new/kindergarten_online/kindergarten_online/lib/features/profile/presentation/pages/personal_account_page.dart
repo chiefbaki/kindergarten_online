@@ -68,7 +68,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           return Stack(
                             children: [
                               Image.asset(
-                                Images.rectangleAcc,
+                                Imgs.rectangleAcc,
                                 fit: BoxFit.fill,
                               ),
                               Positioned(
@@ -76,7 +76,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                 top: 20,
                                 child: ClipOval(
                                   child: Image.asset(
-                                    Images.ava,
+                                    Imgs.ava,
                                     width: 100,
                                   ),
                                 ),

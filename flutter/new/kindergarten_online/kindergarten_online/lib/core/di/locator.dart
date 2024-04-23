@@ -12,6 +12,11 @@ import 'package:kindergarten_online/features/auth/domain/usecases/get_token_usec
 import 'package:kindergarten_online/features/auth/domain/usecases/login_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/save_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:kindergarten_online/features/news/data/data_sources/remote/remote_news_data.dart';
+import 'package:kindergarten_online/features/news/data/repositories/news_impl.dart';
+import 'package:kindergarten_online/features/news/domain/repositories/news_rep.dart';
+import 'package:kindergarten_online/features/news/domain/usecases/news_usecase.dart';
+import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
 import 'package:kindergarten_online/features/profile/data/data_sources/remote_profile_source.dart';
 import 'package:kindergarten_online/features/profile/data/repositories/edit_profile_impl.dart';
 import 'package:kindergarten_online/features/profile/data/repositories/profile_impl.dart';
@@ -24,36 +29,40 @@ import 'package:kindergarten_online/features/profile/presentation/cubits/profile
 
 final locator = GetIt.instance;
 
-void setup() {
-  const storage = FlutterSecureStorage();
-
+Future<void> setup() async {
+  locator.registerFactory(() => const FlutterSecureStorage());
   // Local storage
-  locator.registerSingleton<TokenStorage>(TokenStorage(storage));
+  locator.registerFactory<TokenStorage>(() => TokenStorage(locator()));
   locator.registerSingleton<TokenRepository>(TokenImpl(locator()));
   locator.registerSingleton(SaveTokenUseCase(locator()));
   locator.registerSingleton(GetTokenUseCase(locator()));
   locator.registerSingleton(DeleteTokenUseCase(locator()));
 
-  // Network
-  locator.registerFactory<DioSettings>(() => DioSettings(locator()));
+  locator.registerSingleton(() => SaveTokenUseCase(locator<TokenRepository>()));
 
+  // Network
+  // locator.registerFactory<DioSettings>(() => DioSettings(locator()));
+  locator.registerLazySingleton(() => DioSettings(locator<GetTokenUseCase>()));
   // Remote
-  locator.registerSingleton<AuthRemoteDataSource>(
-      AuthRemoteDataSource(locator<DioSettings>().dio));
+
+  locator
+      .registerFactory(() => AuthRemoteDataSource(locator<DioSettings>().dio));
 
   locator.registerSingleton(RemoteProfileSource(locator<DioSettings>().dio));
+  locator.registerSingleton(RemoteNewsData(locator<DioSettings>().dio));
 
   // Dependencies
   locator.registerFactory<LoginRep>(() => LoginImpl(locator()));
   locator.registerSingleton<ProfileRep>(ProfileImpl(locator()));
   locator
       .registerLazySingleton<EditProfileRep>(() => EditProfileImpl(locator()));
+  locator.registerSingleton<NewsRep>(NewsImpl(locator<RemoteNewsData>()));
 
   // UseCases
-  locator.registerSingleton(LoginUseCase(repository: locator()));
+  locator.registerSingleton(LoginUseCase(locator()));
   locator.registerSingleton(ProfileUseCase(locator()));
   locator.registerLazySingleton(() => EditProfileUseCase(locator()));
-
+  locator.registerSingleton(NewsUseCase(locator<NewsRep>()));
   // Cubits
   locator.registerSingleton(LoginCubit(
       useCase: locator<LoginUseCase>(),
@@ -62,4 +71,5 @@ void setup() {
 
   locator.registerSingleton(ProfileCubit(locator<ProfileUseCase>()));
   locator.registerLazySingleton(() => EditProfileCubit(locator()));
+  locator.registerSingleton(NewsCubit(locator<NewsUseCase>()));
 }

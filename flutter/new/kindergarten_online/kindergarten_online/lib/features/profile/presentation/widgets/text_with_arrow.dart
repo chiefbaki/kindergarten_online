@@ -30,7 +30,7 @@ class TextWithArrow extends StatelessWidget {
               padding: EdgeInsets.zero,
             ),
             icon: Image.asset(
-              Images.iconRight,
+              Imgs.iconRight,
               width: 15,
             ))
       ],

@@ -5,11 +5,11 @@ class ProductsModel {
   final String img;
   ProductsModel({required this.name, required this.img});
   static List<ProductsModel> items = [
-    ProductsModel(name: "Ролики", img: Images.one),
-    ProductsModel(name: "Фломастеры", img: Images.two),
-    ProductsModel(name: "Цветная бумага", img: Images.three),
-    ProductsModel(name: "Наклейки", img: Images.four),
-    ProductsModel(name: "Рюкзак", img: Images.five),
-    ProductsModel(name: "Краски", img: Images.six),
+    ProductsModel(name: "Ролики", img: Imgs.one),
+    ProductsModel(name: "Фломастеры", img: Imgs.two),
+    ProductsModel(name: "Цветная бумага", img: Imgs.three),
+    ProductsModel(name: "Наклейки", img: Imgs.four),
+    ProductsModel(name: "Рюкзак", img: Imgs.five),
+    ProductsModel(name: "Краски", img: Imgs.six),
   ];
 }

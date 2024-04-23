@@ -6,11 +6,11 @@ class CamerasPosition {
   CamerasPosition({required this.img, required this.name});
 
   static List<CamerasPosition> positions = [
-    CamerasPosition(img: Images.bedroom, name: "Спальня"),
-    CamerasPosition(img: Images.area, name: "Площадка"),
-    CamerasPosition(img: Images.cab, name: "Кабинет #1"),
-    CamerasPosition(img: Images.cab2, name: "Кабинет #2"),
-    CamerasPosition(img: Images.kitchen, name: "Кухня"),
-    CamerasPosition(img: Images.gamezone, name: "Игровая"),
+    CamerasPosition(img: Imgs.bedroom, name: "Спальня"),
+    CamerasPosition(img: Imgs.area, name: "Площадка"),
+    CamerasPosition(img: Imgs.cab, name: "Кабинет #1"),
+    CamerasPosition(img: Imgs.cab2, name: "Кабинет #2"),
+    CamerasPosition(img: Imgs.kitchen, name: "Кухня"),
+    CamerasPosition(img: Imgs.gamezone, name: "Игровая"),
   ];
 }

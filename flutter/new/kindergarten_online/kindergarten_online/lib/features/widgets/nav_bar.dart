@@ -25,7 +25,7 @@ class NavBar extends StatelessWidget {
           ),
         ),
         Image.asset(
-          Images.line,
+          Imgs.line,
           width: 84,
           height: 8,
           color: AppColors.black,

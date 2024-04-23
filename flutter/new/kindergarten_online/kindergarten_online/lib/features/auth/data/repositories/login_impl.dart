@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/utils/resources/data_state.dart';
 import 'package:kindergarten_online/features/auth/data/data_sources/remote/remote_auth_data.dart';
 import 'package:kindergarten_online/features/auth/data/dto/request/login_req_dto.dart';
@@ -15,6 +16,7 @@ class LoginImpl implements LoginRep {
     try {
       final httpResponse = await _remoteData.getLogin(entity: entity);
       if (httpResponse.response.statusCode == HttpStatus.ok) {
+        debugPrint(httpResponse.data.access);
         return DataSuccess(httpResponse.data);
       } else {
         return DataFailed(

@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Image.asset(
-              Images.backLogin,
+              Imgs.backLogin,
             )
           ],
         ),

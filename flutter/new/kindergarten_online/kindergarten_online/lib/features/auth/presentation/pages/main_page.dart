@@ -24,14 +24,14 @@ class MainPage extends StatelessWidget {
               Row(
                 children: [
                   Image.asset(
-                    Images.pencil,
+                    Imgs.pencil,
                     height: 180.h,
                   ),
                 ],
               ),
               ClipOval(
                 child: Image.asset(
-                  Images.img,
+                  Imgs.img,
                   width: 100,
                 ),
               ),
@@ -56,7 +56,7 @@ class MainPage extends StatelessWidget {
               ),
               Stack(
                 children: [
-                  Image.asset(Images.back),
+                  Image.asset(Imgs.back),
                   Positioned(
                     bottom: 270,
                     left: 100,

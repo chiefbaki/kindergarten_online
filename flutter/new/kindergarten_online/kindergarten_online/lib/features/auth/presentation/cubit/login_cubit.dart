@@ -7,7 +7,7 @@ import 'package:kindergarten_online/features/auth/data/dto/response/token_dto.da
 import 'package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/login_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/save_token_usecase.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
@@ -31,9 +31,15 @@ class LoginCubit extends Cubit<LoginState> {
         param: LoginReqDto(phone: phone, password: password));
 
     if (dataState is DataSuccess) {
-      _saveTokenUseCase(param: TokenDto(access: dataState.data!.access));
-      final token = await _getTokenUseCase();
-      debugPrint(token.access);
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString("access", dataState.data!.access ?? "error");
+      print(prefs.getString("access"));
+      // await _saveTokenUseCase(
+      //     param: TokenDto(
+      //         access: dataState.data!.access ?? "",
+      //         refresh: dataState.data!.refresh ?? ""));
+      // final token = await _getTokenUseCase();
+      // print("ACCESS TOKEN CUBIT ${token.access}");
       emit(const LoginState.success());
     }
     if (dataState is DataFailed) {

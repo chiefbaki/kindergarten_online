@@ -9,46 +9,46 @@ class MenuItem {
 
   static List<MenuItem> items = [
     MenuItem(
-        img: Images.camera,
+        img: Imgs.camera,
         name: "Видео наблюдение",
         route: const CameraRoute()),
     MenuItem(
-        img: Images.scheduleIcon,
+        img: Imgs.scheduleIcon,
         name: "Расписание занятий",
         route: const CameraRoute()),
     MenuItem(
-        img: Images.newsIcon, name: "Лента новостей", route: const NewsRoute()),
+        img: Imgs.newsIcon, name: "Лента новостей", route: const NewsRoute()),
     MenuItem(
-        img: Images.prodIcon,
+        img: Imgs.prodIcon,
         name: "Товары и услуги",
         route: const ServicesRoute()),
     MenuItem(
-        img: Images.contactIcon,
+        img: Imgs.contactIcon,
         name: "Мои контакты",
         route: const CameraRoute()),
     MenuItem(
-        img: Images.chatIcon,
+        img: Imgs.chatIcon,
         name: "Чаты с родителями",
         route: const CameraRoute()),
     MenuItem(
-        img: Images.uchetIcon,
+        img: Imgs.uchetIcon,
         name: "Учет посещаемости",
         route: const CameraRoute()),
     MenuItem(
-        img: Images.ideaIcon,
+        img: Imgs.ideaIcon,
         name: "Творчество детей",
         route: const CameraRoute()),
-    MenuItem(img: Images.check, name: "Квитанции", route: const CameraRoute()),
+    MenuItem(img: Imgs.check, name: "Квитанции", route: const CameraRoute()),
     MenuItem(
-        img: Images.infoIcon,
+        img: Imgs.infoIcon,
         name: "Справочная информация",
         route: const PoliticsRoute()),
     MenuItem(
-        img: Images.settingsIcon,
+        img: Imgs.settingsIcon,
         name: "Настройка приложения",
         route: const SettingsRoute()),
     MenuItem(
-        img: Images.questionIcon,
+        img: Imgs.questionIcon,
         name: "Вопрос техподдержке",
         route: const CameraRoute()),
   ];
