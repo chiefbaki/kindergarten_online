@@ -1,16 +1,25 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kindergarten_online/features/profile/domain/entities/profile_entity.dart';
 
 part 'profile_dto.g.dart';
 
 @JsonSerializable()
-class ProfileDto extends ProfileEntity {
+class ProfileDto {
+  @JsonKey(name: "id")
+  final int id;
+  @JsonKey(name: "phone")
+  final String phone;
+  @JsonKey(name: "first_name")
+  final String firstName;
+  @JsonKey(name: "last_name")
+  final String lastName;
+  @JsonKey(name: "patronymic")
+  final String patronymic;
   const ProfileDto(
-      {super.id,
-      super.phone,
-      super.firstName,
-      super.lastName,
-      super.patronymic});
+      {required this.id,
+      required this.phone,
+      required this.firstName,
+      required this.lastName,
+      required this.patronymic});
 
   // Serializing data's
   factory ProfileDto.fromJson(Map<String, dynamic> json) =>

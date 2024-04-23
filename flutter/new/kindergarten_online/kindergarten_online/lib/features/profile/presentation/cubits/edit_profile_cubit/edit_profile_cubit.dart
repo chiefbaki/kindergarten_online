@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kindergarten_online/features/profile/data/dto/edit_profile_dto.dart';
+import 'package:kindergarten_online/features/profile/domain/entities/edit_profile_entity.dart';
 import 'package:kindergarten_online/features/profile/domain/usecases/edit_profile_usecase.dart';
 
 part 'edit_profile_state.dart';
@@ -10,7 +10,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   final EditProfileUseCase _useCase;
   EditProfileCubit(this._useCase) : super(const EditProfileState.initial());
 
-  Future<void> editProfile({required EditProfileDto entity}) async {
+  Future<void> editProfile({required EditProfileEntity entity}) async {
     emit(const EditProfileState.loading());
     try {
       await _useCase(param: entity);

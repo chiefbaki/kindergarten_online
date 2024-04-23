@@ -1,11 +1,20 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kindergarten_online/features/profile/domain/entities/edit_profile_entity.dart';
 part 'edit_profile_dto.g.dart';
 
 @JsonSerializable()
-class EditProfileDto extends EditProfileEntity {
+class EditProfileDto {
+  @JsonKey(name: "first_name")
+  final String firstName;
+  @JsonKey(name: "last_name")
+  final String lastName;
+  @JsonKey(name: "patronymic")
+  final String patronymic;
+  
   const EditProfileDto(
-      {super.name, super.lastName, super.patronymic, super.ava});
+      {required this.firstName,
+      required this.lastName,
+      required this.patronymic,
+      });
 
   factory EditProfileDto.fromJson(Map<String, dynamic> json) =>
       _$EditProfileDtoFromJson(json);

@@ -26,57 +26,71 @@ class NewsDetailsPage extends StatelessWidget {
       appBar: CustomAppBar(textStyle: textStyle, title: S.of(context).newsline),
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
           child: Center(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.78,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 300,
-                    child: Image.asset(
-                      Imgs.newsAva,
-                      fit: BoxFit.fill,
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 300,
+                  child: Image.asset(
+                    Imgs.newsAva,
+                    fit: BoxFit.fill,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 25
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          date.convertDateTime(),
-                          style: textStyle.displayMedium!
-                              .copyWith(color: AppColors.lightGrey),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          title ?? "",
-                          style: textStyle.titleLarge!
-                              .copyWith(color: AppColors.black),
-                          softWrap: true,
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        Text(
-                          content ?? "",
-                          style: textStyle.displayMedium!
-                              .copyWith(color: AppColors.black),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        date.convertDateTime(),
+                        style: textStyle.displayMedium!
+                            .copyWith(color: AppColors.lightGrey),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        title ?? "",
+                        style: textStyle.titleLarge!
+                            .copyWith(color: AppColors.black),
+                        softWrap: true,
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Text(
+                        content ?? "",
+                        style: textStyle.displayMedium!
+                            .copyWith(color: AppColors.black),
+                      ),
+                      Text(
+                        content ?? "",
+                        style: textStyle.displayMedium!
+                            .copyWith(color: AppColors.black),
+                      ),
+                      Text(
+                        content ?? "",
+                        style: textStyle.displayMedium!
+                            .copyWith(color: AppColors.black),
+                      ),
+                      Text(
+                        content ?? "",
+                        style: textStyle.displayMedium!
+                            .copyWith(color: AppColors.black),
+                      ),
+                      Text(
+                        content ?? "",
+                        style: textStyle.displayMedium!
+                            .copyWith(color: AppColors.black),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         ),

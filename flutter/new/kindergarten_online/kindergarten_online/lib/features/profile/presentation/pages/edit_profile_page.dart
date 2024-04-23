@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
-import 'package:kindergarten_online/features/profile/data/dto/edit_profile_dto.dart';
+import 'package:kindergarten_online/features/profile/domain/entities/edit_profile_entity.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/personal_info_field.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
@@ -25,8 +25,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _firstName = TextEditingController();
   final _lastName = TextEditingController();
   final _middleName = TextEditingController();
-
-  
 
   @override
   void initState() {
@@ -152,11 +150,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                       context
                                           .read<EditProfileCubit>()
                                           .editProfile(
-                                              entity: EditProfileDto(
-                                            name: _firstName.text,
+                                              entity: EditProfileEntity(
+                                            firstName: _firstName.text,
                                             lastName: _lastName.text,
                                             patronymic: _middleName.text,
-                                            ava: "",
+                                            avatar: "",
                                           ));
                                     }
                                   : null,

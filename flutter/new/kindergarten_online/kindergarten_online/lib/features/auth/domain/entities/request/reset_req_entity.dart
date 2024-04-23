@@ -6,6 +6,5 @@ class ResetReqEntity extends Equatable {
   const ResetReqEntity({required this.phone, required this.type});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [phone, type];
 }

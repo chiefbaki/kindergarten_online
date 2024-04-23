@@ -3,8 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/utils/resources/data_state.dart';
 import 'package:kindergarten_online/features/auth/data/data_sources/remote/remote_auth_data.dart';
-import 'package:kindergarten_online/features/auth/data/dto/request/login_req_dto.dart';
-import 'package:kindergarten_online/features/auth/data/dto/response/token_dto.dart';
+import 'package:kindergarten_online/features/auth/data/mappers/login_mapper.dart';
+import 'package:kindergarten_online/features/auth/data/mappers/token_mapper.dart';
+import 'package:kindergarten_online/features/auth/domain/entities/request/login_req_entity.dart';
+import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
 import 'package:kindergarten_online/features/auth/domain/repositories/login_rep.dart';
 
 class LoginImpl implements LoginRep {
@@ -12,12 +14,14 @@ class LoginImpl implements LoginRep {
   LoginImpl(this._remoteData);
 
   @override
-  Future<DataState<TokenDto>> getLogin({required LoginReqDto entity}) async {
+  Future<DataState<TokenEntity>> getLogin(
+      {required LoginReqEntity entity}) async {
     try {
-      final httpResponse = await _remoteData.getLogin(entity: entity);
+      final httpResponse =
+          await _remoteData.getLogin(entity: entity.fromEntity());
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         debugPrint(httpResponse.data.access);
-        return DataSuccess(httpResponse.data);
+        return DataSuccess(httpResponse.data.toEntity());
       } else {
         return DataFailed(
             message: DioException(

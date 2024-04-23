@@ -2,12 +2,12 @@
 import 'package:equatable/equatable.dart';
 
 class EditProfileEntity extends Equatable {
-  final String? name;
+  final String? firstName;
   final String? lastName;
   final String? patronymic;
-  final String? ava;
+  final String? avatar;
   const EditProfileEntity(
-      {this.name, this.lastName, this.patronymic, this.ava});
+      {this.firstName, this.lastName, this.patronymic, this.avatar});
   @override
   List<Object?> get props => throw UnimplementedError();
 }

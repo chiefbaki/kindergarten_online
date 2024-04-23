@@ -1,5 +1,6 @@
 import 'package:kindergarten_online/features/profile/data/data_sources/remote_profile_source.dart';
-import 'package:kindergarten_online/features/profile/data/dto/edit_profile_dto.dart';
+import 'package:kindergarten_online/features/profile/data/mappers/edit_profile_mapper.dart';
+import 'package:kindergarten_online/features/profile/domain/entities/edit_profile_entity.dart';
 import 'package:kindergarten_online/features/profile/domain/repositories/edit_profile_rep.dart';
 
 class EditProfileImpl implements EditProfileRep {
@@ -7,20 +8,7 @@ class EditProfileImpl implements EditProfileRep {
   EditProfileImpl(this._remoteProfileSource);
 
   @override
-  Future<void> editProfile({EditProfileDto? entity}) async {
-    // try {
-    //   final httpResponse =
-    //       await _remoteProfileSource.editProfile(entity: entity);
-    //   if (httpResponse.response.statusCode == HttpStatus.ok) {
-    //     return DataSuccess(httpResponse.data);
-    //   } else {
-    //     return DataFailed(
-    //         message: DioException(
-    //             requestOptions: httpResponse.response.requestOptions));
-    //   }
-    // } on DioException catch (e) {
-    //   return DataFailed(message: e);
-    // }
-    _remoteProfileSource.editProfile(entity: entity);
+  Future<void> editProfile({required EditProfileEntity entity}) async {
+    _remoteProfileSource.editProfile(entity: entity.fromEntity());
   }
 }

@@ -24,9 +24,7 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
         ),
         // Auth
-        AutoRoute(
-          page: LoginRoute.page,
-        ),
+        AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(
           page: RegistrRoute.page,
         ),
@@ -37,9 +35,10 @@ class AppRouter extends _$AppRouter {
         // News
         AutoRoute(
           page: NewsRoute.page,
-          initial: true
         ),
-        AutoRoute(page: NewsDetailsRoute.page, ),
+        AutoRoute(
+          page: NewsDetailsRoute.page,
+        ),
         // Services
         AutoRoute(
           page: ServicesRoute.page,

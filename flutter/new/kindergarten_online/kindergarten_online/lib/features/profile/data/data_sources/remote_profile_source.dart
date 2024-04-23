@@ -17,13 +17,13 @@ class RemoteProfileSource {
     return httpResponse;
   }
 
-  Future<void> editProfile({EditProfileDto? entity}) async {
+  Future<void> editProfile({required EditProfileDto entity}) async {
     await _dio.put(ApiUrls.editProfile,
         data: EditProfileDto(
-                name: entity!.name,
+                firstName: entity.firstName,
                 lastName: entity.lastName,
                 patronymic: entity.patronymic,
-                ava: entity.ava)
+                )
             .toJson());
   }
 }

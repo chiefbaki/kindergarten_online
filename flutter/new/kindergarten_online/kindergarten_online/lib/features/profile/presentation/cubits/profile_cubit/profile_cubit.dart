@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kindergarten_online/core/utils/resources/data_state.dart';
-import 'package:kindergarten_online/features/profile/data/dto/profile_dto.dart';
+import 'package:kindergarten_online/features/profile/domain/entities/profile_entity.dart';
 import 'package:kindergarten_online/features/profile/domain/usecases/profile_usecase.dart';
 part 'profile_state.dart';
 part 'profile_cubit.freezed.dart';
@@ -14,7 +14,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(const ProfileState.loading());
     final dataState = await _useCase.call();
     if (dataState is DataSuccess) {
-      emit(ProfileState.success(profile: dataState.data ?? const ProfileDto()));
+      emit(ProfileState.success(
+          profile: dataState.data ?? const ProfileEntity()));
     }
     if (dataState is DataFailed) {
       emit(ProfileState.failure(error: dataState.message!.error.toString()));
