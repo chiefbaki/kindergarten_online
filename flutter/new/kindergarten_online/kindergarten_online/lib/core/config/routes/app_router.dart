@@ -4,6 +4,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/login_page.
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
+import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_page.dart';
 import 'package:kindergarten_online/features/favourite/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
@@ -24,7 +25,7 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
         ),
         // Auth
-        AutoRoute(page: LoginRoute.page, initial: true),
+        AutoRoute(page: LoginRoute.page,),
         AutoRoute(
           page: RegistrRoute.page,
         ),
@@ -67,6 +68,12 @@ class AppRouter extends _$AppRouter {
         // Change password page
         AutoRoute(
           page: EditProfileRoute.page,
+        ),
+
+        // Creativity page
+        AutoRoute(
+          page: CreativityRoute.page,
+          initial: true
         )
       ];
 }

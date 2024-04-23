@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CameraPage(),
       );
     },
+    CreativityRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreativityPage(),
+      );
+    },
     EditProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -113,6 +119,20 @@ class CameraRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CameraRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreativityPage]
+class CreativityRoute extends PageRouteInfo<void> {
+  const CreativityRoute({List<PageRouteInfo>? children})
+      : super(
+          CreativityRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreativityRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

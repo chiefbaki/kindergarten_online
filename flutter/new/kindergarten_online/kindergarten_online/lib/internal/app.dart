@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/theme.dart';
-import 'package:kindergarten_online/core/di/locator.dart';
+import 'package:kindergarten_online/core/service_locator/locator.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';

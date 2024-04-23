@@ -459,6 +459,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Творчество детей`
+  String get creativity {
+    return Intl.message(
+      'Творчество детей',
+      name: 'creativity',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
