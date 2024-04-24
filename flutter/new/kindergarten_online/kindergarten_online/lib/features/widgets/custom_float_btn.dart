@@ -13,7 +13,7 @@ class CustomFloatBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 76),
+      padding: const EdgeInsets.only(bottom: 30),
       child: ElevatedButton(
           onPressed: isToSwitch
               ? () {

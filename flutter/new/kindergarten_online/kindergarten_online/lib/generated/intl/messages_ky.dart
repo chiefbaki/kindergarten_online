@@ -36,7 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Чат билдирүүлөрү"),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Топту/классты тандоо"),
-        "creativity": MessageLookupByLibrary.simpleMessage("Балдар"),
+        "creativity":
+            MessageLookupByLibrary.simpleMessage("Балдардын чыгармачылыгы"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Профилди түзөтүү"),
         "enter": MessageLookupByLibrary.simpleMessage("Кирүү"),
         "favourites": MessageLookupByLibrary.simpleMessage("Сүйүктүүлөр"),

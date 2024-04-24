@@ -9,9 +9,7 @@ class MenuItem {
 
   static List<MenuItem> items = [
     MenuItem(
-        img: Imgs.camera,
-        name: "Видео наблюдение",
-        route: const CameraRoute()),
+        img: Imgs.camera, name: "Видео наблюдение", route: const CameraRoute()),
     MenuItem(
         img: Imgs.scheduleIcon,
         name: "Расписание занятий",
@@ -37,7 +35,7 @@ class MenuItem {
     MenuItem(
         img: Imgs.ideaIcon,
         name: "Творчество детей",
-        route: const CameraRoute()),
+        route: const CreativityRoute()),
     MenuItem(img: Imgs.check, name: "Квитанции", route: const CameraRoute()),
     MenuItem(
         img: Imgs.infoIcon,

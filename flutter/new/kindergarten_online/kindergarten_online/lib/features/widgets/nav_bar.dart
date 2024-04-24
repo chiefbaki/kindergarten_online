@@ -4,11 +4,7 @@ import 'package:kindergarten_online/core/utils/resources/resources.dart';
 
 class NavBar extends StatelessWidget {
   final String text;
-  const NavBar({
-    super.key,
-    required this.textStyle,
-    required this.text
-  });
+  const NavBar({super.key, required this.textStyle, required this.text});
 
   final TextTheme textStyle;
 
@@ -21,7 +17,8 @@ class NavBar extends StatelessWidget {
           padding: const EdgeInsets.only(left: 15),
           child: Text(
             text,
-            style: textStyle.titleLarge,
+            style:
+                text.length > 9 ? textStyle.titleMedium : textStyle.titleLarge,
           ),
         ),
         Image.asset(

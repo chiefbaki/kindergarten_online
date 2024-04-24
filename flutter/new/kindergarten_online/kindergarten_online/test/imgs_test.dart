@@ -33,6 +33,7 @@ void main() {
     expect(File(Imgs.pencil).existsSync(), isTrue);
     expect(File(Imgs.prodIcon).existsSync(), isTrue);
     expect(File(Imgs.questionIcon).existsSync(), isTrue);
+    expect(File(Imgs.rainbow).existsSync(), isTrue);
     expect(File(Imgs.rectangle).existsSync(), isTrue);
     expect(File(Imgs.rectangleAcc).existsSync(), isTrue);
     expect(File(Imgs.registrBack).existsSync(), isTrue);

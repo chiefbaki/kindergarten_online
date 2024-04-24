@@ -2,7 +2,6 @@ import "dart:async";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
-import "package:kindergarten_online/features/auth/data/dto/response/token_dto.dart";
 import "package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
@@ -21,8 +20,8 @@ class DioSettings {
       headers: {
         "Accept": "application/json",
       },
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
+      connectTimeout: const Duration(seconds: 20),
+      receiveTimeout: const Duration(seconds: 20),
     ),
   );
 

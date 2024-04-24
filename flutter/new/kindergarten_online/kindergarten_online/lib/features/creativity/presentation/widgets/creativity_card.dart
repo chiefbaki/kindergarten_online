@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/core/utils/resources/resources.dart';
-import 'package:kindergarten_online/features/profile/presentation/widgets/colored_container.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
+import 'package:kindergarten_online/features/creativity/presentation/widgets/creativity_item.dart';
 
 class CreativityCard extends StatelessWidget {
   const CreativityCard({
@@ -14,34 +13,30 @@ class CreativityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredContainer(
-        child: Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset(
-            Imgs.newsAva,
-            width: 350,
-            height: 150,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Text(
-            "Криницисын Станислав",
-            style: textStyle.displayMedium!.copyWith(color: AppColors.white),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Text(
-            "2023-02-09",
-            style: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
-          )
-        ],
+    return Expanded(
+      child: BlocBuilder<CreativityCubit, CreativityState>(
+        builder: (context, state) {
+          return state.when(
+              initial: () => const SizedBox(),
+              loading: () => const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  ),
+              success: (entity) {
+                return ListView.builder(
+                  itemCount: entity.count,
+                  itemBuilder: (_, index) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: CreativityItem(
+                      textStyle: textStyle,
+                      image: entity.results?[index].img ?? "",
+                      name: entity.results?[index].name ?? "",
+                    ),
+                  ),
+                );
+              },
+              failure: (e) => Text(e));
+        },
       ),
-    ));
+    );
   }
 }

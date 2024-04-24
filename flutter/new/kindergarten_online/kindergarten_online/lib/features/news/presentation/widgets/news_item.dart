@@ -34,7 +34,6 @@ class NewsItem extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: CustomListTile(
                         textStyle: textStyle,
-                        
                         entity: entity.results![index],
                       ),
                     ),

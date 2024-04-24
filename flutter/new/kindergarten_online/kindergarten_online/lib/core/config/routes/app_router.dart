@@ -27,62 +27,50 @@ class AppRouter extends _$AppRouter {
         // Auth
         AutoRoute(
           page: LoginRoute.page,
-          
         ),
         AutoRoute(
           page: RegistrRoute.page,
-          initial: true
         ),
         // Camera
         AutoRoute(
           page: CameraRoute.page,
-          
         ),
         // News
         AutoRoute(
           page: NewsRoute.page,
-          
         ),
         AutoRoute(
           page: NewsDetailsRoute.page,
-          
         ),
         // Services
         AutoRoute(
           page: ServicesRoute.page,
-          
         ),
         // Favourite
         AutoRoute(
           page: FavouriteRoute.page,
-          
         ),
         // Schedule
         AutoRoute(
           page: ScheduleRoute.page,
-          
         ),
         // Profile
         AutoRoute(
           page: SettingsRoute.page,
-          
         ),
         // Politics info
         AutoRoute(
           page: PoliticsRoute.page,
-          
         ),
         // Personal account
-        AutoRoute(page: PersonalAccountRoute.page, ),
-
+        AutoRoute(
+          page: PersonalAccountRoute.page,
+        ),
         // Change password page
         AutoRoute(
           page: EditProfileRoute.page,
         ),
-
         // Creativity page
-        AutoRoute(
-          page: CreativityRoute.page,
-        )
+        AutoRoute(page: CreativityRoute.page, initial: true)
       ];
 }

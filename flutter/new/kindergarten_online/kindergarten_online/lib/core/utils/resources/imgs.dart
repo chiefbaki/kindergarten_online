@@ -31,6 +31,7 @@ class Imgs {
   static const String pencil = 'assets/images/pencil.png';
   static const String prodIcon = 'assets/images/prod_icon.png';
   static const String questionIcon = 'assets/images/questionIcon.png';
+  static const String rainbow = 'assets/images/rainbow.jpeg';
   static const String rectangle = 'assets/images/rectangle.png';
   static const String rectangleAcc = 'assets/images/rectangleAcc.png';
   static const String registrBack = 'assets/images/registrBack.png';
