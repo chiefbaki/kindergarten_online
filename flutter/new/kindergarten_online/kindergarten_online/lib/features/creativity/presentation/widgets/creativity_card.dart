@@ -21,8 +21,11 @@ class CreativityCard extends StatelessWidget {
               loading: () => const Center(
                     child: CircularProgressIndicator.adaptive(),
                   ),
-              success: (entity) {
+              success: (
+                entity,
+              ) {
                 return ListView.builder(
+                  shrinkWrap: true,
                   itemCount: entity.count,
                   itemBuilder: (_, index) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),

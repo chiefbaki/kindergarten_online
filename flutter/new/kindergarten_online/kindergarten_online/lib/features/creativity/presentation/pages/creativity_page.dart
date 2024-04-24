@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
+import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_search.dart';
 import 'package:kindergarten_online/features/creativity/presentation/widgets/creativity_card.dart';
+import 'package:kindergarten_online/features/widgets/custom_refresh_indicator.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
@@ -31,19 +32,38 @@ class _CreativityPageState extends State<CreativityPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25),
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                NavBar(textStyle: textStyle, text: S.of(context).creativity),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 25),
-                    child: Column(
-                      children: [
-                        CreativityCard(textStyle: textStyle),
-                      ],
-                    ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(S.of(context).creativity, style: textStyle.titleLarge),
+                    IconButton(
+                        onPressed: () async {
+                          await showSearch(
+                              context: context, delegate: CustomSearch());
+                        },
+                        icon: const Icon(
+                          Icons.search,
+                          color: AppColors.black,
+                          size: 25,
+                        )),
+                  ],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                CustomRefreshIndicator(
+                  onRefresh: () async {
+                    Future.delayed(const Duration(milliseconds: 2), () {
+                      context.read<CreativityCubit>().creativity();
+                    });
+                  },
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.77,
+                    child: CreativityCard(textStyle: textStyle),
                   ),
                 )
               ],

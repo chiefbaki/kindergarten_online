@@ -12,4 +12,12 @@ class RemoteCreativityData {
     final data = CreativityListDto.fromJson(response.data);
     return HttpResponse(data, response);
   }
+
+  Future<HttpResponse<CreativityListDto>> searchCreativity(
+      {required String query}) async {
+    final Response response = await _dio.get("management/creativity/search/",
+        queryParameters: {"search": query});
+    final data = CreativityListDto.fromJson(response.data);
+    return HttpResponse(data, response);
+  }
 }

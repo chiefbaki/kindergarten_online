@@ -460,70 +460,70 @@ class S {
     );
   }
 
-  /// `Творчество детей`
+  /// `Creativity`
   String get creativity {
     return Intl.message(
-      'Творчество детей',
+      'Creativity',
       name: 'creativity',
       desc: '',
       args: [],
     );
   }
 
-  /// `Регистрация`
+  /// `Registration`
   String get registration {
     return Intl.message(
-      'Регистрация',
+      'Registration',
       name: 'registration',
       desc: '',
       args: [],
     );
   }
 
-  /// `Детский сад:`
+  /// `Kindergarten:`
   String get kindergarten {
     return Intl.message(
-      'Детский сад:',
+      'Kindergarten:',
       name: 'kindergarten',
       desc: '',
       args: [],
     );
   }
 
-  /// `Название и адрес`
+  /// `Name and address`
   String get nameAndAddress {
     return Intl.message(
-      'Название и адрес',
+      'Name and address',
       name: 'nameAndAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// `Группа:`
+  /// `Group:`
   String get group {
     return Intl.message(
-      'Группа:',
+      'Group:',
       name: 'group',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выберите группу/класс`
+  /// `Choose group/class`
   String get chooseGroupOrClass {
     return Intl.message(
-      'Выберите группу/класс',
+      'Choose group/class',
       name: 'chooseGroupOrClass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Уже есть аккаунт?  `
+  /// `Already have an account?  `
   String get alreadyHaveAnAcc {
     return Intl.message(
-      'Уже есть аккаунт?  ',
+      'Already have an account?  ',
       name: 'alreadyHaveAnAcc',
       desc: '',
       args: [],

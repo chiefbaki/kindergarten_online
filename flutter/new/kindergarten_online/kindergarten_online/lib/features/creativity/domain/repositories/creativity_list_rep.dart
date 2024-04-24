@@ -3,4 +3,6 @@ import 'package:kindergarten_online/features/creativity/domain/entities/creativi
 
 abstract interface class CreativityListRep {
   Future<DataState<CreativityListEntity>> getCreativity();
+  Future<DataState<CreativityListEntity>> searchCreativity(
+      {required String query});
 }

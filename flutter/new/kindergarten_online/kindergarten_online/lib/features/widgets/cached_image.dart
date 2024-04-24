@@ -52,13 +52,12 @@ class PhotoViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: InkWell(
-        onTap: () {
+      body: PhotoView(
+        onTapDown: (context, details, controllerValue) {
           Navigator.pop(context);
         },
-        child: PhotoView(
-          imageProvider: CachedNetworkImageProvider(img),
-        ),
+        backgroundDecoration: const BoxDecoration(color: AppColors.lightBlue),
+        imageProvider: CachedNetworkImageProvider(img),
       ),
     );
   }

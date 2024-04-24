@@ -16,6 +16,7 @@ import 'package:kindergarten_online/features/creativity/data/data_sources/remote
 import 'package:kindergarten_online/features/creativity/data/repositories/creativity_list_impl.dart';
 import 'package:kindergarten_online/features/creativity/domain/repositories/creativity_list_rep.dart';
 import 'package:kindergarten_online/features/creativity/domain/usecases/creativity_list_usecase.dart';
+import 'package:kindergarten_online/features/creativity/domain/usecases/search_creativity_usecase.dart';
 import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
 import 'package:kindergarten_online/features/news/data/data_sources/remote/remote_news_data.dart';
 import 'package:kindergarten_online/features/news/data/repositories/news_impl.dart';
@@ -69,7 +70,8 @@ Future<void> setup() async {
   locator.registerLazySingleton(() => EditProfileUseCase(locator()));
   locator.registerSingleton(NewsUseCase(locator<NewsRep>()));
   locator.registerSingleton(CreativityUseCase(locator<CreativityListRep>()));
-
+  locator
+      .registerSingleton(SearchCreativityUseCase(locator<CreativityListRep>()));
   // Cubits
   locator.registerSingleton(LoginCubit(
       useCase: locator<LoginUseCase>(),
@@ -78,5 +80,6 @@ Future<void> setup() async {
   locator.registerSingleton(ProfileCubit(locator<ProfileUseCase>()));
   locator.registerLazySingleton(() => EditProfileCubit(locator()));
   locator.registerSingleton(NewsCubit(locator<NewsUseCase>()));
-  locator.registerSingleton(CreativityCubit(locator<CreativityUseCase>()));
+  locator.registerSingleton(CreativityCubit(
+      locator<CreativityUseCase>(), locator<SearchCreativityUseCase>()));
 }

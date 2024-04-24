@@ -40,11 +40,11 @@
   "saveTheChanges": "Save the changes",
   "dataChanged": "Data changed",
   "newsline": "News line",
-  "creativity": "Творчество детей",
-  "registration": "Регистрация",
-  "kindergarten": "Детский сад:",
-  "nameAndAddress": "Название и адрес",
-  "group": "Группа:",
-  "chooseGroupOrClass": "Выберите группу/класс",
-  "alreadyHaveAnAcc": "Уже есть аккаунт?  "
+  "creativity": "Creativity",
+  "registration": "Registration",
+  "kindergarten": "Kindergarten:",
+  "nameAndAddress": "Name and address",
+  "group": "Group:",
+  "chooseGroupOrClass": "Choose group/class",
+  "alreadyHaveAnAcc": "Already have an account?  "
 }
