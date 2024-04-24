@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/news_item.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
@@ -23,12 +23,10 @@ class _NewsPageState extends State<NewsPage> {
     context.read<NewsCubit>().news();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
@@ -51,10 +49,6 @@ class _NewsPageState extends State<NewsPage> {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(
-        isToSwitch: true,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

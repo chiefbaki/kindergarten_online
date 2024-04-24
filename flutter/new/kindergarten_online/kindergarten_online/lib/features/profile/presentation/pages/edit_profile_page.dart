@@ -9,7 +9,7 @@ import 'package:kindergarten_online/features/profile/domain/entities/edit_profil
 import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/personal_info_field.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
@@ -63,7 +63,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
@@ -167,9 +167,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(isToSwitch: true),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      resizeToAvoidBottomInset: false,
     );
   }
 }

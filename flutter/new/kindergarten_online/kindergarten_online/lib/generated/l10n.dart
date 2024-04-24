@@ -469,6 +469,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Регистрация`
+  String get registration {
+    return Intl.message(
+      'Регистрация',
+      name: 'registration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Детский сад:`
+  String get kindergarten {
+    return Intl.message(
+      'Детский сад:',
+      name: 'kindergarten',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Название и адрес`
+  String get nameAndAddress {
+    return Intl.message(
+      'Название и адрес',
+      name: 'nameAndAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Группа:`
+  String get group {
+    return Intl.message(
+      'Группа:',
+      name: 'group',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите группу/класс`
+  String get chooseGroupOrClass {
+    return Intl.message(
+      'Выберите группу/класс',
+      name: 'chooseGroupOrClass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Уже есть аккаунт?  `
+  String get alreadyHaveAnAcc {
+    return Intl.message(
+      'Уже есть аккаунт?  ',
+      name: 'alreadyHaveAnAcc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -477,7 +537,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'kg'),
+      Locale.fromSubtags(languageCode: 'ky'),
       Locale.fromSubtags(languageCode: 'ru'),
     ];
   }

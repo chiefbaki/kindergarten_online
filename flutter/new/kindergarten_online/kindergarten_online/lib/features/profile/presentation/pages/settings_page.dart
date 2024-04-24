@@ -8,7 +8,7 @@ import 'package:kindergarten_online/features/profile/presentation/widgets/custom
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_switch_tile.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/exit_btn.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/text_with_arrow.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
@@ -26,7 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
@@ -195,8 +195,6 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(isToSwitch: true),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

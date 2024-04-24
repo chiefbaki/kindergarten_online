@@ -25,45 +25,55 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
         ),
         // Auth
-        AutoRoute(page: LoginRoute.page,),
+        AutoRoute(
+          page: LoginRoute.page,
+          
+        ),
         AutoRoute(
           page: RegistrRoute.page,
+          initial: true
         ),
         // Camera
         AutoRoute(
           page: CameraRoute.page,
+          
         ),
         // News
         AutoRoute(
           page: NewsRoute.page,
+          
         ),
         AutoRoute(
           page: NewsDetailsRoute.page,
+          
         ),
         // Services
         AutoRoute(
           page: ServicesRoute.page,
+          
         ),
         // Favourite
         AutoRoute(
           page: FavouriteRoute.page,
+          
         ),
         // Schedule
         AutoRoute(
           page: ScheduleRoute.page,
+          
         ),
         // Profile
         AutoRoute(
           page: SettingsRoute.page,
+          
         ),
         // Politics info
         AutoRoute(
           page: PoliticsRoute.page,
+          
         ),
         // Personal account
-        AutoRoute(
-          page: PersonalAccountRoute.page,
-        ),
+        AutoRoute(page: PersonalAccountRoute.page, ),
 
         // Change password page
         AutoRoute(
@@ -73,7 +83,6 @@ class AppRouter extends _$AppRouter {
         // Creativity page
         AutoRoute(
           page: CreativityRoute.page,
-          initial: true
         )
       ];
 }

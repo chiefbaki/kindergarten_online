@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/features/widgets/services_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
@@ -14,7 +14,7 @@ class FavouritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
@@ -73,8 +73,6 @@ class FavouritePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(isToSwitch: true),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

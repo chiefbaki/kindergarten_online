@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "account": MessageLookupByLibrary.simpleMessage("Мой Аккаунт"),
+        "alreadyHaveAnAcc":
+            MessageLookupByLibrary.simpleMessage("Уже есть аккаунт?  "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Тема приложения"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
@@ -32,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatBackground": MessageLookupByLibrary.simpleMessage("Фон чата"),
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Сообщения в чате"),
+        "chooseGroupOrClass":
+            MessageLookupByLibrary.simpleMessage("Выберите группу/класс"),
         "creativity": MessageLookupByLibrary.simpleMessage("Творчество детей"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("Редактировать профиль"),
@@ -40,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
             "Не помните пароль или номер?"),
         "gender": MessageLookupByLibrary.simpleMessage("Пол:"),
+        "group": MessageLookupByLibrary.simpleMessage("Группа:"),
         "inputLastName":
             MessageLookupByLibrary.simpleMessage("Введите фамилию"),
         "inputMiddleName":
@@ -47,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputName": MessageLookupByLibrary.simpleMessage("Введите имя"),
         "inputNumber": MessageLookupByLibrary.simpleMessage("Введите номер"),
         "inputPassword": MessageLookupByLibrary.simpleMessage("Введите пароль"),
+        "kindergarten": MessageLookupByLibrary.simpleMessage("Детский сад:"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия:"),
         "light": MessageLookupByLibrary.simpleMessage("Светлая"),
         "logOut": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
@@ -54,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Для пользования нашего приложения\nвыполните вход или зарегистрируйтесь,\nесли Вы у нас впервые."),
         "middleName": MessageLookupByLibrary.simpleMessage("Отчество:"),
         "name": MessageLookupByLibrary.simpleMessage("Имя:"),
+        "nameAndAddress":
+            MessageLookupByLibrary.simpleMessage("Название и адрес"),
         "newOnesFirst": MessageLookupByLibrary.simpleMessage("Сначала новые"),
         "news": MessageLookupByLibrary.simpleMessage("Новости"),
         "newsEvents":
@@ -65,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона:"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
+        "registration": MessageLookupByLibrary.simpleMessage("Регистрация"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Сбросить пароль"),
         "restoreNumber":

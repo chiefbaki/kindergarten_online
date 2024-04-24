@@ -40,5 +40,11 @@
   "saveTheChanges": "Save the changes",
   "dataChanged": "Data changed",
   "newsline": "News line",
-  "creativity": "Творчество детей"
+  "creativity": "Творчество детей",
+  "registration": "Регистрация",
+  "kindergarten": "Детский сад:",
+  "nameAndAddress": "Название и адрес",
+  "group": "Группа:",
+  "chooseGroupOrClass": "Выберите группу/класс",
+  "alreadyHaveAnAcc": "Уже есть аккаунт?  "
 }

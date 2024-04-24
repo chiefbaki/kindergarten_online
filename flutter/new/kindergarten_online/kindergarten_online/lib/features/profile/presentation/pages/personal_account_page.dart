@@ -6,7 +6,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/personal_info_field.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
@@ -45,8 +45,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
@@ -191,9 +190,6 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(isToSwitch: true),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      resizeToAvoidBottomInset: false,
     );
   }
 }

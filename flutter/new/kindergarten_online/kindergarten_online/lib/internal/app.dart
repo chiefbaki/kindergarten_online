@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           ],
           title: "Kindergarten online",
           supportedLocales: S.delegate.supportedLocales,
-          locale: const Locale("en"),
+          locale: const Locale("ky"),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().config(),
           theme: theme(),

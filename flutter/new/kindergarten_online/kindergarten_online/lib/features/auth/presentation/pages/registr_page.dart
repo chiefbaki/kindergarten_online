@@ -10,6 +10,7 @@ import 'package:kindergarten_online/features/auth/presentation/widgets/custom_te
 import 'package:kindergarten_online/features/widgets/custom_text_field.dart';
 import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/features/widgets/text_field_drop.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class RegistrPage extends StatefulWidget {
@@ -42,7 +43,8 @@ class _RegistrPageState extends State<RegistrPage> {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: CustomAppBar(textStyle: textStyle, title: "Регистрация"),
+      appBar:
+          CustomAppBar(textStyle: textStyle, title: S.of(context).registration),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
@@ -52,7 +54,7 @@ class _RegistrPageState extends State<RegistrPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Номер телефона:",
+                  Text(S.of(context).phoneNumber,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
                   SizedBox(
@@ -66,7 +68,7 @@ class _RegistrPageState extends State<RegistrPage> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text("Пароль:",
+                  Text(S.of(context).password,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
                   SizedBox(
@@ -75,7 +77,7 @@ class _RegistrPageState extends State<RegistrPage> {
                   CustomTextField(
                       controller: _password,
                       textStyle: textStyle,
-                      hintText: "Введите пароль",
+                      hintText: S.of(context).inputPassword,
                       obscureText: _obscureText,
                       onPressed: () {
                         setState(() {
@@ -85,25 +87,25 @@ class _RegistrPageState extends State<RegistrPage> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text("Детский сад:",
+                  Text(S.of(context).kindergarten,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
                   SizedBox(height: 10.h),
                   TextFieldDrop(
                     textStyle: textStyle,
-                    hintText: "Название и адрес",
+                    hintText: S.of(context).nameAndAddress,
                     controller: _nameAndAddress,
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text("Группа:",
+                  Text(S.of(context).group,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
                   SizedBox(height: 10.h),
                   TextFieldDrop(
                     textStyle: textStyle,
-                    hintText: "Выберите группу/класс",
+                    hintText: S.of(context).chooseGroupOrClass,
                     controller: _group,
                   ),
                   SizedBox(
@@ -112,7 +114,8 @@ class _RegistrPageState extends State<RegistrPage> {
                   Center(
                     child: Column(
                       children: [
-                        CustomBtn(onPressed: () {}, name: "Регистрация"),
+                        CustomBtn(
+                            onPressed: () {}, name: S.of(context).registration),
                         SizedBox(
                           height: 20.h,
                         ),
@@ -120,7 +123,7 @@ class _RegistrPageState extends State<RegistrPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Уже есть аккаунт?",
+                              S.of(context).alreadyHaveAnAcc,
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.grey),
                             ),
@@ -129,7 +132,7 @@ class _RegistrPageState extends State<RegistrPage> {
                                 onPressed: () {
                                   context.router.push(const LoginRoute());
                                 },
-                                name: "Выполните вход")
+                                name: S.of(context).enter)
                           ],
                         )
                       ],

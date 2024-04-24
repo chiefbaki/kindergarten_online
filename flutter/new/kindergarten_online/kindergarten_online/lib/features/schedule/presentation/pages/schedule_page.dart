@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 
 @RoutePage()
@@ -10,7 +10,7 @@ class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -18,8 +18,8 @@ class SchedulePage extends StatelessWidget {
             child: Column(
               children: [
                 NavBar(textStyle: textStyle, text: "Расписание"),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [],
                   ),
@@ -29,8 +29,6 @@ class SchedulePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(isToSwitch: false),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
