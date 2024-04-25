@@ -57,19 +57,17 @@ class CustomSearch extends SearchDelegate {
                     child: CircularProgressIndicator.adaptive(),
                   ),
               success: (entity) {
-                return entity.results!.isNotEmpty
-                    ? ListView.builder(
-                        itemCount: entity.count,
-                        itemBuilder: (_, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: CreativityItem(
-                                textStyle: Theme.of(context).textTheme,
-                                name: entity.results?[index].name ?? "",
-                                image: entity.results?[index].img ?? ""),
-                          );
-                        })
-                    : const SizedBox();
+                return ListView.builder(
+                    itemCount: entity.count,
+                    itemBuilder: (_, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: CreativityItem(
+                            textStyle: Theme.of(context).textTheme,
+                            name: entity.results?[index].name ?? "",
+                            image: entity.results?[index].img ?? ""),
+                      );
+                    });
               },
               failure: (error) => Text(error));
         },

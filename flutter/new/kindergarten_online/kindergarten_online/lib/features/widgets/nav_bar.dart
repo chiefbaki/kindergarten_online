@@ -18,7 +18,7 @@ class NavBar extends StatelessWidget {
           child: Text(
             text,
             style:
-                text.length > 14 ? textStyle.titleMedium : textStyle.titleLarge,
+                text.length > 18 ? textStyle.titleMedium : textStyle.titleLarge,
           ),
         ),
         Image.asset(

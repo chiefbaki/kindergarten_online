@@ -10,6 +10,7 @@ import 'package:kindergarten_online/features/creativity/presentation/cubits/crea
 import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class MyApp extends StatelessWidget {
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => locator<CreativityCubit>(),
         ),
+        BlocProvider(
+          create: (context) => locator<CategoryCubit>(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -48,7 +52,7 @@ class MyApp extends StatelessWidget {
           ],
           title: "Kindergarten online",
           supportedLocales: S.delegate.supportedLocales,
-          locale: const Locale("ky"),
+          locale: const Locale("ru"),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().config(),
           theme: theme(),

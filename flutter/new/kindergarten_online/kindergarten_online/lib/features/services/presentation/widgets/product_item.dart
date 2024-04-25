@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kindergarten_online/features/services/data/products_model.dart';
-import 'package:kindergarten_online/features/services/presentation/widgets/favorite_btn.dart';
+import 'package:kindergarten_online/features/services/presentation/widgets/category_card.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
@@ -9,30 +8,20 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.77,
         child: GridView.builder(
-            itemCount: ProductsModel.items.length,
+            itemCount: 9,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 15,
                 crossAxisSpacing: 15,
                 childAspectRatio: 1),
-            itemBuilder: (_, index) => Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(ProductsModel.items[index].img))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: FavoriteBtn(
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
-                )));
+            itemBuilder: (_, index) =>
+                CategoryCard(textStyle: Theme.of(context).textTheme)),
+      ),
+    );
   }
 }

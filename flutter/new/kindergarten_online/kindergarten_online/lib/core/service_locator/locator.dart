@@ -32,6 +32,11 @@ import 'package:kindergarten_online/features/profile/domain/usecases/edit_profil
 import 'package:kindergarten_online/features/profile/domain/usecases/profile_usecase.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:kindergarten_online/features/services/data/data_sources/remote/remote_services_data.dart';
+import 'package:kindergarten_online/features/services/data/repositories/category_impl.dart';
+import 'package:kindergarten_online/features/services/domain/repositories/category_rep.dart';
+import 'package:kindergarten_online/features/services/domain/usecases/category_usecase.dart';
+import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
 
 final locator = GetIt.instance;
 
@@ -46,14 +51,15 @@ Future<void> setup() async {
 
   // Network
   // locator.registerFactory<DioSettings>(() => DioSettings(locator()));
-  locator.registerLazySingleton(() => DioSettings(locator<GetTokenUseCase>()));
+  locator.registerLazySingleton(() => DioSettings(locator<TokenRepository>()));
+
   // Remote
   locator
       .registerFactory(() => AuthRemoteDataSource(locator<DioSettings>().dio));
-
   locator.registerSingleton(RemoteProfileSource(locator<DioSettings>().dio));
   locator.registerSingleton(RemoteNewsData(locator<DioSettings>().dio));
   locator.registerSingleton(RemoteCreativityData(locator<DioSettings>().dio));
+  locator.registerSingleton(RemoteServicesData(locator<DioSettings>().dio));
 
   // Dependencies
   locator.registerFactory<LoginRep>(() => LoginImpl(locator()));
@@ -63,6 +69,8 @@ Future<void> setup() async {
   locator.registerSingleton<NewsRep>(NewsImpl(locator<RemoteNewsData>()));
   locator.registerSingleton<CreativityListRep>(
       CreativityListImpl(locator<RemoteCreativityData>()));
+  locator.registerSingleton<CategoryRep>(
+      CategoryImpl(locator<RemoteServicesData>()));
 
   // UseCases
   locator.registerSingleton(LoginUseCase(locator()));
@@ -72,14 +80,17 @@ Future<void> setup() async {
   locator.registerSingleton(CreativityUseCase(locator<CreativityListRep>()));
   locator
       .registerSingleton(SearchCreativityUseCase(locator<CreativityListRep>()));
+  locator.registerSingleton(CategoryUseCase(locator<CategoryRep>()));
+
   // Cubits
   locator.registerSingleton(LoginCubit(
-      useCase: locator<LoginUseCase>(),
-      saveTokenUseCase: locator(),
-      getTokenUseCase: locator()));
+    useCase: locator<LoginUseCase>(),
+    saveTokenUseCase: locator(),
+  ));
   locator.registerSingleton(ProfileCubit(locator<ProfileUseCase>()));
   locator.registerLazySingleton(() => EditProfileCubit(locator()));
   locator.registerSingleton(NewsCubit(locator<NewsUseCase>()));
   locator.registerSingleton(CreativityCubit(
       locator<CreativityUseCase>(), locator<SearchCreativityUseCase>()));
+  locator.registerSingleton(CategoryCubit(locator<CategoryUseCase>()));
 }

@@ -21,6 +21,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CameraPage(),
       );
     },
+    CategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryRouteArgs>(
+          orElse: () => const CategoryRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CategoryPage(
+          key: args.key,
+          title: args.title,
+        ),
+      );
+    },
     CreativityRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -31,12 +42,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EditProfilePage(),
-      );
-    },
-    FavouriteRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const FavouritePage(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -125,6 +130,44 @@ class CameraRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CategoryPage]
+class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
+  CategoryRoute({
+    Key? key,
+    String? title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CategoryRoute.name,
+          args: CategoryRouteArgs(
+            key: key,
+            title: title,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryRoute';
+
+  static const PageInfo<CategoryRouteArgs> page =
+      PageInfo<CategoryRouteArgs>(name);
+}
+
+class CategoryRouteArgs {
+  const CategoryRouteArgs({
+    this.key,
+    this.title,
+  });
+
+  final Key? key;
+
+  final String? title;
+
+  @override
+  String toString() {
+    return 'CategoryRouteArgs{key: $key, title: $title}';
+  }
+}
+
+/// generated route for
 /// [CreativityPage]
 class CreativityRoute extends PageRouteInfo<void> {
   const CreativityRoute({List<PageRouteInfo>? children})
@@ -148,20 +191,6 @@ class EditProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EditProfileRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [FavouritePage]
-class FavouriteRoute extends PageRouteInfo<void> {
-  const FavouriteRoute({List<PageRouteInfo>? children})
-      : super(
-          FavouriteRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'FavouriteRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

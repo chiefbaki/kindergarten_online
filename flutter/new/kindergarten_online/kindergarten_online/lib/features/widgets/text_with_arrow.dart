@@ -5,11 +5,13 @@ import 'package:kindergarten_online/core/utils/resources/resources.dart';
 class TextWithArrow extends StatelessWidget {
   final String name;
   final Function() onPressed;
+  final Color? color;
   const TextWithArrow(
       {super.key,
       required this.textStyle,
       required this.name,
-      required this.onPressed});
+      required this.onPressed,
+      this.color = AppColors.white});
 
   final TextTheme textStyle;
 
@@ -20,8 +22,9 @@ class TextWithArrow extends StatelessWidget {
       children: [
         Text(
           name,
-          style: textStyle.titleSmall!.copyWith(color: AppColors.white),
-          
+          style: color == null
+              ? textStyle.titleSmall!.copyWith(color: color)
+              : textStyle.displaySmall!.copyWith(color: color),
         ),
         const Spacer(),
         IconButton(

@@ -4,3 +4,7 @@ import 'package:kindergarten_online/features/auth/domain/entities/response/token
 extension ToEntityExt on TokenDto {
   TokenEntity toEntity() => TokenEntity(refresh: refresh, access: access);
 }
+
+extension FromEntityExt on TokenEntity {
+  TokenDto fromEntity() => TokenDto(refresh: refresh, access: access);
+}

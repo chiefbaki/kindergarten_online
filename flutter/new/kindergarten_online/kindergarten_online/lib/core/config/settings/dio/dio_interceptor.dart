@@ -3,13 +3,13 @@ import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:kindergarten_online/core/config/constants/api_urls.dart";
-import "package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart";
-import "package:shared_preferences/shared_preferences.dart";
+import "package:kindergarten_online/core/config/settings/dio/dio_exception_handler.dart";
+import "package:kindergarten_online/features/auth/domain/repositories/token_rep.dart";
 
 class DioSettings {
-  final GetTokenUseCase _useCase;
+  final TokenRepository _bearerToken;
   late String baseUrl;
-  DioSettings(this._useCase) {
+  DioSettings(this._bearerToken) {
     unawaited(setup());
     baseUrl = dotenv.env["API_URL"] ?? "";
   }
@@ -28,11 +28,6 @@ class DioSettings {
 
   Future<void> setup() async {
     final Interceptors interceptors = dio.interceptors;
-    // final TokenDto token = await _useCase.call();
-    final prefs = await SharedPreferences.getInstance();
-    final access = prefs.getString("access");
-    debugPrint("hello");
-    // print("ACCESS TOKEN DIO ${token.access}");
     interceptors.clear();
 
     final LogInterceptor logInterceptor = LogInterceptor(
@@ -45,12 +40,12 @@ class DioSettings {
         QueuedInterceptorsWrapper(
       onRequest:
           (RequestOptions options, RequestInterceptorHandler handler) async {
-        options.headers["Authorization"] = "Bearer $access";
+        options.headers["Authorization"] = await _bearerToken.getBearerToken();
         return handler.next(options);
       },
       onError: (DioException error, ErrorInterceptorHandler handler) {
-        // refresh token
-        if (error.response?.statusCode == 401) {
+        // refresh token when its error
+        if (error.response?.statusCode == ResponseCode.UNAUTHORIZED) {
           "";
         }
         handler.next(error);

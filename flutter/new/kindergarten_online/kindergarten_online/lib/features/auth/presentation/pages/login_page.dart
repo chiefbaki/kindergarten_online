@@ -7,7 +7,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
-import 'package:kindergarten_online/features/auth/presentation/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/widgets/custom_text_field.dart';

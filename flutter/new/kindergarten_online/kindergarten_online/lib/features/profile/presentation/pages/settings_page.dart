@@ -7,7 +7,7 @@ import 'package:kindergarten_online/features/profile/presentation/widgets/colore
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_switch_tile.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/exit_btn.dart';
-import 'package:kindergarten_online/features/profile/presentation/widgets/text_with_arrow.dart';
+import 'package:kindergarten_online/features/widgets/text_with_arrow.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';

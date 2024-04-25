@@ -1,5 +1,7 @@
 import 'package:kindergarten_online/features/auth/data/data_sources/local/token_storage.dart';
 import 'package:kindergarten_online/features/auth/data/dto/response/token_dto.dart';
+import 'package:kindergarten_online/features/auth/data/mappers/token_mapper.dart';
+import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
 import 'package:kindergarten_online/features/auth/domain/repositories/token_rep.dart';
 
 class TokenImpl implements TokenRepository {
@@ -22,7 +24,7 @@ class TokenImpl implements TokenRepository {
   }
 
   @override
-  Future<void> saveToken({required TokenDto entity}) async {
-    await _tokenStorage.saveToken(entity: entity);
+  Future<void> saveToken({required TokenEntity entity}) async {
+    await _tokenStorage.saveToken(entity: entity.fromEntity());
   }
 }
