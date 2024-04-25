@@ -14,12 +14,15 @@ class ProfileDto {
   final String lastName;
   @JsonKey(name: "patronymic")
   final String patronymic;
+  @JsonKey(name: "avatar")
+  final String? avatar;
   const ProfileDto(
       {required this.id,
       required this.phone,
       required this.firstName,
       required this.lastName,
-      required this.patronymic});
+      required this.patronymic,
+      this.avatar});
 
   // Serializing data's
   factory ProfileDto.fromJson(Map<String, dynamic> json) =>

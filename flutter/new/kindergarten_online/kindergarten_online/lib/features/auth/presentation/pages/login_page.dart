@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: CircularProgressIndicator.adaptive(),
                                   ),
                               success: () {
-                                context.router.push(const CreativityRoute());
+                                context.router.push(const CameraRoute());
                               },
                               failure: (e) {
                                 wrongLoginDialog(context, textStyle);

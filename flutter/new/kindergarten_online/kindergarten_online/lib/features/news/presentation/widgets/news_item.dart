@@ -15,7 +15,7 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: BlocBuilder<NewsCubit, NewsState>(
+    return BlocBuilder<NewsCubit, NewsState>(
       builder: (context, state) {
         return state.when(
             initial: () => const SizedBox(),
@@ -33,6 +33,7 @@ class NewsItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CustomListTile(
+                        images: entity.results?[index].images?[index].img ?? "",
                         textStyle: textStyle,
                         entity: entity.results![index],
                       ),
@@ -46,6 +47,6 @@ class NewsItem extends StatelessWidget {
             },
             failure: (error) => Text(error));
       },
-    ));
+    );
   }
 }

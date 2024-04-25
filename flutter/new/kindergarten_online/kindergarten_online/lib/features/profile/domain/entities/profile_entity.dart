@@ -6,9 +6,16 @@ class ProfileEntity extends Equatable {
   final String? firstName;
   final String? lastName;
   final String? patronymic;
+  final String? avatar;
   const ProfileEntity(
-      {this.id, this.phone, this.firstName, this.lastName, this.patronymic});
+      {this.id,
+      this.phone,
+      this.firstName,
+      this.lastName,
+      this.patronymic,
+      this.avatar});
 
   @override
-  List<Object?> get props => [id, phone, firstName, lastName, patronymic];
+  List<Object?> get props =>
+      [id, phone, firstName, lastName, patronymic, avatar];
 }

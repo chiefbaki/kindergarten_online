@@ -1,4 +1,5 @@
-abstract class ApiUrls{
+abstract class ApiUrls {
+  static const String baseUrl = "http://84.54.12.206/ru/";
   static const String profile = "account/profile/";
-  static String editProfile = "account/update/info/";
+  static const String editProfile = "account/update/info/";
 }

@@ -61,6 +61,7 @@ abstract class _$AppRouter extends RootStackRouter {
           date: args.date,
           title: args.title,
           content: args.content,
+          img: args.img,
         ),
       );
     },
@@ -201,6 +202,7 @@ class NewsDetailsRoute extends PageRouteInfo<NewsDetailsRouteArgs> {
     String? date,
     String? title,
     String? content,
+    String? img,
     List<PageRouteInfo>? children,
   }) : super(
           NewsDetailsRoute.name,
@@ -209,6 +211,7 @@ class NewsDetailsRoute extends PageRouteInfo<NewsDetailsRouteArgs> {
             date: date,
             title: title,
             content: content,
+            img: img,
           ),
           initialChildren: children,
         );
@@ -225,6 +228,7 @@ class NewsDetailsRouteArgs {
     this.date,
     this.title,
     this.content,
+    this.img,
   });
 
   final Key? key;
@@ -235,9 +239,11 @@ class NewsDetailsRouteArgs {
 
   final String? content;
 
+  final String? img;
+
   @override
   String toString() {
-    return 'NewsDetailsRouteArgs{key: $key, date: $date, title: $title, content: $content}';
+    return 'NewsDetailsRouteArgs{key: $key, date: $date, title: $title, content: $content, img: $img}';
   }
 }
 

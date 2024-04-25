@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/news_item.dart';
+import 'package:kindergarten_online/features/widgets/custom_refresh_indicator.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
@@ -37,10 +38,16 @@ class _NewsPageState extends State<NewsPage> {
                 height: 25.h,
               ),
               Expanded(
-                // height: MediaQuery.of(context).size.height * 0.8,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: NewsItem(textStyle: textStyle),
+                  child: CustomRefreshIndicator(
+                      onRefresh: () async {
+                        await Future.delayed(const Duration(milliseconds: 2),
+                            () {
+                          context.read<NewsCubit>().news();
+                        });
+                      },
+                      child: NewsItem(textStyle: textStyle)),
                 ),
               )
             ],

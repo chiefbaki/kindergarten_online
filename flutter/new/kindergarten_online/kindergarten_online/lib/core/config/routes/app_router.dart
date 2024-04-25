@@ -27,6 +27,7 @@ class AppRouter extends _$AppRouter {
         // Auth
         AutoRoute(
           page: LoginRoute.page,
+          initial: true
         ),
         AutoRoute(
           page: RegistrRoute.page,
@@ -36,15 +37,14 @@ class AppRouter extends _$AppRouter {
           page: CameraRoute.page,
         ),
         // News
-        AutoRoute(
-          page: NewsRoute.page,
-        ),
+        AutoRoute(page: NewsRoute.page),
         AutoRoute(
           page: NewsDetailsRoute.page,
         ),
         // Services
         AutoRoute(
           page: ServicesRoute.page,
+          
         ),
         // Favourite
         AutoRoute(
@@ -71,6 +71,8 @@ class AppRouter extends _$AppRouter {
           page: EditProfileRoute.page,
         ),
         // Creativity page
-        AutoRoute(page: CreativityRoute.page, initial: true)
+        AutoRoute(
+          page: CreativityRoute.page,
+        )
       ];
 }

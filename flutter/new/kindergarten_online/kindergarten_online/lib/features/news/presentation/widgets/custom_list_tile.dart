@@ -4,21 +4,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/extensions.dart';
-import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/news/domain/entities/news_entity.dart';
 
 class CustomListTile extends StatelessWidget {
   final ResultsEntity entity;
-  const CustomListTile({
-    super.key,
-    required this.textStyle,
-    required this.entity,
-  });
+  final String images;
+  const CustomListTile(
+      {super.key,
+      required this.textStyle,
+      required this.entity,
+      required this.images});
 
   final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
+    final String newImg = images.replaceAll("file:///", "http://84.54.12.206/");
+    print(newImg);
     return InkWell(
       onTap: () {
         context.router.push(NewsDetailsRoute(
@@ -28,7 +30,7 @@ class CustomListTile extends StatelessWidget {
         ));
       },
       child: ListTile(
-        leading: Image.asset(Imgs.ava),
+        leading: Image.network(newImg),
         title: Text(
           entity.title ?? "",
           textAlign: TextAlign.start,

@@ -13,33 +13,31 @@ class CreativityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocBuilder<CreativityCubit, CreativityState>(
-        builder: (context, state) {
-          return state.when(
-              initial: () => const SizedBox(),
-              loading: () => const Center(
-                    child: CircularProgressIndicator.adaptive(),
+    return BlocBuilder<CreativityCubit, CreativityState>(
+      builder: (context, state) {
+        return state.when(
+            initial: () => const SizedBox(),
+            loading: () => const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+            success: (
+              entity,
+            ) {
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: entity.count,
+                itemBuilder: (_, index) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: CreativityItem(
+                    textStyle: textStyle,
+                    image: entity.results?[index].img ?? "",
+                    name: entity.results?[index].name ?? "",
                   ),
-              success: (
-                entity,
-              ) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: entity.count,
-                  itemBuilder: (_, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: CreativityItem(
-                      textStyle: textStyle,
-                      image: entity.results?[index].img ?? "",
-                      name: entity.results?[index].name ?? "",
-                    ),
-                  ),
-                );
-              },
-              failure: (e) => Text(e));
-        },
-      ),
+                ),
+              );
+            },
+            failure: (e) => Text(e));
+      },
     );
   }
 }

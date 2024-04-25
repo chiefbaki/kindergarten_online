@@ -57,17 +57,19 @@ class CustomSearch extends SearchDelegate {
                     child: CircularProgressIndicator.adaptive(),
                   ),
               success: (entity) {
-                return ListView.builder(
-                    itemCount: entity.count,
-                    itemBuilder: (_, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: CreativityItem(
-                            textStyle: Theme.of(context).textTheme,
-                            name: entity.results?[index].name ?? "",
-                            image: entity.results?[index].img ?? ""),
-                      );
-                    });
+                return entity.results!.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: entity.count,
+                        itemBuilder: (_, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: CreativityItem(
+                                textStyle: Theme.of(context).textTheme,
+                                name: entity.results?[index].name ?? "",
+                                image: entity.results?[index].img ?? ""),
+                          );
+                        })
+                    : const SizedBox();
               },
               failure: (error) => Text(error));
         },
@@ -77,32 +79,6 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    context.read<CreativityCubit>().searchCreativity(query: query);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-      child: BlocBuilder<CreativityCubit, CreativityState>(
-        builder: (context, state) {
-          return state.when(
-              initial: () => const SizedBox(),
-              loading: () => const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
-              success: (entity) {
-                return ListView.builder(
-                    itemCount: entity.count,
-                    itemBuilder: (_, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: CreativityItem(
-                            textStyle: Theme.of(context).textTheme,
-                            name: entity.results?[index].name ?? "",
-                            image: entity.results?[index].img ?? ""),
-                      );
-                    });
-              },
-              failure: (error) => Text(error));
-        },
-      ),
-    );
+    return const SizedBox.shrink();
   }
 }

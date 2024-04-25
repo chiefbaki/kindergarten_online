@@ -2,6 +2,7 @@ import "dart:async";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
+import "package:kindergarten_online/core/config/constants/api_urls.dart";
 import "package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
@@ -15,7 +16,7 @@ class DioSettings {
 
   Dio dio = Dio(
     BaseOptions(
-      baseUrl: "http://84.54.12.206/ru/",
+      baseUrl: ApiUrls.baseUrl,
       contentType: "application/json",
       headers: {
         "Accept": "application/json",
@@ -35,17 +36,20 @@ class DioSettings {
     interceptors.clear();
 
     final LogInterceptor logInterceptor = LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-    );
+        requestBody: true,
+        responseBody: true,
+        requestHeader: true,
+        responseHeader: true);
 
     final QueuedInterceptorsWrapper headerInterceptors =
         QueuedInterceptorsWrapper(
-      onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-        options.headers["Authorization"] = "Bearer ${access}";
+      onRequest:
+          (RequestOptions options, RequestInterceptorHandler handler) async {
+        options.headers["Authorization"] = "Bearer $access";
         return handler.next(options);
       },
       onError: (DioException error, ErrorInterceptorHandler handler) {
+        // refresh token
         if (error.response?.statusCode == 401) {
           "";
         }
@@ -54,6 +58,9 @@ class DioSettings {
       onResponse: (Response response, ResponseInterceptorHandler handler) =>
           handler.next(response),
     );
-    interceptors.addAll([if (kDebugMode) logInterceptor, headerInterceptors]);
+    interceptors.addAll([
+      if (kDebugMode) logInterceptor,
+      headerInterceptors,
+    ]);
   }
 }

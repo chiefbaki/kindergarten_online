@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/extensions.dart';
-import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
@@ -12,12 +13,9 @@ class NewsDetailsPage extends StatelessWidget {
   final String? date;
   final String? title;
   final String? content;
-  const NewsDetailsPage({
-    super.key,
-    this.date,
-    this.title,
-    this.content,
-  });
+  final String? img;
+  const NewsDetailsPage(
+      {super.key, this.date, this.title, this.content, this.img});
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +32,10 @@ class NewsDetailsPage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   height: 300,
-                  child: Image.asset(
-                    Imgs.newsAva,
+                  child: CachedNetworkImage(
+                    imageUrl: img ?? "",
+                    placeholder: (context, url) =>
+                        const CustomProgressIndicator(),
                     fit: BoxFit.fill,
                   ),
                 ),

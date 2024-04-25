@@ -16,5 +16,6 @@ extension FromEntityExt on ProfileEntity {
       phone: phone ?? "",
       patronymic: patronymic ?? "",
       firstName: firstName ?? "",
-      lastName: lastName ?? "");
+      lastName: lastName ?? "",
+      avatar: avatar ?? "");
 }
