@@ -6,31 +6,50 @@ part of 'product_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
-      count: json['count'] as int,
-      result: (json['result'] as List<dynamic>)
-          .map((e) => ProductResultDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
+  $checkKeys(
+    json,
+    requiredKeys: const ['count', 'results'],
+  );
+  return ProductDto(
+    count: json['count'] as int,
+    results: (json['results'] as List<dynamic>)
+        .map((e) => ProductResultDto.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+}
 
 Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) =>
     <String, dynamic>{
       'count': instance.count,
-      'result': instance.result,
+      'results': instance.results,
     };
 
-ProductResultDto _$ProductResultDtoFromJson(Map<String, dynamic> json) =>
-    ProductResultDto(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      description: json['description'] as String,
-      price: json['price'] as String,
-      url: json['url'] as String,
-      images: (json['images'] as List<dynamic>)
-          .map((e) => ProductImagesDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      address: json['address'] as String,
-    );
+ProductResultDto _$ProductResultDtoFromJson(Map<String, dynamic> json) {
+  $checkKeys(
+    json,
+    requiredKeys: const [
+      'id',
+      'name',
+      'description',
+      'price',
+      'url',
+      'address',
+      'images'
+    ],
+  );
+  return ProductResultDto(
+    id: json['id'] as int,
+    name: json['name'] as String,
+    description: json['description'] as String,
+    price: json['price'] as String,
+    url: json['url'] as String,
+    images: (json['images'] as List<dynamic>)
+        .map((e) => ProductImagesDto.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    address: json['address'] as String,
+  );
+}
 
 Map<String, dynamic> _$ProductResultDtoToJson(ProductResultDto instance) =>
     <String, dynamic>{

@@ -46,5 +46,6 @@
   "nameAndAddress": "Name and address",
   "group": "Group:",
   "chooseGroupOrClass": "Choose group/class",
-  "alreadyHaveAnAcc": "Already have an account?  "
+  "alreadyHaveAnAcc": "Already have an account?  ",
+  "chats": "Чаты"
 }

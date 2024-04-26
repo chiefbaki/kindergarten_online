@@ -32,6 +32,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ChatsListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChatsListPage(),
+      );
+    },
     CreativityRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -89,9 +95,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProductDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProductDetailPage(),
+        child: ProductDetailPage(
+          key: args.key,
+          results: args.results,
+        ),
       );
     },
     RegistrRoute.name: (routeData) {
@@ -171,6 +181,20 @@ class CategoryRouteArgs {
   String toString() {
     return 'CategoryRouteArgs{key: $key, title: $title}';
   }
+}
+
+/// generated route for
+/// [ChatsListPage]
+class ChatsListRoute extends PageRouteInfo<void> {
+  const ChatsListRoute({List<PageRouteInfo>? children})
+      : super(
+          ChatsListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChatsListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -326,16 +350,40 @@ class PoliticsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProductDetailPage]
-class ProductDetailRoute extends PageRouteInfo<void> {
-  const ProductDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class ProductDetailRoute extends PageRouteInfo<ProductDetailRouteArgs> {
+  ProductDetailRoute({
+    Key? key,
+    required ProductResultEntity results,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProductDetailRoute.name,
+          args: ProductDetailRouteArgs(
+            key: key,
+            results: results,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ProductDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProductDetailRouteArgs> page =
+      PageInfo<ProductDetailRouteArgs>(name);
+}
+
+class ProductDetailRouteArgs {
+  const ProductDetailRouteArgs({
+    this.key,
+    required this.results,
+  });
+
+  final Key? key;
+
+  final ProductResultEntity results;
+
+  @override
+  String toString() {
+    return 'ProductDetailRouteArgs{key: $key, results: $results}';
+  }
 }
 
 /// generated route for

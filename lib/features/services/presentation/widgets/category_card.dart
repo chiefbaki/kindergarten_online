@@ -2,13 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/core/utils/resources/resources.dart';
+import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/services/presentation/widgets/favorite_btn.dart';
 
 class CategoryCard extends StatelessWidget {
+  final ProductResultEntity entity;
   const CategoryCard({
     super.key,
     required this.textStyle,
+    required this.entity,
   });
 
   final TextTheme textStyle;
@@ -17,7 +19,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.push(const ProductDetailRoute());
+        context.router.push(ProductDetailRoute(results: entity));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -25,10 +27,10 @@ class CategoryCard extends StatelessWidget {
             image: DecorationImage(
                 colorFilter: ColorFilter.mode(
                     AppColors.black.withOpacity(0.4), BlendMode.colorBurn),
-                image: const AssetImage(
-                  Imgs.rainbow,
+                image: NetworkImage(
+                  "http://84.54.12.206${entity.images!.first.img}",
                 ),
-                fit: BoxFit.fill),
+                fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -39,7 +41,7 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "1600",
+                    entity.price ?? "",
                     style: textStyle.displaySmall!
                         .copyWith(color: AppColors.white),
                   ),
@@ -48,7 +50,7 @@ class CategoryCard extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "Ролики",
+                entity.name ?? "",
                 style: textStyle.displayLarge!.copyWith(color: AppColors.white),
               )
             ],

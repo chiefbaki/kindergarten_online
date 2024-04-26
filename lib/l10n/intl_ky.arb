@@ -46,5 +46,6 @@
   "nameAndAddress": "Аты жана адреси",
   "group": "Топ:",
   "chooseGroupOrClass": "Топту/классты тандоо",
-  "alreadyHaveAnAcc": "Каттоо эсебиңиз барбы? "
+  "alreadyHaveAnAcc": "Каттоо эсебиңиз барбы? ",
+  "chats": "Чаты"
 }

@@ -27,7 +27,7 @@ class MenuItem {
     MenuItem(
         img: Imgs.chatIcon,
         name: "Чаты с родителями",
-        route: const CameraRoute()),
+        route: const ChatsListRoute()),
     MenuItem(
         img: Imgs.uchetIcon,
         name: "Учет посещаемости",

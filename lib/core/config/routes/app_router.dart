@@ -4,6 +4,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/login_page.
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
+import 'package:kindergarten_online/features/chats/presentation/pages/chats_list_page.dart';
 import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
@@ -12,6 +13,7 @@ import 'package:kindergarten_online/features/profile/presentation/pages/personal
 import 'package:kindergarten_online/features/profile/presentation/pages/politics_info_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/settings_page.dart';
 import 'package:kindergarten_online/features/schedule/presentation/pages/schedule_page.dart';
+import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/category_page.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/product_detail_page.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/services_page.dart';
@@ -24,11 +26,11 @@ class AppRouter extends _$AppRouter {
         // Main
         AutoRoute(
           page: MainRoute.page,
+          initial: true
         ),
         // Auth
         AutoRoute(
           page: LoginRoute.page,
-          
         ),
         AutoRoute(
           page: RegistrRoute.page,
@@ -45,12 +47,10 @@ class AppRouter extends _$AppRouter {
         // Services
         AutoRoute(
           page: ServicesRoute.page,
-          initial: true,
         ),
         AutoRoute(
           page: CategoryRoute.page,
         ),
-
         // Schedule
         AutoRoute(
           page: ScheduleRoute.page,
@@ -77,6 +77,8 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: ProductDetailRoute.page,
-        )
+          
+        ),
+        AutoRoute(page: ChatsListRoute.page, )
       ];
 }

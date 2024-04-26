@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatBackground":
             MessageLookupByLibrary.simpleMessage("Chat background"),
         "chatMessages": MessageLookupByLibrary.simpleMessage("Chat messages"),
+        "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Choose group/class"),
         "creativity": MessageLookupByLibrary.simpleMessage("Creativity"),

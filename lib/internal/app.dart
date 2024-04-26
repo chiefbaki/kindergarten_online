@@ -11,7 +11,9 @@ import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit
 import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/cubits/product_cubit/product_cubit.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -37,6 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => locator<CategoryCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<ProductCubit>(),
         ),
       ],
       child: ScreenUtilInit(

@@ -3,7 +3,7 @@ import 'package:kindergarten_online/features/services/domain/entities/product_en
 
 extension ToEntityExt on ProductDto {
   ProductEntity toEntity() => ProductEntity(
-      count: count, results: result.map((e) => e.toEntity()).toList());
+      count: count, results: results.map((e) => e.toEntity()).toList());
 }
 
 extension ItemsToEntityExt on ProductResultDto {

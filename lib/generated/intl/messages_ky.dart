@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatBackground": MessageLookupByLibrary.simpleMessage("Маектин фону"),
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Чат билдирүүлөрү"),
+        "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Топту/классты тандоо"),
         "creativity": MessageLookupByLibrary.simpleMessage("Чыгармачылыктар"),

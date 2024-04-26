@@ -36,9 +36,12 @@ import 'package:kindergarten_online/features/services/data/data_sources/remote/r
 import 'package:kindergarten_online/features/services/data/repositories/category_impl.dart';
 import 'package:kindergarten_online/features/services/domain/repositories/category_rep.dart';
 import 'package:kindergarten_online/features/services/domain/usecases/category_usecase.dart';
+import 'package:kindergarten_online/features/services/domain/usecases/product_usecase.dart';
 import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/cubits/product_cubit/product_cubit.dart';
 
 final locator = GetIt.instance;
+
 
 Future<void> setup() async {
   // Local storage
@@ -81,6 +84,7 @@ Future<void> setup() async {
   locator
       .registerSingleton(SearchCreativityUseCase(locator<CreativityListRep>()));
   locator.registerSingleton(CategoryUseCase(locator<CategoryRep>()));
+  locator.registerSingleton(ProductUseCase(locator<CategoryRep>()));
 
   // Cubits
   locator.registerSingleton(LoginCubit(
@@ -93,4 +97,5 @@ Future<void> setup() async {
   locator.registerSingleton(CreativityCubit(
       locator<CreativityUseCase>(), locator<SearchCreativityUseCase>()));
   locator.registerSingleton(CategoryCubit(locator<CategoryUseCase>()));
+  locator.registerSingleton(ProductCubit(locator<ProductUseCase>()));
 }
