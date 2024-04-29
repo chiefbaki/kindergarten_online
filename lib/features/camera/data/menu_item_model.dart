@@ -23,7 +23,7 @@ class MenuItem {
     MenuItem(
         img: Imgs.contactIcon,
         name: "Мои контакты",
-        route: const CameraRoute()),
+        route: const MyContactsRoute()),
     MenuItem(
         img: Imgs.chatIcon,
         name: "Чаты с родителями",

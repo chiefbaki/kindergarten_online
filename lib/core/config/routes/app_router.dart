@@ -5,6 +5,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/main_page.d
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/chats_list_page.dart';
+import 'package:kindergarten_online/features/chats/presentation/pages/contact_info_page.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/my_contacts_page.dart';
 import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
@@ -26,12 +27,15 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         // Main
         CustomRoute(
-            page: MainRoute.page,
-            transitionsBuilder: TransitionsBuilders.fadeIn),
+          page: MainRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          initial: true,
+        ),
         // Auth
         CustomRoute(
-            page: LoginRoute.page,
-            transitionsBuilder: TransitionsBuilders.fadeIn),
+          page: LoginRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
         CustomRoute(
             page: RegistrRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
@@ -85,7 +89,9 @@ class AppRouter extends _$AppRouter {
             transitionsBuilder: TransitionsBuilders.fadeIn),
         CustomRoute(
           page: MyContactsRoute.page,
-          initial: true,
-        )
+        ),
+        CustomRoute(
+          page: ContactInfoRoute.page,
+        ),
       ];
 }

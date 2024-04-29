@@ -38,6 +38,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChatsListPage(),
       );
     },
+    ContactInfoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ContactInfoPage(),
+      );
+    },
     CreativityRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -199,6 +205,20 @@ class ChatsListRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ChatsListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ContactInfoPage]
+class ContactInfoRoute extends PageRouteInfo<void> {
+  const ContactInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          ContactInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ContactInfoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
