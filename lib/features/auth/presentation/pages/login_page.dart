@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
@@ -136,7 +135,8 @@ class _LoginPageState extends State<LoginPage> {
                                     child: CircularProgressIndicator.adaptive(),
                                   ),
                               success: () {
-                                context.router.push(const CameraRoute());
+                                // context.router.push(const CameraRoute());
+                                customBottomSheet(context, textStyle);
                               },
                               failure: (e) {
                                 wrongLoginDialog(context, textStyle);

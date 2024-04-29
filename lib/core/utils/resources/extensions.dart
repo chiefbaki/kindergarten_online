@@ -7,3 +7,10 @@ extension FormatDataTime on String? {
     return formatter.format(time);
   }
 }
+
+extension HexToString on String {
+  String fromHex() {
+    final temp = replaceAll("#", "0xFF");
+    return temp;
+  }
+}

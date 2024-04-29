@@ -5,6 +5,7 @@ import 'package:kindergarten_online/features/auth/presentation/pages/main_page.d
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/chats_list_page.dart';
+import 'package:kindergarten_online/features/chats/presentation/pages/my_contacts_page.dart';
 import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
@@ -24,61 +25,67 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         // Main
-        AutoRoute(
-          page: MainRoute.page,
-          initial: true
-        ),
+        CustomRoute(
+            page: MainRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Auth
-        AutoRoute(
-          page: LoginRoute.page,
-        ),
-        AutoRoute(
-          page: RegistrRoute.page,
-        ),
+        CustomRoute(
+            page: LoginRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: RegistrRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Camera
-        AutoRoute(
-          page: CameraRoute.page,
-        ),
+        CustomRoute(
+            page: CameraRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // News
-        AutoRoute(page: NewsRoute.page),
-        AutoRoute(
-          page: NewsDetailsRoute.page,
-        ),
+        CustomRoute(
+            page: NewsRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: NewsDetailsRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Services
-        AutoRoute(
-          page: ServicesRoute.page,
-        ),
-        AutoRoute(
-          page: CategoryRoute.page,
-        ),
+        CustomRoute(
+            page: ServicesRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: CategoryRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Schedule
-        AutoRoute(
-          page: ScheduleRoute.page,
-        ),
+        CustomRoute(
+            page: ScheduleRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Profile
-        AutoRoute(
-          page: SettingsRoute.page,
-        ),
+        CustomRoute(
+            page: SettingsRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Politics info
-        AutoRoute(
-          page: PoliticsRoute.page,
-        ),
+        CustomRoute(
+            page: PoliticsRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Personal account
-        AutoRoute(
-          page: PersonalAccountRoute.page,
-        ),
+        CustomRoute(
+            page: PersonalAccountRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Change password page
-        AutoRoute(
-          page: EditProfileRoute.page,
-        ),
+        CustomRoute(
+            page: EditProfileRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
         // Creativity page
-        AutoRoute(
-          page: CreativityRoute.page,
-        ),
-        AutoRoute(
-          page: ProductDetailRoute.page,
-          
-        ),
-        AutoRoute(page: ChatsListRoute.page, )
+        CustomRoute(
+            page: CreativityRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: ProductDetailRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: ChatsListRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+          page: MyContactsRoute.page,
+          initial: true,
+        )
       ];
 }

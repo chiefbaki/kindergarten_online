@@ -62,6 +62,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MainPage(),
       );
     },
+    MyContactsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MyContactsPage(),
+      );
+    },
     NewsDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<NewsDetailsRouteArgs>(
           orElse: () => const NewsDetailsRouteArgs());
@@ -249,6 +255,20 @@ class MainRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MyContactsPage]
+class MyContactsRoute extends PageRouteInfo<void> {
+  const MyContactsRoute({List<PageRouteInfo>? children})
+      : super(
+          MyContactsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyContactsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

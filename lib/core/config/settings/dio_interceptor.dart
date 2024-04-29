@@ -2,21 +2,23 @@ import "dart:async";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
-import "package:kindergarten_online/core/config/constants/api_urls.dart";
 import "package:kindergarten_online/core/config/settings/dio_exception_handler.dart";
+import "package:kindergarten_online/features/auth/data/dto/response/token_dto.dart";
+import "package:kindergarten_online/features/auth/data/mappers/token_mapper.dart";
 import "package:kindergarten_online/features/auth/domain/repositories/token_rep.dart";
 
 class DioSettings {
-  final TokenRepository _bearerToken;
-  late String baseUrl;
-  DioSettings(this._bearerToken) {
+  final TokenRepository _token;
+
+  DioSettings(
+    this._token,
+  ) {
     unawaited(setup());
-    baseUrl = dotenv.env["API_URL"] ?? "";
   }
 
+  final baseUrl = dotenv.env["API_URL"] ?? "";
   Dio dio = Dio(
     BaseOptions(
-      baseUrl: ApiUrls.baseUrl,
       contentType: "application/json",
       headers: {
         "Accept": "application/json",
@@ -40,15 +42,19 @@ class DioSettings {
         QueuedInterceptorsWrapper(
       onRequest:
           (RequestOptions options, RequestInterceptorHandler handler) async {
-        options.headers["Authorization"] = await _bearerToken.getBearerToken();
+        options.headers["Authorization"] = await _token.getBearerToken();
+        options.baseUrl = baseUrl;
         return handler.next(options);
       },
-      onError: (DioException error, ErrorInterceptorHandler handler) {
+      onError: (DioException error, ErrorInterceptorHandler handler) async {
         // refresh token when its error
         if (error.response?.statusCode == ResponseCode.unauthorised) {
-          "";
+          final newsAccessToken = await tokenRefresh();
+
+          dio.options.headers["Authorization"] = "Bearer $newsAccessToken";
+          return handler.resolve(await dio.fetch(error.requestOptions));
         }
-        handler.next(error);
+        return handler.next(error);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) =>
           handler.next(response),
@@ -57,5 +63,20 @@ class DioSettings {
       if (kDebugMode) logInterceptor,
       headerInterceptors,
     ]);
+  }
+
+  Future<String> tokenRefresh() async {
+    try {
+      final refreshToken = await _token.getToken();
+      final path = dotenv.env["TOKEN_REFRESH"] ?? "";
+      final Response response =
+          await dio.post(path, data: {"refresh": refreshToken.refresh});
+      final entity = TokenDto.fromJson(response.data);
+      _token.saveToken(entity: entity.toEntity());
+      return response.data;
+    } catch (e) {
+      _token.deleteTokens();
+      rethrow;
+    }
   }
 }

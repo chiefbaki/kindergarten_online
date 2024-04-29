@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:kindergarten_online/features/auth/data/dto/request/login_req_dto.dart';
 import 'package:kindergarten_online/features/auth/data/dto/response/token_dto.dart';
 import 'package:retrofit/retrofit.dart';
@@ -13,7 +14,7 @@ class AuthRemoteDataSource {
             .toJson());
 
     final TokenDto value = TokenDto.fromJson(response.data);
-    print(value.access);
+    debugPrint(value.access);
     final httpResponse = HttpResponse(value, response);
     return httpResponse;
   }

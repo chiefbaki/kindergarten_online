@@ -42,7 +42,6 @@ import 'package:kindergarten_online/features/services/presentation/cubits/produc
 
 final locator = GetIt.instance;
 
-
 Future<void> setup() async {
   // Local storage
   locator.registerFactory(() => const FlutterSecureStorage());

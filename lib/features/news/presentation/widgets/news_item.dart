@@ -5,6 +5,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/custom_list_tile.dart';
 
+
 class NewsItem extends StatelessWidget {
   const NewsItem({
     super.key,
@@ -28,7 +29,7 @@ class NewsItem extends StatelessWidget {
                 itemBuilder: (_, index) {
                   return Container(
                     decoration: BoxDecoration(
-                        color: AppColors.navyBlue,
+                         color: AppColors.navyBlue,
                         borderRadius: BorderRadius.circular(20)),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -50,3 +51,4 @@ class NewsItem extends StatelessWidget {
     );
   }
 }
+ 
