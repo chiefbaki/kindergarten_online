@@ -2,11 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
-import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/features/auth/presentation/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/widgets/custom_text_field.dart';
@@ -137,6 +138,8 @@ class _LoginPageState extends State<LoginPage> {
                               success: () {
                                 // context.router.push(const CameraRoute());
                                 customBottomSheet(context, textStyle);
+
+                                context.router.push(const CameraRoute());
                               },
                               failure: (e) {
                                 wrongLoginDialog(context, textStyle);

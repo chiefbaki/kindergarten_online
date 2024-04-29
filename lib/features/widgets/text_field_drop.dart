@@ -6,14 +6,13 @@ class TextFieldDrop extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final bool isReadOnly;
+  final TextTheme textStyle;
   const TextFieldDrop(
       {super.key,
       required this.textStyle,
       required this.hintText,
       required this.controller,
       this.isReadOnly = false});
-
-  final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {

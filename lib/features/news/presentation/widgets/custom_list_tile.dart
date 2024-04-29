@@ -22,43 +22,41 @@ class CustomListTile extends StatelessWidget {
     final String newImg = images.replaceAll("file:///", "http://84.54.12.206/");
     print(newImg);
     return InkWell(
-      onTap: () {
-        context.router.push(NewsDetailsRoute(
-          date: entity.timestamp ?? "",
-          title: entity.title ?? "",
-          content: entity.content ?? "",
-        ));
-      },
-      child: ListTile(
-        leading: Image.network(newImg),
-        title: Text(
-          entity.title ?? "",
-          textAlign: TextAlign.start,
-          style: textStyle.displayMedium!.copyWith(color: AppColors.white),
-        ),
-        subtitle: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                entity.content ?? "error",
-                style: textStyle.titleSmall!.copyWith(color: AppColors.white),
-                softWrap: true,
-                maxLines: 2,
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Text(
-                entity.timestamp.convertDateTime(),
-                style: textStyle.displaySmall!
-                    .copyWith(color: AppColors.lightGrey),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+        onTap: () {
+          context.router.push(NewsDetailsRoute(
+            date: entity.timestamp ?? "",
+            title: entity.title ?? "",
+            content: entity.content ?? "",
+          ));
+        },
+        child: ListTile(
+            leading: Image.network(newImg),
+            title: Text(
+              entity.title ?? "",
+              textAlign: TextAlign.start,
+              style: textStyle.displayMedium!.copyWith(color: AppColors.white),
+            ),
+            subtitle: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      entity.content ?? "error",
+                      style: textStyle.titleSmall!
+                          .copyWith(color: AppColors.white),
+                      softWrap: true,
+                      maxLines: 2,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      entity.timestamp.convertDateTime(),
+                      style: textStyle.displaySmall!
+                          .copyWith(color: AppColors.lightGrey),
+                    )
+                  ],
+                ))));
   }
 }

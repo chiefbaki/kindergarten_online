@@ -1,11 +1,10 @@
 import 'package:kindergarten_online/features/auth/data/data_sources/local/token_storage.dart';
-import 'package:kindergarten_online/features/auth/data/dto/response/token_dto.dart';
 import 'package:kindergarten_online/features/auth/data/mappers/token_mapper.dart';
 import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
 import 'package:kindergarten_online/features/auth/domain/repositories/token_rep.dart';
 
 class TokenImpl implements TokenRepository {
-  final TokenStorage _tokenStorage;
+  final LocalTokenStorage _tokenStorage;
   TokenImpl(this._tokenStorage);
   @override
   Future<void> deleteTokens() async {
@@ -15,12 +14,14 @@ class TokenImpl implements TokenRepository {
   @override
   Future<String> getBearerToken() async {
     final token = await _tokenStorage.getToken();
+
     return "Bearer ${token.access}";
   }
 
   @override
-  Future<TokenDto> getToken() async {
-    return await _tokenStorage.getToken();
+  Future<TokenEntity> getToken() async {
+    final entity = await _tokenStorage.getToken();
+    return TokenEntity(access: entity.access, refresh: entity.refresh);
   }
 
   @override

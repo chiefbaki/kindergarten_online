@@ -87,24 +87,22 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle) {
   );
 }
 
-
 // Reset phone sheets
-
 
 // check state button
 
 bool switcher = false;
 
-  void checkState(
-      {required TextEditingController paramOne,
-      required TextEditingController paramTwo,
-      required TextEditingController paramThree,
-      required void Function(void Function()) setState}) {
-    setState(
-      () {
-        switcher = paramTwo.text.isNotEmpty &&
-            paramTwo.text.isNotEmpty &&
-            paramThree.text.isNotEmpty;
-      },
-    );
-  }
+void checkState(
+    {required TextEditingController paramOne,
+    required TextEditingController paramTwo,
+    required TextEditingController paramThree,
+    required void Function(void Function()) setState}) {
+  setState(
+    () {
+      switcher = paramTwo.text.isNotEmpty &&
+          paramTwo.text.isNotEmpty &&
+          paramThree.text.isNotEmpty;
+    },
+  );
+}

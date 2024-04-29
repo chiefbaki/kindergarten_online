@@ -3,8 +3,13 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class ExitBtn extends StatelessWidget {
   final Function() onPressed;
+
   final String text;
-  const ExitBtn({super.key, required this.textStyle, required this.onPressed, required this.text});
+  const ExitBtn(
+      {super.key,
+      required this.textStyle,
+      required this.onPressed,
+      required this.text});
 
   final TextTheme textStyle;
 

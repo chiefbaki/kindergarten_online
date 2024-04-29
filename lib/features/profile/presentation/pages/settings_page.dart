@@ -26,6 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
+
     return CustomScaffold(
       body: SafeArea(
         child: Padding(
@@ -65,6 +66,12 @@ class _SettingsPageState extends State<SettingsPage> {
                               textStyle: textStyle,
                               onPressed: () {},
                               name: S.of(context).changePassword,
+                            ),
+                            const CustomDivider(),
+                            TextWithArrow(
+                              textStyle: textStyle,
+                              onPressed: () {},
+                              name: "Изменить пароль",
                             ),
                           ],
                         ),

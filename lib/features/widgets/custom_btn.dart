@@ -3,6 +3,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class CustomBtn extends StatelessWidget {
   final Function()? onPressed;
+
   final String name;
   const CustomBtn({
     super.key,

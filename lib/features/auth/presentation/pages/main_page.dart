@@ -5,8 +5,8 @@ import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
-import 'package:kindergarten_online/generated/l10n.dart';
 
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class MainPage extends StatelessWidget {
@@ -57,6 +57,7 @@ class MainPage extends StatelessWidget {
               Stack(
                 children: [
                   Image.asset(Imgs.back),
+
                   Positioned(
                     bottom: 270,
                     left: 100,

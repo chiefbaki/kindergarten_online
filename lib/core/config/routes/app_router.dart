@@ -11,13 +11,17 @@ import 'package:kindergarten_online/features/creativity/presentation/pages/creat
 import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/edit_profile_page.dart';
+import 'package:kindergarten_online/features/auth/presentation/pages/reset_page.dart';
+import 'package:kindergarten_online/features/profile/presentation/pages/change_password_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/personal_account_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/politics_info_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/settings_page.dart';
 import 'package:kindergarten_online/features/schedule/presentation/pages/schedule_page.dart';
 import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/category_page.dart';
+import 'package:kindergarten_online/features/services/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/product_detail_page.dart';
+
 import 'package:kindergarten_online/features/services/presentation/pages/services_page.dart';
 part 'app_router.gr.dart';
 

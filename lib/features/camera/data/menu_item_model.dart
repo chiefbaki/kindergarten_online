@@ -47,7 +47,7 @@ class MenuItem {
         route: const SettingsRoute()),
     MenuItem(
         img: Imgs.questionIcon,
-        name: "Вопрос техподдержке",
+        name: "Вопросы тех.поддержке",
         route: const CameraRoute()),
   ];
 }

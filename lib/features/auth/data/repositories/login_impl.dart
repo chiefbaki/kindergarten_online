@@ -46,4 +46,5 @@ class LoginImpl implements LoginRep {
       return DataFailed(message: ErrorHandler.handle(e).failure.message);
     }
   }
+  
 }

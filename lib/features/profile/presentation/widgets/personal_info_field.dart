@@ -5,6 +5,7 @@ class PersonalInfoField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final bool isReadOnly;
+
   const PersonalInfoField(
       {super.key,
       required this.textStyle,

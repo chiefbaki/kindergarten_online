@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
-import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/features/auth/presentation/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/widgets/custom_text_field.dart';

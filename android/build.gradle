@@ -5,7 +5,10 @@ allprojects {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e1d6fcd4c7932387b2ddefeebef01bdab3cd6d4e
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"

@@ -17,7 +17,7 @@ ThemeData theme() {
         displaySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
         titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
         titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-        titleSmall:  TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+        titleSmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
       ));
 }
 

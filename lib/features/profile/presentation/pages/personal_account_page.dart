@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
@@ -45,151 +46,146 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
+
     return CustomScaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                NavBar(textStyle: textStyle, text: S.of(context).account),
-                SizedBox(
-                  height: 40.h,
-                ),
-                BlocBuilder<ProfileCubit, ProfileState>(
-                  builder: (context, state) {
-                    return state.when(
-                        initial: () => const SizedBox(),
-                        loading: () => const Center(
-                              child: CircularProgressIndicator.adaptive(),
-                            ),
-                        success: (entity) {
-                          return Stack(
-                            children: [
-                              Image.asset(
-                                Imgs.rectangleAcc,
-                                fit: BoxFit.fill,
+        body: SafeArea(
+            child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 25),
+                child: SingleChildScrollView(
+                    child: Column(children: [
+                  NavBar(textStyle: textStyle, text: S.of(context).account),
+                  SizedBox(
+                    height: 40.h,
+                  ),
+                  BlocBuilder<ProfileCubit, ProfileState>(
+                    builder: (context, state) {
+                      return state.when(
+                          initial: () => const SizedBox(),
+                          loading: () => const Center(
+                                child: CircularProgressIndicator.adaptive(),
                               ),
-                              Positioned(
-                                left: 165,
-                                top: 20,
-                                child: ClipOval(
-                                  child: Image.asset(
-                                    Imgs.ava,
-                                    width: 100,
+                          success: (entity) {
+                            return Stack(
+                              children: [
+                                Image.asset(
+                                  Imgs.rectangleAcc,
+                                  fit: BoxFit.fill,
+                                ),
+                                Positioned(
+                                  left: 165,
+                                  top: 20,
+                                  child: ClipOval(
+                                    child: Image.asset(
+                                      Imgs.ava,
+                                      width: 100,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                left: 15,
-                                right: 15,
-                                top: 150,
-                                child: SizedBox(
-                                  width: MediaQuery.of(context).size.width,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.7,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        S.of(context).name,
-                                        style: textStyle.displaySmall!
-                                            .copyWith(color: AppColors.white),
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      PersonalInfoField(
-                                        isReadOnly: true,
-                                        textStyle: textStyle,
-                                        hintText: entity.firstName ?? "",
-                                        controller: _name,
-                                      ),
-                                      SizedBox(
-                                        height: 20.h,
-                                      ),
-                                      Text(
-                                        S.of(context).lastname,
-                                        style: textStyle.displaySmall!
-                                            .copyWith(color: AppColors.white),
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      PersonalInfoField(
-                                        isReadOnly: true,
-                                        textStyle: textStyle,
-                                        hintText: entity.lastName ?? "",
-                                        controller: _lastName,
-                                      ),
-                                      SizedBox(
-                                        height: 20.h,
-                                      ),
-                                      Text(
-                                        S.of(context).middleName,
-                                        style: textStyle.displaySmall!
-                                            .copyWith(color: AppColors.white),
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      PersonalInfoField(
-                                        isReadOnly: true,
-                                        textStyle: textStyle,
-                                        hintText: entity.patronymic ?? "",
-                                        controller: _middleName,
-                                      ),
-                                      SizedBox(
-                                        height: 20.h,
-                                      ),
-                                      // Text(
-                                      //   S.of(context).gender,
-                                      //   style: textStyle.displaySmall!
-                                      //       .copyWith(color: AppColors.white),
-                                      // ),
-                                      // SizedBox(
-                                      //   height: 10.h,
-                                      // ),
-                                      // TextFieldDrop(
-                                      //   textStyle: textStyle,
-                                      //   hintText: entity. ?? "",
-                                      //   controller: _gender,
-                                      //   isReadOnly: true,
-                                      // ),
-                                      // SizedBox(
-                                      //   height: 20.h,
-                                      // ),
-                                      Text(
-                                        S.of(context).phoneNumber,
-                                        style: textStyle.displaySmall!
-                                            .copyWith(color: AppColors.white),
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      PhoneTextField(
+                                Positioned(
+                                  left: 15,
+                                  right: 15,
+                                  top: 150,
+                                  child: SizedBox(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.7,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          S.of(context).name,
+                                          style: textStyle.displaySmall!
+                                              .copyWith(color: AppColors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        PersonalInfoField(
                                           isReadOnly: true,
                                           textStyle: textStyle,
-                                          hintText: entity.phone ?? "",
-                                          controller: _phone)
-                                    ],
+                                          hintText: entity.firstName ?? "",
+                                          controller: _name,
+                                        ),
+                                        SizedBox(
+                                          height: 20.h,
+                                        ),
+                                        Text(
+                                          S.of(context).lastname,
+                                          style: textStyle.displaySmall!
+                                              .copyWith(color: AppColors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        PersonalInfoField(
+                                          isReadOnly: true,
+                                          textStyle: textStyle,
+                                          hintText: entity.lastName ?? "",
+                                          controller: _lastName,
+                                        ),
+                                        SizedBox(
+                                          height: 20.h,
+                                        ),
+                                        Text(
+                                          S.of(context).middleName,
+                                          style: textStyle.displaySmall!
+                                              .copyWith(color: AppColors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        PersonalInfoField(
+                                          isReadOnly: true,
+                                          textStyle: textStyle,
+                                          hintText: entity.patronymic ?? "",
+                                          controller: _middleName,
+                                        ),
+                                        SizedBox(
+                                          height: 20.h,
+                                        ),
+                                        // Text(
+                                        //   S.of(context).gender,
+                                        //   style: textStyle.displaySmall!
+                                        //       .copyWith(color: AppColors.white),
+                                        // ),
+                                        // SizedBox(
+                                        //   height: 10.h,
+                                        // ),
+                                        // TextFieldDrop(
+                                        //   textStyle: textStyle,
+                                        //   hintText: entity. ?? "",
+                                        //   controller: _gender,
+                                        //   isReadOnly: true,
+                                        // ),
+                                        // SizedBox(
+                                        //   height: 20.h,
+                                        // ),
+                                        Text(
+                                          S.of(context).phoneNumber,
+                                          style: textStyle.displaySmall!
+                                              .copyWith(color: AppColors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        PhoneTextField(
+                                            isReadOnly: true,
+                                            textStyle: textStyle,
+                                            hintText: entity.phone ?? "",
+                                            controller: _phone)
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              )
-                            ],
-                          );
-                        },
-                        failure: (e) {
-                          return Text(e);
-                        });
-                  },
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+                                )
+                              ],
+                            );
+                          },
+                          failure: (e) {
+                            return Text(e);
+                          });
+                    },
+                  )
+                ])))));
   }
 }

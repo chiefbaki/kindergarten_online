@@ -45,7 +45,7 @@ final locator = GetIt.instance;
 Future<void> setup() async {
   // Local storage
   locator.registerFactory(() => const FlutterSecureStorage());
-  locator.registerFactory<TokenStorage>(() => TokenStorage(locator()));
+  locator.registerFactory<LocalTokenStorage>(() => LocalTokenStorage(locator()));
   locator.registerSingleton<TokenRepository>(TokenImpl(locator()));
   locator.registerSingleton(SaveTokenUseCase(locator()));
   locator.registerSingleton(GetTokenUseCase(locator()));

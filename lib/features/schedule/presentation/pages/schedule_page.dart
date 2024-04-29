@@ -10,6 +10,7 @@ class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
+
     return CustomScaffold(
       body: SafeArea(
         child: Center(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 
 class NavBar extends StatelessWidget {
   final String text;
+
   const NavBar({super.key, required this.textStyle, required this.text});
 
   final TextTheme textStyle;
@@ -23,10 +23,7 @@ class NavBar extends StatelessWidget {
         ),
         Image.asset(
           Imgs.line,
-          width: 84,
-          height: 8,
-          color: AppColors.black,
-        )
+        ),
       ],
     );
   }
