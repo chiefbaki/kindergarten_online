@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "account": MessageLookupByLibrary.simpleMessage("Мой Аккаунт"),
+        "age": MessageLookupByLibrary.simpleMessage("5 лет"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Уже есть аккаунт?  "),
         "applicationTheme":
@@ -35,8 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Сообщения в чате"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
+        "children": MessageLookupByLibrary.simpleMessage("Дети: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Выберите группу/класс"),
+        "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
         "creativity": MessageLookupByLibrary.simpleMessage("Творчество детей"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("Редактировать профиль"),
@@ -48,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "group": MessageLookupByLibrary.simpleMessage("Группа:"),
         "inputLastName":
             MessageLookupByLibrary.simpleMessage("Введите фамилию"),
+        "inputMessage":
+            MessageLookupByLibrary.simpleMessage("Введите сообщение"),
         "inputMiddleName":
             MessageLookupByLibrary.simpleMessage("Введите отчество"),
         "inputName": MessageLookupByLibrary.simpleMessage("Введите имя"),
@@ -60,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainPageAdvice": MessageLookupByLibrary.simpleMessage(
             "Для пользования нашего приложения\nвыполните вход или зарегистрируйтесь,\nесли Вы у нас впервые."),
         "middleName": MessageLookupByLibrary.simpleMessage("Отчество:"),
+        "myContacts": MessageLookupByLibrary.simpleMessage("Мои контакты"),
         "name": MessageLookupByLibrary.simpleMessage("Имя:"),
         "nameAndAddress":
             MessageLookupByLibrary.simpleMessage("Название и адрес"),
@@ -70,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsline": MessageLookupByLibrary.simpleMessage("Лента новостей"),
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Сначала старые"),
+        "online": MessageLookupByLibrary.simpleMessage("В сети"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль:"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона:"),
         "privacyPolicy":
@@ -89,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Раздел пока пуст"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "В этом окне будут отображаться\nВаши избранные объявления."),
+        "usersprofile":
+            MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
         "welcome": MessageLookupByLibrary.simpleMessage("Добро пожаловать!")
       };
 }

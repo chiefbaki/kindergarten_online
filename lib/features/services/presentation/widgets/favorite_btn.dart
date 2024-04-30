@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class FavoriteBtn extends StatelessWidget {
-  final Function() onPressed;
-  const FavoriteBtn({super.key, required this.onPressed});
+  final void Function() onPressed;
+  final bool isSelected;
+  const FavoriteBtn(
+      {super.key, required this.onPressed, this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: onPressed,
-        icon: const Icon(
+        icon: Icon(
           Icons.favorite,
-          color: AppColors.blue,
+          color: isSelected ? AppColors.blue : AppColors.white,
           size: 24,
         ));
   }

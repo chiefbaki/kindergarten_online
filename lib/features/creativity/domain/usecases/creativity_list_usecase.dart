@@ -1,5 +1,5 @@
 import 'package:kindergarten_online/core/usecase/usecase.dart';
-import 'package:kindergarten_online/core/utils/resources/data_state.dart';
+import 'package:kindergarten_online/core/utils/failure/data_state.dart';
 import 'package:kindergarten_online/features/creativity/domain/entities/creativity_list_entity.dart';
 import 'package:kindergarten_online/features/creativity/domain/repositories/creativity_list_rep.dart';
 

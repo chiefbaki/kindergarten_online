@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kindergarten_online/core/config/settings/dio_exception_handler.dart';
-import 'package:kindergarten_online/core/utils/resources/data_state.dart';
+import 'package:kindergarten_online/core/utils/failure/data_state.dart';
 import 'package:kindergarten_online/features/creativity/data/data_sources/remote/remote_creativity_data_impl.dart';
 import 'package:kindergarten_online/features/creativity/data/mappers/creativity_list_mapper.dart';
 import 'package:kindergarten_online/features/creativity/domain/entities/creativity_list_entity.dart';

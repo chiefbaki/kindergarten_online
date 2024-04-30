@@ -4,6 +4,8 @@ import 'package:kindergarten_online/features/auth/presentation/pages/login_page.
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/contact_entities.dart';
+import 'package:kindergarten_online/features/chats/presentation/pages/chat_page.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/chats_list_page.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/contact_info_page.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/my_contacts_page.dart';
@@ -15,11 +17,11 @@ import 'package:kindergarten_online/features/auth/presentation/pages/reset_page.
 import 'package:kindergarten_online/features/profile/presentation/pages/change_password_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/personal_account_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/politics_info_page.dart';
+import 'package:kindergarten_online/features/profile/presentation/pages/rools_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/settings_page.dart';
 import 'package:kindergarten_online/features/schedule/presentation/pages/schedule_page.dart';
 import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/category_page.dart';
-import 'package:kindergarten_online/features/services/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/product_detail_page.dart';
 
 import 'package:kindergarten_online/features/services/presentation/pages/services_page.dart';
@@ -33,7 +35,6 @@ class AppRouter extends _$AppRouter {
         CustomRoute(
           page: MainRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
-          initial: true,
         ),
         // Auth
         CustomRoute(
@@ -56,8 +57,9 @@ class AppRouter extends _$AppRouter {
             transitionsBuilder: TransitionsBuilders.fadeIn),
         // Services
         CustomRoute(
-            page: ServicesRoute.page,
-            transitionsBuilder: TransitionsBuilders.fadeIn),
+          page: ServicesRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
         CustomRoute(
             page: CategoryRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
@@ -85,17 +87,32 @@ class AppRouter extends _$AppRouter {
         CustomRoute(
             page: CreativityRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+        // Products Info page
         CustomRoute(
             page: ProductDetailRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+        // List of contacts page
         CustomRoute(
             page: ChatsListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+        // My contacts page
         CustomRoute(
+          initial: true,
           page: MyContactsRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
+        // Contacts info page
         CustomRoute(
-          page: ContactInfoRoute.page,
+            page: ContactInfoRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        // Contacts info page
+        CustomRoute(
+            page: RoolsRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        // Chat page
+        CustomRoute(
+          page: ChatRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
       ];
 }

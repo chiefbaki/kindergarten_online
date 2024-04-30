@@ -17,7 +17,7 @@ class PoliticsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 25),
           child: Column(
             children: [
-              NavBar(textStyle: textStyle, text: "Правила польз-ния"),
+              NavBar(textStyle: textStyle, text: "Политика конф-ти"),
               SingleChildScrollView(
                 child: Padding(
                   padding:

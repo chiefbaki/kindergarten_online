@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:kindergarten_online/core/utils/resources/data_state.dart';
+import 'package:kindergarten_online/core/utils/failure/data_state.dart';
 import 'package:kindergarten_online/features/auth/data/dto/request/login_req_dto.dart';
 import 'package:kindergarten_online/features/auth/domain/entities/response/token_entity.dart';
 

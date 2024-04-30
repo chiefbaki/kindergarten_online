@@ -178,12 +178,16 @@ class _SettingsPageState extends State<SettingsPage> {
                           TextWithArrow(
                               textStyle: textStyle,
                               name: S.of(context).termsofUse,
-                              onPressed: () {}),
+                              onPressed: () {
+                                context.router.push(const PoliticsRoute());
+                              }),
                           const CustomDivider(),
                           TextWithArrow(
                               textStyle: textStyle,
                               name: S.of(context).privacyPolicy,
-                              onPressed: () {})
+                              onPressed: () {
+                                context.router.push(const RoolsRoute());
+                              })
                         ],
                       ),
                     )),

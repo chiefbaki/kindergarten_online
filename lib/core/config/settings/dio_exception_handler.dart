@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:kindergarten_online/core/config/constants/network_constant.dart';
-import 'package:kindergarten_online/core/utils/resources/dio_failure.dart';
+import 'package:kindergarten_online/core/utils/failure/dio_failure.dart';
 
 class ErrorHandler implements Exception {
   late Failure failure;

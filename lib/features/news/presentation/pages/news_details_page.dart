@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/core/utils/resources/extensions.dart';
+import 'package:kindergarten_online/core/utils/extensions/extensions.dart';
 import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/generated/l10n.dart';

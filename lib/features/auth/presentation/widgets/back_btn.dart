@@ -9,6 +9,7 @@ class BackBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: onPressed,
+        style: IconButton.styleFrom(padding: EdgeInsets.zero),
         icon: const Icon(
           Icons.arrow_back,
           color: AppColors.black,

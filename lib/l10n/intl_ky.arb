@@ -47,5 +47,12 @@
   "group": "Топ:",
   "chooseGroupOrClass": "Топту/классты тандоо",
   "alreadyHaveAnAcc": "Каттоо эсебиңиз барбы? ",
-  "chats": "Чаты"
+  "chats": "Чаты",
+  "children": "Дети: ",
+  "online": "В сети",
+  "myContacts": "Мои контакты",
+  "createGroup": "Создать группу",
+  "usersprofile": "Профиль пользователя",
+  "inputMessage": "Введите сообщение",
+  "age": "5 лет"
 }

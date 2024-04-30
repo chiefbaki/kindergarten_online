@@ -38,6 +38,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChangePasswordPage(),
       );
     },
+    ChatRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChatPage(),
+      );
+    },
     ChatsListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -45,9 +51,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ContactInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<ContactInfoRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ContactInfoPage(),
+        child: ContactInfoPage(
+          key: args.key,
+          entity: args.entity,
+        ),
       );
     },
     CreativityRoute.name: (routeData) {
@@ -60,12 +70,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EditProfilePage(),
-      );
-    },
-    FavouriteRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const FavouritePage(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -138,6 +142,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ResetPage(),
+      );
+    },
+    RoolsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RoolsPage(),
       );
     },
     ScheduleRoute.name: (routeData) {
@@ -228,6 +238,20 @@ class ChangePasswordRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ChatPage]
+class ChatRoute extends PageRouteInfo<void> {
+  const ChatRoute({List<PageRouteInfo>? children})
+      : super(
+          ChatRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChatRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ChatsListPage]
 class ChatsListRoute extends PageRouteInfo<void> {
   const ChatsListRoute({List<PageRouteInfo>? children})
@@ -243,16 +267,40 @@ class ChatsListRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ContactInfoPage]
-class ContactInfoRoute extends PageRouteInfo<void> {
-  const ContactInfoRoute({List<PageRouteInfo>? children})
-      : super(
+class ContactInfoRoute extends PageRouteInfo<ContactInfoRouteArgs> {
+  ContactInfoRoute({
+    Key? key,
+    required ContactResultsEntity entity,
+    List<PageRouteInfo>? children,
+  }) : super(
           ContactInfoRoute.name,
+          args: ContactInfoRouteArgs(
+            key: key,
+            entity: entity,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ContactInfoRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ContactInfoRouteArgs> page =
+      PageInfo<ContactInfoRouteArgs>(name);
+}
+
+class ContactInfoRouteArgs {
+  const ContactInfoRouteArgs({
+    this.key,
+    required this.entity,
+  });
+
+  final Key? key;
+
+  final ContactResultsEntity entity;
+
+  @override
+  String toString() {
+    return 'ContactInfoRouteArgs{key: $key, entity: $entity}';
+  }
 }
 
 /// generated route for
@@ -279,20 +327,6 @@ class EditProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EditProfileRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [FavouritePage]
-class FavouriteRoute extends PageRouteInfo<void> {
-  const FavouriteRoute({List<PageRouteInfo>? children})
-      : super(
-          FavouriteRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'FavouriteRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -496,6 +530,20 @@ class ResetRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ResetRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RoolsPage]
+class RoolsRoute extends PageRouteInfo<void> {
+  const RoolsRoute({List<PageRouteInfo>? children})
+      : super(
+          RoolsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RoolsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

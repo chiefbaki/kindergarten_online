@@ -5,7 +5,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/services/presentation/widgets/favorite_btn.dart';
 
-class CategoryCard extends StatelessWidget {
+class CategoryCard extends StatefulWidget {
   final ProductResultEntity entity;
   const CategoryCard({
     super.key,
@@ -16,10 +16,16 @@ class CategoryCard extends StatelessWidget {
   final TextTheme textStyle;
 
   @override
+  State<CategoryCard> createState() => _CategoryCardState();
+}
+
+class _CategoryCardState extends State<CategoryCard> {
+  bool isSelected = false;
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.push(ProductDetailRoute(results: entity));
+        context.router.push(ProductDetailRoute(results: widget.entity));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -28,7 +34,7 @@ class CategoryCard extends StatelessWidget {
                 colorFilter: ColorFilter.mode(
                     AppColors.black.withOpacity(0.4), BlendMode.colorBurn),
                 image: NetworkImage(
-                  "http://84.54.12.206${entity.images!.first.img}",
+                  "http://84.54.12.206${widget.entity.images!.first.img}",
                 ),
                 fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(20)),
@@ -41,17 +47,25 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    entity.price ?? "",
-                    style: textStyle.displaySmall!
+                    widget.entity.price ?? "",
+                    style: widget.textStyle.displaySmall!
                         .copyWith(color: AppColors.white),
                   ),
-                  FavoriteBtn(onPressed: () {}),
+                  FavoriteBtn(
+                    onPressed: () {
+                      setState(() {
+                        isSelected = !isSelected;
+                      });
+                    },
+                    isSelected: isSelected,
+                  ),
                 ],
               ),
               const Spacer(),
               Text(
-                entity.name ?? "",
-                style: textStyle.displayLarge!.copyWith(color: AppColors.white),
+                widget.entity.name ?? "",
+                style: widget.textStyle.displayLarge!
+                    .copyWith(color: AppColors.white),
               )
             ],
           ),

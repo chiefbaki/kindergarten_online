@@ -12,22 +12,19 @@ class CustomFloatBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: ElevatedButton(
-          onPressed: isToSwitch
-              ? () {
-                  customBottomSheet(context, textStyle);
-                }
-              : () {
-                  context.router.maybePop();
-                },
-          style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.blue,
-              padding: const EdgeInsets.all(12),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15))),
-          child: icon),
-    );
+    return ElevatedButton(
+        onPressed: isToSwitch
+            ? () {
+                customBottomSheet(context, textStyle);
+              }
+            : () {
+                context.router.maybePop();
+              },
+        style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.blue,
+            padding: const EdgeInsets.all(12),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15))),
+        child: icon);
   }
 }

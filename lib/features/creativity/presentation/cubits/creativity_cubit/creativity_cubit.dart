@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kindergarten_online/core/utils/resources/data_state.dart';
+import 'package:kindergarten_online/core/utils/failure/data_state.dart';
 import 'package:kindergarten_online/features/creativity/domain/entities/creativity_list_entity.dart';
 import 'package:kindergarten_online/features/creativity/domain/usecases/creativity_list_usecase.dart';
 import 'package:kindergarten_online/features/creativity/domain/usecases/search_creativity_usecase.dart';

@@ -4,6 +4,10 @@ import 'package:kindergarten_online/core/utils/resources/resources.dart';
 
 ThemeData theme() {
   return ThemeData(
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.white,
+        elevation: 0
+      ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: outlineBorder(),
         focusedBorder: outlineBorder(),

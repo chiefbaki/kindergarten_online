@@ -49,7 +49,7 @@ class ChatsListPage extends StatelessWidget {
                   CustomTextBtn(
                       textStyle: textStyle,
                       onPressed: () {},
-                      name: "Создать группу")
+                      name: S.of(context).createGroup)
                 ],
               ),
               SizedBox(

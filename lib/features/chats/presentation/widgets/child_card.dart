@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 class ChildCard extends StatelessWidget {
   final String name;
@@ -21,6 +22,7 @@ class ChildCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
       leading: Image.asset(Imgs.ava),
       title: Row(
         children: [
@@ -30,7 +32,7 @@ class ChildCard extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            "$age лет",
+            S.of(context).age,
             style: textStyle.displayMedium!.copyWith(color: AppColors.grey),
           )
         ],

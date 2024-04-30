@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Орнотуулар"),
         "account": MessageLookupByLibrary.simpleMessage("Менин Аккаунтум"),
+        "age": MessageLookupByLibrary.simpleMessage("5 лет"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Каттоо эсебиңиз барбы? "),
         "applicationTheme":
@@ -35,8 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Чат билдирүүлөрү"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
+        "children": MessageLookupByLibrary.simpleMessage("Дети: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Топту/классты тандоо"),
+        "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
         "creativity": MessageLookupByLibrary.simpleMessage("Чыгармачылыктар"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Профилди түзөтүү"),
         "enter": MessageLookupByLibrary.simpleMessage("Кирүү"),
@@ -47,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "group": MessageLookupByLibrary.simpleMessage("Топ:"),
         "inputLastName":
             MessageLookupByLibrary.simpleMessage("Фамилияңызды жазыңыз"),
+        "inputMessage":
+            MessageLookupByLibrary.simpleMessage("Введите сообщение"),
         "inputMiddleName":
             MessageLookupByLibrary.simpleMessage("Отчествоңузду жазыңыз"),
         "inputName": MessageLookupByLibrary.simpleMessage("Атыңызды жазыңыз"),
@@ -60,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainPageAdvice": MessageLookupByLibrary.simpleMessage(
             "Биздин тиркемени колдонуу үчүн\nкириңиз же катталыңыз\nэгер сиз биз менен биринчи жолу болсоңуз."),
         "middleName": MessageLookupByLibrary.simpleMessage("Отчество:"),
+        "myContacts": MessageLookupByLibrary.simpleMessage("Мои контакты"),
         "name": MessageLookupByLibrary.simpleMessage("Аты:"),
         "nameAndAddress":
             MessageLookupByLibrary.simpleMessage("Аты жана адреси"),
@@ -70,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsline": MessageLookupByLibrary.simpleMessage("Жаңы жаңылыктар"),
         "notifications": MessageLookupByLibrary.simpleMessage("Эскертмелер"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Биринчи эскилер"),
+        "online": MessageLookupByLibrary.simpleMessage("В сети"),
         "password": MessageLookupByLibrary.simpleMessage("Сырсөз:"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Телефон номуру:"),
         "privacyPolicy":
@@ -89,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Бул бөлүм бош"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "Бул бөлүмдө\nСиздин сүйүктүү жарнамаларыңыз көрсөтүлөт."),
+        "usersprofile":
+            MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
         "welcome": MessageLookupByLibrary.simpleMessage("Кош келиңиз!")
       };
 }

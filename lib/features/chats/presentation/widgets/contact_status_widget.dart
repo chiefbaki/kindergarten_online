@@ -1,25 +1,30 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/message_btn.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 class ContactStatusWidget extends StatelessWidget {
-  const ContactStatusWidget({
-    super.key,
-    required this.textStyle,
-  });
+  final String name;
+  final String img;
+  const ContactStatusWidget(
+      {super.key,
+      required this.textStyle,
+      required this.name,
+      required this.img});
 
   final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(Imgs.ava),
+      contentPadding: EdgeInsets.zero,
+      leading: ClipOval(child: Image.network(img)),
       title: Text(
-        "Ислам\nКурбанов",
-        style:
-            textStyle.displayLarge!.copyWith(color: AppColors.black),
+        name,
+        style: textStyle.displayLarge!.copyWith(color: AppColors.black),
       ),
       subtitle: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -33,15 +38,16 @@ class ContactStatusWidget extends StatelessWidget {
               width: 5.w,
             ),
             Text(
-              "В сети",
-              style: textStyle.titleSmall!
-                  .copyWith(color: AppColors.lightGrey),
+              S.of(context).online,
+              style: textStyle.titleSmall!.copyWith(color: AppColors.lightGrey),
             )
           ],
         ),
       ),
       trailing: MessageBtn(
-        onPressed: () {},
+        onPressed: () {
+          context.router.push(const ChatRoute());
+        },
       ),
     );
   }

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "account": MessageLookupByLibrary.simpleMessage("My Account"),
+        "age": MessageLookupByLibrary.simpleMessage("5 лет"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Already have an account?  "),
         "applicationTheme":
@@ -35,8 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chat background"),
         "chatMessages": MessageLookupByLibrary.simpleMessage("Chat messages"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
+        "children": MessageLookupByLibrary.simpleMessage("Дети: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Choose group/class"),
+        "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
         "creativity": MessageLookupByLibrary.simpleMessage("Creativity"),
         "dataChanged": MessageLookupByLibrary.simpleMessage("Data changed"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -47,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gender": MessageLookupByLibrary.simpleMessage("Gender:"),
         "group": MessageLookupByLibrary.simpleMessage("Group:"),
         "inputLastName": MessageLookupByLibrary.simpleMessage("Input lastname"),
+        "inputMessage":
+            MessageLookupByLibrary.simpleMessage("Введите сообщение"),
         "inputMiddleName":
             MessageLookupByLibrary.simpleMessage("Input middle name"),
         "inputName": MessageLookupByLibrary.simpleMessage("Input name"),
@@ -59,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainPageAdvice": MessageLookupByLibrary.simpleMessage(
             "To use our app please\nsign in or sign up,\nif your are the first time."),
         "middleName": MessageLookupByLibrary.simpleMessage("Middlename:"),
+        "myContacts": MessageLookupByLibrary.simpleMessage("Мои контакты"),
         "name": MessageLookupByLibrary.simpleMessage("Name:"),
         "nameAndAddress":
             MessageLookupByLibrary.simpleMessage("Name and address"),
@@ -69,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsline": MessageLookupByLibrary.simpleMessage("News line"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Old ones first"),
+        "online": MessageLookupByLibrary.simpleMessage("В сети"),
         "password": MessageLookupByLibrary.simpleMessage("Password:"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number:"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
@@ -85,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This section is still empty"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "This window will display\nYour favorite advertisements."),
+        "usersprofile":
+            MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!")
       };
 }

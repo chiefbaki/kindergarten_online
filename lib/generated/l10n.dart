@@ -539,6 +539,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Дети: `
+  String get children {
+    return Intl.message(
+      'Дети: ',
+      name: 'children',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `В сети`
+  String get online {
+    return Intl.message(
+      'В сети',
+      name: 'online',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Мои контакты`
+  String get myContacts {
+    return Intl.message(
+      'Мои контакты',
+      name: 'myContacts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Создать группу`
+  String get createGroup {
+    return Intl.message(
+      'Создать группу',
+      name: 'createGroup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Профиль пользователя`
+  String get usersprofile {
+    return Intl.message(
+      'Профиль пользователя',
+      name: 'usersprofile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите сообщение`
+  String get inputMessage {
+    return Intl.message(
+      'Введите сообщение',
+      name: 'inputMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 лет`
+  String get age {
+    return Intl.message(
+      '5 лет',
+      name: 'age',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

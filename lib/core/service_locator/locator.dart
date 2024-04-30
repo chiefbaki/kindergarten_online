@@ -12,6 +12,11 @@ import 'package:kindergarten_online/features/auth/domain/usecases/get_token_usec
 import 'package:kindergarten_online/features/auth/domain/usecases/login_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/save_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:kindergarten_online/features/chats/data/data_sources/remote/remote_chat_data.dart';
+import 'package:kindergarten_online/features/chats/data/repositories/contact_impl.dart';
+import 'package:kindergarten_online/features/chats/domain/repositories/contact_repository.dart';
+import 'package:kindergarten_online/features/chats/domain/usecases/contact_usecase.dart';
+import 'package:kindergarten_online/features/chats/presentation/bloc/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/creativity/data/data_sources/remote/remote_creativity_data_impl.dart';
 import 'package:kindergarten_online/features/creativity/data/repositories/creativity_list_impl.dart';
 import 'package:kindergarten_online/features/creativity/domain/repositories/creativity_list_rep.dart';
@@ -45,7 +50,8 @@ final locator = GetIt.instance;
 Future<void> setup() async {
   // Local storage
   locator.registerFactory(() => const FlutterSecureStorage());
-  locator.registerFactory<LocalTokenStorage>(() => LocalTokenStorage(locator()));
+  locator
+      .registerFactory<LocalTokenStorage>(() => LocalTokenStorage(locator()));
   locator.registerSingleton<TokenRepository>(TokenImpl(locator()));
   locator.registerSingleton(SaveTokenUseCase(locator()));
   locator.registerSingleton(GetTokenUseCase(locator()));
@@ -62,6 +68,7 @@ Future<void> setup() async {
   locator.registerSingleton(RemoteNewsData(locator<DioSettings>().dio));
   locator.registerSingleton(RemoteCreativityData(locator<DioSettings>().dio));
   locator.registerSingleton(RemoteServicesData(locator<DioSettings>().dio));
+  locator.registerSingleton(RemoteChatData(locator<DioSettings>().dio));
 
   // Dependencies
   locator.registerFactory<LoginRep>(() => LoginImpl(locator()));
@@ -73,6 +80,8 @@ Future<void> setup() async {
       CreativityListImpl(locator<RemoteCreativityData>()));
   locator.registerSingleton<CategoryRep>(
       CategoryImpl(locator<RemoteServicesData>()));
+  locator.registerSingleton<ContactRepository>(
+      ContactImpl(locator<RemoteChatData>()));
 
   // UseCases
   locator.registerSingleton(LoginUseCase(locator()));
@@ -84,6 +93,7 @@ Future<void> setup() async {
       .registerSingleton(SearchCreativityUseCase(locator<CreativityListRep>()));
   locator.registerSingleton(CategoryUseCase(locator<CategoryRep>()));
   locator.registerSingleton(ProductUseCase(locator<CategoryRep>()));
+  locator.registerSingleton(ContactUseCase(locator<ContactRepository>()));
 
   // Cubits
   locator.registerSingleton(LoginCubit(
@@ -97,4 +107,5 @@ Future<void> setup() async {
       locator<CreativityUseCase>(), locator<SearchCreativityUseCase>()));
   locator.registerSingleton(CategoryCubit(locator<CategoryUseCase>()));
   locator.registerSingleton(ProductCubit(locator<ProductUseCase>()));
+  locator.registerSingleton(ContactBloc(locator<ContactUseCase>()));
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 
 class NavBar extends StatelessWidget {
@@ -23,6 +25,8 @@ class NavBar extends StatelessWidget {
         ),
         Image.asset(
           Imgs.line,
+          width: 84.w,
+          color: AppColors.black,
         ),
       ],
     );
