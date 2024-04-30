@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/chats/domain/entities/contact_entities.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/contact_entity.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class ContactCard extends StatelessWidget {

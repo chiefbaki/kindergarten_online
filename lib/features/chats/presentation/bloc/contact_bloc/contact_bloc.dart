@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kindergarten_online/core/utils/failure/data_state.dart';
-import 'package:kindergarten_online/features/chats/domain/entities/contact_entities.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/contact_entity.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/contact_usecase.dart';
 
 part 'contact_event.dart';

@@ -56,7 +56,8 @@ class PhotoViewScreen extends StatelessWidget {
         onTapDown: (context, details, controllerValue) {
           Navigator.pop(context);
         },
-        backgroundDecoration: const BoxDecoration(color: AppColors.lightBlue),
+        backgroundDecoration:
+            BoxDecoration(color: AppColors.black.withOpacity(0.98)),
         imageProvider: CachedNetworkImageProvider(img),
       ),
     );

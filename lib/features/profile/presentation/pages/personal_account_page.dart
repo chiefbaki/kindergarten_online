@@ -61,8 +61,11 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                     builder: (context, state) {
                       return state.when(
                           initial: () => const SizedBox(),
-                          loading: () => const Center(
-                                child: CircularProgressIndicator.adaptive(),
+                          loading: () => const Padding(
+                                padding: EdgeInsets.only(top: 350),
+                                child: Center(
+                                  child: CircularProgressIndicator.adaptive(),
+                                ),
                               ),
                           success: (entity) {
                             return Stack(

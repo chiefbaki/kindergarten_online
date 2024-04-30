@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/req/create_group_req_entity.dart';
+import 'package:kindergarten_online/features/chats/presentation/bloc/create_group_bloc/create_group_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/search_chat.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
@@ -34,8 +38,8 @@ class ChatsListPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10.h,
+              Gap(
+                10.h,
               ),
               Row(
                 children: [
@@ -43,17 +47,32 @@ class ChatsListPage extends StatelessWidget {
                     Icons.group_add_outlined,
                     size: 25,
                   ),
-                  SizedBox(
-                    width: 15.w,
+                  Gap(
+                    15.w,
                   ),
-                  CustomTextBtn(
-                      textStyle: textStyle,
-                      onPressed: () {},
-                      name: S.of(context).createGroup)
+                  BlocListener<CreateGroupBloc, CreateGroupState>(
+                    listener: (context, state) {
+                      state.when(initial: () {
+                        debugPrint("initial");
+                      }, loading: () {
+                        debugPrint("loading");
+                      }, success: (entity) {
+                        debugPrint("initial");
+                      }, failure: (error) {
+                        debugPrint(error);
+                      });
+                    },
+                    child: CustomTextBtn(
+                        textStyle: textStyle,
+                        onPressed: () {
+                          context.read<CreateGroupBloc>().add(Create(entity: CreateGroupReqEntity()));
+                        },
+                        name: S.of(context).createGroup),
+                  )
                 ],
               ),
-              SizedBox(
-                height: 25.h,
+              Gap(
+                25.h,
               ),
               Expanded(
                 child: ListView.separated(
@@ -61,10 +80,7 @@ class ChatsListPage extends StatelessWidget {
                   itemBuilder: (_, index) {
                     return ChatListItem(textStyle: textStyle);
                   },
-                  separatorBuilder: (context, index) => const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: CustomDivider(),
-                  ),
+                  separatorBuilder: (context, index) => const CustomDivider(),
                 ),
               )
             ],

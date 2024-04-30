@@ -23,8 +23,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _phone = TextEditingController(text: "996990552219");
-  final _password = TextEditingController(text: "0514");
+  final _phone = TextEditingController(text: "996501594444");
+  final _password = TextEditingController(text: "alatoouniversity27");
   final _newPhoneNumber = TextEditingController();
   final List<TextEditingController> _controllers =
       List.generate(6, (index) => TextEditingController());

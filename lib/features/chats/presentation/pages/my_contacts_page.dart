@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/chats/presentation/bloc/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/search_contacts.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/contact_item.dart';
@@ -56,17 +57,25 @@ class _MyContactsPageState extends State<MyContactsPage> {
                       initial: () => const SizedBox(),
                       loading: () => const CustomProgressIndicator(),
                       success: (entity) {
-                        return ListView.separated(
-                          itemCount: entity.count ?? 0,
-                          itemBuilder: (_, index) {
-                            return ContactCard(
-                              textStyle: textStyle,
-                              entity: entity.results![index],
-                            );
-                          },
-                          separatorBuilder: (context, index) =>
-                              const CustomDivider(),
-                        );
+                        return entity.results!.isNotEmpty
+                            ? ListView.separated(
+                                itemCount: entity.count ?? 0,
+                                itemBuilder: (_, index) {
+                                  return ContactCard(
+                                    textStyle: textStyle,
+                                    entity: entity.results![index],
+                                  );
+                                },
+                                separatorBuilder: (context, index) =>
+                                    const CustomDivider(),
+                              )
+                            : Center(
+                                child: Text(
+                                  "Список ваших контактов пуст",
+                                  style: textStyle.displayMedium!
+                                      .copyWith(color: AppColors.black),
+                                ),
+                              );
                       },
                       failure: ((error) => Text(error)));
                 },

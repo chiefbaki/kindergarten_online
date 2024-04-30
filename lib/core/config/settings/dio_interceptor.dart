@@ -30,6 +30,10 @@ class DioSettings {
 
   Future<void> setup() async {
     final Interceptors interceptors = dio.interceptors;
+    final token = await _token.getBearerToken();
+    final refreshToken = await _token.getToken();
+    debugPrint("BEARER $token");
+    debugPrint("REFRESH ${refreshToken.refresh}");
     interceptors.clear();
 
     final LogInterceptor logInterceptor = LogInterceptor(
@@ -50,8 +54,8 @@ class DioSettings {
         // refresh token when its error
         if (error.response?.statusCode == ResponseCode.unauthorised) {
           final newsAccessToken = await tokenRefresh();
-
-          dio.options.headers["Authorization"] = "Bearer $newsAccessToken";
+          dio.options.headers["Authorization"] =
+              "Bearer ${newsAccessToken.access}";
           return handler.resolve(await dio.fetch(error.requestOptions));
         }
         return handler.next(error);
@@ -65,18 +69,15 @@ class DioSettings {
     ]);
   }
 
-  Future<String> tokenRefresh() async {
-    try {
-      final refreshToken = await _token.getToken();
-      final path = dotenv.env["TOKEN_REFRESH"] ?? "";
-      final Response response =
-          await dio.post(path, data: {"refresh": refreshToken.refresh});
-      final entity = TokenDto.fromJson(response.data);
-      _token.saveToken(entity: entity.toEntity());
-      return response.data;
-    } catch (e) {
-      _token.deleteTokens();
-      rethrow;
-    }
+  Future<TokenDto> tokenRefresh() async {
+    final refreshToken = await _token.getToken();
+    print(refreshToken.refresh);
+    print(refreshToken.access);
+    final path = dotenv.env["TOKEN_REFRESH"] ?? "";
+    final Response response =
+        await dio.post(path, data: {"refresh": refreshToken.refresh});
+    final entity = TokenDto.fromJson(response.data);
+    _token.saveToken(entity: entity.toEntity());
+    return entity;
   }
 }

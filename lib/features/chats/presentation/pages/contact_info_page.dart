@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/chats/domain/entities/contact_entities.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/contact_entity.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/child_card.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/contact_status_widget.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';

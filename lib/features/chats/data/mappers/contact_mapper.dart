@@ -1,5 +1,5 @@
 import 'package:kindergarten_online/features/chats/data/dto/contact_dto.dart';
-import 'package:kindergarten_online/features/chats/domain/entities/contact_entities.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/contact_entity.dart';
 
 extension ToEntityExt on ContactDto {
   ContactEntity toEntity() => ContactEntity(
