@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
-import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Column(
                     children: [
-                      BlocListener<LoginCubit, LoginState>(
+                      BlocListener<LoginBloc, LoginState>(
                         listener: (context, state) {
                           state.when(
                               initial: () => const SizedBox(),
@@ -147,9 +147,10 @@ class _LoginPageState extends State<LoginPage> {
                           child: CustomBtn(
                               onPressed: isNotEmptyField
                                   ? () {
-                                      context.read<LoginCubit>().login(
-                                          phone: _phone.text,
-                                          password: _password.text);
+                                      context.read<LoginBloc>().add(
+                                          LoginEvent.login(
+                                              phone: _phone.text,
+                                              password: _password.text));
                                     }
                                   : null,
                               name: S.of(context).enter),

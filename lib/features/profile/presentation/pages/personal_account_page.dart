@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
-import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:kindergarten_online/features/profile/presentation/blocs/profile_bloc/profile_bloc.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/personal_info_field.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
@@ -30,7 +29,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
   @override
   void initState() {
     super.initState();
-    context.read<ProfileCubit>().profile();
+    context.read<ProfileBloc>().add(const ProfileEvent.profile());
   }
 
   @override
@@ -57,7 +56,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                   SizedBox(
                     height: 40.h,
                   ),
-                  BlocBuilder<ProfileCubit, ProfileState>(
+                  BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, state) {
                       return state.when(
                           initial: () => const SizedBox(),

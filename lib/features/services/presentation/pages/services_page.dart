@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/category_bloc/category_bloc.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/features/services/presentation/widgets/category_item.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
@@ -21,7 +21,7 @@ class _ServicesPageState extends State<ServicesPage> {
   @override
   void initState() {
     super.initState();
-    context.read<CategoryCubit>().category();
+    context.read<CategoryBloc>().add(const CategoryEvent.started());
   }
 
   @override

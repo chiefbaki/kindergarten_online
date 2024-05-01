@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
+import 'package:kindergarten_online/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/news_item.dart';
 import 'package:kindergarten_online/features/widgets/custom_refresh_indicator.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
@@ -21,7 +21,7 @@ class _NewsPageState extends State<NewsPage> {
   @override
   void initState() {
     super.initState();
-    context.read<NewsCubit>().news();
+    context.read<NewsBloc>().add(const NewsEvent.started());
   }
 
   @override
@@ -44,7 +44,9 @@ class _NewsPageState extends State<NewsPage> {
                       onRefresh: () async {
                         await Future.delayed(const Duration(milliseconds: 2),
                             () {
-                          context.read<NewsCubit>().news();
+                          context
+                              .read<NewsBloc>()
+                              .add(const NewsEvent.started());
                         });
                       },
                       child: NewsItem(textStyle: textStyle)),

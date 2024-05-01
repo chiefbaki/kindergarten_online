@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
+import 'package:kindergarten_online/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/custom_list_tile.dart';
 
 class NewsItem extends StatelessWidget {
@@ -15,7 +15,7 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewsCubit, NewsState>(
+    return BlocBuilder<NewsBloc, NewsState>(
       builder: (context, state) {
         return state.when(
             initial: () => const SizedBox(),

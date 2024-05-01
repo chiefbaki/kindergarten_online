@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
+import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/features/creativity/presentation/widgets/creativity_item.dart';
 
 class CreativityCard extends StatelessWidget {
@@ -13,7 +13,7 @@ class CreativityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreativityCubit, CreativityState>(
+    return BlocBuilder<CreativityBloc, CreativityState>(
       builder: (context, state) {
         return state.when(
             initial: () => const SizedBox(),

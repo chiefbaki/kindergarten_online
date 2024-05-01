@@ -11,25 +11,25 @@ import 'package:kindergarten_online/features/auth/domain/usecases/delete_token_u
 import 'package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/login_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/save_token_usecase.dart';
-import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/features/chats/data/data_sources/remote/remote_chat_data.dart';
 import 'package:kindergarten_online/features/chats/data/repositories/chat_impl.dart';
 import 'package:kindergarten_online/features/chats/domain/repositories/chat_repository.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/contact_usecase.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/create_group_usecase.dart';
-import 'package:kindergarten_online/features/chats/presentation/bloc/contact_bloc/contact_bloc.dart';
-import 'package:kindergarten_online/features/chats/presentation/bloc/create_group_bloc/create_group_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
 import 'package:kindergarten_online/features/creativity/data/data_sources/remote/remote_creativity_data_impl.dart';
 import 'package:kindergarten_online/features/creativity/data/repositories/creativity_list_impl.dart';
 import 'package:kindergarten_online/features/creativity/domain/repositories/creativity_list_rep.dart';
 import 'package:kindergarten_online/features/creativity/domain/usecases/creativity_list_usecase.dart';
 import 'package:kindergarten_online/features/creativity/domain/usecases/search_creativity_usecase.dart';
-import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
+import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/features/news/data/data_sources/remote/remote_news_data.dart';
 import 'package:kindergarten_online/features/news/data/repositories/news_impl.dart';
 import 'package:kindergarten_online/features/news/domain/repositories/news_rep.dart';
 import 'package:kindergarten_online/features/news/domain/usecases/news_usecase.dart';
-import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
+import 'package:kindergarten_online/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/features/profile/data/data_sources/remote_profile_source.dart';
 import 'package:kindergarten_online/features/profile/data/repositories/edit_profile_impl.dart';
 import 'package:kindergarten_online/features/profile/data/repositories/profile_impl.dart';
@@ -37,15 +37,16 @@ import 'package:kindergarten_online/features/profile/domain/repositories/edit_pr
 import 'package:kindergarten_online/features/profile/domain/repositories/profile_rep.dart';
 import 'package:kindergarten_online/features/profile/domain/usecases/edit_profile_usecase.dart';
 import 'package:kindergarten_online/features/profile/domain/usecases/profile_usecase.dart';
-import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
-import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:kindergarten_online/features/profile/presentation/blocs/edit_profile_bloc/edit_profile_bloc.dart';
+import 'package:kindergarten_online/features/profile/presentation/blocs/profile_bloc/profile_bloc.dart';
 import 'package:kindergarten_online/features/services/data/data_sources/remote/remote_services_data.dart';
 import 'package:kindergarten_online/features/services/data/repositories/category_impl.dart';
 import 'package:kindergarten_online/features/services/domain/repositories/category_rep.dart';
 import 'package:kindergarten_online/features/services/domain/usecases/category_usecase.dart';
 import 'package:kindergarten_online/features/services/domain/usecases/product_usecase.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/product_cubit/product_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/category_bloc/category_bloc.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/product_bloc/product_bloc.dart';
+
 
 final locator = GetIt.instance;
 
@@ -100,17 +101,17 @@ Future<void> setup() async {
       () => CreateGroupUseCase(locator<ChatRepository>()));
 
   // Cubits
-  locator.registerSingleton(LoginCubit(
+  locator.registerSingleton(LoginBloc(
     useCase: locator<LoginUseCase>(),
     saveTokenUseCase: locator(),
   ));
-  locator.registerSingleton(ProfileCubit(locator<ProfileUseCase>()));
-  locator.registerLazySingleton(() => EditProfileCubit(locator()));
-  locator.registerSingleton(NewsCubit(locator<NewsUseCase>()));
-  locator.registerSingleton(CreativityCubit(
+  locator.registerSingleton(ProfileBloc(locator<ProfileUseCase>()));
+  locator.registerLazySingleton(() => EditProfileBloc(locator()));
+  locator.registerSingleton(NewsBloc(locator<NewsUseCase>()));
+  locator.registerSingleton(CreativityBloc(
       locator<CreativityUseCase>(), locator<SearchCreativityUseCase>()));
-  locator.registerSingleton(CategoryCubit(locator<CategoryUseCase>()));
-  locator.registerSingleton(ProductCubit(locator<ProductUseCase>()));
+  locator.registerSingleton(CategoryBloc(locator<CategoryUseCase>()));
+  locator.registerSingleton(ProductBloc(locator<ProductUseCase>()));
   locator.registerSingleton(ContactBloc(locator<ContactUseCase>()));
   locator.registerLazySingleton(
       () => CreateGroupBloc(locator<CreateGroupUseCase>()));

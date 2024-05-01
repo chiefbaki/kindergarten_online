@@ -5,15 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/theme.dart';
 import 'package:kindergarten_online/core/service_locator/locator.dart';
-import 'package:kindergarten_online/features/auth/presentation/cubit/login_cubit.dart';
-import 'package:kindergarten_online/features/chats/presentation/bloc/contact_bloc/contact_bloc.dart';
-import 'package:kindergarten_online/features/chats/presentation/bloc/create_group_bloc/create_group_bloc.dart';
-import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
-import 'package:kindergarten_online/features/news/presentation/cubits/news_cubit/news_cubit.dart';
-import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
-import 'package:kindergarten_online/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/product_cubit/product_cubit.dart';
+import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
+import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
+import 'package:kindergarten_online/features/news/presentation/bloc/news_bloc.dart';
+import 'package:kindergarten_online/features/profile/presentation/blocs/edit_profile_bloc/edit_profile_bloc.dart';
+import 'package:kindergarten_online/features/profile/presentation/blocs/profile_bloc/profile_bloc.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/category_bloc/category_bloc.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class MyApp extends StatelessWidget {
@@ -24,25 +24,25 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => locator<LoginCubit>(),
+          create: (context) => locator<LoginBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<ProfileCubit>(),
+          create: (context) => locator<ProfileBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<EditProfileCubit>(),
+          create: (context) => locator<EditProfileBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<NewsCubit>(),
+          create: (context) => locator<NewsBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<CreativityCubit>(),
+          create: (context) => locator<CreativityBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<CategoryCubit>(),
+          create: (context) => locator<CategoryBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<ProductCubit>(),
+          create: (context) => locator<ProductBloc>(),
         ),
         BlocProvider(
           create: (context) => locator<ContactBloc>(),

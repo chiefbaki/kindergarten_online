@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/chats/presentation/bloc/contact_bloc/contact_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/search_contacts.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/contact_item.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';

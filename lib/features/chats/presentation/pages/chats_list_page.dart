@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/chats/domain/entities/req/create_group_req_entity.dart';
-import 'package:kindergarten_online/features/chats/presentation/bloc/create_group_bloc/create_group_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/search_chat.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';

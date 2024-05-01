@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/product_cubit/product_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/features/services/presentation/widgets/category_card.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 
@@ -11,7 +11,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
+    return BlocBuilder<ProductBloc, ProductState>(builder: (context, state) {
       return state.when(
           initial: () => const SizedBox(),
           loading: () => const CustomProgressIndicator(),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/category_cubit/category_cubit.dart';
-import 'package:kindergarten_online/features/services/presentation/cubits/product_cubit/product_cubit.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/category_bloc/category_bloc.dart';
+import 'package:kindergarten_online/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/features/widgets/text_with_arrow.dart';
 
@@ -19,12 +19,12 @@ class _CategoryItemState extends State<CategoryItem> {
   @override
   void initState() {
     super.initState();
-    context.read<ProductCubit>().product();
+    context.read<ProductBloc>().add(const ProductEvent.getProduct());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryCubit, CategoryState>(
+    return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
         return state.when(
             initial: () => const SizedBox(),

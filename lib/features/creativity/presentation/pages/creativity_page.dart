@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
+import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_search.dart';
 import 'package:kindergarten_online/features/creativity/presentation/widgets/creativity_card.dart';
 import 'package:kindergarten_online/features/widgets/custom_refresh_indicator.dart';
@@ -22,7 +22,7 @@ class _CreativityPageState extends State<CreativityPage> {
   @override
   void initState() {
     super.initState();
-    context.read<CreativityCubit>().creativity();
+    context.read<CreativityBloc>().add(const CreativityEvent.creativity());
   }
 
   @override
@@ -58,7 +58,9 @@ class _CreativityPageState extends State<CreativityPage> {
                 CustomRefreshIndicator(
                   onRefresh: () async {
                     Future.delayed(const Duration(milliseconds: 2), () {
-                      context.read<CreativityCubit>().creativity();
+                      context
+                          .read<CreativityBloc>()
+                          .add(const CreativityEvent.creativity());
                     });
                   },
                   child: SizedBox(

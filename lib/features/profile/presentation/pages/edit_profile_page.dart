@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/features/profile/domain/entities/edit_profile_entity.dart';
-import 'package:kindergarten_online/features/profile/presentation/cubits/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:kindergarten_online/features/profile/presentation/blocs/edit_profile_bloc/edit_profile_bloc.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/personal_info_field.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
@@ -73,7 +73,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-                child: BlocListener<EditProfileCubit, EditProfileState>(
+                child: BlocListener<EditProfileBloc, EditProfileState>(
                   listener: (context, state) {
                     state.when(
                         initial: () => const SizedBox(),
@@ -148,14 +148,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               onPressed: switcher
                                   ? () {
                                       context
-                                          .read<EditProfileCubit>()
-                                          .editProfile(
+                                          .read<EditProfileBloc>()
+                                          .add(EditProfileEvent.started(
                                               entity: EditProfileEntity(
                                             firstName: _firstName.text,
                                             lastName: _lastName.text,
                                             patronymic: _middleName.text,
                                             avatar: "",
-                                          ));
+                                          )));
                                     }
                                   : null,
                               name: S.of(context).saveTheChanges))

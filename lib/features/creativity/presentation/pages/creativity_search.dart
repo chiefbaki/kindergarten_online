@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/features/creativity/presentation/cubits/creativity_cubit/creativity_cubit.dart';
+import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/features/creativity/presentation/widgets/creativity_item.dart';
 
 class CustomSearch extends SearchDelegate {
@@ -46,10 +46,10 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    context.read<CreativityCubit>().searchCreativity(query: query);
+    context.read<CreativityBloc>().add(SearchCreativity(query: query));
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-      child: BlocBuilder<CreativityCubit, CreativityState>(
+      child: BlocBuilder<CreativityBloc, CreativityState>(
         builder: (context, state) {
           return state.when(
               initial: () => const SizedBox(),
