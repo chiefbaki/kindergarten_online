@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/features/auth/presentation/logout_cubit/logout_cubit.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/colored_container.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_switch_tile.dart';
@@ -194,10 +196,29 @@ class _SettingsPageState extends State<SettingsPage> {
                     SizedBox(
                       height: 15.h,
                     ),
-                    ExitBtn(
-                      textStyle: textStyle,
-                      onPressed: () {},
-                      text: S.of(context).logOut,
+                    BlocListener<LogoutCubit, LogoutState>(
+                      listener: (context, state) {
+                        state.when(
+                            initial: () => const SizedBox(),
+                            loading: () {
+                              debugPrint("loading");
+                            },
+                            success: (s) {
+                              debugPrint("success");
+                            },
+                            failure: (e) {
+                              debugPrint(e);
+                            });
+                      },
+                      child: ExitBtn(
+                        textStyle: textStyle,
+                        onPressed: () {
+                          context.read<LogoutCubit>().logout();
+                          context.router.popUntil(
+                              (route) => route.settings.name == "LoginRoute");
+                        },
+                        text: S.of(context).logOut,
+                      ),
                     )
                   ],
                 ),

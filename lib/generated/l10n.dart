@@ -530,81 +530,121 @@ class S {
     );
   }
 
-  /// `Чаты`
+  /// `Chats`
   String get chats {
     return Intl.message(
-      'Чаты',
+      'Chats',
       name: 'chats',
       desc: '',
       args: [],
     );
   }
 
-  /// `Дети: `
+  /// `Children: `
   String get children {
     return Intl.message(
-      'Дети: ',
+      'Children: ',
       name: 'children',
       desc: '',
       args: [],
     );
   }
 
-  /// `В сети`
+  /// `Online`
   String get online {
     return Intl.message(
-      'В сети',
+      'Online',
       name: 'online',
       desc: '',
       args: [],
     );
   }
 
-  /// `Мои контакты`
+  /// `My contacts`
   String get myContacts {
     return Intl.message(
-      'Мои контакты',
+      'My contacts',
       name: 'myContacts',
       desc: '',
       args: [],
     );
   }
 
-  /// `Создать группу`
+  /// `Create a group`
   String get createGroup {
     return Intl.message(
-      'Создать группу',
+      'Create a group',
       name: 'createGroup',
       desc: '',
       args: [],
     );
   }
 
-  /// `Профиль пользователя`
+  /// `User's profile`
   String get usersprofile {
     return Intl.message(
-      'Профиль пользователя',
+      'User\'s profile',
       name: 'usersprofile',
       desc: '',
       args: [],
     );
   }
 
-  /// `Введите сообщение`
+  /// `Input message`
   String get inputMessage {
     return Intl.message(
-      'Введите сообщение',
+      'Input message',
       name: 'inputMessage',
       desc: '',
       args: [],
     );
   }
 
-  /// `5 лет`
+  /// `5 years old`
   String get age {
     return Intl.message(
-      '5 лет',
+      '5 years old',
       name: 'age',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No internet connection`
+  String get noConnection {
+    return Intl.message(
+      'No internet connection',
+      name: 'noConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your contact list is empty`
+  String get contactIsEmpty {
+    return Intl.message(
+      'Your contact list is empty',
+      name: 'contactIsEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пусто`
+  String get empty {
+    return Intl.message(
+      'Пусто',
+      name: 'empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your chat list is empty`
+  String get chatListIsEmpty {
+    return Intl.message(
+      'Your chat list is empty',
+      name: 'chatListIsEmpty',
       desc: '',
       args: [],
     );

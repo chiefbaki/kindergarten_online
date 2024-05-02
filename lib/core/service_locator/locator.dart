@@ -10,8 +10,10 @@ import 'package:kindergarten_online/features/auth/domain/repositories/token_rep.
 import 'package:kindergarten_online/features/auth/domain/usecases/delete_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/get_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/login_usecase.dart';
+import 'package:kindergarten_online/features/auth/domain/usecases/logout_usecase.dart';
 import 'package:kindergarten_online/features/auth/domain/usecases/save_token_usecase.dart';
 import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
+import 'package:kindergarten_online/features/auth/presentation/logout_cubit/logout_cubit.dart';
 import 'package:kindergarten_online/features/chats/data/data_sources/remote/remote_chat_data.dart';
 import 'package:kindergarten_online/features/chats/data/repositories/chat_impl.dart';
 import 'package:kindergarten_online/features/chats/domain/repositories/chat_repository.dart';
@@ -82,7 +84,8 @@ Future<void> setup() async {
       .registerLazySingleton(() => RemoteChatData(locator<DioSettings>().dio));
 
   // Dependencies
-  locator.registerFactory<LoginRep>(() => LoginImpl(locator()));
+  locator.registerFactory<LoginRep>(
+      () => LoginImpl(locator(), locator<LocalTokenStorage>()));
   locator.registerSingleton<ProfileRep>(ProfileImpl(locator()));
   locator
       .registerLazySingleton<EditProfileRep>(() => EditProfileImpl(locator()));
@@ -96,6 +99,7 @@ Future<void> setup() async {
 
   // UseCases
   locator.registerSingleton(LoginUseCase(locator()));
+  locator.registerSingleton(LogoutUseCase(locator()));
   locator.registerSingleton(ProfileUseCase(locator()));
   locator.registerLazySingleton(() => EditProfileUseCase(locator()));
   locator.registerSingleton(NewsUseCase(locator<NewsRep>()));
@@ -109,6 +113,9 @@ Future<void> setup() async {
       () => CreateGroupUseCase(locator<ChatRepository>()));
   locator
       .registerLazySingleton(() => ChatListUseCase(locator<ChatRepository>()));
+
+  // Cubit
+  locator.registerLazySingleton(() => LogoutCubit(locator<LogoutUseCase>()));
 
   // Blocs
   locator.registerSingleton(LoginBloc(

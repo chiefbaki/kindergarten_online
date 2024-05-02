@@ -17,7 +17,7 @@ class ChatImpl implements ChatRepository {
   final RemoteChatData _remoteChatData;
   ChatImpl(this._remoteChatData);
   @override
-  Future<DataState<ContactEntity>> getContact() async {
+  Future<DataState<ContactEntity>> getContact({String? query}) async {
     final hasInternetConnection =
         await InternetConnectionChecker().hasConnection;
     if (!hasInternetConnection) {

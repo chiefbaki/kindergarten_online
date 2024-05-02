@@ -13,6 +13,7 @@ class ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(entity.avatar);
     return InkWell(
       onTap: () => context.router.push(ContactInfoRoute(entity: entity)),
       child: Padding(

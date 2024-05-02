@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/chats/domain/entities/req/create_group_req_entity.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
@@ -71,7 +72,7 @@ class _ChatsListPageState extends State<ChatsListPage> {
                       }, loading: () {
                         debugPrint("loading");
                       }, success: (entity) {
-                        debugPrint("initial");
+                        debugPrint("success");
                       }, failure: (error) {
                         debugPrint(error);
                       });
@@ -102,21 +103,29 @@ class _ChatsListPageState extends State<ChatsListPage> {
                           initial: () => const SizedBox(),
                           loading: () => const CustomProgressIndicator(),
                           success: (entity) {
-                            return ListView.separated(
-                              itemCount: entity.length,
-                              itemBuilder: (_, index) {
-                                return ChatListItem(
-                                  textStyle: textStyle,
-                                  entity: entity[index],
-                                );
-                              },
-                              separatorBuilder: (context, index) =>
-                                  const CustomDivider(),
-                            );
+                            return entity.isNotEmpty
+                                ? ListView.separated(
+                                    itemCount: entity.length,
+                                    itemBuilder: (_, index) {
+                                      return ChatListItem(
+                                        textStyle: textStyle,
+                                        entity: entity[index],
+                                      );
+                                    },
+                                    separatorBuilder: (context, index) =>
+                                        const CustomDivider(),
+                                  )
+                                : Center(
+                                    child: Text(
+                                      S.of(context).chatListIsEmpty,
+                                      style: textStyle.displayMedium!
+                                          .copyWith(color: AppColors.black),
+                                    ),
+                                  );
                           },
                           failure: ((error) => Center(
                                   child: Text(
-                                "Отсутствует соединение",
+                                S.of(context).noConnection,
                                 style: textStyle.displayLarge,
                               ))));
                     },

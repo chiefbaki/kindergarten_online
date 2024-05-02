@@ -33,15 +33,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Сырсөздү өзгөртүү"),
         "chatBackground": MessageLookupByLibrary.simpleMessage("Маектин фону"),
+        "chatListIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Список ваших чатов пуст"),
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Чат билдирүүлөрү"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
         "children": MessageLookupByLibrary.simpleMessage("Дети: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Топту/классты тандоо"),
+        "contactIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Список ваших контактов пуст"),
         "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
         "creativity": MessageLookupByLibrary.simpleMessage("Чыгармачылыктар"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Профилди түзөтүү"),
+        "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
         "enter": MessageLookupByLibrary.simpleMessage("Кирүү"),
         "favourites": MessageLookupByLibrary.simpleMessage("Сүйүктүүлөр"),
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
@@ -74,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("Түрмөктөгү жаңы окуялар"),
         "newsline": MessageLookupByLibrary.simpleMessage("Жаңы жаңылыктар"),
+        "noConnection": MessageLookupByLibrary.simpleMessage(
+            "Отсутствует интернет соединение"),
         "notifications": MessageLookupByLibrary.simpleMessage("Эскертмелер"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Биринчи эскилер"),
         "online": MessageLookupByLibrary.simpleMessage("В сети"),

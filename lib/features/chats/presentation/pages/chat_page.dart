@@ -70,6 +70,12 @@ class _ChatPageState extends State<ChatPage> {
                         textStyle: textStyle,
                         controller: _msgController,
                       ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.send,
+                            color: AppColors.blue,
+                          )),
                     ],
                   ),
                 ),

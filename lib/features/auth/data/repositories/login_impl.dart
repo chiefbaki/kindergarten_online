@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kindergarten_online/core/config/settings/dio_exception_handler.dart';
 import 'package:kindergarten_online/core/utils/failure/data_state.dart';
+import 'package:kindergarten_online/features/auth/data/data_sources/local/token_storage.dart';
 import 'package:kindergarten_online/features/auth/data/data_sources/remote/remote_auth_data.dart';
 import 'package:kindergarten_online/features/auth/data/mappers/login_mapper.dart';
 import 'package:kindergarten_online/features/auth/data/mappers/token_mapper.dart';
@@ -13,7 +14,8 @@ import 'package:kindergarten_online/features/auth/domain/repositories/login_rep.
 
 class LoginImpl implements LoginRep {
   final AuthRemoteDataSource _remoteData;
-  LoginImpl(this._remoteData);
+  final LocalTokenStorage _localData;
+  LoginImpl(this._remoteData, this._localData);
 
   @override
   Future<DataState<TokenEntity>> getLogin(
@@ -46,5 +48,14 @@ class LoginImpl implements LoginRep {
       return DataFailed(message: ErrorHandler.handle(e).failure.message);
     }
   }
-  
+
+  @override
+  Future<DataState> logOut() async {
+    try {
+      await _localData.deleteTokens();
+      return const DataSuccess("tokens deleted");
+    } catch (e) {
+      return DataFailed(message: ErrorHandler.handle(e).failure.message);
+    }
+  }
 }

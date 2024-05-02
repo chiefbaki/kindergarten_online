@@ -24,7 +24,7 @@ class ContactResultsDto {
   @JsonKey(name: "last_name")
   final String lastName;
   @JsonKey(name: "avatar")
-  final String avatar;
+  final String? avatar;
   final List<ContactChildrensDto> childrens;
   ContactResultsDto(
       {required this.id,
@@ -32,7 +32,7 @@ class ContactResultsDto {
       required this.firstName,
       required this.lastName,
       required this.childrens,
-      required this.avatar});
+      this.avatar});
   factory ContactResultsDto.fromJson(Map<String, dynamic> json) =>
       _$ContactResultsDtoFromJson(json);
 }

@@ -35,79 +35,98 @@ class AppRouter extends _$AppRouter {
           page: MainRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
+
         // Auth
         CustomRoute(
-          page: LoginRoute.page,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
-        ),
+            initial: true,
+            page: LoginRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn,
+            durationInMilliseconds: 800),
+
         CustomRoute(
             page: RegistrRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Camera
         CustomRoute(
             page: CameraRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // News
         CustomRoute(
             page: NewsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         CustomRoute(
             page: NewsDetailsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Services
         CustomRoute(
           page: ServicesRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
+
         CustomRoute(
             page: CategoryRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Schedule
         CustomRoute(
             page: ScheduleRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Profile
         CustomRoute(
             page: SettingsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Politics info
         CustomRoute(
             page: PoliticsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Personal account
         CustomRoute(
             page: PersonalAccountRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Change password page
         CustomRoute(
             page: EditProfileRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Creativity page
         CustomRoute(
             page: CreativityRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Products Info page
         CustomRoute(
             page: ProductDetailRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // List of contacts page
         CustomRoute(
-            initial: true,
             page: ChatsListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // My contacts page
         CustomRoute(
           page: MyContactsRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
+
         // Contacts info page
         CustomRoute(
             page: ContactInfoRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Contacts info page
         CustomRoute(
             page: RoolsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Chat page
         CustomRoute(
           page: ChatRoute.page,

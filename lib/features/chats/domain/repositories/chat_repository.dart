@@ -5,7 +5,7 @@ import 'package:kindergarten_online/features/chats/domain/entities/req/create_gr
 import 'package:kindergarten_online/features/chats/domain/entities/res/create_group_res.entity.dart';
 
 abstract interface class ChatRepository {
-  Future<DataState<ContactEntity>> getContact();
+  Future<DataState<ContactEntity>> getContact({String? query});
   Future<DataState<CreateGroupResEntity>> createGroup(
       {required CreateGroupReqEntity entity});
   Future<DataState<List<ChatListEntity>>> getChatList({String? query});

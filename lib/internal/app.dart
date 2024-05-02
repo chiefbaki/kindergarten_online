@@ -6,6 +6,7 @@ import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/theme.dart';
 import 'package:kindergarten_online/core/service_locator/locator.dart';
 import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
+import 'package:kindergarten_online/features/auth/presentation/logout_cubit/logout_cubit.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => locator<LoginBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<LogoutCubit>(),
         ),
         BlocProvider(
           create: (context) => locator<ProfileBloc>(),
@@ -68,7 +72,7 @@ class MyApp extends StatelessWidget {
           ],
           title: "Kindergarten online",
           supportedLocales: S.delegate.supportedLocales,
-          locale: const Locale("ru"),
+          locale: const Locale("en"),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().config(),
           theme: theme(),

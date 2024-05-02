@@ -33,16 +33,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Изменить пароль"),
         "chatBackground": MessageLookupByLibrary.simpleMessage("Фон чата"),
+        "chatListIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Список ваших чатов пуст"),
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Сообщения в чате"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
         "children": MessageLookupByLibrary.simpleMessage("Дети: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Выберите группу/класс"),
+        "contactIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Список ваших контактов пуст"),
         "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
         "creativity": MessageLookupByLibrary.simpleMessage("Творчество детей"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("Редактировать профиль"),
+        "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
         "enter": MessageLookupByLibrary.simpleMessage("Вход"),
         "favourites": MessageLookupByLibrary.simpleMessage("Избранные"),
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
@@ -74,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("Новое событие в ленте"),
         "newsline": MessageLookupByLibrary.simpleMessage("Лента новостей"),
+        "noConnection": MessageLookupByLibrary.simpleMessage(
+            "Отсутствует интернет соединение"),
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Сначала старые"),
         "online": MessageLookupByLibrary.simpleMessage("В сети"),

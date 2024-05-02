@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'contact_bloc.dart';
+part of 'logout_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,217 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ContactEvent {
-  String? get query => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? query) started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? query)? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? query)? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ContactEventCopyWith<ContactEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ContactEventCopyWith<$Res> {
-  factory $ContactEventCopyWith(
-          ContactEvent value, $Res Function(ContactEvent) then) =
-      _$ContactEventCopyWithImpl<$Res, ContactEvent>;
-  @useResult
-  $Res call({String? query});
-}
-
-/// @nodoc
-class _$ContactEventCopyWithImpl<$Res, $Val extends ContactEvent>
-    implements $ContactEventCopyWith<$Res> {
-  _$ContactEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = freezed,
-  }) {
-    return _then(_value.copyWith(
-      query: freezed == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res>
-    implements $ContactEventCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? query});
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ContactEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = freezed,
-  }) {
-    return _then(_$StartedImpl(
-      query: freezed == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl({this.query});
-
-  @override
-  final String? query;
-
-  @override
-  String toString() {
-    return 'ContactEvent.started(query: $query)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StartedImpl &&
-            (identical(other.query, query) || other.query == query));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, query);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
-      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? query) started,
-  }) {
-    return started(query);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? query)? started,
-  }) {
-    return started?.call(query);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? query)? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(query);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements ContactEvent {
-  const factory _Started({final String? query}) = _$StartedImpl;
-
-  @override
-  String? get query;
-  @override
-  @JsonKey(ignore: true)
-  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ContactState {
+mixin _$LogoutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ContactEntity entity) success,
+    required TResult Function(String msg) success,
     required TResult Function(String error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -233,7 +28,7 @@ mixin _$ContactState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ContactEntity entity)? success,
+    TResult? Function(String msg)? success,
     TResult? Function(String error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -241,7 +36,7 @@ mixin _$ContactState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ContactEntity entity)? success,
+    TResult Function(String msg)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) =>
@@ -274,16 +69,16 @@ mixin _$ContactState {
 }
 
 /// @nodoc
-abstract class $ContactStateCopyWith<$Res> {
-  factory $ContactStateCopyWith(
-          ContactState value, $Res Function(ContactState) then) =
-      _$ContactStateCopyWithImpl<$Res, ContactState>;
+abstract class $LogoutStateCopyWith<$Res> {
+  factory $LogoutStateCopyWith(
+          LogoutState value, $Res Function(LogoutState) then) =
+      _$LogoutStateCopyWithImpl<$Res, LogoutState>;
 }
 
 /// @nodoc
-class _$ContactStateCopyWithImpl<$Res, $Val extends ContactState>
-    implements $ContactStateCopyWith<$Res> {
-  _$ContactStateCopyWithImpl(this._value, this._then);
+class _$LogoutStateCopyWithImpl<$Res, $Val extends LogoutState>
+    implements $LogoutStateCopyWith<$Res> {
+  _$LogoutStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -300,7 +95,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ContactStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$LogoutStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -314,7 +109,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ContactState.initial()';
+    return 'LogoutState.initial()';
   }
 
   @override
@@ -331,7 +126,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ContactEntity entity) success,
+    required TResult Function(String msg) success,
     required TResult Function(String error) failure,
   }) {
     return initial();
@@ -342,7 +137,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ContactEntity entity)? success,
+    TResult? Function(String msg)? success,
     TResult? Function(String error)? failure,
   }) {
     return initial?.call();
@@ -353,7 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ContactEntity entity)? success,
+    TResult Function(String msg)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -401,7 +196,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ContactState {
+abstract class _Initial implements LogoutState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -414,7 +209,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ContactStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$LogoutStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -428,7 +223,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ContactState.loading()';
+    return 'LogoutState.loading()';
   }
 
   @override
@@ -445,7 +240,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ContactEntity entity) success,
+    required TResult Function(String msg) success,
     required TResult Function(String error) failure,
   }) {
     return loading();
@@ -456,7 +251,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ContactEntity entity)? success,
+    TResult? Function(String msg)? success,
     TResult? Function(String error)? failure,
   }) {
     return loading?.call();
@@ -467,7 +262,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ContactEntity entity)? success,
+    TResult Function(String msg)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -515,7 +310,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ContactState {
+abstract class _Loading implements LogoutState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -525,12 +320,12 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ContactEntity entity});
+  $Res call({String msg});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$ContactStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$LogoutStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -539,13 +334,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entity = null,
+    Object? msg = null,
   }) {
     return _then(_$SuccessImpl(
-      entity: null == entity
-          ? _value.entity
-          : entity // ignore: cast_nullable_to_non_nullable
-              as ContactEntity,
+      msg: null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -553,14 +348,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.entity});
+  const _$SuccessImpl({required this.msg});
 
   @override
-  final ContactEntity entity;
+  final String msg;
 
   @override
   String toString() {
-    return 'ContactState.success(entity: $entity)';
+    return 'LogoutState.success(msg: $msg)';
   }
 
   @override
@@ -568,11 +363,11 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.entity, entity) || other.entity == entity));
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, entity);
+  int get hashCode => Object.hash(runtimeType, msg);
 
   @JsonKey(ignore: true)
   @override
@@ -585,10 +380,10 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ContactEntity entity) success,
+    required TResult Function(String msg) success,
     required TResult Function(String error) failure,
   }) {
-    return success(entity);
+    return success(msg);
   }
 
   @override
@@ -596,10 +391,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ContactEntity entity)? success,
+    TResult? Function(String msg)? success,
     TResult? Function(String error)? failure,
   }) {
-    return success?.call(entity);
+    return success?.call(msg);
   }
 
   @override
@@ -607,12 +402,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ContactEntity entity)? success,
+    TResult Function(String msg)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(entity);
+      return success(msg);
     }
     return orElse();
   }
@@ -655,10 +450,10 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements ContactState {
-  const factory _Success({required final ContactEntity entity}) = _$SuccessImpl;
+abstract class _Success implements LogoutState {
+  const factory _Success({required final String msg}) = _$SuccessImpl;
 
-  ContactEntity get entity;
+  String get msg;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -675,7 +470,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$ContactStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$LogoutStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -705,7 +500,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'ContactState.failure(error: $error)';
+    return 'LogoutState.failure(error: $error)';
   }
 
   @override
@@ -730,7 +525,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ContactEntity entity) success,
+    required TResult Function(String msg) success,
     required TResult Function(String error) failure,
   }) {
     return failure(error);
@@ -741,7 +536,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ContactEntity entity)? success,
+    TResult? Function(String msg)? success,
     TResult? Function(String error)? failure,
   }) {
     return failure?.call(error);
@@ -752,7 +547,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ContactEntity entity)? success,
+    TResult Function(String msg)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -800,7 +595,7 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements ContactState {
+abstract class _Failure implements LogoutState {
   const factory _Failure({required final String error}) = _$FailureImpl;
 
   String get error;

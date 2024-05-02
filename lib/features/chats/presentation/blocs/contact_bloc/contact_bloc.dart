@@ -17,7 +17,7 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
   void _contact() {
     on<ContactEvent>((event, emit) async {
       emit(const ContactState.loading());
-      final dataState = await _useCase();
+      final dataState = await _useCase(param: event.query);
       if (dataState is DataSuccess) {
         emit(ContactState.success(
             entity: dataState.data ?? const ContactEntity()));

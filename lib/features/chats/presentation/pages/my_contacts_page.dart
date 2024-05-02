@@ -71,13 +71,19 @@ class _MyContactsPageState extends State<MyContactsPage> {
                               )
                             : Center(
                                 child: Text(
-                                  "Список ваших контактов пуст",
+                                  S.of(context).contactIsEmpty,
                                   style: textStyle.displayMedium!
                                       .copyWith(color: AppColors.black),
                                 ),
                               );
                       },
-                      failure: ((error) => Text(error)));
+                      failure: ((error) => Center(
+                            child: Text(
+                              S.of(context).noConnection,
+                              style: textStyle.displayMedium!
+                                  .copyWith(color: AppColors.black),
+                            ),
+                          )));
                 },
               ))
             ],

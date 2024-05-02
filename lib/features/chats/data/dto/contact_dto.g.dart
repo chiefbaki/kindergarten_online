@@ -28,7 +28,7 @@ ContactResultsDto _$ContactResultsDtoFromJson(Map<String, dynamic> json) =>
       childrens: (json['childrens'] as List<dynamic>)
           .map((e) => ContactChildrensDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      avatar: json['avatar'] as String,
+      avatar: json['avatar'] as String?,
     );
 
 Map<String, dynamic> _$ContactResultsDtoToJson(ContactResultsDto instance) =>

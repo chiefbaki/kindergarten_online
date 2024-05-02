@@ -25,12 +25,6 @@ class MessageForm extends StatelessWidget {
         autocorrect: true,
         autofocus: true,
         decoration: InputDecoration(
-            suffixIcon: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.send,
-                  color: AppColors.blue,
-                )),
             contentPadding: const EdgeInsets.all(12),
             hintText: S.of(context).inputMessage,
             hintStyle:

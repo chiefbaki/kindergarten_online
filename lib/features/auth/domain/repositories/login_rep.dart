@@ -4,4 +4,5 @@ import 'package:kindergarten_online/features/auth/domain/entities/response/token
 
 abstract interface class LoginRep {
   Future<DataState<TokenEntity>> getLogin({required LoginReqEntity entity});
+  Future<DataState> logOut();
 }

@@ -10,6 +10,7 @@ import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
+
 @RoutePage()
 class ContactInfoPage extends StatelessWidget {
   final ContactResultsEntity entity;

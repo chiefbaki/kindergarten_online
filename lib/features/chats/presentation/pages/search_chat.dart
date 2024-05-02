@@ -5,6 +5,7 @@ import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users
 import 'package:kindergarten_online/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 class SearchChat extends SearchDelegate {
   @override
@@ -68,8 +69,9 @@ class SearchChat extends SearchDelegate {
               },
               failure: ((error) => Center(
                       child: Text(
-                    "Отсутствует соединение",
-                    style: textStyle.displayLarge,
+                    S.of(context).noConnection,
+                    style: textStyle.displayMedium!
+                        .copyWith(color: AppColors.black),
                   ))));
         },
       ),
@@ -80,7 +82,7 @@ class SearchChat extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     return Center(
       child: Text(
-        "Пусто",
+        S.of(context).empty,
         style: Theme.of(context)
             .textTheme
             .displayLarge!

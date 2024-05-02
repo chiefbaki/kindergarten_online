@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "account": MessageLookupByLibrary.simpleMessage("My Account"),
-        "age": MessageLookupByLibrary.simpleMessage("5 лет"),
+        "age": MessageLookupByLibrary.simpleMessage("5 years old"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Already have an account?  "),
         "applicationTheme":
@@ -34,15 +34,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "chatBackground":
             MessageLookupByLibrary.simpleMessage("Chat background"),
+        "chatListIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Your chat list is empty"),
         "chatMessages": MessageLookupByLibrary.simpleMessage("Chat messages"),
-        "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
-        "children": MessageLookupByLibrary.simpleMessage("Дети: "),
+        "chats": MessageLookupByLibrary.simpleMessage("Chats"),
+        "children": MessageLookupByLibrary.simpleMessage("Children: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Choose group/class"),
-        "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
+        "contactIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Your contact list is empty"),
+        "createGroup": MessageLookupByLibrary.simpleMessage("Create a group"),
         "creativity": MessageLookupByLibrary.simpleMessage("Creativity"),
         "dataChanged": MessageLookupByLibrary.simpleMessage("Data changed"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
         "enter": MessageLookupByLibrary.simpleMessage("Enter"),
         "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
         "forgetPassOrNumber":
@@ -50,8 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "gender": MessageLookupByLibrary.simpleMessage("Gender:"),
         "group": MessageLookupByLibrary.simpleMessage("Group:"),
         "inputLastName": MessageLookupByLibrary.simpleMessage("Input lastname"),
-        "inputMessage":
-            MessageLookupByLibrary.simpleMessage("Введите сообщение"),
+        "inputMessage": MessageLookupByLibrary.simpleMessage("Input message"),
         "inputMiddleName":
             MessageLookupByLibrary.simpleMessage("Input middle name"),
         "inputName": MessageLookupByLibrary.simpleMessage("Input name"),
@@ -64,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainPageAdvice": MessageLookupByLibrary.simpleMessage(
             "To use our app please\nsign in or sign up,\nif your are the first time."),
         "middleName": MessageLookupByLibrary.simpleMessage("Middlename:"),
-        "myContacts": MessageLookupByLibrary.simpleMessage("Мои контакты"),
+        "myContacts": MessageLookupByLibrary.simpleMessage("My contacts"),
         "name": MessageLookupByLibrary.simpleMessage("Name:"),
         "nameAndAddress":
             MessageLookupByLibrary.simpleMessage("Name and address"),
@@ -73,9 +77,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("New event in the feed"),
         "newsline": MessageLookupByLibrary.simpleMessage("News line"),
+        "noConnection":
+            MessageLookupByLibrary.simpleMessage("No internet connection"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Old ones first"),
-        "online": MessageLookupByLibrary.simpleMessage("В сети"),
+        "online": MessageLookupByLibrary.simpleMessage("Online"),
         "password": MessageLookupByLibrary.simpleMessage("Password:"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number:"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
@@ -92,8 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This section is still empty"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "This window will display\nYour favorite advertisements."),
-        "usersprofile":
-            MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
+        "usersprofile": MessageLookupByLibrary.simpleMessage("User\'s profile"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!")
       };
 }

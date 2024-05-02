@@ -10,9 +10,10 @@ class RemoteChatData {
   final Dio _dio;
   RemoteChatData(this._dio);
 
-  Future<HttpResponse<ContactDto>> getContact() async {
+  Future<HttpResponse<ContactDto>> getContact({String? query}) async {
     final path = dotenv.env["ACCOUNT_CONTACTS"];
-    final Response response = await _dio.get(path ?? "");
+    final Response response = await _dio.get(path ?? "",
+        queryParameters: query != null ? {"search": query} : {});
     final data = ContactDto.fromJson(response.data);
     return HttpResponse(data, response);
   }
