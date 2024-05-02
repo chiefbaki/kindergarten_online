@@ -15,8 +15,10 @@ import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/l
 import 'package:kindergarten_online/features/chats/data/data_sources/remote/remote_chat_data.dart';
 import 'package:kindergarten_online/features/chats/data/repositories/chat_impl.dart';
 import 'package:kindergarten_online/features/chats/domain/repositories/chat_repository.dart';
+import 'package:kindergarten_online/features/chats/domain/usecases/chat_list_usecase.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/contact_usecase.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/create_group_usecase.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
 import 'package:kindergarten_online/features/creativity/data/data_sources/remote/remote_creativity_data_impl.dart';
@@ -47,7 +49,6 @@ import 'package:kindergarten_online/features/services/domain/usecases/product_us
 import 'package:kindergarten_online/features/services/presentation/blocs/category_bloc/category_bloc.dart';
 import 'package:kindergarten_online/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 
-
 final locator = GetIt.instance;
 
 Future<void> setup() async {
@@ -62,16 +63,23 @@ Future<void> setup() async {
 
   // Network
   // locator.registerFactory<DioSettings>(() => DioSettings(locator()));
-  locator.registerLazySingleton(() => DioSettings(locator<TokenRepository>()));
+  locator.registerFactory(() => DioSettings(
+        locator<TokenRepository>(),
+      ));
 
   // Remote
   locator
       .registerFactory(() => AuthRemoteDataSource(locator<DioSettings>().dio));
-  locator.registerSingleton(RemoteProfileSource(locator<DioSettings>().dio));
-  locator.registerSingleton(RemoteNewsData(locator<DioSettings>().dio));
-  locator.registerSingleton(RemoteCreativityData(locator<DioSettings>().dio));
-  locator.registerSingleton(RemoteServicesData(locator<DioSettings>().dio));
-  locator.registerSingleton(RemoteChatData(locator<DioSettings>().dio));
+  locator.registerLazySingleton(
+      () => RemoteProfileSource(locator<DioSettings>().dio));
+  locator
+      .registerLazySingleton(() => RemoteNewsData(locator<DioSettings>().dio));
+  locator.registerLazySingleton(
+      () => RemoteCreativityData(locator<DioSettings>().dio));
+  locator.registerLazySingleton(
+      () => RemoteServicesData(locator<DioSettings>().dio));
+  locator
+      .registerLazySingleton(() => RemoteChatData(locator<DioSettings>().dio));
 
   // Dependencies
   locator.registerFactory<LoginRep>(() => LoginImpl(locator()));
@@ -99,8 +107,10 @@ Future<void> setup() async {
   locator.registerSingleton(ContactUseCase(locator<ChatRepository>()));
   locator.registerLazySingleton(
       () => CreateGroupUseCase(locator<ChatRepository>()));
+  locator
+      .registerLazySingleton(() => ChatListUseCase(locator<ChatRepository>()));
 
-  // Cubits
+  // Blocs
   locator.registerSingleton(LoginBloc(
     useCase: locator<LoginUseCase>(),
     saveTokenUseCase: locator(),
@@ -115,4 +125,6 @@ Future<void> setup() async {
   locator.registerSingleton(ContactBloc(locator<ContactUseCase>()));
   locator.registerLazySingleton(
       () => CreateGroupBloc(locator<CreateGroupUseCase>()));
+  locator
+      .registerLazySingleton(() => ChatUsersBloc(locator<ChatListUseCase>()));
 }

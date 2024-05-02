@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'product_bloc.dart';
+part of 'by_category_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,59 +15,59 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProductEvent {
+mixin _$ByCategoryEvent {
   String get query => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) getProduct,
+    required TResult Function(String query) filter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? getProduct,
+    TResult? Function(String query)? filter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? getProduct,
+    TResult Function(String query)? filter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetProduct value) getProduct,
+    required TResult Function(_Filter value) filter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetProduct value)? getProduct,
+    TResult? Function(_Filter value)? filter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetProduct value)? getProduct,
+    TResult Function(_Filter value)? filter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProductEventCopyWith<ProductEvent> get copyWith =>
+  $ByCategoryEventCopyWith<ByCategoryEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductEventCopyWith<$Res> {
-  factory $ProductEventCopyWith(
-          ProductEvent value, $Res Function(ProductEvent) then) =
-      _$ProductEventCopyWithImpl<$Res, ProductEvent>;
+abstract class $ByCategoryEventCopyWith<$Res> {
+  factory $ByCategoryEventCopyWith(
+          ByCategoryEvent value, $Res Function(ByCategoryEvent) then) =
+      _$ByCategoryEventCopyWithImpl<$Res, ByCategoryEvent>;
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
-class _$ProductEventCopyWithImpl<$Res, $Val extends ProductEvent>
-    implements $ProductEventCopyWith<$Res> {
-  _$ProductEventCopyWithImpl(this._value, this._then);
+class _$ByCategoryEventCopyWithImpl<$Res, $Val extends ByCategoryEvent>
+    implements $ByCategoryEventCopyWith<$Res> {
+  _$ByCategoryEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -89,22 +89,22 @@ class _$ProductEventCopyWithImpl<$Res, $Val extends ProductEvent>
 }
 
 /// @nodoc
-abstract class _$$GetProductImplCopyWith<$Res>
-    implements $ProductEventCopyWith<$Res> {
-  factory _$$GetProductImplCopyWith(
-          _$GetProductImpl value, $Res Function(_$GetProductImpl) then) =
-      __$$GetProductImplCopyWithImpl<$Res>;
+abstract class _$$FilterImplCopyWith<$Res>
+    implements $ByCategoryEventCopyWith<$Res> {
+  factory _$$FilterImplCopyWith(
+          _$FilterImpl value, $Res Function(_$FilterImpl) then) =
+      __$$FilterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
-class __$$GetProductImplCopyWithImpl<$Res>
-    extends _$ProductEventCopyWithImpl<$Res, _$GetProductImpl>
-    implements _$$GetProductImplCopyWith<$Res> {
-  __$$GetProductImplCopyWithImpl(
-      _$GetProductImpl _value, $Res Function(_$GetProductImpl) _then)
+class __$$FilterImplCopyWithImpl<$Res>
+    extends _$ByCategoryEventCopyWithImpl<$Res, _$FilterImpl>
+    implements _$$FilterImplCopyWith<$Res> {
+  __$$FilterImplCopyWithImpl(
+      _$FilterImpl _value, $Res Function(_$FilterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$GetProductImplCopyWithImpl<$Res>
   $Res call({
     Object? query = null,
   }) {
-    return _then(_$GetProductImpl(
+    return _then(_$FilterImpl(
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -123,22 +123,22 @@ class __$$GetProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetProductImpl implements _GetProduct {
-  const _$GetProductImpl({required this.query});
+class _$FilterImpl implements _Filter {
+  const _$FilterImpl({required this.query});
 
   @override
   final String query;
 
   @override
   String toString() {
-    return 'ProductEvent.getProduct(query: $query)';
+    return 'ByCategoryEvent.filter(query: $query)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetProductImpl &&
+            other is _$FilterImpl &&
             (identical(other.query, query) || other.query == query));
   }
 
@@ -148,33 +148,33 @@ class _$GetProductImpl implements _GetProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetProductImplCopyWith<_$GetProductImpl> get copyWith =>
-      __$$GetProductImplCopyWithImpl<_$GetProductImpl>(this, _$identity);
+  _$$FilterImplCopyWith<_$FilterImpl> get copyWith =>
+      __$$FilterImplCopyWithImpl<_$FilterImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) getProduct,
+    required TResult Function(String query) filter,
   }) {
-    return getProduct(query);
+    return filter(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? getProduct,
+    TResult? Function(String query)? filter,
   }) {
-    return getProduct?.call(query);
+    return filter?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? getProduct,
+    TResult Function(String query)? filter,
     required TResult orElse(),
   }) {
-    if (getProduct != null) {
-      return getProduct(query);
+    if (filter != null) {
+      return filter(query);
     }
     return orElse();
   }
@@ -182,45 +182,45 @@ class _$GetProductImpl implements _GetProduct {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetProduct value) getProduct,
+    required TResult Function(_Filter value) filter,
   }) {
-    return getProduct(this);
+    return filter(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetProduct value)? getProduct,
+    TResult? Function(_Filter value)? filter,
   }) {
-    return getProduct?.call(this);
+    return filter?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetProduct value)? getProduct,
+    TResult Function(_Filter value)? filter,
     required TResult orElse(),
   }) {
-    if (getProduct != null) {
-      return getProduct(this);
+    if (filter != null) {
+      return filter(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetProduct implements ProductEvent {
-  const factory _GetProduct({required final String query}) = _$GetProductImpl;
+abstract class _Filter implements ByCategoryEvent {
+  const factory _Filter({required final String query}) = _$FilterImpl;
 
   @override
   String get query;
   @override
   @JsonKey(ignore: true)
-  _$$GetProductImplCopyWith<_$GetProductImpl> get copyWith =>
+  _$$FilterImplCopyWith<_$FilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ProductState {
+mixin _$ByCategoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -274,16 +274,16 @@ mixin _$ProductState {
 }
 
 /// @nodoc
-abstract class $ProductStateCopyWith<$Res> {
-  factory $ProductStateCopyWith(
-          ProductState value, $Res Function(ProductState) then) =
-      _$ProductStateCopyWithImpl<$Res, ProductState>;
+abstract class $ByCategoryStateCopyWith<$Res> {
+  factory $ByCategoryStateCopyWith(
+          ByCategoryState value, $Res Function(ByCategoryState) then) =
+      _$ByCategoryStateCopyWithImpl<$Res, ByCategoryState>;
 }
 
 /// @nodoc
-class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
-    implements $ProductStateCopyWith<$Res> {
-  _$ProductStateCopyWithImpl(this._value, this._then);
+class _$ByCategoryStateCopyWithImpl<$Res, $Val extends ByCategoryState>
+    implements $ByCategoryStateCopyWith<$Res> {
+  _$ByCategoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -300,7 +300,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ByCategoryStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -314,7 +314,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ProductState.initial()';
+    return 'ByCategoryState.initial()';
   }
 
   @override
@@ -401,7 +401,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ProductState {
+abstract class _Initial implements ByCategoryState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -414,7 +414,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ByCategoryStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -428,7 +428,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ProductState.loading()';
+    return 'ByCategoryState.loading()';
   }
 
   @override
@@ -515,7 +515,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ProductState {
+abstract class _Loading implements ByCategoryState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -530,7 +530,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$ByCategoryStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -560,7 +560,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'ProductState.success(entity: $entity)';
+    return 'ByCategoryState.success(entity: $entity)';
   }
 
   @override
@@ -655,7 +655,7 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements ProductState {
+abstract class _Success implements ByCategoryState {
   const factory _Success({required final ProductEntity entity}) = _$SuccessImpl;
 
   ProductEntity get entity;
@@ -675,7 +675,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$ByCategoryStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -705,7 +705,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'ProductState.failure(error: $error)';
+    return 'ByCategoryState.failure(error: $error)';
   }
 
   @override
@@ -800,7 +800,7 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements ProductState {
+abstract class _Failure implements ByCategoryState {
   const factory _Failure({required final String error}) = _$FailureImpl;
 
   String get error;

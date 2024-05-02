@@ -23,7 +23,6 @@ import 'package:kindergarten_online/features/schedule/presentation/pages/schedul
 import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/category_page.dart';
 import 'package:kindergarten_online/features/services/presentation/pages/product_detail_page.dart';
-
 import 'package:kindergarten_online/features/services/presentation/pages/services_page.dart';
 part 'app_router.gr.dart';
 
@@ -39,7 +38,6 @@ class AppRouter extends _$AppRouter {
         // Auth
         CustomRoute(
           page: LoginRoute.page,
-          initial: true,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         CustomRoute(
@@ -94,7 +92,7 @@ class AppRouter extends _$AppRouter {
             transitionsBuilder: TransitionsBuilders.fadeIn),
         // List of contacts page
         CustomRoute(
-            
+            initial: true,
             page: ChatsListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
         // My contacts page

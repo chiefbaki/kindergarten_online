@@ -46,7 +46,7 @@ class ContactStatusWidget extends StatelessWidget {
       ),
       trailing: MessageBtn(
         onPressed: () {
-          context.router.push(const ChatRoute());
+          context.router.push(ChatRoute(firstName: name));
         },
       ),
     );

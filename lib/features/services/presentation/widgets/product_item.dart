@@ -4,10 +4,20 @@ import 'package:kindergarten_online/features/services/presentation/blocs/product
 import 'package:kindergarten_online/features/services/presentation/widgets/category_card.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({
-    super.key,
-  });
+class ProductItem extends StatefulWidget {
+  final String id;
+  const ProductItem({super.key, required this.id});
+
+  @override
+  State<ProductItem> createState() => _ProductItemState();
+}
+
+class _ProductItemState extends State<ProductItem> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProductBloc>().add(ProductEvent.getProduct(query: widget.id));
+  }
 
   @override
   Widget build(BuildContext context) {

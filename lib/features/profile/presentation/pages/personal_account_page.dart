@@ -104,6 +104,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           height: 10.h,
                                         ),
                                         PersonalInfoField(
+                                          textInputAction: TextInputAction.next,
                                           isReadOnly: true,
                                           textStyle: textStyle,
                                           hintText: entity.firstName ?? "",
@@ -121,6 +122,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           height: 10.h,
                                         ),
                                         PersonalInfoField(
+                                          textInputAction: TextInputAction.next,
                                           isReadOnly: true,
                                           textStyle: textStyle,
                                           hintText: entity.lastName ?? "",
@@ -138,6 +140,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           height: 10.h,
                                         ),
                                         PersonalInfoField(
+                                          textInputAction: TextInputAction.done,
                                           isReadOnly: true,
                                           textStyle: textStyle,
                                           hintText: entity.patronymic ?? "",

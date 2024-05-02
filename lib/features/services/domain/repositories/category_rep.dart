@@ -4,5 +4,5 @@ import 'package:kindergarten_online/features/services/domain/entities/product_en
 
 abstract interface class CategoryRep {
   Future<DataState<CategoryEntity>> getCategory();
-  Future<DataState<ProductEntity>> getProduct();
+  Future<DataState<ProductEntity>> getProduct({required String query});
 }

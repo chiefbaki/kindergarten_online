@@ -7,7 +7,8 @@ import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 @RoutePage()
 class CategoryPage extends StatelessWidget {
   final String? title;
-  const CategoryPage({super.key, this.title});
+  final String? id;
+  const CategoryPage({super.key, this.title, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,8 @@ class CategoryPage extends StatelessWidget {
           textStyle: textStyle,
           title: title ?? "",
         ),
-        body: const ProductItem());
+        body: ProductItem(
+          id: id ?? "",
+        ));
   }
 }

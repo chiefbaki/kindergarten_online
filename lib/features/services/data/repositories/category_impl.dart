@@ -15,7 +15,6 @@ class CategoryImpl implements CategoryRep {
 
   CategoryImpl(this._remoteServicesData);
 
-
   @override
   Future<DataState<CategoryEntity>> getCategory() async {
     final hasInternetConnection =
@@ -45,7 +44,7 @@ class CategoryImpl implements CategoryRep {
   }
 
   @override
-  Future<DataState<ProductEntity>> getProduct() async {
+  Future<DataState<ProductEntity>> getProduct({required String query}) async {
     final hasInternetConnection =
         await InternetConnectionChecker().hasConnection;
     if (!hasInternetConnection) {
@@ -53,7 +52,7 @@ class CategoryImpl implements CategoryRep {
           message: DataSource.noInternetConnection.getFailure().message);
     }
     try {
-      final httpResponse = await _remoteServicesData.getProduct();
+      final httpResponse = await _remoteServicesData.getProduct(query: query);
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return DataSuccess(httpResponse.data.toEntity());
       } else {

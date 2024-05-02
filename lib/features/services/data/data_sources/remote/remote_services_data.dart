@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kindergarten_online/core/config/constants/api_urls.dart';
 import 'package:kindergarten_online/features/services/data/dto/category_dto.dart';
 import 'package:kindergarten_online/features/services/data/dto/product_dto.dart';
@@ -14,8 +15,10 @@ class RemoteServicesData {
     return HttpResponse(data, response);
   }
 
-  Future<HttpResponse<ProductDto>> getProduct() async {
-    final Response response = await _dio.get(ApiUrls.serviceProduct);
+  Future<HttpResponse<ProductDto>> getProduct({required String query}) async {
+    final path = dotenv.env["BY_CATEGORY"];
+    final Response response =
+        await _dio.get("$path$query");
     final data = ProductDto.fromJson(response.data);
     return HttpResponse(data, response);
   }

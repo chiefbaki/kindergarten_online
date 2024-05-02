@@ -34,7 +34,7 @@ class ProductDetailPage extends StatelessWidget {
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     child: Image.network(
-                      "http://84.54.12.206${results.images!.first.img}",
+                      results.images!.first.img ?? "",
                       fit: BoxFit.cover,
                     ),
                   ),

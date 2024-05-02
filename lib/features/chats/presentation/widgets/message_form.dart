@@ -4,8 +4,12 @@ import 'package:kindergarten_online/generated/l10n.dart';
 
 class MessageForm extends StatelessWidget {
   final TextEditingController controller;
+  final FocusNode focusNode;
   const MessageForm(
-      {super.key, required this.textStyle, required this.controller});
+      {super.key,
+      required this.textStyle,
+      required this.controller,
+      required this.focusNode});
 
   final TextTheme textStyle;
 
@@ -13,6 +17,7 @@ class MessageForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormField(
+        focusNode: focusNode,
         controller: controller,
         style: textStyle.titleSmall!.copyWith(color: AppColors.black),
         keyboardType: TextInputType.text,

@@ -19,18 +19,16 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String newImg = images.replaceAll("file:///", "http://84.54.12.206/");
-    print(newImg);
     return InkWell(
         onTap: () {
           context.router.push(NewsDetailsRoute(
-            date: entity.timestamp ?? "",
-            title: entity.title ?? "",
-            content: entity.content ?? "",
-          ));
+              date: entity.timestamp ?? "",
+              title: entity.title ?? "",
+              content: entity.content ?? "",
+              img: entity.images!.first.img));
         },
         child: ListTile(
-            leading: Image.network(newImg),
+            leading: Image.network(images),
             title: Text(
               entity.title ?? "",
               textAlign: TextAlign.start,

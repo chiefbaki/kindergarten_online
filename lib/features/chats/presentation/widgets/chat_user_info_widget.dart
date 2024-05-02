@@ -7,10 +7,15 @@ import 'package:kindergarten_online/features/chats/presentation/widgets/menu_btn
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class ChatUserInfoWidget extends StatelessWidget {
-  const ChatUserInfoWidget({
-    super.key,
-    required this.textStyle,
-  });
+  final String firstName;
+  final String lastName;
+  final String? avatar;
+  const ChatUserInfoWidget(
+      {super.key,
+      required this.textStyle,
+      required this.firstName,
+      required this.lastName,
+      this.avatar});
 
   final TextTheme textStyle;
 
@@ -25,7 +30,7 @@ class ChatUserInfoWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Image.asset(
-              Imgs.ava,
+              avatar ?? Imgs.ava,
               width: 35.w,
             ),
           )),
@@ -33,7 +38,7 @@ class ChatUserInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Islam Kurbanov",
+            "$firstName $lastName",
             style: textStyle.displayMedium!.copyWith(color: AppColors.black),
           ),
           Gap(5.h),

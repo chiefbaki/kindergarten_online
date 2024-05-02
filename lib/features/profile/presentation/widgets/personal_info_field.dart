@@ -4,6 +4,7 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 class PersonalInfoField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
+  final TextInputAction textInputAction;
   final bool isReadOnly;
 
   const PersonalInfoField(
@@ -11,6 +12,7 @@ class PersonalInfoField extends StatelessWidget {
       required this.textStyle,
       required this.hintText,
       required this.controller,
+      required this.textInputAction,
       this.isReadOnly = false});
 
   final TextTheme textStyle;
@@ -18,6 +20,7 @@ class PersonalInfoField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: textInputAction,
       style: textStyle.displayMedium!.copyWith(color: AppColors.lightGrey),
       readOnly: isReadOnly,
       controller: controller,

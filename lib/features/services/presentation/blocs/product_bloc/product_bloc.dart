@@ -17,7 +17,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   void _getProduct() {
     on<ProductEvent>((event, emit) async {
       emit(const ProductState.loading());
-      final dataState = await _useCase();
+      final dataState = await _useCase(param: event.query);
       if (dataState is DataSuccess && dataState.data!.results!.isNotEmpty) {
         emit(ProductState.success(
             entity: dataState.data ?? const ProductEntity()));

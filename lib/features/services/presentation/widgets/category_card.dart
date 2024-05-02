@@ -34,7 +34,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 colorFilter: ColorFilter.mode(
                     AppColors.black.withOpacity(0.4), BlendMode.colorBurn),
                 image: NetworkImage(
-                  "http://84.54.12.206${widget.entity.images!.first.img}",
+                  widget.entity.images!.first.img ?? "",
                 ),
                 fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(20)),

@@ -9,6 +9,7 @@ import "package:kindergarten_online/features/auth/domain/repositories/token_rep.
 
 class DioSettings {
   final TokenRepository _token;
+  // final BuildContext _context;
 
   DioSettings(
     this._token,
@@ -53,6 +54,8 @@ class DioSettings {
       onError: (DioException error, ErrorInterceptorHandler handler) async {
         // refresh token when its error
         if (error.response?.statusCode == ResponseCode.unauthorised) {
+          // _context.router
+          //     .popUntil((route) => route.settings.name == "LoginRoute");
           final newsAccessToken = await tokenRefresh();
           dio.options.headers["Authorization"] =
               "Bearer ${newsAccessToken.access}";
@@ -71,8 +74,6 @@ class DioSettings {
 
   Future<TokenDto> tokenRefresh() async {
     final refreshToken = await _token.getToken();
-    print(refreshToken.refresh);
-    print(refreshToken.access);
     final path = dotenv.env["TOKEN_REFRESH"] ?? "";
     final Response response =
         await dio.post(path, data: {"refresh": refreshToken.refresh});

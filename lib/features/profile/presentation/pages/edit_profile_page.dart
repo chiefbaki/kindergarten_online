@@ -107,6 +107,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         height: 10.h,
                       ),
                       PersonalInfoField(
+                          textInputAction: TextInputAction.next,
                           textStyle: textStyle,
                           hintText: S.of(context).inputName,
                           controller: _firstName),
@@ -122,6 +123,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         height: 10.h,
                       ),
                       PersonalInfoField(
+                          textInputAction: TextInputAction.next,
                           textStyle: textStyle,
                           hintText: S.of(context).inputLastName,
                           controller: _lastName),
@@ -137,6 +139,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         height: 10.h,
                       ),
                       PersonalInfoField(
+                          textInputAction: TextInputAction.done,
                           textStyle: textStyle,
                           hintText: S.of(context).inputMiddleName,
                           controller: _middleName),

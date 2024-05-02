@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/req/chat_list_entity.dart';
 
 class ChatListItem extends StatelessWidget {
-  final String? img;
-  final String? name;
-  const ChatListItem({super.key, required this.textStyle, this.img, this.name});
+  final ChatListEntity entity;
+  const ChatListItem(
+      {super.key, required this.textStyle, required this.entity});
 
   final TextTheme textStyle;
 
@@ -19,7 +20,10 @@ class ChatListItem extends StatelessWidget {
       onLongPress: () {
         debugPrint("long press");
       },
-      onTap: () => context.router.push(const ChatRoute()),
+      onTap: () => context.router.push(ChatRoute(
+          firstName: entity.firstName ?? "",
+          lastName: entity.lastName,
+          avatar: entity.avatar)),
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 15,
@@ -28,11 +32,11 @@ class ChatListItem extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
           leading: ClipRRect(
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(img ?? Imgs.ava)),
+              child: Image.asset(entity.avatar ?? Imgs.ava)),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 35, left: 5),
             child: Text(
-              name ?? "Дубровская Анжелика Сергеевна",
+              "${entity.firstName} ${entity.lastName}",
               style: textStyle.displayMedium!.copyWith(color: AppColors.black),
             ),
           ),

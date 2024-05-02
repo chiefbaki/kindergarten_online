@@ -5,17 +5,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/features/chats/domain/entities/req/create_group_req_entity.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/search_chat.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
+import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/features/widgets/custom_refresh_indicator.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/search_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
-class ChatsListPage extends StatelessWidget {
+class ChatsListPage extends StatefulWidget {
   const ChatsListPage({super.key});
+
+  @override
+  State<ChatsListPage> createState() => _ChatsListPageState();
+}
+
+class _ChatsListPageState extends State<ChatsListPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ChatUsersBloc>().add(const ChatUsersEvent.viewUsers());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +79,8 @@ class ChatsListPage extends StatelessWidget {
                     child: CustomTextBtn(
                         textStyle: textStyle,
                         onPressed: () {
-                          context.read<CreateGroupBloc>().add(Create(entity: CreateGroupReqEntity()));
+                          context.read<CreateGroupBloc>().add(
+                              const Create(entity: CreateGroupReqEntity()));
                         },
                         name: S.of(context).createGroup),
                   )
@@ -75,12 +90,37 @@ class ChatsListPage extends StatelessWidget {
                 25.h,
               ),
               Expanded(
-                child: ListView.separated(
-                  itemCount: 10,
-                  itemBuilder: (_, index) {
-                    return ChatListItem(textStyle: textStyle);
+                child: CustomRefreshIndicator(
+                  onRefresh: () async {
+                    context
+                        .read<ChatUsersBloc>()
+                        .add(const ChatUsersEvent.viewUsers());
                   },
-                  separatorBuilder: (context, index) => const CustomDivider(),
+                  child: BlocBuilder<ChatUsersBloc, ChatUsersState>(
+                    builder: (context, state) {
+                      return state.when(
+                          initial: () => const SizedBox(),
+                          loading: () => const CustomProgressIndicator(),
+                          success: (entity) {
+                            return ListView.separated(
+                              itemCount: entity.length,
+                              itemBuilder: (_, index) {
+                                return ChatListItem(
+                                  textStyle: textStyle,
+                                  entity: entity[index],
+                                );
+                              },
+                              separatorBuilder: (context, index) =>
+                                  const CustomDivider(),
+                            );
+                          },
+                          failure: ((error) => Center(
+                                  child: Text(
+                                "Отсутствует соединение",
+                                style: textStyle.displayLarge,
+                              ))));
+                    },
+                  ),
                 ),
               )
             ],

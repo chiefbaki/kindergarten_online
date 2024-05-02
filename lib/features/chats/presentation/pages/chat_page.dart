@@ -9,7 +9,11 @@ import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+  final String firstName;
+  final String? lastName;
+  final String? avatar;
+  const ChatPage(
+      {super.key, required this.firstName, this.lastName, this.avatar});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -17,6 +21,15 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final _msgController = TextEditingController();
+  final _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _focusNode.hasFocus;
+  }
+
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
@@ -27,14 +40,19 @@ class _ChatPageState extends State<ChatPage> {
               context.router.maybePop();
             },
           ),
-          title: ChatUserInfoWidget(textStyle: textStyle),
+          title: ChatUserInfoWidget(
+            textStyle: textStyle,
+            firstName: widget.firstName,
+            lastName: widget.lastName ?? "",
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 234, 233, 233),
-        body: Center(
-          child: Column(
-            children: [
-              const Spacer(),
-              Container(
+        body: Stack(
+          children: [
+            ListView(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
                 width: double.infinity,
                 height: 150.h,
                 decoration: const BoxDecoration(
@@ -48,15 +66,16 @@ class _ChatPageState extends State<ChatPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MessageForm(
+                        focusNode: _focusNode,
                         textStyle: textStyle,
                         controller: _msgController,
                       ),
                     ],
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ));
   }
 }

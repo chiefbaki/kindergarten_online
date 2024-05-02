@@ -24,7 +24,7 @@ class NewsItem extends StatelessWidget {
                 ),
             success: (entity) {
               return ListView.separated(
-                itemCount: entity.count ?? 0,
+                itemCount: entity.results!.length,
                 itemBuilder: (_, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -33,7 +33,7 @@ class NewsItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CustomListTile(
-                        images: entity.results?[index].images?[index].img ?? "",
+                        images: entity.results![index].images!.first.img ?? "",
                         textStyle: textStyle,
                         entity: entity.results![index],
                       ),

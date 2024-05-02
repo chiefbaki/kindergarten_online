@@ -6,6 +6,7 @@ import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/theme.dart';
 import 'package:kindergarten_online/core/service_locator/locator.dart';
 import 'package:kindergarten_online/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
 import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
@@ -49,6 +50,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => locator<CreateGroupBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<ChatUsersBloc>(),
         ),
       ],
       child: ScreenUtilInit(
