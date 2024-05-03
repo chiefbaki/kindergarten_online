@@ -58,5 +58,6 @@
   "noConnection": "Отсутствует интернет соединение",
   "contactIsEmpty": "Список ваших контактов пуст",
   "empty": "Пусто",
-  "chatListIsEmpty": "Список ваших чатов пуст"
+  "chatListIsEmpty": "Список ваших чатов пуст",
+  "paymentReceipts": "Payment receipts"
 }

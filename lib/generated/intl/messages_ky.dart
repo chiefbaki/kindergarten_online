@@ -85,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Биринчи эскилер"),
         "online": MessageLookupByLibrary.simpleMessage("В сети"),
         "password": MessageLookupByLibrary.simpleMessage("Сырсөз:"),
+        "paymentReceipts":
+            MessageLookupByLibrary.simpleMessage("Payment receipts"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Телефон номуру:"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Купуялык саясаты"),

@@ -117,6 +117,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const NewsPage(),
       );
     },
+    PaymentReceiptsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PaymentReceiptsPage(),
+      );
+    },
     PersonalAccountRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -487,6 +493,20 @@ class NewsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'NewsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PaymentReceiptsPage]
+class PaymentReceiptsRoute extends PageRouteInfo<void> {
+  const PaymentReceiptsRoute({List<PageRouteInfo>? children})
+      : super(
+          PaymentReceiptsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PaymentReceiptsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

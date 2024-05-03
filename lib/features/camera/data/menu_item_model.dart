@@ -36,7 +36,10 @@ class MenuItem {
         img: Imgs.ideaIcon,
         name: "Творчество детей",
         route: const CreativityRoute()),
-    MenuItem(img: Imgs.check, name: "Квитанции", route: const CameraRoute()),
+    MenuItem(
+        img: Imgs.check,
+        name: "Квитанции",
+        route: const PaymentReceiptsRoute()),
     MenuItem(
         img: Imgs.infoIcon,
         name: "Справочная информация",

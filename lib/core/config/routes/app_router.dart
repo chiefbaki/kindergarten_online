@@ -13,6 +13,7 @@ import 'package:kindergarten_online/features/chats/presentation/pages/my_contact
 import 'package:kindergarten_online/features/creativity/presentation/pages/creativity_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_details_page.dart';
 import 'package:kindergarten_online/features/news/presentation/pages/news_page.dart';
+import 'package:kindergarten_online/features/payment_receipts/presentation/payment_receipts.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/reset_page.dart';
 import 'package:kindergarten_online/features/profile/presentation/pages/change_password_page.dart';
@@ -33,8 +34,8 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         // Splash page
         CustomRoute(
+          
           page: SplashRoute.page,
-          initial: true,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
 
@@ -85,6 +86,7 @@ class AppRouter extends _$AppRouter {
 
         // Profile
         CustomRoute(
+          initial: true,
             page: SettingsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
@@ -137,6 +139,12 @@ class AppRouter extends _$AppRouter {
         // Chat page
         CustomRoute(
           page: ChatRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+
+        // Payment receipts page
+        CustomRoute(
+          page: PaymentReceiptsRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
       ];

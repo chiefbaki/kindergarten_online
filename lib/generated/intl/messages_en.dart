@@ -83,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Old ones first"),
         "online": MessageLookupByLibrary.simpleMessage("Online"),
         "password": MessageLookupByLibrary.simpleMessage("Password:"),
+        "paymentReceipts":
+            MessageLookupByLibrary.simpleMessage("Payment receipts"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number:"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "registration": MessageLookupByLibrary.simpleMessage("Registration"),

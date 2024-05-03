@@ -649,6 +649,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Payment receipts`
+  String get paymentReceipts {
+    return Intl.message(
+      'Payment receipts',
+      name: 'paymentReceipts',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
