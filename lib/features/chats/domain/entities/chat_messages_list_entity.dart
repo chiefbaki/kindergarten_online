@@ -3,12 +3,11 @@ import 'package:equatable/equatable.dart';
 
 class ChatMessagesListEntity with EquatableMixin {
   final int? count;
-  ChatMessagesListEntity({
-    this.count,
-  });
+  final List<ResultsEntity>? results;
+  ChatMessagesListEntity({this.count, this.results});
 
   @override
-  List<Object?> get props => [count];
+  List<Object?> get props => [count, results];
 }
 
 class ChatMessagesResult with EquatableMixin {
