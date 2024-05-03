@@ -88,14 +88,6 @@ class SearchContacts extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Center(
-      child: Text(
-        S.of(context).empty,
-        style: Theme.of(context)
-            .textTheme
-            .displayLarge!
-            .copyWith(color: AppColors.black),
-      ),
-    );
+    return const SizedBox.shrink();
   }
 }

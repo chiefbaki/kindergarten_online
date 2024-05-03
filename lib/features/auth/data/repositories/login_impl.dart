@@ -53,7 +53,7 @@ class LoginImpl implements LoginRep {
   Future<DataState> logOut() async {
     try {
       await _localData.deleteTokens();
-      return const DataSuccess("tokens deleted");
+      return const DataSuccess(DataSource.success);
     } catch (e) {
       return DataFailed(message: ErrorHandler.handle(e).failure.message);
     }

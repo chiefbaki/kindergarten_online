@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/login_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
+import 'package:kindergarten_online/features/auth/presentation/pages/splash_page.dart';
 import 'package:kindergarten_online/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/features/chats/domain/entities/contact_entity.dart';
 import 'package:kindergarten_online/features/chats/presentation/pages/chat_page.dart';
@@ -30,6 +31,13 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
+        // Splash page
+        CustomRoute(
+          page: SplashRoute.page,
+          initial: true,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+
         // Main
         CustomRoute(
           page: MainRoute.page,
@@ -38,7 +46,6 @@ class AppRouter extends _$AppRouter {
 
         // Auth
         CustomRoute(
-            initial: true,
             page: LoginRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn,
             durationInMilliseconds: 800),

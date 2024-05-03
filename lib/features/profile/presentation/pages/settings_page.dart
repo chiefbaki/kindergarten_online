@@ -214,8 +214,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: textStyle,
                         onPressed: () {
                           context.read<LogoutCubit>().logout();
-                          context.router.popUntil(
-                              (route) => route.settings.name == "LoginRoute");
+                          // context.router.popUntil(
+                          //     (route) => route.settings.name == "LoginRoute");
+                          context.router.push(const MainRoute());
                         },
                         text: S.of(context).logOut,
                       ),

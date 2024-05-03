@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/message_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
@@ -21,7 +22,7 @@ class ContactStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      leading: ClipOval(child: Image.network(img)),
+      leading: ClipOval(child: Image.asset(Imgs.ava)),
       title: Text(
         name,
         style: textStyle.displayLarge!.copyWith(color: AppColors.black),
@@ -46,7 +47,7 @@ class ContactStatusWidget extends StatelessWidget {
       ),
       trailing: MessageBtn(
         onPressed: () {
-          context.router.push(ChatRoute(firstName: name));
+          context.router.push(ChatRoute(firstName: name, avatar: img));
         },
       ),
     );

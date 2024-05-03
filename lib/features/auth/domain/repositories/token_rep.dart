@@ -3,7 +3,7 @@ import 'package:kindergarten_online/features/auth/domain/entities/response/token
 abstract interface class TokenRepository {
   Future<void> saveToken({required TokenEntity entity});
 
-  Future<TokenEntity> getToken();
+  Future<TokenEntity?> getToken();
 
   Future<String> getBearerToken();
 

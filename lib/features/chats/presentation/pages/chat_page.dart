@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/back_btn.dart';
+import 'package:kindergarten_online/features/chats/presentation/widgets/bottom_chat_area.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/chat_user_info_widget.dart';
-import 'package:kindergarten_online/features/chats/presentation/widgets/message_form.dart';
-import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/features/chats/presentation/widgets/message_bubble.dart';
+
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
@@ -33,7 +32,8 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return CustomScaffold(
+    final viewInset = MediaQuery.viewInsetsOf(context);
+    return Scaffold(
         appBar: AppBar(
           leading: BackBtn(
             onPressed: () {
@@ -47,41 +47,30 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 234, 233, 233),
-        body: Stack(
-          children: [
-            ListView(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                width: double.infinity,
-                height: 150.h,
-                decoration: const BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20))),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MessageForm(
-                        focusNode: _focusNode,
+        body: Padding(
+          padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 8,
+              bottom: (viewInset.bottom > 40) ? 15.0 : 40),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                    itemCount: 2,
+                    itemBuilder: (_, index) {
+                      return MessageBubble(
                         textStyle: textStyle,
-                        controller: _msgController,
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.send,
-                            color: AppColors.blue,
-                          )),
-                    ],
-                  ),
-                ),
+                        index: index,
+                      );
+                    }),
               ),
-            )
-          ],
+              BottomChatArea(
+                  focusNode: _focusNode,
+                  textStyle: textStyle,
+                  msgController: _msgController),
+            ],
+          ),
         ));
   }
 }

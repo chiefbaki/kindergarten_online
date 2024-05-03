@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/features/creativity/presentation/widgets/creativity_item.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 class CustomSearch extends SearchDelegate {
   @override
@@ -36,6 +37,9 @@ class CustomSearch extends SearchDelegate {
     return IconButton(
         onPressed: () {
           Navigator.pop(context);
+          context
+              .read<CreativityBloc>()
+              .add(const CreativityEvent.creativity());
         },
         icon: const Icon(
           Icons.arrow_back_ios,
@@ -57,17 +61,27 @@ class CustomSearch extends SearchDelegate {
                     child: CircularProgressIndicator.adaptive(),
                   ),
               success: (entity) {
-                return ListView.builder(
-                    itemCount: entity.count,
-                    itemBuilder: (_, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: CreativityItem(
-                            textStyle: Theme.of(context).textTheme,
-                            name: entity.results?[index].name ?? "",
-                            image: entity.results?[index].img ?? ""),
+                return entity.results!.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: entity.count,
+                        itemBuilder: (_, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: CreativityItem(
+                                textStyle: Theme.of(context).textTheme,
+                                name: entity.results?[index].name ?? "",
+                                image: entity.results?[index].img ?? ""),
+                          );
+                        })
+                    : Center(
+                        child: Text(
+                          S.of(context).empty,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(color: AppColors.black),
+                        ),
                       );
-                    });
               },
               failure: (error) => Text(error));
         },

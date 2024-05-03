@@ -34,7 +34,7 @@ class DioSettings {
     final token = await _token.getBearerToken();
     final refreshToken = await _token.getToken();
     debugPrint("BEARER $token");
-    debugPrint("REFRESH ${refreshToken.refresh}");
+    debugPrint("REFRESH ${refreshToken?.refresh ?? ""}");
     interceptors.clear();
 
     final LogInterceptor logInterceptor = LogInterceptor(
@@ -76,7 +76,7 @@ class DioSettings {
     final refreshToken = await _token.getToken();
     final path = dotenv.env["TOKEN_REFRESH"] ?? "";
     final Response response =
-        await dio.post(path, data: {"refresh": refreshToken.refresh});
+        await dio.post(path, data: {"refresh": refreshToken?.refresh ?? ""});
     final entity = TokenDto.fromJson(response.data);
     _token.saveToken(entity: entity.toEntity());
     return entity;

@@ -36,6 +36,7 @@ class SearchChat extends SearchDelegate {
     return IconButton(
         onPressed: () {
           Navigator.pop(context);
+          context.read<ChatUsersBloc>().add(const ChatUsersEvent.viewUsers());
         },
         icon: const Icon(
           Icons.arrow_back_ios,
@@ -56,16 +57,27 @@ class SearchChat extends SearchDelegate {
               initial: () => const SizedBox(),
               loading: () => const CustomProgressIndicator(),
               success: (entity) {
-                return ListView.separated(
-                  itemCount: entity.length,
-                  itemBuilder: (_, index) {
-                    return ChatListItem(
-                      textStyle: textStyle,
-                      entity: entity[index],
-                    );
-                  },
-                  separatorBuilder: (context, index) => const CustomDivider(),
-                );
+                return entity.isNotEmpty
+                    ? ListView.separated(
+                        itemCount: entity.length,
+                        itemBuilder: (_, index) {
+                          return ChatListItem(
+                            textStyle: textStyle,
+                            entity: entity[index],
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const CustomDivider(),
+                      )
+                    : Center(
+                        child: Text(
+                          S.of(context).empty,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(color: AppColors.black),
+                        ),
+                      );
               },
               failure: ((error) => Center(
                       child: Text(
@@ -80,14 +92,6 @@ class SearchChat extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Center(
-      child: Text(
-        S.of(context).empty,
-        style: Theme.of(context)
-            .textTheme
-            .displayLarge!
-            .copyWith(color: AppColors.black),
-      ),
-    );
+    return const SizedBox.shrink();
   }
 }

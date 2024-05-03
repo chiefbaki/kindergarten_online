@@ -29,8 +29,8 @@ class ChatUserInfoWidget extends StatelessWidget {
               border: Border.all(color: AppColors.grey)),
           child: Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Image.network(
-              avatar ?? Imgs.ava,
+            child: Image.asset(
+              Imgs.ava,
               width: 35.w,
             ),
           )),

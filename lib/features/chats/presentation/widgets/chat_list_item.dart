@@ -31,8 +31,7 @@ class ChatListItem extends StatelessWidget {
         child: ListTile(
           contentPadding: EdgeInsets.zero,
           leading: ClipRRect(
-              clipBehavior: Clip.antiAlias,
-              child: Image.asset(entity.avatar ?? Imgs.ava)),
+              clipBehavior: Clip.antiAlias, child: Image.asset(Imgs.ava)),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 35, left: 5),
             child: Text(

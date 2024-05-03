@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/chats/domain/entities/contact_entity.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
@@ -27,8 +28,9 @@ class ContactCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: ClipOval(
-                    child: Image.network(
-                  entity.avatar ?? "",
+                    child: Image.asset(
+                  // entity.avatar ?? "",
+                  Imgs.ava,
                   height: 40,
                 )),
               )),
