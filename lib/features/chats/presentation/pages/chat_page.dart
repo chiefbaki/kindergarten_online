@@ -23,14 +23,22 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  // final _path = dotenv.env["WEB_SOCKET_URL"];
+
   final _msgController = TextEditingController();
   final _focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-
     _focusNode.hasFocus;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _msgController.dispose();
+    _focusNode.dispose();
   }
 
   @override
@@ -68,12 +76,17 @@ class _ChatPageState extends State<ChatPage> {
                         success: (entity) {
                           return entity.results!.isNotEmpty
                               ? ListView.builder(
+                                reverse: true,
+                                  padding: EdgeInsets.zero,
                                   itemCount: entity.count,
                                   itemBuilder: (_, index) {
-                                    return MessageBubble(
-                                      resultEntity: entity.results![index],
-                                      textStyle: textStyle,
-                                      index: index,
+                                    debugPrint(entity.results![index].content);
+                                    return Center(
+                                      child: MessageBubble(
+                                        resultEntity: entity.results![index],
+                                        textStyle: textStyle,
+                                        index: index,
+                                      ),
                                     );
                                   })
                               : Text(
@@ -93,6 +106,7 @@ class _ChatPageState extends State<ChatPage> {
                 ),
               ),
               BottomChatArea(
+                  onPressed: () {},
                   focusNode: _focusNode,
                   textStyle: textStyle,
                   msgController: _msgController),

@@ -43,8 +43,8 @@ class RemoteChatData {
   Future<HttpResponse<ChatMessagesListDto>> getMessages({String? id}) async {
     final path = dotenv.env["CHAT_MESSAGES_LIST"];
     final Response response = await _dio.get("$path$id");
-    debugPrint("$path$id");
     final data = ChatMessagesListDto.fromJson(response.data);
+    debugPrint(data.results.first.content);
     return HttpResponse(data, response);
   }
 }

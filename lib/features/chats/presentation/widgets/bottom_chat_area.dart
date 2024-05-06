@@ -4,17 +4,19 @@ import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/message_form.dart';
 
 class BottomChatArea extends StatelessWidget {
-  const BottomChatArea({
-    super.key,
-    required FocusNode focusNode,
-    required this.textStyle,
-    required TextEditingController msgController,
-  })  : _focusNode = focusNode,
+  const BottomChatArea(
+      {super.key,
+      required FocusNode focusNode,
+      required this.textStyle,
+      required TextEditingController msgController,
+      required this.onPressed})
+      : _focusNode = focusNode,
         _msgController = msgController;
 
   final FocusNode _focusNode;
   final TextTheme textStyle;
   final TextEditingController _msgController;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class BottomChatArea extends StatelessWidget {
               controller: _msgController,
             ),
             IconButton(
-                onPressed: () {},
+                onPressed: onPressed,
                 icon: const Icon(
                   Icons.send,
                   color: AppColors.blue,

@@ -9,7 +9,10 @@ extension ToEntityExt on ChatMessagesListDto {
 extension ToEntityExtRes on ResultsDto {
   ResultsEntity toEntity() => ResultsEntity(
       id: id,
+      content: content,
       sender: sender.toEntity(),
+      timestamp: timestamp,
+      modified: modified,
       recipient: recipient.toEntity(),
       room: room.toEntity());
 }

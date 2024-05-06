@@ -8,6 +8,14 @@ extension FormatDataTime on String? {
   }
 }
 
+extension FormatToHH on String? {
+  String convertHH() {
+    final DateTime time = DateTime.parse(this ?? "");
+    final DateFormat formatter = DateFormat("HH:mm");
+    return formatter.format(time);
+  }
+}
+
 extension HexToString on String {
   String fromHex() {
     final temp = replaceAll("#", "0xFF");
