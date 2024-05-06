@@ -7,7 +7,7 @@ part of 'category_dto.dart';
 // **************************************************************************
 
 CategoryDto _$CategoryDtoFromJson(Map<String, dynamic> json) => CategoryDto(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       results: (json['results'] as List<dynamic>)
           .map((e) => CategoryResultDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -21,7 +21,7 @@ Map<String, dynamic> _$CategoryDtoToJson(CategoryDto instance) =>
 
 CategoryResultDto _$CategoryResultDtoFromJson(Map<String, dynamic> json) =>
     CategoryResultDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
     );
 

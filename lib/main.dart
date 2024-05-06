@@ -16,8 +16,8 @@ Future<void> main() async {
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE1MTU4MDIyLCJpYXQiOjE3MTQ1NTMyMjIsImp0aSI6ImM1Y2MzNjI5YTk2MjQwZTRiNmFiNGExZmRkZDhmMjVlIiwidXNlcl9pZCI6Nn0.5AueWMD8ivkJx334f4n2Dj1aEbatf8fA___kiubDMQo"
   }));
   final obj = RemoteChatData(dio);
-  final vari = await obj.getChatList(query: "w");
-  print(vari);
+  final vari = await obj.getMessages(id: "7");
+  print(vari.data.results.first.content);
   await setup();
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations(

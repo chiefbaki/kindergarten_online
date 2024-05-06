@@ -20,9 +20,11 @@ import 'package:kindergarten_online/features/chats/domain/repositories/chat_repo
 import 'package:kindergarten_online/features/chats/domain/usecases/chat_list_usecase.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/contact_usecase.dart';
 import 'package:kindergarten_online/features/chats/domain/usecases/create_group_usecase.dart';
+import 'package:kindergarten_online/features/chats/domain/usecases/messages_list_usecase.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 import 'package:kindergarten_online/features/creativity/data/data_sources/remote/remote_creativity_data_impl.dart';
 import 'package:kindergarten_online/features/creativity/data/repositories/creativity_list_impl.dart';
 import 'package:kindergarten_online/features/creativity/domain/repositories/creativity_list_rep.dart';
@@ -113,6 +115,8 @@ Future<void> setup() async {
       () => CreateGroupUseCase(locator<ChatRepository>()));
   locator
       .registerLazySingleton(() => ChatListUseCase(locator<ChatRepository>()));
+  locator
+      .registerLazySingleton(() => MessagesUseCase(locator<ChatRepository>()));
 
   // Cubit
   locator.registerLazySingleton(() => LogoutCubit(locator<LogoutUseCase>()));
@@ -134,4 +138,5 @@ Future<void> setup() async {
       () => CreateGroupBloc(locator<CreateGroupUseCase>()));
   locator
       .registerLazySingleton(() => ChatUsersBloc(locator<ChatListUseCase>()));
+  locator.registerLazySingleton(() => MessagesBloc(locator<MessagesUseCase>()));
 }

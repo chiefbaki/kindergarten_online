@@ -7,7 +7,7 @@ part of 'contact_dto.dart';
 // **************************************************************************
 
 ContactDto _$ContactDtoFromJson(Map<String, dynamic> json) => ContactDto(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       results: (json['results'] as List<dynamic>)
           .map((e) => ContactResultsDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -21,7 +21,7 @@ Map<String, dynamic> _$ContactDtoToJson(ContactDto instance) =>
 
 ContactResultsDto _$ContactResultsDtoFromJson(Map<String, dynamic> json) =>
     ContactResultsDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       phone: json['phone'] as String,
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
@@ -43,7 +43,7 @@ Map<String, dynamic> _$ContactResultsDtoToJson(ContactResultsDto instance) =>
 
 ContactChildrensDto _$ContactChildrensDtoFromJson(Map<String, dynamic> json) =>
     ContactChildrensDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       group: ChildrensGroupDto.fromJson(json['group'] as Map<String, dynamic>),
@@ -60,9 +60,9 @@ Map<String, dynamic> _$ContactChildrensDtoToJson(
 
 ChildrensGroupDto _$ChildrensGroupDtoFromJson(Map<String, dynamic> json) =>
     ChildrensGroupDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      kindergarten: json['kindergarten'] as int,
+      kindergarten: (json['kindergarten'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ChildrensGroupDtoToJson(ChildrensGroupDto instance) =>

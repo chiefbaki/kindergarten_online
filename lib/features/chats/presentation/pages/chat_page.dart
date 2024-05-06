@@ -1,10 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/auth/presentation/widgets/back_btn.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/bottom_chat_area.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/chat_user_info_widget.dart';
 import 'package:kindergarten_online/features/chats/presentation/widgets/message_bubble.dart';
-
+import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
@@ -56,14 +60,37 @@ class _ChatPageState extends State<ChatPage> {
           child: Column(
             children: [
               Expanded(
-                child: ListView.builder(
-                    itemCount: 2,
-                    itemBuilder: (_, index) {
-                      return MessageBubble(
-                        textStyle: textStyle,
-                        index: index,
-                      );
-                    }),
+                child: BlocBuilder<MessagesBloc, MessagesState>(
+                  builder: (context, state) {
+                    return state.when(
+                        initial: () => const SizedBox(),
+                        loading: () => const CustomProgressIndicator(),
+                        success: (entity) {
+                          return entity.results!.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount: entity.count,
+                                  itemBuilder: (_, index) {
+                                    return MessageBubble(
+                                      resultEntity: entity.results![index],
+                                      textStyle: textStyle,
+                                      index: index,
+                                    );
+                                  })
+                              : Text(
+                                  S.of(context).empty,
+                                  style: textStyle.displayMedium!
+                                      .copyWith(color: AppColors.black),
+                                );
+                        },
+                        failure: (e) => Center(
+                              child: Text(
+                                e,
+                                style: textStyle.displayMedium!
+                                    .copyWith(color: AppColors.black),
+                              ),
+                            ));
+                  },
+                ),
               ),
               BottomChatArea(
                   focusNode: _focusNode,

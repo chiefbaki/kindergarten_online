@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account?  "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Application theme"),
+        "attendace": MessageLookupByLibrary.simpleMessage("Посещаемость"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),

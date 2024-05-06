@@ -10,6 +10,7 @@ import 'package:kindergarten_online/features/auth/presentation/logout_cubit/logo
 import 'package:kindergarten_online/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/features/chats/presentation/blocs/create_group_bloc/create_group_bloc.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 import 'package:kindergarten_online/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/features/profile/presentation/blocs/edit_profile_bloc/edit_profile_bloc.dart';
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => locator<ChatUsersBloc>(),
         ),
+        BlocProvider(
+          create: (context) => locator<MessagesBloc>(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -81,58 +85,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     const FlutterSecureStorage storage = FlutterSecureStorage();
-//     return MultiRepositoryProvider(
-//       providers: [
-//         RepositoryProvider(
-//           create: (context) => DioSettings(),
-//         ),
-//         RepositoryProvider(
-//           create: (context) =>
-//               LoginImpl(dio: RepositoryProvider.of<DioSettings>(context).dio),
-//         ),
-//         RepositoryProvider(
-//           create: (context) => LoginUseCase(
-//               repository: RepositoryProvider.of<LoginImpl>(context)),
-//         ),
-//         RepositoryProvider(
-//           create: (context) => TokenStorage(storage),
-//         ),
-//         RepositoryProvider(
-//           create: (context) =>
-//               TokenImpl(RepositoryProvider.of<TokenStorage>(context)),
-//         ),
-//         RepositoryProvider(
-//           create: (context) =>
-//               SaveTokenUseCase(RepositoryProvider.of<TokenImpl>(context)),
-//         ),
-//       ],
-//       child: BlocProvider(
-//         create: (context) => LoginCubit(
-//             useCase: RepositoryProvider.of<LoginUseCase>(context),
-//             saveTokenUseCase: RepositoryProvider.of<SaveTokenUseCase>(context)),
-//         child: ScreenUtilInit(
-//           designSize: const Size(375, 812),
-//           minTextAdapt: true,
-//           splitScreenMode: true,
-//           child: MaterialApp.router(
-//             localizationsDelegates: [
-
-//             ],
-//             locale: const Locale("ru"),
-//             debugShowCheckedModeBanner: false,
-//             routerConfig: AppRouter().config(),
-//             theme: theme(),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-

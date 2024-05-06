@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/features/chats/domain/entities/chat_messages_list_entity.dart';
 
 class MessageBubble extends StatelessWidget {
   final int index;
+  final ResultsEntity resultEntity;
   const MessageBubble(
-      {super.key, required this.textStyle, required this.index});
+      {super.key,
+      required this.textStyle,
+      required this.index,
+      required this.resultEntity});
 
   final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
     final sizeOf = MediaQuery.of(context).size;
+    debugPrint(resultEntity.content);
     debugPrint("${sizeOf.width * 0.90}");
     return Container(
+      width: MediaQuery.of(context).size.width * 0.90,
       constraints: BoxConstraints(maxWidth: sizeOf.width * 0.66),
       padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.only(bottom: 10),
@@ -23,7 +30,7 @@ class MessageBubble extends StatelessWidget {
             Color(0xff5B86E5),
           ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
       child: Text(
-        "Привет, Ислам",
+        resultEntity.content ?? "",
         style: textStyle.displayMedium!.copyWith(color: AppColors.black),
       ),
     );

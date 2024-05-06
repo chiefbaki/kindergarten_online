@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Каттоо эсебиңиз барбы? "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Колдонмо темасы"),
+        "attendace": MessageLookupByLibrary.simpleMessage("Посещаемость"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камералар"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Сырсөздү өзгөртүү"),

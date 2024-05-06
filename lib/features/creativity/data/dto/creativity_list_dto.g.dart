@@ -8,7 +8,7 @@ part of 'creativity_list_dto.dart';
 
 CreativityListDto _$CreativityListDtoFromJson(Map<String, dynamic> json) =>
     CreativityListDto(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       results: (json['results'] as List<dynamic>)
           .map((e) => CreativityResultsDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -23,10 +23,10 @@ Map<String, dynamic> _$CreativityListDtoToJson(CreativityListDto instance) =>
 CreativityResultsDto _$CreativityResultsDtoFromJson(
         Map<String, dynamic> json) =>
     CreativityResultsDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       img: json['image'] as String,
-      children: json['children'] as int,
+      children: (json['children'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CreativityResultsDtoToJson(

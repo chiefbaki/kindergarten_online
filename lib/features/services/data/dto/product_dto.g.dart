@@ -12,7 +12,7 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
     requiredKeys: const ['count', 'results'],
   );
   return ProductDto(
-    count: json['count'] as int,
+    count: (json['count'] as num).toInt(),
     results: (json['results'] as List<dynamic>)
         .map((e) => ProductResultDto.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -39,7 +39,7 @@ ProductResultDto _$ProductResultDtoFromJson(Map<String, dynamic> json) {
     ],
   );
   return ProductResultDto(
-    id: json['id'] as int,
+    id: (json['id'] as num).toInt(),
     name: json['name'] as String,
     description: json['description'] as String,
     price: json['price'] as String,
@@ -64,7 +64,7 @@ Map<String, dynamic> _$ProductResultDtoToJson(ProductResultDto instance) =>
 
 ProductImagesDto _$ProductImagesDtoFromJson(Map<String, dynamic> json) =>
     ProductImagesDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       img: json['img'] as String,
     );
 

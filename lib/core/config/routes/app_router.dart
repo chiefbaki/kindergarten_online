@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:kindergarten_online/features/attendace/presentation/attendace_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/login_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/main_page.dart';
 import 'package:kindergarten_online/features/auth/presentation/pages/registr_page.dart';
@@ -34,7 +35,6 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         // Splash page
         CustomRoute(
-          
           page: SplashRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
@@ -84,9 +84,13 @@ class AppRouter extends _$AppRouter {
             page: ScheduleRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
+        // Attendance
+        CustomRoute(
+            page: AttendanceRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+
         // Profile
         CustomRoute(
-          initial: true,
             page: SettingsRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
@@ -117,6 +121,7 @@ class AppRouter extends _$AppRouter {
 
         // List of contacts page
         CustomRoute(
+            initial: true,
             page: ChatsListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 

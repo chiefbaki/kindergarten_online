@@ -59,5 +59,6 @@
   "contactIsEmpty": "Your contact list is empty",
   "empty": "Пусто",
   "chatListIsEmpty": "Your chat list is empty",
-  "paymentReceipts": "Payment receipts"
+  "paymentReceipts": "Payment receipts",
+  "attendace": "Посещаемость"
 }

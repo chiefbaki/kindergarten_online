@@ -9,8 +9,10 @@ part of 'create_group_res_dto.dart';
 CreateGroupResDto _$CreateGroupResDtoFromJson(Map<String, dynamic> json) =>
     CreateGroupResDto(
       name: json['name'] as String,
-      members: (json['members'] as List<dynamic>).map((e) => e as int).toList(),
-      id: json['id'] as int,
+      members: (json['members'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
+      id: (json['id'] as num).toInt(),
       avatar: json['avatar'] as String?,
     );
 

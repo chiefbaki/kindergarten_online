@@ -110,7 +110,7 @@ class ChatImpl implements ChatRepository {
           message: DataSource.noInternetConnection.getFailure().message);
     }
     try {
-      final httpResponse = await _remoteChatData.getMessages();
+      final httpResponse = await _remoteChatData.getMessages(id: id);
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return DataSuccess(httpResponse.data.toEntity());
       } else {

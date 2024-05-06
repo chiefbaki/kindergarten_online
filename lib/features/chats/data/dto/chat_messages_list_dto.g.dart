@@ -8,7 +8,7 @@ part of 'chat_messages_list_dto.dart';
 
 ChatMessagesListDto _$ChatMessagesListDtoFromJson(Map<String, dynamic> json) =>
     ChatMessagesListDto(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       results: (json['results'] as List<dynamic>)
           .map((e) => ResultsDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -22,7 +22,7 @@ Map<String, dynamic> _$ChatMessagesListDtoToJson(
     };
 
 ResultsDto _$ResultsDtoFromJson(Map<String, dynamic> json) => ResultsDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       sender: SenderDto.fromJson(json['sender'] as Map<String, dynamic>),
       recipient:
           RecipientDto.fromJson(json['recipient'] as Map<String, dynamic>),
@@ -44,7 +44,7 @@ Map<String, dynamic> _$ResultsDtoToJson(ResultsDto instance) =>
     };
 
 SenderDto _$SenderDtoFromJson(Map<String, dynamic> json) => SenderDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       phone: json['phone'] as String,
     );
 
@@ -54,7 +54,7 @@ Map<String, dynamic> _$SenderDtoToJson(SenderDto instance) => <String, dynamic>{
     };
 
 RecipientDto _$RecipientDtoFromJson(Map<String, dynamic> json) => RecipientDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       phone: json['phone'] as String,
     );
 
@@ -65,7 +65,7 @@ Map<String, dynamic> _$RecipientDtoToJson(RecipientDto instance) =>
     };
 
 RoomDto _$RoomDtoFromJson(Map<String, dynamic> json) => RoomDto(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
     );
 

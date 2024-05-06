@@ -7,7 +7,7 @@ part of 'news_dto.dart';
 // **************************************************************************
 
 NewsDto _$NewsDtoFromJson(Map<String, dynamic> json) => NewsDto(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       results: (json['results'] as List<dynamic>)
           .map((e) => Results.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,7 +19,7 @@ Map<String, dynamic> _$NewsDtoToJson(NewsDto instance) => <String, dynamic>{
     };
 
 Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       content: json['content'] as String,
       timeStamp: json['timestamp'] as String,
@@ -37,7 +37,7 @@ Map<String, dynamic> _$ResultsToJson(Results instance) => <String, dynamic>{
     };
 
 Images _$ImagesFromJson(Map<String, dynamic> json) => Images(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       img: json['img'] as String,
     );
 

@@ -9,7 +9,9 @@ part of 'create_group_req_dto.dart';
 CreateGroupReqDto _$CreateGroupReqDtoFromJson(Map<String, dynamic> json) =>
     CreateGroupReqDto(
       name: json['name'] as String,
-      members: (json['members'] as List<dynamic>).map((e) => e as int).toList(),
+      members: (json['members'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$CreateGroupReqDtoToJson(CreateGroupReqDto instance) =>

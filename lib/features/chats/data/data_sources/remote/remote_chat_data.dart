@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kindergarten_online/features/chats/data/dto/chat_list_dto.dart';
 import 'package:kindergarten_online/features/chats/data/dto/chat_messages_list_dto.dart';
@@ -42,6 +43,7 @@ class RemoteChatData {
   Future<HttpResponse<ChatMessagesListDto>> getMessages({String? id}) async {
     final path = dotenv.env["CHAT_MESSAGES_LIST"];
     final Response response = await _dio.get("$path$id");
+    debugPrint("$path$id");
     final data = ChatMessagesListDto.fromJson(response.data);
     return HttpResponse(data, response);
   }

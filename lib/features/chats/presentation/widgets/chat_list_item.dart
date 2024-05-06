@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/chats/domain/entities/req/chat_list_entity.dart';
+import 'package:kindergarten_online/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 
 class ChatListItem extends StatelessWidget {
   final ChatListEntity entity;
@@ -20,10 +22,15 @@ class ChatListItem extends StatelessWidget {
       onLongPress: () {
         debugPrint("long press");
       },
-      onTap: () => context.router.push(ChatRoute(
-          firstName: entity.firstName ?? "",
-          lastName: entity.lastName,
-          avatar: entity.avatar)),
+      onTap: () {
+        context
+            .read<MessagesBloc>()
+            .add(MessagesEvent.getMessages(id: entity.id.toString()));
+        context.router.push(ChatRoute(
+            firstName: entity.firstName ?? "",
+            lastName: entity.lastName,
+            avatar: entity.avatar));
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 15,

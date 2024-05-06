@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AttendanceRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AttendancePage(),
+      );
+    },
     CameraRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -188,6 +194,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AttendancePage]
+class AttendanceRoute extends PageRouteInfo<void> {
+  const AttendanceRoute({List<PageRouteInfo>? children})
+      : super(
+          AttendanceRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AttendanceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

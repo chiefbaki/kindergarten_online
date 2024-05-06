@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MessagesEvent {
+  String? get id => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getMessages,
+    required TResult Function(String? id) getMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getMessages,
+    TResult? Function(String? id)? getMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getMessages,
+    TResult Function(String? id)? getMessages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$MessagesEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MessagesEventCopyWith<MessagesEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,8 @@ abstract class $MessagesEventCopyWith<$Res> {
   factory $MessagesEventCopyWith(
           MessagesEvent value, $Res Function(MessagesEvent) then) =
       _$MessagesEventCopyWithImpl<$Res, MessagesEvent>;
+  @useResult
+  $Res call({String? id});
 }
 
 /// @nodoc
@@ -66,13 +73,30 @@ class _$MessagesEventCopyWithImpl<$Res, $Val extends MessagesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetMessagesImplCopyWith<$Res> {
+abstract class _$$GetMessagesImplCopyWith<$Res>
+    implements $MessagesEventCopyWith<$Res> {
   factory _$$GetMessagesImplCopyWith(
           _$GetMessagesImpl value, $Res Function(_$GetMessagesImpl) then) =
       __$$GetMessagesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? id});
 }
 
 /// @nodoc
@@ -82,51 +106,75 @@ class __$$GetMessagesImplCopyWithImpl<$Res>
   __$$GetMessagesImplCopyWithImpl(
       _$GetMessagesImpl _value, $Res Function(_$GetMessagesImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_$GetMessagesImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetMessagesImpl implements _GetMessages {
-  const _$GetMessagesImpl();
+  const _$GetMessagesImpl({this.id});
+
+  @override
+  final String? id;
 
   @override
   String toString() {
-    return 'MessagesEvent.getMessages()';
+    return 'MessagesEvent.getMessages(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetMessagesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetMessagesImpl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
+      __$$GetMessagesImplCopyWithImpl<_$GetMessagesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getMessages,
+    required TResult Function(String? id) getMessages,
   }) {
-    return getMessages();
+    return getMessages(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getMessages,
+    TResult? Function(String? id)? getMessages,
   }) {
-    return getMessages?.call();
+    return getMessages?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getMessages,
+    TResult Function(String? id)? getMessages,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
-      return getMessages();
+      return getMessages(id);
     }
     return orElse();
   }
@@ -161,7 +209,14 @@ class _$GetMessagesImpl implements _GetMessages {
 }
 
 abstract class _GetMessages implements MessagesEvent {
-  const factory _GetMessages() = _$GetMessagesImpl;
+  const factory _GetMessages({final String? id}) = _$GetMessagesImpl;
+
+  @override
+  String? get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
