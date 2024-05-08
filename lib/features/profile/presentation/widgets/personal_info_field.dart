@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
+const double _paddingUnit = 5;
+
 class PersonalInfoField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
@@ -26,8 +28,8 @@ class PersonalInfoField extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        contentPadding: const EdgeInsets.symmetric(
+            vertical: 12, horizontal: _paddingUnit * 3),
         hintStyle:
             textStyle.displayMedium!.copyWith(color: AppColors.lightGrey),
         hintText: hintText,

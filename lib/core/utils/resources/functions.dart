@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
@@ -49,7 +50,10 @@ Future<dynamic> wrongLoginDialog(BuildContext context, TextTheme textStyle) {
       });
 }
 
-Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle) {
+Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
+    {bool showButton = true}) {
+  final width = MediaQuery.of(context).size.width;
+  final height = MediaQuery.of(context).size.height;
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -63,10 +67,11 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle) {
             Expanded(
               child: GridView.builder(
                   itemCount: MenuItem.items.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: width / (height / 1 / 2.2),
                       crossAxisCount: 3,
-                      mainAxisSpacing: 34,
-                      crossAxisSpacing: 25),
+                      mainAxisSpacing: 85,
+                      crossAxisSpacing: 30),
                   itemBuilder: (_, index) {
                     return MenuCard(
                       textStyle: textStyle,
@@ -76,9 +81,10 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle) {
                     );
                   }),
             ),
-            const CustomFloatBtn(
+            CustomFloatBtn(
+              showButton: showButton,
               isToSwitch: false,
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
             )
           ],
         ),

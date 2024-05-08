@@ -25,7 +25,7 @@ class _CategoryCardState extends State<CategoryCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.push(ProductDetailRoute(results: widget.entity));
+        _goToProductDetail(context);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -72,5 +72,9 @@ class _CategoryCardState extends State<CategoryCard> {
         ),
       ),
     );
+  }
+
+  void _goToProductDetail(BuildContext context) {
+    context.router.push(ProductDetailRoute(results: widget.entity));
   }
 }

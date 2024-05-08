@@ -9,6 +9,8 @@ import 'package:kindergarten_online/features/services/presentation/widgets/categ
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 
+const double _paddingUnit = 5;
+
 @RoutePage()
 class ServicesPage extends StatefulWidget {
   const ServicesPage({super.key});
@@ -30,7 +32,7 @@ class _ServicesPageState extends State<ServicesPage> {
     return CustomScaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25),
+          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
           child: Column(children: [
             NavBar(textStyle: textStyle, text: "Товары / Услуги"),
             SizedBox(

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/features/profile/presentation/blocs/profile_bloc/profile_bloc.dart';
@@ -10,6 +11,8 @@ import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/features/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
+const double _paddingUnit = 5;
 
 @RoutePage()
 class PersonalAccountPage extends StatefulWidget {
@@ -49,12 +52,12 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
     return CustomScaffold(
         body: SafeArea(
             child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25),
+                padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
                 child: SingleChildScrollView(
                     child: Column(children: [
                   NavBar(textStyle: textStyle, text: S.of(context).account),
-                  SizedBox(
-                    height: 40.h,
+                  Gap(
+                    _paddingUnit * 8.h,
                   ),
                   BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, state) {
@@ -100,8 +103,8 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           style: textStyle.displaySmall!
                                               .copyWith(color: AppColors.white),
                                         ),
-                                        SizedBox(
-                                          height: 10.h,
+                                        Gap(
+                                          _paddingUnit * 2.h,
                                         ),
                                         PersonalInfoField(
                                           textInputAction: TextInputAction.next,
@@ -110,16 +113,16 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           hintText: entity.firstName ?? "",
                                           controller: _name,
                                         ),
-                                        SizedBox(
-                                          height: 20.h,
+                                        Gap(
+                                          _paddingUnit * 4.h,
                                         ),
                                         Text(
                                           S.of(context).lastname,
                                           style: textStyle.displaySmall!
                                               .copyWith(color: AppColors.white),
                                         ),
-                                        SizedBox(
-                                          height: 10.h,
+                                        Gap(
+                                          _paddingUnit * 2.h,
                                         ),
                                         PersonalInfoField(
                                           textInputAction: TextInputAction.next,
@@ -128,16 +131,16 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           hintText: entity.lastName ?? "",
                                           controller: _lastName,
                                         ),
-                                        SizedBox(
-                                          height: 20.h,
+                                        Gap(
+                                          _paddingUnit * 4.h,
                                         ),
                                         Text(
                                           S.of(context).middleName,
                                           style: textStyle.displaySmall!
                                               .copyWith(color: AppColors.white),
                                         ),
-                                        SizedBox(
-                                          height: 10.h,
+                                        Gap(
+                                          _paddingUnit * 2.h,
                                         ),
                                         PersonalInfoField(
                                           textInputAction: TextInputAction.done,
@@ -146,8 +149,8 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           hintText: entity.patronymic ?? "",
                                           controller: _middleName,
                                         ),
-                                        SizedBox(
-                                          height: 20.h,
+                                        Gap(
+                                          _paddingUnit * 4.h,
                                         ),
                                         // Text(
                                         //   S.of(context).gender,
@@ -171,8 +174,8 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                           style: textStyle.displaySmall!
                                               .copyWith(color: AppColors.white),
                                         ),
-                                        SizedBox(
-                                          height: 10.h,
+                                        Gap(
+                                          _paddingUnit * 2.h,
                                         ),
                                         PhoneTextField(
                                             isReadOnly: true,

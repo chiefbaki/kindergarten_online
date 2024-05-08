@@ -4,6 +4,8 @@ import 'package:kindergarten_online/features/services/presentation/blocs/product
 import 'package:kindergarten_online/features/services/presentation/widgets/category_card.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 
+const double _paddingUnit = 5;
+
 class ProductItem extends StatefulWidget {
   final String id;
   const ProductItem({super.key, required this.id});
@@ -27,7 +29,8 @@ class _ProductItemState extends State<ProductItem> {
           loading: () => const CustomProgressIndicator(),
           success: (e) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: _paddingUnit * 4, vertical: _paddingUnit * 5),
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.77,
                 child: GridView.builder(

@@ -20,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _openMainMenu() {
-    customBottomSheet(context, Theme.of(context).textTheme);
+    customBottomSheet(context, Theme.of(context).textTheme, showButton: false);
   }
 
   Future<void> _redirect() async {

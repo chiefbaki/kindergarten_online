@@ -37,6 +37,7 @@ class AppRouter extends _$AppRouter {
         CustomRoute(
           page: SplashRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
+          initial: true,
         ),
 
         // Main
@@ -47,9 +48,9 @@ class AppRouter extends _$AppRouter {
 
         // Auth
         CustomRoute(
-            page: LoginRoute.page,
-            transitionsBuilder: TransitionsBuilders.fadeIn,
-            durationInMilliseconds: 800),
+          page: LoginRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
 
         CustomRoute(
             page: RegistrRoute.page,
@@ -121,7 +122,6 @@ class AppRouter extends _$AppRouter {
 
         // List of contacts page
         CustomRoute(
-            initial: true,
             page: ChatsListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 

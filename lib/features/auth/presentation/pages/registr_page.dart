@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
@@ -57,22 +58,22 @@ class _RegistrPageState extends State<RegistrPage> {
                   Text(S.of(context).phoneNumber,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  SizedBox(
-                    height: 10.h,
+                  Gap(
+                    10.h,
                   ),
                   PhoneTextField(
                     controller: _phone,
                     textStyle: textStyle,
                     hintText: "+996 (555) 555-555",
                   ),
-                  SizedBox(
-                    height: 20.h,
+                  Gap(
+                    20.h,
                   ),
                   Text(S.of(context).password,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  SizedBox(
-                    height: 10.h,
+                  Gap(
+                    10.h,
                   ),
                   CustomTextField(
                       controller: _password,
@@ -84,25 +85,25 @@ class _RegistrPageState extends State<RegistrPage> {
                           _obscureText = !_obscureText;
                         });
                       }),
-                  SizedBox(
-                    height: 20.h,
+                  Gap(
+                    20.h,
                   ),
                   Text(S.of(context).kindergarten,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  SizedBox(height: 10.h),
+                  Gap(10.h),
                   TextFieldDrop(
                     textStyle: textStyle,
                     hintText: S.of(context).nameAndAddress,
                     controller: _nameAndAddress,
                   ),
-                  SizedBox(
-                    height: 20.h,
+                  Gap(
+                    20.h,
                   ),
                   Text(S.of(context).group,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  SizedBox(height: 10.h),
+                  Gap(10.h),
                   TextFieldDrop(
                     textStyle: textStyle,
                     hintText: S.of(context).chooseGroupOrClass,
@@ -116,8 +117,8 @@ class _RegistrPageState extends State<RegistrPage> {
                       children: [
                         CustomBtn(
                             onPressed: () {}, name: S.of(context).registration),
-                        SizedBox(
-                          height: 20.h,
+                        Gap(
+                          20.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +131,7 @@ class _RegistrPageState extends State<RegistrPage> {
                             CustomTextBtn(
                                 textStyle: textStyle,
                                 onPressed: () {
-                                  context.router.push(const LoginRoute());
+                                  _goToLogin(context);
                                 },
                                 name: S.of(context).enter)
                           ],
@@ -149,5 +150,9 @@ class _RegistrPageState extends State<RegistrPage> {
         ),
       ),
     );
+  }
+
+  void _goToLogin(BuildContext context) {
+    context.router.push(const LoginRoute());
   }
 }

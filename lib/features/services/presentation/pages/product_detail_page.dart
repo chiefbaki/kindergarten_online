@@ -1,12 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/custom_divider.dart';
 import 'package:kindergarten_online/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
+
+const double _paddingUnit = 5;
 
 @RoutePage()
 class ProductDetailPage extends StatelessWidget {
@@ -15,6 +18,7 @@ class ProductDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return CustomScaffold(
       appBar: CustomAppBar(
           textStyle: Theme.of(context).textTheme,
@@ -24,9 +28,10 @@ class ProductDetailPage extends StatelessWidget {
         padding: EdgeInsets.zero,
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+            padding: const EdgeInsets.symmetric(
+                vertical: _paddingUnit * 5, horizontal: _paddingUnit * 5),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.77,
+              height: height * 0.77,
               child: Column(
                 children: [
                   Container(
@@ -39,12 +44,13 @@ class ProductDetailPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: _paddingUnit * 3),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 25.h,
+                        Gap(
+                          _paddingUnit * 5.h,
                         ),
                         Text(
                           results.name ?? "",
@@ -53,19 +59,19 @@ class ProductDetailPage extends StatelessWidget {
                               .titleMedium!
                               .copyWith(color: AppColors.black),
                         ),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         Text(
                           results.description ?? "",
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         const CustomDivider(),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,12 +89,12 @@ class ProductDetailPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         const CustomDivider(),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,12 +112,12 @@ class ProductDetailPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         const CustomDivider(),
-                        SizedBox(
-                          height: 10.h,
+                        Gap(
+                          _paddingUnit * 2.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,8 +138,8 @@ class ProductDetailPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 50.h,
+                  Gap(
+                    _paddingUnit * 10.h,
                   ),
                   CustomBtn(onPressed: () {}, name: "Купить"),
                 ],

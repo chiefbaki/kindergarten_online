@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/widgets/custom_btn.dart';
-import 'package:kindergarten_online/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/custom_text_field.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
+
+const double _paddingUnit = 5;
 
 @RoutePage()
 class ChangePasswordPage extends StatefulWidget {
@@ -34,16 +37,16 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25),
+          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
           child: Column(
             children: [
               NavBar(textStyle: textStyle, text: "Пароль"),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: _paddingUnit * 3, vertical: _paddingUnit * 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -52,8 +55,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black),
                     ),
-                    SizedBox(
-                      height: 10.h,
+                    Gap(
+                      _paddingUnit * 2.h,
                     ),
                     CustomTextField(
                         textStyle: textStyle,
@@ -65,16 +68,16 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           });
                         },
                         controller: _oldPassword),
-                    SizedBox(
-                      height: 20.h,
+                    Gap(
+                      _paddingUnit * 4.h,
                     ),
                     Text(
                       "Новый пароль:",
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black),
                     ),
-                    SizedBox(
-                      height: 10.h,
+                    Gap(
+                      _paddingUnit * 2.h,
                     ),
                     CustomTextField(
                         textStyle: textStyle,
@@ -86,24 +89,24 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           });
                         },
                         controller: _newPassword),
-                    SizedBox(
-                      height: 20.h,
+                    Gap(
+                      _paddingUnit * 4.h,
                     ),
                     Text(
                       "Подтверждение нового пароля:",
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black),
                     ),
-                    SizedBox(
-                      height: 10.h,
+                    Gap(
+                      _paddingUnit * 2.h,
                     ),
                     CustomTextField(
                         textStyle: textStyle,
                         obscureText: _isNewsPassNotVisible,
                         hintText: "Подтверждение нового пароля",
                         controller: _confirmNewPassword),
-                    SizedBox(
-                      height: 25.h,
+                    Gap(
+                      _paddingUnit * 5.h,
                     ),
                     Center(
                         child: CustomBtn(
@@ -115,9 +118,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           ),
         ),
       ),
-      floatingActionButton: const CustomFloatBtn(isToSwitch: true),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      resizeToAvoidBottomInset: false,
     );
   }
 }

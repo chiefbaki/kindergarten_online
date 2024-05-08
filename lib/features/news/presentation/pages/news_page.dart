@@ -2,12 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/features/news/presentation/widgets/news_item.dart';
 import 'package:kindergarten_online/features/widgets/custom_refresh_indicator.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
+const double _paddingUnit = 5;
 
 @RoutePage()
 class NewsPage extends StatefulWidget {
@@ -30,16 +33,17 @@ class _NewsPageState extends State<NewsPage> {
     return CustomScaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25),
+          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
           child: Column(
             children: [
               NavBar(textStyle: textStyle, text: S.of(context).news),
-              SizedBox(
-                height: 25.h,
+              Gap(
+                _paddingUnit * 5.h,
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: _paddingUnit * 3),
                   child: CustomRefreshIndicator(
                       onRefresh: () async {
                         await Future.delayed(const Duration(milliseconds: 2),

@@ -41,6 +41,8 @@ class _ChatPageState extends State<ChatPage> {
     _focusNode.dispose();
   }
 
+  // List<String> _messages = [];
+
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
@@ -76,7 +78,7 @@ class _ChatPageState extends State<ChatPage> {
                         success: (entity) {
                           return entity.results!.isNotEmpty
                               ? ListView.builder(
-                                reverse: true,
+                                  reverse: true,
                                   padding: EdgeInsets.zero,
                                   itemCount: entity.count,
                                   itemBuilder: (_, index) {

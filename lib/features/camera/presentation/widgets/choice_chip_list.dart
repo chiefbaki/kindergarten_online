@@ -25,7 +25,7 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.05,
+      height: 40.h,
       child: ListView.separated(
         itemCount: 4,
         scrollDirection: Axis.horizontal,

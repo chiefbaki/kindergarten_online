@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/features/camera/data/cameras_position_model.dart';
 import 'package:kindergarten_online/features/camera/presentation/widgets/choice_chip_list.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
+const _paddingUnit = 5;
 
 @RoutePage()
 class CameraPage extends StatelessWidget {
@@ -24,8 +27,8 @@ class CameraPage extends StatelessWidget {
                 textStyle: textStyle,
                 text: S.of(context).cameras,
               ),
-              SizedBox(
-                height: 25.h,
+              Gap(
+                _paddingUnit * 5.h,
               ),
               Expanded(
                 child: Padding(
@@ -33,8 +36,8 @@ class CameraPage extends StatelessWidget {
                   child: Column(
                     children: [
                       ChoiceChipList(textStyle: textStyle),
-                      SizedBox(
-                        height: 15.h,
+                      Gap(
+                        _paddingUnit * 3.h,
                       ),
                       Expanded(
                           child: GridView.builder(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/profile/presentation/widgets/colored_container.dart';
-import 'package:kindergarten_online/features/widgets/cached_image.dart';
+import 'package:kindergarten_online/features/widgets/creativity_cached_image.dart';
+
+const _paddingUnit = 10;
 
 class CreativityItem extends StatelessWidget {
   final String name;
@@ -24,17 +27,17 @@ class CreativityItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: CachedImage(img: image),
+            child: CreativityCachedImage(img: image),
           ),
-          SizedBox(
-            height: 10.h,
+          Gap(
+            _paddingUnit.h,
           ),
           Text(
             name,
             style: textStyle.displayMedium!.copyWith(color: AppColors.white),
           ),
-          SizedBox(
-            height: 10.h,
+          Gap(
+            _paddingUnit.h,
           ),
           Text(
             "2023-02-09",

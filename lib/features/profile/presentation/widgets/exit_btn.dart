@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
+const double _paddingUnit = 5;
+
 class ExitBtn extends StatelessWidget {
   final Function() onPressed;
 
@@ -20,7 +22,8 @@ class ExitBtn extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.navyBlue,
             minimumSize: const Size(345, 56),
-            padding: const EdgeInsets.symmetric(horizontal: 139, vertical: 20),
+            padding: const EdgeInsets.symmetric(
+                horizontal: _paddingUnit * 28, vertical: _paddingUnit * 4),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20))),
         child: Text(

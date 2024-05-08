@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/features/auth/presentation/logout_cubit/logout_cubit.dart';
@@ -14,6 +14,8 @@ import 'package:kindergarten_online/features/widgets/text_with_arrow.dart';
 import 'package:kindergarten_online/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/features/widgets/nav_bar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
+const double _paddingUnit = 5;
 
 @RoutePage()
 class SettingsPage extends StatefulWidget {
@@ -32,13 +34,13 @@ class _SettingsPageState extends State<SettingsPage> {
     return CustomScaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25),
+          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
           child: Column(
             children: [
               NavBar(textStyle: textStyle, text: S.of(context).Settings),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: _paddingUnit * 4, vertical: _paddingUnit * 5),
                 child: Column(
                   children: [
                     ColoredContainer(
@@ -50,8 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             TextWithArrow(
                               textStyle: textStyle,
                               onPressed: () {
-                                context.router
-                                    .push(const PersonalAccountRoute());
+                                _goToPersonalAcc(context);
                               },
                               name: S.of(context).account,
                             ),
@@ -59,7 +60,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             TextWithArrow(
                               textStyle: textStyle,
                               onPressed: () {
-                                context.router.push(const EditProfileRoute());
+                                _goToEditProfile(context);
                               },
                               name: S.of(context).editProfile,
                             ),
@@ -79,8 +80,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
+                    Gap(
+                      _paddingUnit * 2.h,
                     ),
                     ColoredContainer(
                       child: Padding(
@@ -93,8 +94,8 @@ class _SettingsPageState extends State<SettingsPage> {
                               style: textStyle.displaySmall!
                                   .copyWith(color: AppColors.white),
                             ),
-                            SizedBox(
-                              height: 10.h,
+                            Gap(
+                              _paddingUnit * 2.h,
                             ),
                             const CustomDivider(),
                             CustomSwitchTile(
@@ -127,13 +128,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
+                    Gap(
+                      _paddingUnit * 2.h,
                     ),
                     ColoredContainer(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 20),
+                            vertical: _paddingUnit,
+                            horizontal: _paddingUnit * 4),
                         child: Row(
                           children: [
                             Text(
@@ -168,13 +170,13 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
+                    Gap(
+                      _paddingUnit * 2.h,
                     ),
                     ColoredContainer(
                         child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 20),
+                          vertical: _paddingUnit, horizontal: _paddingUnit * 4),
                       child: Column(
                         children: [
                           TextWithArrow(
@@ -193,8 +195,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                     )),
-                    SizedBox(
-                      height: 15.h,
+                    Gap(
+                      _paddingUnit * 3.h,
                     ),
                     BlocListener<LogoutCubit, LogoutState>(
                       listener: (context, state) {
@@ -216,7 +218,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           context.read<LogoutCubit>().logout();
                           // context.router.popUntil(
                           //     (route) => route.settings.name == "LoginRoute");
-                          context.router.push(const MainRoute());
+                          _goToMain(context);
                         },
                         text: S.of(context).logOut,
                       ),
@@ -229,5 +231,17 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+  }
+
+  void _goToPersonalAcc(BuildContext context) {
+    context.router.push(const PersonalAccountRoute());
+  }
+
+  void _goToEditProfile(BuildContext context) {
+    context.router.push(const EditProfileRoute());
+  }
+
+  void _goToMain(BuildContext context) {
+    context.router.push(const MainRoute());
   }
 }

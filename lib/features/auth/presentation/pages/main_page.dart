@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
@@ -35,15 +36,15 @@ class MainPage extends StatelessWidget {
                   width: 100,
                 ),
               ),
-              SizedBox(
-                height: 50.h,
+              Gap(
+                50.h,
               ),
               Text(
                 S.of(context).welcome,
                 style: textStyle.displayLarge,
               ),
-              SizedBox(
-                height: 10.h,
+              Gap(
+                10.h,
               ),
               Text(
                 S.of(context).mainPageAdvice,
@@ -51,20 +52,19 @@ class MainPage extends StatelessWidget {
                     .copyWith(color: AppColors.lightGrey),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
-                height: 10.h,
+              Gap(
+                10.h,
               ),
               Stack(
                 children: [
                   Image.asset(Imgs.back),
-
                   Positioned(
                     bottom: 270,
                     left: 100,
                     child: CustomBtn(
                       name: S.of(context).enter,
                       onPressed: () {
-                        context.router.push(const LoginRoute());
+                        _goToLogin(context);
                       },
                     ),
                   ),
@@ -85,5 +85,9 @@ class MainPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _goToLogin(BuildContext context) {
+    context.router.push(const LoginRoute());
   }
 }

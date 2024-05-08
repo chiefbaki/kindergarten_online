@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 
 class PinCodeWidget extends StatelessWidget {
@@ -10,8 +11,8 @@ class PinCodeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: SizedBox(
-          width: 56,
-          height: 90,
+          width: 56.w,
+          height: 90.h,
           child: TextFormField(
               controller: controller,
               cursorColor: Colors.black,
@@ -35,19 +36,17 @@ class PinCodeWidget extends StatelessWidget {
               ],
               textAlign: TextAlign.center,
               decoration: InputDecoration(
-                filled: true,
-                fillColor: AppColors.white,
-                errorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.red),
-                    borderRadius: BorderRadius.circular(12)),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: AppColors.lightGrey)),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: AppColors.lightGrey),
-                ),
-              ))),
+                  filled: true,
+                  fillColor: AppColors.white,
+                  errorBorder: _outlineBorder(AppColors.red),
+                  enabledBorder: _outlineBorder(AppColors.lightGrey),
+                  focusedBorder: _outlineBorder(AppColors.lightGrey)))),
     );
+  }
+
+  OutlineInputBorder _outlineBorder(Color color) {
+    return OutlineInputBorder(
+        borderSide: BorderSide(color: color),
+        borderRadius: BorderRadius.circular(12));
   }
 }

@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: BackBtn(
         onPressed: () {
-          context.router.maybePop();
+          _popPage(context);
         },
       ),
       centerTitle: false,
@@ -29,4 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
+  void _popPage(BuildContext context) {
+    context.router.maybePop();
+  }
 }

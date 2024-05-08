@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/extensions/extensions.dart';
+import 'package:kindergarten_online/features/widgets/cached_image.dart';
 import 'package:kindergarten_online/features/widgets/custom_appbar.dart';
-import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()
@@ -29,15 +28,11 @@ class NewsDetailsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(
+                CachedImage(
+                  fit: BoxFit.fill,
                   width: double.infinity,
-                  height: 300,
-                  child: CachedNetworkImage(
-                    imageUrl: img ?? "",
-                    placeholder: (context, url) =>
-                        const CustomProgressIndicator(),
-                    fit: BoxFit.fill,
-                  ),
+                  height: 200.h,
+                  url: img ?? "",
                 ),
                 Padding(
                   padding:

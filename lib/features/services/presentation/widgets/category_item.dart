@@ -7,6 +7,8 @@ import 'package:kindergarten_online/features/services/presentation/blocs/categor
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/features/widgets/text_with_arrow.dart';
 
+const double _paddingUnit = 5;
+
 class CategoryItem extends StatefulWidget {
   const CategoryItem({super.key});
 
@@ -30,8 +32,8 @@ class _CategoryItemState extends State<CategoryItem> {
             loading: () => const CustomProgressIndicator(),
             success: (entity) {
               return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: _paddingUnit * 3, vertical: _paddingUnit * 3),
                 child: ListView.builder(
                   itemCount: entity.count,
                   itemBuilder: (_, index) => Column(

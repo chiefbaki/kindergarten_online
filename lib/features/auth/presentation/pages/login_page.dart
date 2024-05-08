@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/core/utils/resources/resources.dart';
@@ -31,11 +32,11 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _obscureText = true;
 
-  bool isNotEmptyField = false;
+  bool _isNotEmptyField = false;
 
   void switcher() {
     setState(() {
-      isNotEmptyField = _phone.text.isNotEmpty && _password.text.isNotEmpty;
+      _isNotEmptyField = _phone.text.isNotEmpty && _password.text.isNotEmpty;
     });
   }
 
@@ -81,22 +82,22 @@ class _LoginPageState extends State<LoginPage> {
                   Text(S.of(context).phoneNumber,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  SizedBox(
-                    height: 10.h,
+                  Gap(
+                    10.h,
                   ),
                   PhoneTextField(
                     controller: _phone,
                     textStyle: textStyle,
                     hintText: S.of(context).inputNumber,
                   ),
-                  SizedBox(
-                    height: 20.h,
+                  Gap(
+                    20.h,
                   ),
                   Text(S.of(context).password,
                       style: textStyle.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  SizedBox(
-                    height: 10.h,
+                  Gap(
+                    10.h,
                   ),
                   CustomTextField(
                     controller: _password,
@@ -122,8 +123,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 55.h,
+                  Gap(
+                    55.h,
                   ),
                   Column(
                     children: [
@@ -136,7 +137,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                               success: () {
                                 // context.router.push(const CameraRoute());
-                                customBottomSheet(context, textStyle);
+                                customBottomSheet(context, textStyle,
+                                    showButton: false);
                               },
                               failure: (e) {
                                 wrongLoginDialog(context, textStyle);
@@ -145,19 +147,19 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Center(
                           child: CustomBtn(
-                              onPressed: isNotEmptyField
+                              onPressed: _isNotEmptyField
                                   ? () {
                                       context.read<LoginBloc>().add(
                                           LoginEvent.login(
-                                              phone: _phone.text,
-                                              password: _password.text));
+                                              phone: _phone.text.trim(),
+                                              password: _password.text.trim()));
                                     }
                                   : null,
                               name: S.of(context).enter),
                         ),
                       ),
-                      SizedBox(
-                        height: 20.h,
+                      Gap(
+                        20.h,
                       ),
                       // Row(
                       //   mainAxisAlignment: MainAxisAlignment.center,
@@ -240,8 +242,8 @@ class _LoginPageState extends State<LoginPage> {
                     style: textStyle.displaySmall!
                         .copyWith(color: AppColors.black),
                   ),
-                  SizedBox(
-                    height: 10.h,
+                  Gap(
+                    10.h,
                   ),
                   PhoneTextField(
                       textStyle: textStyle,
