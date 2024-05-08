@@ -100,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сырсөздү калыбына келтирүү"),
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Өзгөрүүлөрдү сактоо"),
+        "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Пайдалануу шарттары"),
         "thisSectionIsStillEmpty":

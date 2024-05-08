@@ -18,4 +18,8 @@ class AuthRemoteDataSource {
     final httpResponse = HttpResponse(value, response);
     return httpResponse;
   }
+
+  Future<String> test() async {
+    return "Hello";
+  }
 }

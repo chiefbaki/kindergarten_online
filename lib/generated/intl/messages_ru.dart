@@ -100,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Восстановить пароль"),
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
+        "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Правила использования"),
         "thisSectionIsStillEmpty":

@@ -67,14 +67,10 @@ class _SettingsPageState extends State<SettingsPage> {
                             const CustomDivider(),
                             TextWithArrow(
                               textStyle: textStyle,
-                              onPressed: () {},
+                              onPressed: () {
+                                _gotToChangePass(context);
+                              },
                               name: S.of(context).changePassword,
-                            ),
-                            const CustomDivider(),
-                            TextWithArrow(
-                              textStyle: textStyle,
-                              onPressed: () {},
-                              name: "Изменить пароль",
                             ),
                           ],
                         ),
@@ -243,5 +239,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _goToMain(BuildContext context) {
     context.router.push(const MainRoute());
+  }
+
+  void _gotToChangePass(BuildContext context) {
+    context.router.push(const ChangePasswordRoute());
   }
 }

@@ -20,7 +20,9 @@ void main() {
     expect(File(Imgs.five).existsSync(), isTrue);
     expect(File(Imgs.four).existsSync(), isTrue);
     expect(File(Imgs.gamezone).existsSync(), isTrue);
+    expect(File(Imgs.iconArrowLeft).existsSync(), isTrue);
     expect(File(Imgs.iconArrowRight).existsSync(), isTrue);
+    expect(File(Imgs.iconArrowRightOne).existsSync(), isTrue);
     expect(File(Imgs.iconRight).existsSync(), isTrue);
     expect(File(Imgs.ideaIcon).existsSync(), isTrue);
     expect(File(Imgs.img).existsSync(), isTrue);

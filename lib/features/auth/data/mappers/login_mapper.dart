@@ -6,5 +6,6 @@ extension ToEntityExt on LoginReqDto {
 }
 
 extension FromEntityExt on LoginReqEntity {
-  LoginReqDto fromEntity() => LoginReqDto(phone: phone, password: password);
+  LoginReqDto fromEntity() =>
+      LoginReqDto(phone: phone ?? "", password: password ?? "");
 }

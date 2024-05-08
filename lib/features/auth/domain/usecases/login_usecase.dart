@@ -10,7 +10,6 @@ class LoginUseCase implements UseCase<DataState<TokenEntity>, LoginReqEntity> {
   LoginUseCase(this._repository);
   @override
   Future<DataState<TokenEntity>> call({required LoginReqEntity param}) async {
-    final token = _repository.getLogin(entity: param);
-    return token;
+    return _repository.getLogin(entity: param);
   }
 }

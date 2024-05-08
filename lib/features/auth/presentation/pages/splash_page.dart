@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/core/config/routes/app_router.dart';
-import 'package:kindergarten_online/core/service_locator/locator.dart';
+import 'package:kindergarten_online/core/config/service_locator/locator.dart';
 import 'package:kindergarten_online/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/features/auth/domain/repositories/token_rep.dart';
 import 'package:kindergarten_online/features/widgets/custom_progress_indicator.dart';

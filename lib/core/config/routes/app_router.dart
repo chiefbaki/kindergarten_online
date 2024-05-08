@@ -37,7 +37,6 @@ class AppRouter extends _$AppRouter {
         CustomRoute(
           page: SplashRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
-          initial: true,
         ),
 
         // Main
@@ -82,6 +81,7 @@ class AppRouter extends _$AppRouter {
 
         // Schedule
         CustomRoute(
+            initial: true,
             page: ScheduleRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
@@ -150,6 +150,11 @@ class AppRouter extends _$AppRouter {
         // Payment receipts page
         CustomRoute(
           page: PaymentReceiptsRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+
+        CustomRoute(
+          page: ChangePasswordRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
       ];

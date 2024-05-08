@@ -60,5 +60,6 @@
   "empty": "Пусто",
   "chatListIsEmpty": "Список ваших чатов пуст",
   "paymentReceipts": "Payment receipts",
-  "attendace": "Посещаемость"
+  "attendace": "Посещаемость",
+  "shedule": "Расписание"
 }

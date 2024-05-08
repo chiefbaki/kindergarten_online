@@ -18,7 +18,10 @@ class Imgs {
   static const String five = 'assets/images/five.png';
   static const String four = 'assets/images/four.png';
   static const String gamezone = 'assets/images/gamezone.png';
+  static const String iconArrowLeft = 'assets/images/icon-arrow-left.svg';
   static const String iconArrowRight = 'assets/images/icon-arrow-right.svg';
+  static const String iconArrowRightOne =
+      'assets/images/icon-arrow-rightOne.svg';
   static const String iconRight = 'assets/images/iconRight.png';
   static const String ideaIcon = 'assets/images/ideaIcon.png';
   static const String img = 'assets/images/img.png';

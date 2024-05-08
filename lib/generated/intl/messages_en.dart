@@ -96,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Restore the password"),
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Save the changes"),
+        "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
         "termsofUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
         "thisSectionIsStillEmpty":
             MessageLookupByLibrary.simpleMessage("This section is still empty"),

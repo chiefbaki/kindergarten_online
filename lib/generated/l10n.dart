@@ -669,6 +669,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Расписание`
+  String get shedule {
+    return Intl.message(
+      'Расписание',
+      name: 'shedule',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
