@@ -660,20 +660,20 @@ class S {
     );
   }
 
-  /// `Посещаемость`
+  /// `Attendace`
   String get attendace {
     return Intl.message(
-      'Посещаемость',
+      'Attendace',
       name: 'attendace',
       desc: '',
       args: [],
     );
   }
 
-  /// `Расписание`
+  /// `Schedule`
   String get shedule {
     return Intl.message(
-      'Расписание',
+      'Schedule',
       name: 'shedule',
       desc: '',
       args: [],

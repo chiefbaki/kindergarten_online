@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kindergarten_online/core/utils/resources//resources.dart';
+import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 
 void main() {
   test('imgs assets test', () {
@@ -29,6 +29,7 @@ void main() {
     expect(File(Imgs.infoIcon).existsSync(), isTrue);
     expect(File(Imgs.kitchen).existsSync(), isTrue);
     expect(File(Imgs.line).existsSync(), isTrue);
+    expect(File(Imgs.menuIcon).existsSync(), isTrue);
     expect(File(Imgs.newsAva).existsSync(), isTrue);
     expect(File(Imgs.newsIcon).existsSync(), isTrue);
     expect(File(Imgs.one).existsSync(), isTrue);

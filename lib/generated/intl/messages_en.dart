@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account?  "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Application theme"),
-        "attendace": MessageLookupByLibrary.simpleMessage("Посещаемость"),
+        "attendace": MessageLookupByLibrary.simpleMessage("Attendace"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
@@ -96,7 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Restore the password"),
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Save the changes"),
-        "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
+        "shedule": MessageLookupByLibrary.simpleMessage("Schedule"),
         "termsofUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
         "thisSectionIsStillEmpty":
             MessageLookupByLibrary.simpleMessage("This section is still empty"),
