@@ -13,31 +13,35 @@ class CreativityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreativityBloc, CreativityState>(
-      builder: (context, state) {
-        return state.when(
-            initial: () => const SizedBox(),
-            loading: () => const Center(
-                  child: CircularProgressIndicator.adaptive(),
-                ),
-            success: (
-              entity,
-            ) {
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: entity.count,
-                itemBuilder: (_, index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: CreativityItem(
-                    textStyle: textStyle,
-                    image: entity.results?[index].img ?? "",
-                    name: entity.results?[index].name ?? "",
+    final height = MediaQuery.sizeOf(context).height;
+    return SizedBox(
+      height: height * 0.77,
+      child: BlocBuilder<CreativityBloc, CreativityState>(
+        builder: (context, state) {
+          return state.when(
+              initial: () => const SizedBox(),
+              loading: () => const Center(
+                    child: CircularProgressIndicator.adaptive(),
                   ),
-                ),
-              );
-            },
-            failure: (e) => Text(e));
-      },
+              success: (
+                entity,
+              ) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: entity.count,
+                  itemBuilder: (_, index) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: CreativityItem(
+                      textStyle: textStyle,
+                      image: entity.results?[index].img ?? "",
+                      name: entity.results?[index].name ?? "",
+                    ),
+                  ),
+                );
+              },
+              failure: (e) => Text(e));
+        },
+      ),
     );
   }
 }

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
@@ -72,10 +70,10 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
               child: GridView.builder(
                   itemCount: MenuItem.items.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: width / (height / 1 / 2.2),
+                      childAspectRatio: width / (height / 3.2),
                       crossAxisCount: 3,
-                      mainAxisSpacing: 85,
-                      crossAxisSpacing: 30),
+                      mainAxisSpacing: 61,
+                      crossAxisSpacing: 10),
                   itemBuilder: (_, index) {
                     return MenuCard(
                       textStyle: textStyle,

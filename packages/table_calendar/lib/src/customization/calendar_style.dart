@@ -187,8 +187,8 @@ class CalendarStyle {
     ),
     this.selectedDecoration = const BoxDecoration(
         color: Color(0xFF5C6BC0),
-        shape: BoxShape.circle,
-        borderRadius: BorderRadius.all(Radius.circular(15))),
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.all(Radius.circular(10))),
     this.rangeStartTextStyle = const TextStyle(
       color: const Color(0xFFFAFAFA),
       fontSize: 16.0,

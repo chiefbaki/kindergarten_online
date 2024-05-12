@@ -48,7 +48,6 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
-
     return CustomScaffold(
         body: SafeArea(
             child: Padding(
@@ -77,12 +76,12 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                                   fit: BoxFit.fill,
                                 ),
                                 Positioned(
-                                  left: 160,
-                                  right: 160,
+                                  left: 155,
+                                  right: 155,
                                   child: ClipOval(
                                     child: Image.asset(
                                       Imgs.ava,
-                                      width: 100,
+                                      // width: 100,
                                     ),
                                   ),
                                 ),

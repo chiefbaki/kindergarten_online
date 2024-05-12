@@ -55,7 +55,11 @@ class CalendarHeader extends StatelessWidget {
                   onLongPress: onHeaderLongPress,
                   child: Text(
                     text,
-                    style: TextStyle(color: AppColors.white),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.white,
+                      fontSize: 14,
+                    ),
                     textAlign: headerStyle.titleCentered
                         ? TextAlign.center
                         : TextAlign.start,

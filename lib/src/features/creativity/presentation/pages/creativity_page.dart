@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/pages/creativity_search.dart';
@@ -9,6 +10,8 @@ import 'package:kindergarten_online/src/features/creativity/presentation/widgets
 import 'package:kindergarten_online/src/features/widgets/custom_refresh_indicator.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
+const _paddingUnit = 5;
 
 @RoutePage()
 class CreativityPage extends StatefulWidget {
@@ -32,7 +35,8 @@ class _CreativityPageState extends State<CreativityPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+            padding: const EdgeInsets.symmetric(
+                vertical: _paddingUnit * 5, horizontal: _paddingUnit * 3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -52,8 +56,8 @@ class _CreativityPageState extends State<CreativityPage> {
                         )),
                   ],
                 ),
-                SizedBox(
-                  height: 20.h,
+                Gap(
+                  _paddingUnit * 4.h,
                 ),
                 CustomRefreshIndicator(
                   onRefresh: () async {
@@ -63,10 +67,7 @@ class _CreativityPageState extends State<CreativityPage> {
                           .add(const CreativityEvent.creativity());
                     });
                   },
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    child: CreativityCard(textStyle: textStyle),
-                  ),
+                  child: CreativityCard(textStyle: textStyle),
                 )
               ],
             ),
