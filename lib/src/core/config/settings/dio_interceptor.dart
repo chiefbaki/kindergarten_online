@@ -1,7 +1,10 @@
 import "dart:async";
+import "package:auto_route/auto_route.dart";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
+import "package:kindergarten_online/src/core/config/routes/app_router.dart";
 import "package:kindergarten_online/src/core/config/settings/dio_exception_handler.dart";
 import "package:kindergarten_online/src/features/auth/data/dto/response/token_dto.dart";
 import "package:kindergarten_online/src/features/auth/data/mappers/token_mapper.dart";
@@ -9,13 +12,14 @@ import "package:kindergarten_online/src/features/auth/domain/repositories/token_
 
 class DioSettings {
   final TokenRepository _token;
-  // final BuildContext _context;
 
   DioSettings(
     this._token,
   ) {
     unawaited(setup());
   }
+
+  final navigatorState = GlobalKey<NavigatorState>();
 
   final baseUrl = dotenv.env["API_URL"] ?? "";
   Dio dio = Dio(
@@ -31,10 +35,10 @@ class DioSettings {
 
   Future<void> setup() async {
     final Interceptors interceptors = dio.interceptors;
-    final token = await _token.getBearerToken();
-    final refreshToken = await _token.getToken();
-    debugPrint("BEARER $token");
-    debugPrint("REFRESH ${refreshToken?.refresh ?? ""}");
+    // final token = await _token.getBearerToken();
+    // final refreshToken = await _token.getToken();
+    // debugPrint("BEARER $token");
+    // debugPrint("REFRESH ${refreshToken?.refresh ?? ""}");
     interceptors.clear();
 
     final LogInterceptor logInterceptor = LogInterceptor(
@@ -54,11 +58,12 @@ class DioSettings {
       onError: (DioException error, ErrorInterceptorHandler handler) async {
         // refresh token when its error
         if (error.response?.statusCode == ResponseCode.unauthorised) {
-          // _context.router
-          //     .popUntil((route) => route.settings.name == "LoginRoute");
+          debugPrint("${error.response!.statusCode}");
           final newsAccessToken = await tokenRefresh();
           dio.options.headers["Authorization"] =
               "Bearer ${newsAccessToken.access}";
+          AutoRouter.of(navigatorState.currentContext!)
+              .replace(const MainRoute());
           return handler.resolve(await dio.fetch(error.requestOptions));
         }
         return handler.next(error);

@@ -12,6 +12,8 @@ import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 const _paddingUnit = 5;
+const _duration = 2;
+const double _size = 25;
 
 @RoutePage()
 class CreativityPage extends StatefulWidget {
@@ -39,6 +41,7 @@ class _CreativityPageState extends State<CreativityPage> {
                 vertical: _paddingUnit * 5, horizontal: _paddingUnit * 3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +55,7 @@ class _CreativityPageState extends State<CreativityPage> {
                         icon: const Icon(
                           Icons.search,
                           color: AppColors.black,
-                          size: 25,
+                          size: _size,
                         )),
                   ],
                 ),
@@ -61,7 +64,7 @@ class _CreativityPageState extends State<CreativityPage> {
                 ),
                 CustomRefreshIndicator(
                   onRefresh: () async {
-                    Future.delayed(const Duration(milliseconds: 2), () {
+                    Future.delayed(const Duration(milliseconds: _duration), () {
                       context
                           .read<CreativityBloc>()
                           .add(const CreativityEvent.creativity());

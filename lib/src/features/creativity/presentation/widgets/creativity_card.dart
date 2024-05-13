@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/widgets/creativity_item.dart';
+import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
 
 class CreativityCard extends StatelessWidget {
   const CreativityCard({
@@ -20,22 +21,17 @@ class CreativityCard extends StatelessWidget {
         builder: (context, state) {
           return state.when(
               initial: () => const SizedBox(),
-              loading: () => const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
+              loading: () => const CustomProgressIndicator(),
               success: (
                 entity,
               ) {
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: entity.count,
-                  itemBuilder: (_, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: CreativityItem(
-                      textStyle: textStyle,
-                      image: entity.results?[index].img ?? "",
-                      name: entity.results?[index].name ?? "",
-                    ),
+                  itemBuilder: (_, index) => CreativityItem(
+                    textStyle: textStyle,
+                    image: entity.results?[index].img ?? "",
+                    name: entity.results?[index].name ?? "",
                   ),
                 );
               },

@@ -18,9 +18,12 @@ class CustomScaffold extends StatelessWidget {
       appBar: appBar,
       backgroundColor: backgroundColor,
       body: body,
-      floatingActionButton: const CustomFloatBtn(
-        isToSwitch: true,
-        showButton: true,
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        child: const CustomFloatBtn(
+          isToSwitch: true,
+          showButton: true,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       resizeToAvoidBottomInset: false,

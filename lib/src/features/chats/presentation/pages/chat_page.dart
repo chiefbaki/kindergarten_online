@@ -23,8 +23,6 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  
-
   final _msgController = TextEditingController();
   final _focusNode = FocusNode();
 
@@ -59,7 +57,6 @@ class _ChatPageState extends State<ChatPage> {
   //   super.initState();
   //   _connect(widget.resultEntity.id.toString());
   // }
-
 
   // @override
   // void initState() {
@@ -100,7 +97,7 @@ class _ChatPageState extends State<ChatPage> {
               left: 16,
               right: 16,
               top: 8,
-              bottom: (viewInset.bottom > 40) ? 15.0 : 40),
+              bottom: (viewInset.bottom > 25) ? 15.0 : 25),
           child: Column(
             children: [
               Expanded(
@@ -114,9 +111,9 @@ class _ChatPageState extends State<ChatPage> {
                               ? ListView.builder(
                                   reverse: true,
                                   padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
                                   itemCount: entity.count,
                                   itemBuilder: (_, index) {
-                                    debugPrint(entity.results![index].content);
                                     return Center(
                                       child: MessageBubble(
                                         resultEntity: entity.results![index],

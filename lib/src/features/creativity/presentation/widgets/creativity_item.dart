@@ -21,30 +21,29 @@ class CreativityItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredContainer(
-        child: Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: CreativityCachedImage(img: image),
-          ),
-          Gap(
-            _paddingUnit.h,
-          ),
-          Text(
-            name,
-            style: textStyle.displayMedium!.copyWith(color: AppColors.white),
-          ),
-          Gap(
-            _paddingUnit.h,
-          ),
-          Text(
-            "2023-02-09",
-            style: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
-          )
-        ],
-      ),
-    ));
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CreativityCachedImage(img: image),
+            ),
+            Gap(
+              _paddingUnit.h,
+            ),
+            Text(
+              name,
+              style: textStyle.displayMedium!.copyWith(color: AppColors.white),
+            ),
+            Gap(
+              _paddingUnit.h,
+            ),
+            Text(
+              "2023-02-09",
+              style: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
+            )
+          ],
+        ));
   }
 }

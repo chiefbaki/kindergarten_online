@@ -62,12 +62,14 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
     builder: (BuildContext context) {
       return Padding(
         padding:
-            const EdgeInsets.only(left: 58, right: 58, top: 155, bottom: 40),
+            const EdgeInsets.only(left:38, right: 38, top: 155, bottom: 33),
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.73,
+              height: height * 0.73,
               child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   itemCount: MenuItem.items.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: width / (height / 3.2),
