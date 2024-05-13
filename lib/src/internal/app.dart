@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
-import 'package:kindergarten_online/src/core/config/theme/theme.dart';
 import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
+import 'package:kindergarten_online/src/core/config/theme/theme.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/logout_cubit/logout_cubit.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
@@ -27,40 +27,40 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => locator<LoginBloc>(),
+          create: (context) => sl<LoginBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<LogoutCubit>(),
+          create: (context) => sl<LogoutCubit>(),
         ),
         BlocProvider(
-          create: (context) => locator<ProfileBloc>(),
+          create: (context) => sl<ProfileBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<EditProfileBloc>(),
+          create: (context) => sl<EditProfileBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<NewsBloc>(),
+          create: (context) => sl<NewsBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<CreativityBloc>(),
+          create: (context) => sl<CreativityBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<CategoryBloc>(),
+          create: (context) => sl<CategoryBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<ProductBloc>(),
+          create: (context) => sl<ProductBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<ContactBloc>(),
+          create: (context) => sl<ContactBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<CreateGroupBloc>(),
+          create: (context) => sl<CreateGroupBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<ChatUsersBloc>(),
+          create: (context) => sl<ChatUsersBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator<MessagesBloc>(),
+          create: (context) => sl<MessagesBloc>(),
         ),
       ],
       child: ScreenUtilInit(
@@ -76,7 +76,6 @@ class MyApp extends StatelessWidget {
           ],
           title: "Kindergarten online",
           supportedLocales: S.delegate.supportedLocales,
-          locale: const Locale("en"),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().config(),
           theme: theme(),

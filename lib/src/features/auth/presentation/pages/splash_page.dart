@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _redirect() async {
-    final userToken = await locator<TokenRepository>().getToken();
+    final userToken = await sl<TokenRepository>().getToken();
     await Future.delayed(const Duration(seconds: 1), () {
       if (mounted) {
         if (userToken?.access != "empty access") {

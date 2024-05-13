@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_float_btn.dart';
 
+const double _paddingUnit = 5;
+
 class CustomScaffold extends StatelessWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;
@@ -19,7 +21,7 @@ class CustomScaffold extends StatelessWidget {
       backgroundColor: backgroundColor,
       body: body,
       floatingActionButton: Container(
-        margin: const EdgeInsets.only(bottom: 10),
+        margin: const EdgeInsets.only(bottom: _paddingUnit),
         child: const CustomFloatBtn(
           isToSwitch: true,
           showButton: true,
