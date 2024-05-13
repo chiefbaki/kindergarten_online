@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
 import 'package:kindergarten_online/src/internal/app.dart';
+import 'package:logging/logging.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,23 +18,22 @@ Future<void> main() async {
           [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp])
       .then((_) => runApp(const MyApp()));
 
-  // final url = dotenv.env["WSS_URL"];
-  // const token =
-  //     "6/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE1ODUyOTgyLCJpYXQiOjE3MTUyNDgxODIsImp0aSI6ImQ2OTZkMjBjNzJmMzQ4YTBhMjRjYjVhNjQ5MjQxNmFlIiwidXNlcl9pZCI6Nn0.lQ-IrWB11DAz5NV56ps1q1AHjUEj8wZVnNeRCIXZuhs";
-  // final client = WebSocketClient(WebSocketOptions.common(
-  //   connectionRetryInterval: (
-  //     min: const Duration(milliseconds: 500),
-  //     max: const Duration(seconds: 15),
-  //   ),
-  // ))
-  //   ..stream.listen((msg) => print("< $msg"))
-  //   ..stateChanges.listen((state) => print("* $state"))
-  //   ..connect("$url$token")
-  //   ..add("Hello");
+  if (kDebugMode) {
+    _initLogger();
+  }
+}
 
-  // Timer(const Duration(seconds: 1), () async {
-  //   await client.close(); // Close the connection
-  //   print('Metrics:\n${client.metrics}'); // Print the metrics
-  //   io.exit(0); // Exit the process
-  // });
+void _initLogger() {
+  Logger.root.level = Level.ALL;
+
+  Logger.root.onRecord.listen((record) {
+    final loggerName = record.loggerName;
+    final message = record.message;
+    final levelName = record.level;
+    final formattedTime = DateFormat("HH:mm:ss").format(record.time);
+
+    if (kDebugMode) {
+      print('$loggerName($levelName-$formattedTime):$message');
+    }
+  });
 }
