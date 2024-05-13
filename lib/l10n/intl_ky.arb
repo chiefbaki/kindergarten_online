@@ -61,5 +61,15 @@
   "chatListIsEmpty": "Список ваших чатов пуст",
   "paymentReceipts": "Payment receipts",
   "attendace": "Посещаемость",
-  "shedule": "Расписание"
+  "shedule": "Расписание",
+  "productsAndServices": "Товары / Услуги",
+  "popular": "Популярное",
+  "catalog": "Каталог",
+  "favourite": "Избранное",
+  "thisSectionIsEmpty": "Данный раздел пока пуст",
+  "catalogOfProductAndServices": "Каталог товаров и услуг",
+  "address": "Адрес",
+  "site": "Сайт",
+  "timeOfWork": "Время работы",
+  "buy": "Купить"
 }

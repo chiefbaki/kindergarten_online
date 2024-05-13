@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 
+const double _size = 24;
+
 class FavoriteBtn extends StatelessWidget {
   final void Function() onPressed;
   final bool isSelected;
@@ -14,7 +16,7 @@ class FavoriteBtn extends StatelessWidget {
         icon: Icon(
           Icons.favorite,
           color: isSelected ? AppColors.blue : AppColors.white,
-          size: 24,
+          size: _size,
         ));
   }
 }

@@ -679,6 +679,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Товары / Услуги`
+  String get productsAndServices {
+    return Intl.message(
+      'Товары / Услуги',
+      name: 'productsAndServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Популярное`
+  String get popular {
+    return Intl.message(
+      'Популярное',
+      name: 'popular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Каталог`
+  String get catalog {
+    return Intl.message(
+      'Каталог',
+      name: 'catalog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Избранное`
+  String get favourite {
+    return Intl.message(
+      'Избранное',
+      name: 'favourite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Данный раздел пока пуст`
+  String get thisSectionIsEmpty {
+    return Intl.message(
+      'Данный раздел пока пуст',
+      name: 'thisSectionIsEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Каталог товаров и услуг`
+  String get catalogOfProductAndServices {
+    return Intl.message(
+      'Каталог товаров и услуг',
+      name: 'catalogOfProductAndServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Адрес`
+  String get address {
+    return Intl.message(
+      'Адрес',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сайт`
+  String get site {
+    return Intl.message(
+      'Сайт',
+      name: 'site',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Время работы`
+  String get timeOfWork {
+    return Intl.message(
+      'Время работы',
+      name: 'timeOfWork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Купить`
+  String get buy {
+    return Intl.message(
+      'Купить',
+      name: 'buy',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

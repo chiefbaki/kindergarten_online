@@ -24,13 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Орнотуулар"),
         "account": MessageLookupByLibrary.simpleMessage("Менин Аккаунтум"),
+        "address": MessageLookupByLibrary.simpleMessage("Адрес"),
         "age": MessageLookupByLibrary.simpleMessage("5 лет"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Каттоо эсебиңиз барбы? "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Колдонмо темасы"),
         "attendace": MessageLookupByLibrary.simpleMessage("Посещаемость"),
+        "buy": MessageLookupByLibrary.simpleMessage("Купить"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камералар"),
+        "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
+        "catalogOfProductAndServices":
+            MessageLookupByLibrary.simpleMessage("Каталог товаров и услуг"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Сырсөздү өзгөртүү"),
         "chatBackground": MessageLookupByLibrary.simpleMessage("Маектин фону"),
@@ -49,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "editProfile": MessageLookupByLibrary.simpleMessage("Профилди түзөтүү"),
         "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
         "enter": MessageLookupByLibrary.simpleMessage("Кирүү"),
+        "favourite": MessageLookupByLibrary.simpleMessage("Избранное"),
         "favourites": MessageLookupByLibrary.simpleMessage("Сүйүктүүлөр"),
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
             "Сырсөзүңүздү же номериңизди эстебей жатасызбы?"),
@@ -89,8 +95,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "paymentReceipts":
             MessageLookupByLibrary.simpleMessage("Payment receipts"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Телефон номуру:"),
+        "popular": MessageLookupByLibrary.simpleMessage("Популярное"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Купуялык саясаты"),
+        "productsAndServices":
+            MessageLookupByLibrary.simpleMessage("Товары / Услуги"),
         "registration": MessageLookupByLibrary.simpleMessage("Каттоо"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Сырсөздү кайра коюу"),
@@ -101,12 +110,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Өзгөрүүлөрдү сактоо"),
         "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
+        "site": MessageLookupByLibrary.simpleMessage("Сайт"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Пайдалануу шарттары"),
+        "thisSectionIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Данный раздел пока пуст"),
         "thisSectionIsStillEmpty":
             MessageLookupByLibrary.simpleMessage("Бул бөлүм бош"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "Бул бөлүмдө\nСиздин сүйүктүү жарнамаларыңыз көрсөтүлөт."),
+        "timeOfWork": MessageLookupByLibrary.simpleMessage("Время работы"),
         "usersprofile":
             MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
         "welcome": MessageLookupByLibrary.simpleMessage("Кош келиңиз!")

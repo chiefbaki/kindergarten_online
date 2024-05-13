@@ -2,12 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/pages/favourite_page.dart';
 import 'package:kindergarten_online/src/features/services/presentation/widgets/category_item.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/src/features/widgets/nav_bar.dart';
+
+
 
 const double _paddingUnit = 5;
 
@@ -34,7 +37,7 @@ class _ServicesPageState extends State<ServicesPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
           child: Column(children: [
-            NavBar(textStyle: textStyle, text: "Товары / Услуги"),
+            NavBar(textStyle: textStyle, text: S.of(context).productsAndServices),
             SizedBox(
               height: 25.h,
             ),
@@ -48,21 +51,21 @@ class _ServicesPageState extends State<ServicesPage> {
                       TabBar(tabs: [
                         Tab(
                           child: Text(
-                            "Популярное",
+                            S.of(context).popular,
                             style: textStyle.displayMedium!
                                 .copyWith(color: AppColors.black),
                           ),
                         ),
                         Tab(
                           child: Text(
-                            "Каталог",
+                            S.of(context).catalog,
                             style: textStyle.displayMedium!
                                 .copyWith(color: AppColors.black),
                           ),
                         ),
                         Tab(
                           child: Text(
-                            "Избранное",
+                            S.of(context).favourite,
                             style: textStyle.displayMedium!
                                 .copyWith(color: AppColors.black),
                           ),
@@ -76,7 +79,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Данный раздел пока пуст",
+                                    S.of(context).thisSectionIsEmpty,
                                     style: textStyle.displayMedium!
                                         .copyWith(color: AppColors.black),
                                   )

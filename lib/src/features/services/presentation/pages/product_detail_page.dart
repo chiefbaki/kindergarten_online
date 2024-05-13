@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
 import 'package:kindergarten_online/src/features/services/domain/entities/product_entity.dart';
@@ -22,7 +23,7 @@ class ProductDetailPage extends StatelessWidget {
     return CustomScaffold(
       appBar: CustomAppBar(
           textStyle: Theme.of(context).textTheme,
-          title: "Каталог товаров и услуг"),
+          title: S.of(context).catalogOfProductAndServices),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
@@ -77,7 +78,7 @@ class ProductDetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Адрес",
+                              S.of(context).address,
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
                             Text(
@@ -100,7 +101,7 @@ class ProductDetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Сайт",
+                              S.of(context).site,
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
                             Text(
@@ -123,7 +124,7 @@ class ProductDetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Время работы",
+                              S.of(context).timeOfWork,
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
                             Text(
@@ -141,7 +142,7 @@ class ProductDetailPage extends StatelessWidget {
                   Gap(
                     _paddingUnit * 10.h,
                   ),
-                  CustomBtn(onPressed: () {}, name: "Купить"),
+                  CustomBtn(onPressed: () {}, name: S.of(context).buy),
                 ],
               ),
             ),

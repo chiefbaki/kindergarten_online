@@ -24,13 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "account": MessageLookupByLibrary.simpleMessage("Мой Аккаунт"),
+        "address": MessageLookupByLibrary.simpleMessage("Адрес"),
         "age": MessageLookupByLibrary.simpleMessage("5 лет"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Уже есть аккаунт?  "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Тема приложения"),
         "attendace": MessageLookupByLibrary.simpleMessage("Посещаемость"),
+        "buy": MessageLookupByLibrary.simpleMessage("Купить"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
+        "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
+        "catalogOfProductAndServices":
+            MessageLookupByLibrary.simpleMessage("Каталог товаров и услуг"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Изменить пароль"),
         "chatBackground": MessageLookupByLibrary.simpleMessage("Фон чата"),
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Редактировать профиль"),
         "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
         "enter": MessageLookupByLibrary.simpleMessage("Вход"),
+        "favourite": MessageLookupByLibrary.simpleMessage("Избранное"),
         "favourites": MessageLookupByLibrary.simpleMessage("Избранные"),
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
             "Не помните пароль или номер?"),
@@ -89,8 +95,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "paymentReceipts":
             MessageLookupByLibrary.simpleMessage("Payment receipts"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона:"),
+        "popular": MessageLookupByLibrary.simpleMessage("Популярное"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
+        "productsAndServices":
+            MessageLookupByLibrary.simpleMessage("Товары / Услуги"),
         "registration": MessageLookupByLibrary.simpleMessage("Регистрация"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Сбросить пароль"),
@@ -101,12 +110,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
+        "site": MessageLookupByLibrary.simpleMessage("Сайт"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Правила использования"),
+        "thisSectionIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Данный раздел пока пуст"),
         "thisSectionIsStillEmpty":
             MessageLookupByLibrary.simpleMessage("Раздел пока пуст"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "В этом окне будут отображаться\nВаши избранные объявления."),
+        "timeOfWork": MessageLookupByLibrary.simpleMessage("Время работы"),
         "usersprofile":
             MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
         "welcome": MessageLookupByLibrary.simpleMessage("Добро пожаловать!")

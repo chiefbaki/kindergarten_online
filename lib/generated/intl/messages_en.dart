@@ -24,13 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "account": MessageLookupByLibrary.simpleMessage("My Account"),
+        "address": MessageLookupByLibrary.simpleMessage("Адрес"),
         "age": MessageLookupByLibrary.simpleMessage("5 years old"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Already have an account?  "),
         "applicationTheme":
             MessageLookupByLibrary.simpleMessage("Application theme"),
         "attendace": MessageLookupByLibrary.simpleMessage("Attendace"),
+        "buy": MessageLookupByLibrary.simpleMessage("Купить"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камеры"),
+        "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
+        "catalogOfProductAndServices":
+            MessageLookupByLibrary.simpleMessage("Каталог товаров и услуг"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "chatBackground":
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
         "enter": MessageLookupByLibrary.simpleMessage("Enter"),
+        "favourite": MessageLookupByLibrary.simpleMessage("Избранное"),
         "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
         "forgetPassOrNumber":
             MessageLookupByLibrary.simpleMessage("Forget password or number?"),
@@ -87,7 +93,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "paymentReceipts":
             MessageLookupByLibrary.simpleMessage("Payment receipts"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number:"),
+        "popular": MessageLookupByLibrary.simpleMessage("Популярное"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "productsAndServices":
+            MessageLookupByLibrary.simpleMessage("Товары / Услуги"),
         "registration": MessageLookupByLibrary.simpleMessage("Registration"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "restoreNumber":
@@ -97,11 +106,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Save the changes"),
         "shedule": MessageLookupByLibrary.simpleMessage("Schedule"),
+        "site": MessageLookupByLibrary.simpleMessage("Сайт"),
         "termsofUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
+        "thisSectionIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Данный раздел пока пуст"),
         "thisSectionIsStillEmpty":
             MessageLookupByLibrary.simpleMessage("This section is still empty"),
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "This window will display\nYour favorite advertisements."),
+        "timeOfWork": MessageLookupByLibrary.simpleMessage("Время работы"),
         "usersprofile": MessageLookupByLibrary.simpleMessage("User\'s profile"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!")
       };
