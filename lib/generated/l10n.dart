@@ -779,6 +779,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Видео наблюдение`
+  String get cameraName {
+    return Intl.message(
+      'Видео наблюдение',
+      name: 'cameraName',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

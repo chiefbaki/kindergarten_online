@@ -51,9 +51,7 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ChatPage(
           key: args.key,
-          firstName: args.firstName,
-          lastName: args.lastName,
-          avatar: args.avatar,
+          entity: args.entity,
         ),
       );
     },
@@ -286,17 +284,13 @@ class ChangePasswordRoute extends PageRouteInfo<void> {
 class ChatRoute extends PageRouteInfo<ChatRouteArgs> {
   ChatRoute({
     Key? key,
-    required String firstName,
-    String? lastName,
-    String? avatar,
+    required ChatListEntity entity,
     List<PageRouteInfo>? children,
   }) : super(
           ChatRoute.name,
           args: ChatRouteArgs(
             key: key,
-            firstName: firstName,
-            lastName: lastName,
-            avatar: avatar,
+            entity: entity,
           ),
           initialChildren: children,
         );
@@ -309,22 +303,16 @@ class ChatRoute extends PageRouteInfo<ChatRouteArgs> {
 class ChatRouteArgs {
   const ChatRouteArgs({
     this.key,
-    required this.firstName,
-    this.lastName,
-    this.avatar,
+    required this.entity,
   });
 
   final Key? key;
 
-  final String firstName;
-
-  final String? lastName;
-
-  final String? avatar;
+  final ChatListEntity entity;
 
   @override
   String toString() {
-    return 'ChatRouteArgs{key: $key, firstName: $firstName, lastName: $lastName, avatar: $avatar}';
+    return 'ChatRouteArgs{key: $key, entity: $entity}';
   }
 }
 

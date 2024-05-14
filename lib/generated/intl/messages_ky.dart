@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Колдонмо темасы"),
         "attendace": MessageLookupByLibrary.simpleMessage("Посещаемость"),
         "buy": MessageLookupByLibrary.simpleMessage("Купить"),
+        "cameraName": MessageLookupByLibrary.simpleMessage("Видео наблюдение"),
         "cameras": MessageLookupByLibrary.simpleMessage("Камералар"),
         "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
         "catalogOfProductAndServices":

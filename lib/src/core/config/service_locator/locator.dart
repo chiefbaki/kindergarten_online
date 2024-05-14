@@ -1,6 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kindergarten_online/src/core/config/settings/dio_interceptor.dart';
+import 'package:kindergarten_online/src/core/utils/resources/logger.dart';
 import 'package:kindergarten_online/src/features/auth/data/data_sources/local/token_storage.dart';
 import 'package:kindergarten_online/src/features/auth/data/data_sources/remote/remote_auth_data.dart';
 import 'package:kindergarten_online/src/features/auth/data/repositories/login_impl.dart';
@@ -53,36 +54,31 @@ import 'package:kindergarten_online/src/features/services/domain/usecases/produc
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 
-
 final sl = GetIt.instance;
 
 Future<void> setup() async {
   // Local storage
   sl.registerFactory(() => const FlutterSecureStorage());
-  sl
-      .registerFactory<LocalTokenStorage>(() => LocalTokenStorage(sl()));
+  sl.registerFactory<LocalTokenStorage>(() => LocalTokenStorage(sl()));
   sl.registerSingleton<TokenRepository>(TokenImpl(sl()));
   sl.registerSingleton(SaveTokenUseCase(sl()));
   sl.registerSingleton(GetTokenUseCase(sl()));
   sl.registerSingleton(DeleteTokenUseCase(sl()));
 
+  // Logger
+  sl.registerFactory(() => Logging());
+
   // Network
   // sl.registerFactory<DioSettings>(() => DioSettings(sl()));
-  sl.registerFactory(() => DioSettings(
-        sl<TokenRepository>(),
-      ));
+  sl.registerFactory(
+      () => DioSettings(sl<TokenRepository>(), sl<Logging>().log));
 
   // Remote
-  sl
-      .registerFactory(() => AuthRemoteDataSource(sl<DioSettings>().dio));
-  sl.registerLazySingleton(
-      () => RemoteProfileSource(sl<DioSettings>().dio));
-  sl
-      .registerLazySingleton(() => RemoteNewsData(sl<DioSettings>().dio));
-  sl.registerLazySingleton(
-      () => RemoteCreativityData(sl<DioSettings>().dio));
-  sl.registerLazySingleton(
-      () => RemoteServicesData(sl<DioSettings>().dio));
+  sl.registerFactory(() => AuthRemoteDataSource(sl<DioSettings>().dio));
+  sl.registerLazySingleton(() => RemoteProfileSource(sl<DioSettings>().dio));
+  sl.registerLazySingleton(() => RemoteNewsData(sl<DioSettings>().dio));
+  sl.registerLazySingleton(() => RemoteCreativityData(sl<DioSettings>().dio));
+  sl.registerLazySingleton(() => RemoteServicesData(sl<DioSettings>().dio));
   sl.registerLazySingleton(() => RemoteChatData(
         sl<DioSettings>().dio,
       ));
@@ -92,18 +88,14 @@ Future<void> setup() async {
   // sl.registerFactory(() => WebSocketClient(sl<IOWebSocketChannel>()));
 
   // Dependencies
-  sl.registerFactory<LoginRep>(
-      () => LoginImpl(sl(), sl<LocalTokenStorage>()));
+  sl.registerFactory<LoginRep>(() => LoginImpl(sl(), sl<LocalTokenStorage>()));
   sl.registerSingleton<ProfileRep>(ProfileImpl(sl()));
-  sl
-      .registerLazySingleton<EditProfileRep>(() => EditProfileImpl(sl()));
+  sl.registerLazySingleton<EditProfileRep>(() => EditProfileImpl(sl()));
   sl.registerSingleton<NewsRep>(NewsImpl(sl<RemoteNewsData>()));
   sl.registerSingleton<CreativityListRep>(
       CreativityListImpl(sl<RemoteCreativityData>()));
-  sl.registerSingleton<CategoryRep>(
-      CategoryImpl(sl<RemoteServicesData>()));
-  sl
-      .registerSingleton<ChatRepository>(ChatImpl(sl<RemoteChatData>()));
+  sl.registerSingleton<CategoryRep>(CategoryImpl(sl<RemoteServicesData>()));
+  sl.registerSingleton<ChatRepository>(ChatImpl(sl<RemoteChatData>()));
 
   // UseCases
   sl.registerSingleton(LoginUseCase(sl()));
@@ -112,17 +104,13 @@ Future<void> setup() async {
   sl.registerLazySingleton(() => EditProfileUseCase(sl()));
   sl.registerSingleton(NewsUseCase(sl<NewsRep>()));
   sl.registerSingleton(CreativityUseCase(sl<CreativityListRep>()));
-  sl
-      .registerSingleton(SearchCreativityUseCase(sl<CreativityListRep>()));
+  sl.registerSingleton(SearchCreativityUseCase(sl<CreativityListRep>()));
   sl.registerSingleton(CategoryUseCase(sl<CategoryRep>()));
   sl.registerSingleton(ProductUseCase(sl<CategoryRep>()));
   sl.registerSingleton(ContactUseCase(sl<ChatRepository>()));
-  sl.registerLazySingleton(
-      () => CreateGroupUseCase(sl<ChatRepository>()));
-  sl
-      .registerLazySingleton(() => ChatListUseCase(sl<ChatRepository>()));
-  sl
-      .registerLazySingleton(() => MessagesUseCase(sl<ChatRepository>()));
+  sl.registerLazySingleton(() => CreateGroupUseCase(sl<ChatRepository>()));
+  sl.registerLazySingleton(() => ChatListUseCase(sl<ChatRepository>()));
+  sl.registerLazySingleton(() => MessagesUseCase(sl<ChatRepository>()));
 
   // Cubit
   sl.registerLazySingleton(() => LogoutCubit(sl<LogoutUseCase>()));
@@ -135,14 +123,12 @@ Future<void> setup() async {
   sl.registerSingleton(ProfileBloc(sl<ProfileUseCase>()));
   sl.registerLazySingleton(() => EditProfileBloc(sl()));
   sl.registerSingleton(NewsBloc(sl<NewsUseCase>()));
-  sl.registerSingleton(CreativityBloc(
-      sl<CreativityUseCase>(), sl<SearchCreativityUseCase>()));
+  sl.registerSingleton(
+      CreativityBloc(sl<CreativityUseCase>(), sl<SearchCreativityUseCase>()));
   sl.registerSingleton(CategoryBloc(sl<CategoryUseCase>()));
   sl.registerSingleton(ProductBloc(sl<ProductUseCase>()));
   sl.registerSingleton(ContactBloc(sl<ContactUseCase>()));
-  sl.registerLazySingleton(
-      () => CreateGroupBloc(sl<CreateGroupUseCase>()));
-  sl
-      .registerLazySingleton(() => ChatUsersBloc(sl<ChatListUseCase>()));
+  sl.registerLazySingleton(() => CreateGroupBloc(sl<CreateGroupUseCase>()));
+  sl.registerLazySingleton(() => ChatUsersBloc(sl<ChatListUseCase>()));
   sl.registerLazySingleton(() => MessagesBloc(sl<MessagesUseCase>()));
 }

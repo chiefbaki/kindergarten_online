@@ -5,7 +5,12 @@ class MenuItem {
   final String img;
   final String name;
   final dynamic route;
-  MenuItem({required this.img, required this.name, required this.route});
+
+  MenuItem({
+    required this.img,
+    required this.name,
+    required this.route,
+  });
 
   static List<MenuItem> items = [
     MenuItem(
@@ -31,7 +36,7 @@ class MenuItem {
     MenuItem(
         img: Imgs.uchetIcon,
         name: "Учет посещаемости",
-        route: const CameraRoute()),
+        route: const AttendanceRoute()),
     MenuItem(
         img: Imgs.ideaIcon,
         name: "Творчество детей",

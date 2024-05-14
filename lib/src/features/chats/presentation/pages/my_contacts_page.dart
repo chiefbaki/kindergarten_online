@@ -77,13 +77,8 @@ class _MyContactsPageState extends State<MyContactsPage> {
                                 ),
                               );
                       },
-                      failure: ((error) => Center(
-                            child: Text(
-                              S.of(context).noConnection,
-                              style: textStyle.displayMedium!
-                                  .copyWith(color: AppColors.black),
-                            ),
-                          )));
+                      failure: ((error) =>
+                          Center(child: Center(child: Text(error)))));
                 },
               ))
             ],

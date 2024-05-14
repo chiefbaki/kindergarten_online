@@ -126,11 +126,7 @@ class _ChatsListPageState extends State<ChatsListPage> {
                                     ),
                                   );
                           },
-                          failure: ((error) => Center(
-                                  child: Text(
-                                S.of(context).noConnection,
-                                style: textStyle.displayLarge,
-                              ))));
+                          failure: ((error) => Center(child: Text(error))));
                     },
                   ),
                 ),

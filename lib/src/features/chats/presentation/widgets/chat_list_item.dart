@@ -27,9 +27,11 @@ class ChatListItem extends StatelessWidget {
             .read<MessagesBloc>()
             .add(MessagesEvent.getMessages(id: entity.id.toString()));
         context.router.push(ChatRoute(
-            firstName: entity.firstName ?? "",
-            lastName: entity.lastName,
-            avatar: entity.avatar));
+            // firstName: entity.firstName ?? "",
+            // lastName: entity.lastName,
+            // avatar: entity.avatar,
+            // userId: entity.id.toString()
+            entity: entity));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(

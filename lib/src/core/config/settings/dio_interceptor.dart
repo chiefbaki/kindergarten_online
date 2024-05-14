@@ -9,13 +9,13 @@ import "package:kindergarten_online/src/core/config/settings/dio_exception_handl
 import "package:kindergarten_online/src/features/auth/data/dto/response/token_dto.dart";
 import "package:kindergarten_online/src/features/auth/data/mappers/token_mapper.dart";
 import "package:kindergarten_online/src/features/auth/domain/repositories/token_rep.dart";
+import "package:logging/logging.dart";
 
 class DioSettings {
   final TokenRepository _token;
+  final Logger _log;
 
-  DioSettings(
-    this._token,
-  ) {
+  DioSettings(this._token, this._log) {
     unawaited(setup());
   }
 
@@ -64,6 +64,7 @@ class DioSettings {
               "Bearer ${newsAccessToken.access}";
           AutoRouter.of(navigatorState.currentContext!)
               .replace(const MainRoute());
+          _log.info(error.response!.statusCode);
           return handler.resolve(await dio.fetch(error.requestOptions));
         }
         return handler.next(error);
@@ -82,6 +83,7 @@ class DioSettings {
     final path = dotenv.env["TOKEN_REFRESH"] ?? "";
     final Response response =
         await dio.post(path, data: {"refresh": refreshToken?.refresh ?? ""});
+    _log.info("token refresh called");
     final entity = TokenDto.fromJson(response.data);
     _token.saveToken(entity: entity.toEntity());
     return entity;

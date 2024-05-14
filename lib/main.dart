@@ -9,6 +9,8 @@ import 'package:kindergarten_online/src/core/config/service_locator/locator.dart
 import 'package:kindergarten_online/src/internal/app.dart';
 import 'package:logging/logging.dart';
 
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env.development");

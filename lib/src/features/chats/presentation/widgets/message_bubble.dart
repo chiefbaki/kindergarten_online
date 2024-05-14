@@ -18,7 +18,7 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeOf = MediaQuery.of(context).size;
-    debugPrint(resultEntity.content);
+    // debugPrint(resultEntity.content);
     return Column(
       children: [
         Container(

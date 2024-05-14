@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/message_btn.dart';
@@ -47,7 +45,7 @@ class ContactStatusWidget extends StatelessWidget {
       ),
       trailing: MessageBtn(
         onPressed: () {
-          context.router.push(ChatRoute(firstName: name, avatar: img));
+          // context.router.push(ChatRoute(firstName: name, avatar: img));
         },
       ),
     );

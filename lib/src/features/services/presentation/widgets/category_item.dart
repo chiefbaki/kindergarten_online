@@ -52,7 +52,7 @@ class _CategoryItemState extends State<CategoryItem> {
                 ),
               );
             },
-            failure: (error) => Text(error));
+            failure: (error) => Center(child: Text(error)));
       },
     );
   }

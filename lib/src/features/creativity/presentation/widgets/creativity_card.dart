@@ -35,7 +35,7 @@ class CreativityCard extends StatelessWidget {
                   ),
                 );
               },
-              failure: (e) => Text(e));
+              failure: (e) => Center(child: Text(e)));
         },
       ),
     );

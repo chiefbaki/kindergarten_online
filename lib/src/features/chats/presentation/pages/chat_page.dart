@@ -1,22 +1,36 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/resources/logger.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/back_btn.dart';
+import 'package:kindergarten_online/src/features/chats/data/data_sources/remote/web_socket_client.dart';
+import 'package:kindergarten_online/src/features/chats/domain/entities/req/chat_list_entity.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/bottom_chat_area.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/chat_user_info_widget.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/message_bubble.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+import 'package:web_socket_channel/io.dart';
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
-  final String firstName;
-  final String? lastName;
-  final String? avatar;
+  // final String firstName;
+  // final String? lastName;
+  // final String? avatar;
+  // final String? userId;
+  final ChatListEntity entity;
   const ChatPage(
-      {super.key, required this.firstName, this.lastName, this.avatar});
+      {super.key,
+      // required this.firstName,
+      // this.userId,
+      // this.lastName,
+      // this.avatar,
+      required this.entity});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -26,23 +40,38 @@ class _ChatPageState extends State<ChatPage> {
   final _msgController = TextEditingController();
   final _focusNode = FocusNode();
 
-  // WebSocketChannel? _channel;
-  // Future<void> _connect(String id) async {
-  //   try {
-  //     _channel = WebSocketChannel.connect(
-  //       Uri.parse(
-  //           "wss://84.54.12.206/chat/7/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE1NzUyNTI2LCJpYXQiOjE3MTUxNDc3MjYsImp0aSI6IjI5MjcxYTY2NmJjMzRjYjRhMDk2ZjVlZjY5NzcyMzA4IiwidXNlcl9pZCI6Nn0.Kx8aGcpQvxQpo-Dwu7yy95lMOxmstOuPACmNO5exgzw"),
-  //     );
-  //     await _channel!.ready;
-  //     debugPrint("connected");
-  //     _channel?.stream.listen((event) {
-  //       final content = event["content"];
-  //       print("EVENT $content");
-  //     });
-  //   } on SocketException catch (e) {
-  //     debugPrint(e.toString());
-  //   }
-  // }
+  final _log = sl<Logging>();
+
+  late WebSocketClient _webSocketService;
+  late IOWebSocketChannel _channel;
+  final List<dynamic> _messages = [];
+
+  @override
+  void initState() {
+    _webSocketService = WebSocketClient(widget.entity.id.toString(), sl());
+    super.initState();
+    _connect();
+  }
+
+  Future<void> _connect() async {
+    try {
+      _channel = await _webSocketService.connect();
+      await _channel.ready;
+      _log.log.info("connected");
+      // _channel.stream.listen((event) {
+      //   final content = event["content"];
+      //   _log.log.info(content);
+      // });
+      _channel.stream.listen((message) {
+        setState(() {
+          _messages.add(json.decode(message));
+        });
+        debugPrint(message["content"]);
+      });
+    } on SocketException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
   // void _send(TextEditingController message) {
   //   final msg = message.text;
@@ -52,27 +81,20 @@ class _ChatPageState extends State<ChatPage> {
   //   }
   // }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _connect(widget.resultEntity.id.toString());
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _focusNode.hasFocus;
-  // }
+  void disconnect() {
+    if (_channel.closeCode == null) {
+      debugPrint("Disconnected");
+    }
+    _channel.sink.close();
+  }
 
   @override
   void dispose() {
     super.dispose();
     _msgController.dispose();
     _focusNode.dispose();
-    // _channel!.sink.close();
+    disconnect();
   }
-
-  // List<String> _messages = [];
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +109,8 @@ class _ChatPageState extends State<ChatPage> {
           ),
           title: ChatUserInfoWidget(
             textStyle: textStyle,
-            firstName: widget.firstName,
-            lastName: widget.lastName ?? "",
+            firstName: widget.entity.firstName ?? "",
+            lastName: widget.entity.lastName ?? "",
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 234, 233, 233),
@@ -112,7 +134,7 @@ class _ChatPageState extends State<ChatPage> {
                                   reverse: true,
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,
-                                  itemCount: entity.count,
+                                  itemCount: entity.results!.length,
                                   itemBuilder: (_, index) {
                                     return Center(
                                       child: MessageBubble(
@@ -148,3 +170,14 @@ class _ChatPageState extends State<ChatPage> {
         ));
   }
 }
+
+  // void _loadMessageHistory() async {
+  //   try {
+  //     final messages = await _messageService.fetchMessageHistory();
+  //     setState(() {
+  //       _messages.addAll(messages);
+  //     });
+  //   } catch (e) {
+  //     print('Error loading message history: $e');
+  //   }
+  // }

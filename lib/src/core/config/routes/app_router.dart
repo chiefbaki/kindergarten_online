@@ -7,6 +7,7 @@ import 'package:kindergarten_online/src/features/auth/presentation/pages/registr
 import 'package:kindergarten_online/src/features/auth/presentation/pages/splash_page.dart';
 import 'package:kindergarten_online/src/features/camera/presentation/pages/camera_page.dart';
 import 'package:kindergarten_online/src/features/chats/domain/entities/contact_entity.dart';
+import 'package:kindergarten_online/src/features/chats/domain/entities/req/chat_list_entity.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/pages/chat_page.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/pages/chats_list_page.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/pages/contact_info_page.dart';
@@ -35,7 +36,6 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         // Splash page
         CustomRoute(
-          initial: true,
           page: SplashRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
@@ -122,6 +122,7 @@ class AppRouter extends _$AppRouter {
 
         // List of contacts page
         CustomRoute(
+            initial: true,
             page: ChatsListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
