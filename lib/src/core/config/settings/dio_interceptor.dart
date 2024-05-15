@@ -51,7 +51,7 @@ class DioSettings {
         QueuedInterceptorsWrapper(
       onRequest:
           (RequestOptions options, RequestInterceptorHandler handler) async {
-        options.headers["Authorization"] = await _token.getBearerToken();
+        options.headers["Authorization"] = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2MzU0NzkwLCJpYXQiOjE3MTU3NDk5OTAsImp0aSI6IjExZTg3MDUwZjk1MDQ2YzU5ZWM5YjI3YzIwNTY0N2VhIiwidXNlcl9pZCI6Nn0.YnEKsNCuvL3D6G-NR5UUjf_ltIfQ3a8HkbXd3Mh1r18";
         options.baseUrl = baseUrl;
         return handler.next(options);
       },

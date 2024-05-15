@@ -6,8 +6,9 @@ import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
-
 import 'package:kindergarten_online/generated/l10n.dart';
+
+const _paddingUnit = 5;
 
 @RoutePage()
 class MainPage extends StatelessWidget {
@@ -37,14 +38,14 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               Gap(
-                50.h,
+                _paddingUnit * 5.h,
               ),
               Text(
                 S.of(context).welcome,
                 style: textStyle.displayLarge,
               ),
               Gap(
-                10.h,
+                _paddingUnit * 2.h,
               ),
               Text(
                 S.of(context).mainPageAdvice,
@@ -53,15 +54,15 @@ class MainPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               Gap(
-                10.h,
+                _paddingUnit * 2.h,
               ),
               Stack(
                 children: [
                   Image.asset(Imgs.back),
                   Positioned(
                     bottom: 270,
-                    left: 110,
-                    right: 110,
+                    left: 105,
+                    right: 105,
                     child: CustomBtn(
                       name: S.of(context).enter,
                       onPressed: () {

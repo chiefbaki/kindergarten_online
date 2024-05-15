@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kindergarten_online/src/core/utils/failure/data_state.dart';
@@ -34,6 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             param: TokenEntity(
                 access: dataState.data!.access ?? "error",
                 refresh: dataState.data!.refresh ?? "error"));
+        debugPrint(dataState.data!.access);
         emit(const LoginState.success());
       }
       if (dataState is DataFailed) {

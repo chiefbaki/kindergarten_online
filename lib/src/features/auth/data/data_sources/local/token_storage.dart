@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kindergarten_online/src/core/config/constants/storage_constants.dart';
 import 'package:kindergarten_online/src/features/auth/data/dto/response/token_dto.dart';
@@ -17,9 +18,13 @@ class LocalTokenStorage {
   }
 
   Future<TokenDto> getToken() async {
-    final access = await _storage.read(key: StorageConsts.accessToken);
-    final refresh = await _storage.read(key: StorageConsts.refreshToken);
-    return TokenDto(
-        refresh: refresh ?? "empty refresh", access: access ?? "empty access");
+    try {
+      final access = await _storage.read(key: StorageConsts.accessToken);
+      final refresh = await _storage.read(key: StorageConsts.refreshToken);
+      return TokenDto(refresh: refresh ?? "", access: access ?? "");
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    return TokenDto(refresh: "", access: "");
   }
 }

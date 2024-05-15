@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
+import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/internal/app.dart';
 import 'package:logging/logging.dart';
 

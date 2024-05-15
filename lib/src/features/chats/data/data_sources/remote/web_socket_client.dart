@@ -7,15 +7,18 @@ class WebSocketClient {
   // IOWebSocketChannel? _channel;
   final _baseUrl = dotenv.env["WSS_URL"];
   final String _wssUrl;
+  late final String _path;
 
   WebSocketClient(this._wssUrl, this._tokenUseCase);
   final GetTokenUseCase _tokenUseCase;
 
   Future<IOWebSocketChannel> connect() async {
     final token = await _tokenUseCase();
-    final path = "$_baseUrl$_wssUrl/?token=${token!.access}";
-    debugPrint(path);
-    return IOWebSocketChannel.connect(path);
+    // if (token != null) {
+    _path = "$_baseUrl$_wssUrl/?token=${token!.access}";
+    debugPrint(_path);
+
+    return IOWebSocketChannel.connect(_path);
   }
 }
 

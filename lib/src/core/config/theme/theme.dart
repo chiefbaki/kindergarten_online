@@ -4,10 +4,8 @@ import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 
 ThemeData theme() {
   return ThemeData(
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.white,
-        elevation: 0
-      ),
+      appBarTheme:
+          const AppBarTheme(backgroundColor: AppColors.white, elevation: 0),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: outlineBorder(),
         focusedBorder: outlineBorder(),
@@ -16,6 +14,7 @@ ThemeData theme() {
       useMaterial3: false,
       fontFamily: AppFonts.inter,
       textTheme: const TextTheme(
+        bodySmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
         displayLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         displayMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         displaySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),

@@ -1,9 +1,8 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
+import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/resources/logger.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/back_btn.dart';
@@ -19,18 +18,8 @@ import 'package:web_socket_channel/io.dart';
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
-  // final String firstName;
-  // final String? lastName;
-  // final String? avatar;
-  // final String? userId;
   final ChatListEntity entity;
-  const ChatPage(
-      {super.key,
-      // required this.firstName,
-      // this.userId,
-      // this.lastName,
-      // this.avatar,
-      required this.entity});
+  const ChatPage({super.key, required this.entity});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -49,37 +38,43 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     _webSocketService = WebSocketClient(widget.entity.id.toString(), sl());
+
     super.initState();
     _connect();
   }
 
-  Future<void> _connect() async {
+  void _connect() async {
+    _channel = await _webSocketService.connect();
+    await _channel.ready;
+    _listen();
+  }
+
+  Future<void> _listen() async {
     try {
-      _channel = await _webSocketService.connect();
-      await _channel.ready;
       _log.log.info("connected");
-      // _channel.stream.listen((event) {
-      //   final content = event["content"];
-      //   _log.log.info(content);
-      // });
       _channel.stream.listen((message) {
         setState(() {
-          _messages.add(json.decode(message));
+          _messages.insert(0, message["content"]);
         });
-        debugPrint(message["content"]);
+        _log.log.info("LISTEN - ${message.runtimeType} - added");
       });
     } on SocketException catch (e) {
       debugPrint(e.toString());
     }
   }
 
-  // void _send(TextEditingController message) {
-  //   final msg = message.text;
-  //   if (msg.isNotEmpty) {
-  //     _channel!.sink.add(message);
-  //     message.clear();
-  //   }
-  // }
+  void _send(TextEditingController message) {
+    final msg = message.text;
+    if (_channel.closeCode == null) {
+      _log.log.info("SEND - ${message.text} - disconnected");
+    }
+    if (msg.isNotEmpty) {
+      _channel.sink.add(msg);
+      _sendMessageToBloc(context, msg);
+      debugPrint(msg);
+      message.clear();
+    }
+  }
 
   void disconnect() {
     if (_channel.closeCode == null) {
@@ -95,6 +90,8 @@ class _ChatPageState extends State<ChatPage> {
     _focusNode.dispose();
     disconnect();
   }
+
+  List<String> newMsg = [];
 
   @override
   Widget build(BuildContext context) {
@@ -128,19 +125,22 @@ class _ChatPageState extends State<ChatPage> {
                     return state.when(
                         initial: () => const SizedBox(),
                         loading: () => const CustomProgressIndicator(),
-                        success: (entity) {
+                        success: (entity, msg) {
+                          newMsg = [...msg, ..._messages];
+                          debugPrint("LIST OF MESSAGE ${newMsg.toString()}");
                           return entity.results!.isNotEmpty
                               ? ListView.builder(
+                                  // physics: const ClampingScrollPhysics(),
+
                                   reverse: true,
                                   padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
                                   itemCount: entity.results!.length,
                                   itemBuilder: (_, index) {
                                     return Center(
                                       child: MessageBubble(
                                         resultEntity: entity.results![index],
                                         textStyle: textStyle,
-                                        index: index,
+                                        message: msg[index],
                                       ),
                                     );
                                   })
@@ -161,7 +161,12 @@ class _ChatPageState extends State<ChatPage> {
                 ),
               ),
               BottomChatArea(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      _send(_msgController);
+                    });
+                    debugPrint("LIST OF MESSAGE ${newMsg.toString()}");
+                  },
                   focusNode: _focusNode,
                   textStyle: textStyle,
                   msgController: _msgController),
@@ -169,7 +174,12 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ));
   }
+
+  void _sendMessageToBloc(BuildContext context, msg) {
+    context.read<MessagesBloc>().add(MessagesEvent.sendMessage(message: msg));
+  }
 }
+
 
   // void _loadMessageHistory() async {
   //   try {

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
-import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
+import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/core/config/theme/theme.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/logout_cubit/logout_cubit.dart';
@@ -18,6 +18,7 @@ import 'package:kindergarten_online/src/features/profile/presentation/blocs/prof
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+import 'package:kindergarten_online/src/features/widgets/custom_behavior.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -79,6 +80,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().config(),
           theme: theme(),
+          builder: (context, child) =>
+              ScrollConfiguration(behavior: CustomBehavior(), child: child!),
         ),
       ),
     );

@@ -58,7 +58,11 @@ final sl = GetIt.instance;
 
 Future<void> setup() async {
   // Local storage
-  sl.registerFactory(() => const FlutterSecureStorage());
+  sl.registerFactory(() => const FlutterSecureStorage(
+        aOptions: AndroidOptions(
+          encryptedSharedPreferences: true,
+        ),
+      ));
   sl.registerFactory<LocalTokenStorage>(() => LocalTokenStorage(sl()));
   sl.registerSingleton<TokenRepository>(TokenImpl(sl()));
   sl.registerSingleton(SaveTokenUseCase(sl()));

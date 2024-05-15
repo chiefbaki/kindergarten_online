@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
-import 'package:kindergarten_online/src/core/config/service_locator/locator.dart';
+import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/src/features/auth/domain/repositories/token_rep.dart';
 import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+
+const _duration = 2;
 
 @RoutePage()
 class SplashPage extends StatefulWidget {
@@ -24,17 +26,19 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _redirect() async {
-    final userToken = await sl<TokenRepository>().getToken();
-    await Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        if (userToken?.access != "empty access") {
-          debugPrint(userToken?.access);
+    try {
+      final userToken = await sl<TokenRepository>().getToken();
+      await Future.delayed(const Duration(seconds: _duration), () {
+        if (userToken?.access != null && userToken!.access!.isNotEmpty) {
+          debugPrint(userToken.access);
           _openMainMenu();
         } else {
           _routeToMain();
         }
-      }
-    });
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   @override

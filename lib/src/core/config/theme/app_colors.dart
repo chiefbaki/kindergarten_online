@@ -10,4 +10,12 @@ abstract class AppColors {
   static const Color darkBlue = Color(0xff005671);
   static const Color lightBlue = Color(0xffA8EAFF);
   static const Color navyBlue = Color(0xff002734);
+  static const List<Color> recipientColor = [
+    Color(0XFF36D1DC),
+    Color(0xff5B86E5),
+  ];
+  static const List<Color> senderColor = [
+    Color(0xFFbdc3c7),
+    Color(0xFF2c3e50),
+  ];
 }
