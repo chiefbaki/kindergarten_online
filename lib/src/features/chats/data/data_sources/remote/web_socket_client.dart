@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kindergarten_online/src/features/auth/domain/usecases/get_token_usecase.dart';
 import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class WebSocketClient {
-  // IOWebSocketChannel? _channel;
   final _baseUrl = dotenv.env["WSS_URL"];
   final String _wssUrl;
   late final String _path;
@@ -12,13 +12,14 @@ class WebSocketClient {
   WebSocketClient(this._wssUrl, this._tokenUseCase);
   final GetTokenUseCase _tokenUseCase;
 
-  Future<IOWebSocketChannel> connect() async {
+  Future<WebSocketChannel> connect() async {
     final token = await _tokenUseCase();
     // if (token != null) {
     _path = "$_baseUrl$_wssUrl/?token=${token!.access}";
     debugPrint(_path);
+    debugPrint("WEB ${WebSocketChannel.connect(Uri.parse(_path))}");
 
-    return IOWebSocketChannel.connect(_path);
+    return WebSocketChannel.connect(Uri.parse(_path));
   }
 }
 

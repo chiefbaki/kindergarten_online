@@ -8,6 +8,7 @@ import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/src/core/utils/resources/logger.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/back_btn.dart';
+import 'package:kindergarten_online/src/features/chats/data/data_sources/remote/web_socket_client.dart';
 import 'package:kindergarten_online/src/features/chats/domain/entities/req/chat_list_entity.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/bottom_chat_area.dart';
@@ -32,27 +33,27 @@ class _ChatPageState extends State<ChatPage> {
 
   final _log = sl<Logging>();
 
-  // late WebSocketClient _webSocketService;
+  late WebSocketClient _webSocketService;
   late WebSocketChannel _channel;
   final List<dynamic> _messages = [];
 
   @override
   void initState() {
-    // _webSocketService = WebSocketClient(widget.entity.id.toString(), sl());
-    _channel = WebSocketChannel.connect(Uri.parse(
-        "ws://84.54.12.206/chat/${widget.entity.id.toString()}/?token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDUxMTk4LCJpYXQiOjE3MTU4NDYzOTgsImp0aSI6ImE5NGQxNTdlZDM1MTRmMTE4YjZiYmZjNTY2ZGJiZTE3IiwidXNlcl9pZCI6Nn0.FmaY1gwgTjvpF5Q08ykD3ETPysp-JmnvXFLTCq8aB0Y"));
     super.initState();
+    _webSocketService = WebSocketClient(widget.entity.id.toString(), sl());
     _listen();
   }
 
   Future<void> _listen() async {
     try {
+      _channel = await _webSocketService.connect();
       await _channel.ready;
       _log.log.info("connected");
       _channel.stream.listen((message) {
-        _messages.insert(0, message["content"]);
-
-        debugPrint("LISTEN - ${message.runtimeType} - added");
+        setState(() {
+          _messages.insert(0, message);
+        });
+        debugPrint("LISTEN - ${message["sender"]} - added");
       });
     } catch (e) {
       _log.log.severe("Failed to connect: $e");
@@ -61,14 +62,18 @@ class _ChatPageState extends State<ChatPage> {
 
   void _send(TextEditingController message) {
     final msg = message.text;
-    if (_channel.closeCode == null) {
+    if (_channel.closeCode != null) {
       _log.log.info("SEND - ${message.text} - disconnected");
     }
     if (msg.isNotEmpty) {
-      _channel.sink.add(msg);
-      _sendMessageToBloc(context, msg);
-      debugPrint(msg);
-      message.clear();
+      try {
+        _channel.sink.add(msg);
+        _sendMessageToBloc(context, msg);
+        debugPrint("Sent message: $msg");
+        message.clear();
+      } catch (e) {
+        _log.log.severe("Failed to send message: $e");
+      }
     }
   }
 
