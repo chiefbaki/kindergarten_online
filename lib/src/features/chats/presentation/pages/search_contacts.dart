@@ -4,7 +4,7 @@ import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/contact_item.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class SearchContacts extends SearchDelegate {
@@ -37,6 +37,7 @@ class SearchContacts extends SearchDelegate {
     return IconButton(
         onPressed: () {
           Navigator.pop(context);
+          context.read<ContactBloc>().add(const ContactEvent.started());
         },
         icon: const Icon(
           Icons.arrow_back_ios,
@@ -49,7 +50,7 @@ class SearchContacts extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     context.read<ContactBloc>().add(ContactEvent.started(query: query));
     final textStyle = Theme.of(context).textTheme;
-    return Expanded(child: BlocBuilder<ContactBloc, ContactState>(
+    return BlocBuilder<ContactBloc, ContactState>(
       builder: (context, state) {
         return state.when(
             initial: () => const SizedBox(),
@@ -83,7 +84,7 @@ class SearchContacts extends SearchDelegate {
                   ),
                 )));
       },
-    ));
+    );
   }
 
   @override

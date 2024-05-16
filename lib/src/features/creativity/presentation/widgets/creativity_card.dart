@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/widgets/creativity_item.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 
 class CreativityCard extends StatelessWidget {
   const CreativityCard({

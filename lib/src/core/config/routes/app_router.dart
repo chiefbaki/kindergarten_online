@@ -36,7 +36,7 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         // Splash page
         CustomRoute(
-          
+          initial: true,
           page: SplashRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
@@ -49,7 +49,6 @@ class AppRouter extends _$AppRouter {
 
         // Auth
         CustomRoute(
-          initial: true,
           page: LoginRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
@@ -109,11 +108,13 @@ class AppRouter extends _$AppRouter {
 
         // Change password page
         CustomRoute(
+            
             page: EditProfileRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
         // Creativity page
         CustomRoute(
+          
             page: CreativityRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
@@ -156,6 +157,7 @@ class AppRouter extends _$AppRouter {
         ),
 
         CustomRoute(
+          
           page: ChangePasswordRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),

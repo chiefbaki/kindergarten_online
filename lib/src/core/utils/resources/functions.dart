@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/src/features/camera/data/menu_item_model.dart';
-import 'package:kindergarten_online/src/features/widgets/menu_card.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_float_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/menu_card.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_float_btn.dart';
 
 Future<dynamic> wrongLoginDialog(BuildContext context, TextTheme textStyle) {
   return showDialog(
@@ -14,36 +15,31 @@ Future<dynamic> wrongLoginDialog(BuildContext context, TextTheme textStyle) {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           contentPadding: const EdgeInsets.all(25),
-          content: SizedBox(
-            height: 145.h,
-            width: 230.w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Ошибка",
-                  style:
-                      textStyle.displayLarge!.copyWith(color: AppColors.black),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  "Пожалуйста, введите корректные имя пользователя и пароль учётной записи. Оба поля зависят от корректности друг друга.",
-                  style: textStyle.titleSmall,
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                Center(
-                    child: CustomBtn(
-                        onPressed: () {
-                          // context.router.push(const RegistrRoute());
-                          Navigator.pop(context);
-                        },
-                        name: "Закрыть"))
-              ],
-            ),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                S.of(context).wrong,
+                style: textStyle.displayLarge!.copyWith(color: AppColors.black),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                S.of(context).checkLoginAndPass,
+                style: textStyle.titleSmall,
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Center(
+                  child: CustomBtn(
+                      onPressed: () {
+                        // context.router.push(const RegistrRoute());
+                        Navigator.pop(context);
+                      },
+                      name: S.of(context).close))
+            ],
           ),
         );
       });
@@ -62,12 +58,12 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
     builder: (BuildContext context) {
       return Padding(
         padding:
-            const EdgeInsets.only(left:38, right: 38, top: 155, bottom: 33),
-        child: Column(
-          children: [
-            SizedBox(
-              height: height * 0.73,
-              child: GridView.builder(
+            const EdgeInsets.only(left: 38, right: 38, top: 185, bottom: 33),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: MenuItem.items.length,
@@ -84,14 +80,14 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
                       route: MenuItem.items[index].route,
                     );
                   }),
-            ),
-            const Spacer(),
-            CustomFloatBtn(
-              showButton: showButton,
-              isToSwitch: false,
-              icon: const Icon(Icons.close),
-            )
-          ],
+              const Spacer(),
+              CustomFloatBtn(
+                showButton: showButton,
+                isToSwitch: false,
+                icon: const Icon(Icons.close),
+              )
+            ],
+          ),
         ),
       );
     },

@@ -1,16 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 import 'package:kindergarten_online/src/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/src/features/news/presentation/widgets/news_item.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_refresh_indicator.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/src/features/widgets/nav_bar.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_refresh_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 const double _paddingUnit = 5;
+const int _duration = 2;
 
 @RoutePage()
 class NewsPage extends StatefulWidget {
@@ -31,34 +30,24 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
-          child: Column(
-            children: [
-              NavBar(textStyle: textStyle, text: S.of(context).news),
-              Gap(
-                _paddingUnit * 5.h,
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: _paddingUnit * 3),
-                  child: CustomRefreshIndicator(
-                      onRefresh: () async {
-                        await Future.delayed(const Duration(milliseconds: 2),
-                            () {
-                          context
-                              .read<NewsBloc>()
-                              .add(const NewsEvent.started());
-                        });
-                      },
-                      child: NewsItem(textStyle: textStyle)),
-                ),
-              )
-            ],
-          ),
-        ),
+      appBar: Navbar(textStyle: textStyle, title: S.of(context).news),
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                  _paddingUnit * 3, _paddingUnit * 5, _paddingUnit * 3, 0),
+              child: CustomRefreshIndicator(
+                  onRefresh: () async {
+                    await Future.delayed(
+                        const Duration(milliseconds: _duration), () {
+                      context.read<NewsBloc>().add(const NewsEvent.started());
+                    });
+                  },
+                  child: NewsItem(textStyle: textStyle)),
+            ),
+          )
+        ],
       ),
     );
   }

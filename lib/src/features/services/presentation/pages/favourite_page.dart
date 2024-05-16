@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/src/features/widgets/services_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/services_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 const double _paddingUnit = 5;

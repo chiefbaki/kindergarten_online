@@ -31,7 +31,7 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
           messages.add(el.content ?? "");
         }
 
-        debugPrint("LIST : ${messages.reversed}");
+        // debugPrint("LIST : ${messages.reversed}");
         emit(MessagesState.success(
             entity: dataState.data ?? ChatMessagesListEntity(), msg: messages));
       } else if (dataState is DataFailed) {

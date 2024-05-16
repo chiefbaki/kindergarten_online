@@ -1,20 +1,21 @@
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/src/core/utils/resources/logger.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/back_btn.dart';
-import 'package:kindergarten_online/src/features/chats/data/data_sources/remote/web_socket_client.dart';
 import 'package:kindergarten_online/src/features/chats/domain/entities/req/chat_list_entity.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/messages_bloc/messages_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/bottom_chat_area.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/chat_user_info_widget.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/message_bubble.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
-import 'package:kindergarten_online/generated/l10n.dart';
-import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
+final _baseUrl = dotenv.env["WSS_URL"];
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
@@ -31,35 +32,30 @@ class _ChatPageState extends State<ChatPage> {
 
   final _log = sl<Logging>();
 
-  late WebSocketClient _webSocketService;
-  late IOWebSocketChannel _channel;
+  // late WebSocketClient _webSocketService;
+  late WebSocketChannel _channel;
   final List<dynamic> _messages = [];
 
   @override
   void initState() {
-    _webSocketService = WebSocketClient(widget.entity.id.toString(), sl());
-
+    // _webSocketService = WebSocketClient(widget.entity.id.toString(), sl());
+    _channel = WebSocketChannel.connect(Uri.parse(
+        "ws://84.54.12.206/chat/${widget.entity.id.toString()}/?token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDUxMTk4LCJpYXQiOjE3MTU4NDYzOTgsImp0aSI6ImE5NGQxNTdlZDM1MTRmMTE4YjZiYmZjNTY2ZGJiZTE3IiwidXNlcl9pZCI6Nn0.FmaY1gwgTjvpF5Q08ykD3ETPysp-JmnvXFLTCq8aB0Y"));
     super.initState();
-    _connect();
-  }
-
-  void _connect() async {
-    _channel = await _webSocketService.connect();
-    await _channel.ready;
     _listen();
   }
 
   Future<void> _listen() async {
     try {
+      await _channel.ready;
       _log.log.info("connected");
       _channel.stream.listen((message) {
-        setState(() {
-          _messages.insert(0, message["content"]);
-        });
-        _log.log.info("LISTEN - ${message.runtimeType} - added");
+        _messages.insert(0, message["content"]);
+
+        debugPrint("LISTEN - ${message.runtimeType} - added");
       });
-    } on SocketException catch (e) {
-      debugPrint(e.toString());
+    } catch (e) {
+      _log.log.severe("Failed to connect: $e");
     }
   }
 
@@ -90,8 +86,6 @@ class _ChatPageState extends State<ChatPage> {
     _focusNode.dispose();
     disconnect();
   }
-
-  List<String> newMsg = [];
 
   @override
   Widget build(BuildContext context) {
@@ -126,8 +120,6 @@ class _ChatPageState extends State<ChatPage> {
                         initial: () => const SizedBox(),
                         loading: () => const CustomProgressIndicator(),
                         success: (entity, msg) {
-                          newMsg = [...msg, ..._messages];
-                          debugPrint("LIST OF MESSAGE ${newMsg.toString()}");
                           return entity.results!.isNotEmpty
                               ? ListView.builder(
                                   // physics: const ClampingScrollPhysics(),
@@ -160,12 +152,26 @@ class _ChatPageState extends State<ChatPage> {
                   },
                 ),
               ),
+              // StreamBuilder(
+              //     stream: _channel.stream,
+              //     builder: (context, snapShot) {
+              //       if (snapShot.hasData) {
+              //         return ListView.builder(
+              //             // physics: const ClampingScrollPhysics(),
+
+              //             reverse: true,
+              //             padding: EdgeInsets.zero,
+              //             itemCount: _messages.length,
+              //             itemBuilder: (_, index) {
+              //               return Center(child: Text(snapShot.data));
+              //             });
+              //       }
+              //       return const CircularProgressIndicator.adaptive();
+              //     }),
               BottomChatArea(
                   onPressed: () {
-                    setState(() {
-                      _send(_msgController);
-                    });
-                    debugPrint("LIST OF MESSAGE ${newMsg.toString()}");
+                    _send(_msgController);
+                    // debugPrint("LIST OF MESSAGE ${newMsg.toString()}");
                   },
                   focusNode: _focusNode,
                   textStyle: textStyle,

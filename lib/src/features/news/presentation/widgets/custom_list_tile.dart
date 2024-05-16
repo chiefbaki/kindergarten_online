@@ -5,7 +5,7 @@ import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/extensions.dart';
 import 'package:kindergarten_online/src/features/news/domain/entities/news_entity.dart';
-import 'package:kindergarten_online/src/features/widgets/cached_image.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/cached_image.dart';
 
 class CustomListTile extends StatelessWidget {
   final ResultsEntity entity;

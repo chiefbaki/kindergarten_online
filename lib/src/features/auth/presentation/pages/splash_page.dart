@@ -4,7 +4,7 @@ import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/src/features/auth/domain/repositories/token_rep.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 
 const _duration = 2;
 

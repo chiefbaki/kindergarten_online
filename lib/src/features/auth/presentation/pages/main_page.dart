@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 const _paddingUnit = 5;

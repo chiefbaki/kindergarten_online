@@ -789,6 +789,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Старый пароль:`
+  String get oldPass {
+    return Intl.message(
+      'Старый пароль:',
+      name: 'oldPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Старый пароль`
+  String get oldPassField {
+    return Intl.message(
+      'Старый пароль',
+      name: 'oldPassField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Новый пароль:`
+  String get newPass {
+    return Intl.message(
+      'Новый пароль:',
+      name: 'newPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Новый пароль`
+  String get newPassField {
+    return Intl.message(
+      'Новый пароль',
+      name: 'newPassField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подтверждение нового пароля:`
+  String get confirmNewPass {
+    return Intl.message(
+      'Подтверждение нового пароля:',
+      name: 'confirmNewPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подтверждение нового пароля`
+  String get confirmNewPassField {
+    return Intl.message(
+      'Подтверждение нового пароля',
+      name: 'confirmNewPassField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сохранить изменения`
+  String get saveChanges {
+    return Intl.message(
+      'Сохранить изменения',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ошибка`
+  String get wrong {
+    return Intl.message(
+      'Ошибка',
+      name: 'wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пожалуйста, введите корректные имя пользователя и пароль учётной записи. Оба поля зависят от корректности друг друга.`
+  String get checkLoginAndPass {
+    return Intl.message(
+      'Пожалуйста, введите корректные имя пользователя и пароль учётной записи. Оба поля зависят от корректности друг друга.',
+      name: 'checkLoginAndPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Закрыть`
+  String get close {
+    return Intl.message(
+      'Закрыть',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

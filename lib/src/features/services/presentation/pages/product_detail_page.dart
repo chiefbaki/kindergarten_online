@@ -6,9 +6,9 @@ import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
 import 'package:kindergarten_online/src/features/services/domain/entities/product_entity.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_appbar.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 
 const double _paddingUnit = 5;
 

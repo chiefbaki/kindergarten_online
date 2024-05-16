@@ -2,15 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
-import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
-import 'package:kindergarten_online/src/features/services/presentation/pages/favourite_page.dart';
-import 'package:kindergarten_online/src/features/services/presentation/widgets/category_item.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/src/features/widgets/nav_bar.dart';
-
-
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/features/services/presentation/widgets/services_tabs.dart';
 
 const double _paddingUnit = 5;
 
@@ -33,70 +30,16 @@ class _ServicesPageState extends State<ServicesPage> {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
-          child: Column(children: [
-            NavBar(textStyle: textStyle, text: S.of(context).productsAndServices),
-            SizedBox(
-              height: 25.h,
-            ),
-            Flexible(
-              child: DefaultTabController(
-                  animationDuration: Durations.extralong2,
-                  length: 3,
-                  initialIndex: 1,
-                  child: Column(
-                    children: [
-                      TabBar(tabs: [
-                        Tab(
-                          child: Text(
-                            S.of(context).popular,
-                            style: textStyle.displayMedium!
-                                .copyWith(color: AppColors.black),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            S.of(context).catalog,
-                            style: textStyle.displayMedium!
-                                .copyWith(color: AppColors.black),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            S.of(context).favourite,
-                            style: textStyle.displayMedium!
-                                .copyWith(color: AppColors.black),
-                          ),
-                        )
-                      ]),
-                      Flexible(
-                        child: TabBarView(
-                          children: [
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    S.of(context).thisSectionIsEmpty,
-                                    style: textStyle.displayMedium!
-                                        .copyWith(color: AppColors.black),
-                                  )
-                                ],
-                              ),
-                            ),
-                            const CategoryItem(),
-                            const FavouritePage()
-                          ],
-                        ),
-                      )
-                    ],
-                  )),
-            ),
-          ]),
-        ),
+      appBar: Navbar(
+        textStyle: textStyle,
+        title: S.of(context).productsAndServices,
       ),
+      body: Column(children: [
+        Gap(
+          _paddingUnit * 5.h,
+        ),
+        ServicesTabs(textStyle: textStyle),
+      ]),
     );
   }
 }

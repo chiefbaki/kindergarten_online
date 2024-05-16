@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_appbar.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 
 @RoutePage()
 class ResetPage extends StatefulWidget {

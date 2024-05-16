@@ -7,8 +7,8 @@ import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/pages/creativity_search.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/widgets/creativity_card.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_refresh_indicator.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_refresh_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 const _paddingUnit = 5;
@@ -37,8 +37,8 @@ class _CreativityPageState extends State<CreativityPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: _paddingUnit * 5, horizontal: _paddingUnit * 3),
+            padding: const EdgeInsets.fromLTRB(
+                _paddingUnit * 3, _paddingUnit * 5, _paddingUnit * 3, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,

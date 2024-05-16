@@ -6,8 +6,8 @@ import 'package:kindergarten_online/src/features/chats/domain/entities/contact_e
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/child_card.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/contact_status_widget.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_appbar.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 

@@ -4,7 +4,7 @@ import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 class SearchChat extends SearchDelegate {

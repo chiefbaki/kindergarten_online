@@ -11,10 +11,10 @@ import 'package:kindergarten_online/src/features/chats/presentation/blocs/create
 import 'package:kindergarten_online/src/features/chats/presentation/pages/search_chat.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_refresh_indicator.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/src/features/widgets/search_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_refresh_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/search_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 const _paddingUnit = 5;

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:photo_view/photo_view.dart';
 
 class CreativityCachedImage extends StatelessWidget {

@@ -7,9 +7,9 @@ import 'package:kindergarten_online/src/features/chats/presentation/blocs/contac
 import 'package:kindergarten_online/src/features/chats/presentation/pages/search_contacts.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/contact_item.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/src/features/widgets/search_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/search_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()

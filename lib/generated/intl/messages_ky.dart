@@ -45,9 +45,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "chatMessages":
             MessageLookupByLibrary.simpleMessage("Чат билдирүүлөрү"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
+        "checkLoginAndPass": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите корректные имя пользователя и пароль учётной записи. Оба поля зависят от корректности друг друга."),
         "children": MessageLookupByLibrary.simpleMessage("Дети: "),
         "chooseGroupOrClass":
             MessageLookupByLibrary.simpleMessage("Топту/классты тандоо"),
+        "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
+        "confirmNewPass": MessageLookupByLibrary.simpleMessage(
+            "Подтверждение нового пароля:"),
+        "confirmNewPassField":
+            MessageLookupByLibrary.simpleMessage("Подтверждение нового пароля"),
         "contactIsEmpty":
             MessageLookupByLibrary.simpleMessage("Список ваших контактов пуст"),
         "createGroup": MessageLookupByLibrary.simpleMessage("Создать группу"),
@@ -83,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameAndAddress":
             MessageLookupByLibrary.simpleMessage("Аты жана адреси"),
         "newOnesFirst": MessageLookupByLibrary.simpleMessage("Биринчи жаңылар"),
+        "newPass": MessageLookupByLibrary.simpleMessage("Новый пароль:"),
+        "newPassField": MessageLookupByLibrary.simpleMessage("Новый пароль"),
         "news": MessageLookupByLibrary.simpleMessage("Жаңылыктар"),
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("Түрмөктөгү жаңы окуялар"),
@@ -91,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Отсутствует интернет соединение"),
         "notifications": MessageLookupByLibrary.simpleMessage("Эскертмелер"),
         "oldOnesFirst": MessageLookupByLibrary.simpleMessage("Биринчи эскилер"),
+        "oldPass": MessageLookupByLibrary.simpleMessage("Старый пароль:"),
+        "oldPassField": MessageLookupByLibrary.simpleMessage("Старый пароль"),
         "online": MessageLookupByLibrary.simpleMessage("В сети"),
         "password": MessageLookupByLibrary.simpleMessage("Сырсөз:"),
         "paymentReceipts":
@@ -108,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Номерди калыбына келтирүү"),
         "restorePassword":
             MessageLookupByLibrary.simpleMessage("Сырсөздү калыбына келтирүү"),
+        "saveChanges":
+            MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "saveTheChanges":
             MessageLookupByLibrary.simpleMessage("Өзгөрүүлөрдү сактоо"),
         "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
@@ -123,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "timeOfWork": MessageLookupByLibrary.simpleMessage("Время работы"),
         "usersprofile":
             MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
-        "welcome": MessageLookupByLibrary.simpleMessage("Кош келиңиз!")
+        "welcome": MessageLookupByLibrary.simpleMessage("Кош келиңиз!"),
+        "wrong": MessageLookupByLibrary.simpleMessage("Ошибка")
       };
 }

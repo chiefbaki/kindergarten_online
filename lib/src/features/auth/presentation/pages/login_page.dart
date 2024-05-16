@@ -8,10 +8,10 @@ import 'package:kindergarten_online/src/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_appbar.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_text_btn.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_text_field.dart';
-import 'package:kindergarten_online/src/features/widgets/phone_text_field.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_text_field.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/pin_code_widget.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 

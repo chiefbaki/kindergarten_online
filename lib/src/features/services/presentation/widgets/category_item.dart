@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
-import 'package:kindergarten_online/src/features/widgets/text_with_arrow.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/text_with_arrow.dart';
 
 const double _paddingUnit = 5;
 

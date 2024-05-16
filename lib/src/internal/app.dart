@@ -18,7 +18,7 @@ import 'package:kindergarten_online/src/features/profile/presentation/blocs/prof
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_behavior.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_behavior.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

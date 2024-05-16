@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/widgets/category_card.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_progress_indicator.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 
 const double _paddingUnit = 5;
 

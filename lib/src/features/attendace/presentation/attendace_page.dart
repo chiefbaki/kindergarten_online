@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/src/features/widgets/nav_bar.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
-
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 
 @RoutePage()
 class AttendancePage extends StatefulWidget {
@@ -21,27 +20,25 @@ class _AttendancePageState extends State<AttendancePage> {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                NavBar(textStyle: textStyle, text: S.of(context).attendace),
-                // Container(
-                //   margin: const EdgeInsets.only(top: 25),
-                //   child: TableCalendar(
-                //     focusedDay: _focusedDay,
-                //     firstDay: _firstDay,
-                //     lastDay: _lastDay,
-                //     headerStyle: const HeaderStyle(),
-                //     calendarStyle: const CalendarStyle(
-                //         outsideDecoration:
-                //             BoxDecoration(color: AppColors.navyBlue)),
-                //   ),
-                // ),
-              ],
-            ),
+      appBar: Navbar(textStyle: textStyle, title: S.of(context).attendace),
+      body: const Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              // Container(
+              //   margin: const EdgeInsets.only(top: 25),
+              //   child: TableCalendar(
+              //     focusedDay: _focusedDay,
+              //     firstDay: _firstDay,
+              //     lastDay: _lastDay,
+              //     headerStyle: const HeaderStyle(),
+              //     calendarStyle: const CalendarStyle(
+              //         outsideDecoration:
+              //             BoxDecoration(color: AppColors.navyBlue)),
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),

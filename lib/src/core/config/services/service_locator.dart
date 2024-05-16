@@ -57,6 +57,8 @@ import 'package:kindergarten_online/src/features/services/presentation/blocs/pro
 final sl = GetIt.instance;
 
 Future<void> setup() async {
+  // Logger
+  sl.registerFactory(() => Logging());
   // Local storage
   sl.registerFactory(() => const FlutterSecureStorage(
         aOptions: AndroidOptions(
@@ -68,9 +70,6 @@ Future<void> setup() async {
   sl.registerSingleton(SaveTokenUseCase(sl()));
   sl.registerSingleton(GetTokenUseCase(sl()));
   sl.registerSingleton(DeleteTokenUseCase(sl()));
-
-  // Logger
-  sl.registerFactory(() => Logging());
 
   // Network
   // sl.registerFactory<DioSettings>(() => DioSettings(sl()));

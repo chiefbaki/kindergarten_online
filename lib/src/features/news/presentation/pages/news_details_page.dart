@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/extensions.dart';
-import 'package:kindergarten_online/src/features/widgets/cached_image.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_appbar.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/cached_image.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
 @RoutePage()

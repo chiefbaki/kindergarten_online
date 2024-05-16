@@ -2,11 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_btn.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_scaffold.dart';
-import 'package:kindergarten_online/src/features/widgets/custom_text_field.dart';
-import 'package:kindergarten_online/src/features/widgets/nav_bar.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_text_field.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 
 const double _paddingUnit = 5;
 
@@ -26,6 +27,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   bool _isOldPassNotVisible = true;
   bool _isNewsPassNotVisible = true;
 
+  bool isEmpty = true;
+  
+
   @override
   void dispose() {
     super.dispose();
@@ -38,84 +42,72 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: _paddingUnit * 5),
-          child: Column(
-            children: [
-              NavBar(textStyle: textStyle, text: "Пароль"),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: _paddingUnit * 3, vertical: _paddingUnit * 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Старый пароль:",
-                      style: textStyle.displaySmall!
-                          .copyWith(color: AppColors.black),
-                    ),
-                    Gap(
-                      _paddingUnit * 2.h,
-                    ),
-                    CustomTextField(
-                        textStyle: textStyle,
-                        hintText: "Старый пароль",
-                        obscureText: _isOldPassNotVisible,
-                        onPressed: () {
-                          setState(() {
-                            _isOldPassNotVisible = !_isOldPassNotVisible;
-                          });
-                        },
-                        controller: _oldPassword),
-                    Gap(
-                      _paddingUnit * 4.h,
-                    ),
-                    Text(
-                      "Новый пароль:",
-                      style: textStyle.displaySmall!
-                          .copyWith(color: AppColors.black),
-                    ),
-                    Gap(
-                      _paddingUnit * 2.h,
-                    ),
-                    CustomTextField(
-                        textStyle: textStyle,
-                        hintText: "Новый пароль",
-                        obscureText: _isNewsPassNotVisible,
-                        onPressed: () {
-                          setState(() {
-                            _isNewsPassNotVisible = !_isNewsPassNotVisible;
-                          });
-                        },
-                        controller: _newPassword),
-                    Gap(
-                      _paddingUnit * 4.h,
-                    ),
-                    Text(
-                      "Подтверждение нового пароля:",
-                      style: textStyle.displaySmall!
-                          .copyWith(color: AppColors.black),
-                    ),
-                    Gap(
-                      _paddingUnit * 2.h,
-                    ),
-                    CustomTextField(
-                        textStyle: textStyle,
-                        obscureText: _isNewsPassNotVisible,
-                        hintText: "Подтверждение нового пароля",
-                        controller: _confirmNewPassword),
-                    Gap(
-                      _paddingUnit * 5.h,
-                    ),
-                    Center(
-                        child: CustomBtn(
-                            onPressed: () {}, name: "Сохранить изменения"))
-                  ],
-                ),
-              )
-            ],
-          ),
+      appBar: Navbar(textStyle: textStyle, title: S.of(context).changePassword),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: _paddingUnit * 3, vertical: _paddingUnit * 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              S.of(context).oldPass,
+              style: textStyle.displaySmall!.copyWith(color: AppColors.black),
+            ),
+            Gap(
+              _paddingUnit * 2.h,
+            ),
+            CustomTextField(
+                textStyle: textStyle,
+                hintText: S.of(context).oldPassField,
+                obscureText: _isOldPassNotVisible,
+                onPressed: () {
+                  setState(() {
+                    _isOldPassNotVisible = !_isOldPassNotVisible;
+                  });
+                },
+                controller: _oldPassword),
+            Gap(
+              _paddingUnit * 4.h,
+            ),
+            Text(
+              S.of(context).newPass,
+              style: textStyle.displaySmall!.copyWith(color: AppColors.black),
+            ),
+            Gap(
+              _paddingUnit * 2.h,
+            ),
+            CustomTextField(
+                textStyle: textStyle,
+                hintText: S.of(context).newPassField,
+                obscureText: _isNewsPassNotVisible,
+                onPressed: () {
+                  setState(() {
+                    _isNewsPassNotVisible = !_isNewsPassNotVisible;
+                  });
+                },
+                controller: _newPassword),
+            Gap(
+              _paddingUnit * 4.h,
+            ),
+            Text(
+              S.of(context).confirmNewPass,
+              style: textStyle.displaySmall!.copyWith(color: AppColors.black),
+            ),
+            Gap(
+              _paddingUnit * 2.h,
+            ),
+            CustomTextField(
+                textStyle: textStyle,
+                obscureText: _isNewsPassNotVisible,
+                hintText: S.of(context).confirmNewPassField,
+                controller: _confirmNewPassword),
+            Gap(
+              _paddingUnit * 5.h,
+            ),
+            Center(
+                child: CustomBtn(
+                    onPressed: () {}, name: S.of(context).saveChanges))
+          ],
         ),
       ),
     );
