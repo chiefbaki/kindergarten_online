@@ -44,6 +44,7 @@ dependencies:
   dio: ^5.4.3+1
   retrofit: ^4.1.0
   internet_connection_checker: ^1.0.0+1
+  firebase_messaging: ^14.9.2
   # State management
   flutter_bloc: ^8.1.5
 
@@ -78,6 +79,7 @@ dependencies:
   envied: ^0.5.4+1
   envied_generator: ^0.5.4+1
   colorful_safe_area: ^1.0.0
+  firebase_core: ^2.31.0
 
 
 dev_dependencies:
