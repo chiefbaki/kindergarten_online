@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AttendancePage(),
       );
     },
+    CameraListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CameraListPage(),
+      );
+    },
     CameraRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -204,6 +210,20 @@ class AttendanceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AttendanceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CameraListPage]
+class CameraListRoute extends PageRouteInfo<void> {
+  const CameraListRoute({List<PageRouteInfo>? children})
+      : super(
+          CameraListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CameraListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

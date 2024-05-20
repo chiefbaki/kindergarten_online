@@ -18,7 +18,7 @@ class MenuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.push(route);
+        context.router.replace(route);
       },
       child: Column(
         children: [

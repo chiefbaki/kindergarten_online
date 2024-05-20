@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 
 class ChoiceChipList extends StatefulWidget {
@@ -15,15 +16,15 @@ class ChoiceChipList extends StatefulWidget {
 }
 
 class _ChoiceChipListState extends State<ChoiceChipList> {
-  final List<String> _choiceData = [
-    "Все",
-    "Снаружи",
-    "Внутри",
-    "Другое",
-  ];
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final List<String> _choiceData = [
+      S.of(context).all,
+      S.of(context).outside,
+      S.of(context).inside,
+      S.of(context).other,
+    ];
     return SizedBox(
       height: 40.h,
       child: ListView.separated(

@@ -49,6 +49,20 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
     {bool showButton = true}) {
   final width = MediaQuery.of(context).size.width;
   final height = MediaQuery.of(context).size.height;
+  final List<String> itemNames = [
+    S.of(context).goodsAndServices,
+    S.of(context).myContacts,
+    S.of(context).ChatsWithParents,
+    S.of(context).attendace,
+    S.of(context).creativity,
+    S.of(context).paymentReceipts,
+    S.of(context).referenceInformation,
+    S.of(context).Settings,
+    S.of(context).technicalSupportQuestions,
+    S.of(context).cctv,
+    S.of(context).timetableOfClasses,
+    S.of(context).newsFeed,
+  ];
   return showModalBottomSheet(
     isDismissible: false,
     enableDrag: false,
@@ -76,7 +90,7 @@ Future<dynamic> customBottomSheet(BuildContext context, TextTheme textStyle,
                     return MenuCard(
                       textStyle: textStyle,
                       img: MenuItem.items[index].img,
-                      title: MenuItem.items[index].name,
+                      title: itemNames[index],
                       route: MenuItem.items[index].route,
                     );
                   }),

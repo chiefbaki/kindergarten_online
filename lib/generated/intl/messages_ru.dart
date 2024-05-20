@@ -22,10 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "ChatsWithParents":
+            MessageLookupByLibrary.simpleMessage("Чаты с родителями"),
         "Settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "account": MessageLookupByLibrary.simpleMessage("Мой Аккаунт"),
         "address": MessageLookupByLibrary.simpleMessage("Адрес"),
         "age": MessageLookupByLibrary.simpleMessage("5 лет"),
+        "all": MessageLookupByLibrary.simpleMessage("Все"),
         "alreadyHaveAnAcc":
             MessageLookupByLibrary.simpleMessage("Уже есть аккаунт?  "),
         "applicationTheme":
@@ -37,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
         "catalogOfProductAndServices":
             MessageLookupByLibrary.simpleMessage("Каталог товаров и услуг"),
+        "cctv": MessageLookupByLibrary.simpleMessage("Видеонаблюдение"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Изменить пароль"),
         "chatBackground": MessageLookupByLibrary.simpleMessage("Фон чата"),
@@ -68,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgetPassOrNumber": MessageLookupByLibrary.simpleMessage(
             "Не помните пароль или номер?"),
         "gender": MessageLookupByLibrary.simpleMessage("Пол:"),
+        "goodsAndServices":
+            MessageLookupByLibrary.simpleMessage("Товары и услуги"),
         "group": MessageLookupByLibrary.simpleMessage("Группа:"),
         "inputLastName":
             MessageLookupByLibrary.simpleMessage("Введите фамилию"),
@@ -78,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputName": MessageLookupByLibrary.simpleMessage("Введите имя"),
         "inputNumber": MessageLookupByLibrary.simpleMessage("Введите номер"),
         "inputPassword": MessageLookupByLibrary.simpleMessage("Введите пароль"),
+        "inside": MessageLookupByLibrary.simpleMessage("Снаружи"),
         "kindergarten": MessageLookupByLibrary.simpleMessage("Детский сад:"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия:"),
         "light": MessageLookupByLibrary.simpleMessage("Светлая"),
@@ -95,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "news": MessageLookupByLibrary.simpleMessage("Новости"),
         "newsEvents":
             MessageLookupByLibrary.simpleMessage("Новое событие в ленте"),
+        "newsFeed": MessageLookupByLibrary.simpleMessage("Лента новостей"),
         "newsline": MessageLookupByLibrary.simpleMessage("Лента новостей"),
         "noConnection": MessageLookupByLibrary.simpleMessage(
             "Отсутствует интернет соединение"),
@@ -103,6 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldPass": MessageLookupByLibrary.simpleMessage("Старый пароль:"),
         "oldPassField": MessageLookupByLibrary.simpleMessage("Старый пароль"),
         "online": MessageLookupByLibrary.simpleMessage("В сети"),
+        "other": MessageLookupByLibrary.simpleMessage("Другое"),
+        "outside": MessageLookupByLibrary.simpleMessage("Снаружи"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль:"),
         "paymentReceipts":
             MessageLookupByLibrary.simpleMessage("Payment receipts"),
@@ -112,6 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
         "productsAndServices":
             MessageLookupByLibrary.simpleMessage("Товары / Услуги"),
+        "referenceInformation":
+            MessageLookupByLibrary.simpleMessage("Справочная информация"),
         "registration": MessageLookupByLibrary.simpleMessage("Регистрация"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Сбросить пароль"),
@@ -125,6 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "shedule": MessageLookupByLibrary.simpleMessage("Расписание"),
         "site": MessageLookupByLibrary.simpleMessage("Сайт"),
+        "technicalSupportQuestions":
+            MessageLookupByLibrary.simpleMessage("Вопросы тех поддержке"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Правила использования"),
         "thisSectionIsEmpty":
@@ -134,6 +148,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisWindowWillDisplay": MessageLookupByLibrary.simpleMessage(
             "В этом окне будут отображаться\nВаши избранные объявления."),
         "timeOfWork": MessageLookupByLibrary.simpleMessage("Время работы"),
+        "timetableOfClasses":
+            MessageLookupByLibrary.simpleMessage("Расписание занятий"),
         "usersprofile":
             MessageLookupByLibrary.simpleMessage("Профиль пользователя"),
         "welcome": MessageLookupByLibrary.simpleMessage("Добро пожаловать!"),

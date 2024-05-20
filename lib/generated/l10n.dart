@@ -160,10 +160,10 @@ class S {
     );
   }
 
-  /// `Камеры`
+  /// `Cameras`
   String get cameras {
     return Intl.message(
-      'Камеры',
+      'Cameras',
       name: 'cameras',
       desc: '',
       args: [],
@@ -680,211 +680,321 @@ class S {
     );
   }
 
-  /// `Товары / Услуги`
+  /// `Goods / Services`
   String get productsAndServices {
     return Intl.message(
-      'Товары / Услуги',
+      'Goods / Services',
       name: 'productsAndServices',
       desc: '',
       args: [],
     );
   }
 
-  /// `Популярное`
+  /// `Popular`
   String get popular {
     return Intl.message(
-      'Популярное',
+      'Popular',
       name: 'popular',
       desc: '',
       args: [],
     );
   }
 
-  /// `Каталог`
+  /// `Catalog`
   String get catalog {
     return Intl.message(
-      'Каталог',
+      'Catalog',
       name: 'catalog',
       desc: '',
       args: [],
     );
   }
 
-  /// `Избранное`
+  /// `Favourite`
   String get favourite {
     return Intl.message(
-      'Избранное',
+      'Favourite',
       name: 'favourite',
       desc: '',
       args: [],
     );
   }
 
-  /// `Данный раздел пока пуст`
+  /// `This section is empty`
   String get thisSectionIsEmpty {
     return Intl.message(
-      'Данный раздел пока пуст',
+      'This section is empty',
       name: 'thisSectionIsEmpty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Каталог товаров и услуг`
+  /// `Catalog of product and services`
   String get catalogOfProductAndServices {
     return Intl.message(
-      'Каталог товаров и услуг',
+      'Catalog of product and services',
       name: 'catalogOfProductAndServices',
       desc: '',
       args: [],
     );
   }
 
-  /// `Адрес`
+  /// `Address`
   String get address {
     return Intl.message(
-      'Адрес',
+      'Address',
       name: 'address',
       desc: '',
       args: [],
     );
   }
 
-  /// `Сайт`
+  /// `Site`
   String get site {
     return Intl.message(
-      'Сайт',
+      'Site',
       name: 'site',
       desc: '',
       args: [],
     );
   }
 
-  /// `Время работы`
+  /// `Time of work`
   String get timeOfWork {
     return Intl.message(
-      'Время работы',
+      'Time of work',
       name: 'timeOfWork',
       desc: '',
       args: [],
     );
   }
 
-  /// `Купить`
+  /// `Buy`
   String get buy {
     return Intl.message(
-      'Купить',
+      'Buy',
       name: 'buy',
       desc: '',
       args: [],
     );
   }
 
-  /// `Видео наблюдение`
+  /// `Cctv`
   String get cameraName {
     return Intl.message(
-      'Видео наблюдение',
+      'Cctv',
       name: 'cameraName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Старый пароль:`
+  /// `Old password:`
   String get oldPass {
     return Intl.message(
-      'Старый пароль:',
+      'Old password:',
       name: 'oldPass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Старый пароль`
+  /// `Old password`
   String get oldPassField {
     return Intl.message(
-      'Старый пароль',
+      'Old password',
       name: 'oldPassField',
       desc: '',
       args: [],
     );
   }
 
-  /// `Новый пароль:`
+  /// `New password:`
   String get newPass {
     return Intl.message(
-      'Новый пароль:',
+      'New password:',
       name: 'newPass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Новый пароль`
+  /// `New password`
   String get newPassField {
     return Intl.message(
-      'Новый пароль',
+      'New password',
       name: 'newPassField',
       desc: '',
       args: [],
     );
   }
 
-  /// `Подтверждение нового пароля:`
+  /// `Confirm new password:`
   String get confirmNewPass {
     return Intl.message(
-      'Подтверждение нового пароля:',
+      'Confirm new password:',
       name: 'confirmNewPass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Подтверждение нового пароля`
+  /// `Confirm new password`
   String get confirmNewPassField {
     return Intl.message(
-      'Подтверждение нового пароля',
+      'Confirm new password',
       name: 'confirmNewPassField',
       desc: '',
       args: [],
     );
   }
 
-  /// `Сохранить изменения`
+  /// `Save the changes`
   String get saveChanges {
     return Intl.message(
-      'Сохранить изменения',
+      'Save the changes',
       name: 'saveChanges',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ошибка`
+  /// `Wrong`
   String get wrong {
     return Intl.message(
-      'Ошибка',
+      'Wrong',
       name: 'wrong',
       desc: '',
       args: [],
     );
   }
 
-  /// `Пожалуйста, введите корректные имя пользователя и пароль учётной записи. Оба поля зависят от корректности друг друга.`
+  /// `Check login and password`
   String get checkLoginAndPass {
     return Intl.message(
-      'Пожалуйста, введите корректные имя пользователя и пароль учётной записи. Оба поля зависят от корректности друг друга.',
+      'Check login and password',
       name: 'checkLoginAndPass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Закрыть`
+  /// `Close`
   String get close {
     return Intl.message(
-      'Закрыть',
+      'Close',
       name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CCTV`
+  String get cctv {
+    return Intl.message(
+      'CCTV',
+      name: 'cctv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timetable of classes`
+  String get timetableOfClasses {
+    return Intl.message(
+      'Timetable of classes',
+      name: 'timetableOfClasses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `News feed`
+  String get newsFeed {
+    return Intl.message(
+      'News feed',
+      name: 'newsFeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good and services`
+  String get goodsAndServices {
+    return Intl.message(
+      'Good and services',
+      name: 'goodsAndServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chats with parents`
+  String get ChatsWithParents {
+    return Intl.message(
+      'Chats with parents',
+      name: 'ChatsWithParents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reference Information`
+  String get referenceInformation {
+    return Intl.message(
+      'Reference Information',
+      name: 'referenceInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `technical support questions`
+  String get technicalSupportQuestions {
+    return Intl.message(
+      'technical support questions',
+      name: 'technicalSupportQuestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inside`
+  String get inside {
+    return Intl.message(
+      'Inside',
+      name: 'inside',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Outside`
+  String get outside {
+    return Intl.message(
+      'Outside',
+      name: 'outside',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get other {
+    return Intl.message(
+      'Other',
+      name: 'other',
       desc: '',
       args: [],
     );

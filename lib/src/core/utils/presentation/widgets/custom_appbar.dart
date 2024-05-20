@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           context.router.maybePop();
         },
       ),
-      centerTitle: false,
+      centerTitle: true,
       title: Text(
         title,
         style: title.length < 18

@@ -21,6 +21,9 @@ class _SchedulePageState extends State<SchedulePage> {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
+    final now = DateTime.now();
+    final lastDay = DateTime.utc(2030, 3, 14);
+    final firstDay = DateTime.utc(2010, 10, 16);
     return CustomScaffold(
       appBar: Navbar(textStyle: textStyle, title: S.of(context).shedule),
       body: Column(
@@ -28,13 +31,12 @@ class _SchedulePageState extends State<SchedulePage> {
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: _paddingUnit * 3,
-              vertical: _paddingUnit * 5,
             ),
             child: TableCalendar(
               headerVisible: true,
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
-              focusedDay: DateTime.now(),
+              firstDay: firstDay,
+              lastDay: lastDay,
+              focusedDay: now,
             ),
           )
         ],
