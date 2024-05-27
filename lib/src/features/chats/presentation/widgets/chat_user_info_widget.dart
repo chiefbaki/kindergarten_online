@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/menu_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
@@ -12,12 +12,9 @@ class ChatUserInfoWidget extends StatelessWidget {
   final String? avatar;
   const ChatUserInfoWidget(
       {super.key,
-      required this.textStyle,
       required this.firstName,
       required this.lastName,
       this.avatar});
-
-  final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +36,12 @@ class ChatUserInfoWidget extends StatelessWidget {
         children: [
           Text(
             "$firstName $lastName",
-            style: textStyle.displayMedium!.copyWith(color: AppColors.black),
+            style: context.textTheme.displayMedium!
+                .copyWith(color: AppColors.black),
           ),
-          Gap(5.h),
+          5.verticalSpace,
           Text(S.of(context).online,
-              style: textStyle.titleSmall!.copyWith(
+              style: context.textTheme.titleSmall!.copyWith(
                 color: AppColors.grey,
               ))
         ],

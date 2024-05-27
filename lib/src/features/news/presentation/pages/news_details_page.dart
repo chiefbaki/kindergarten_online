@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/cached_image.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_appbar.dart';
@@ -18,9 +19,8 @@ class NewsDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: CustomAppBar(textStyle: textStyle, title: S.of(context).newsline),
+      appBar: CustomAppBar(title: S.of(context).newsline),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -35,53 +35,33 @@ class NewsDetailsPage extends StatelessWidget {
                   url: img ?? "",
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
+                  padding: REdgeInsets.symmetric(horizontal: 16, vertical: 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         date.convertDateTime(),
-                        style: textStyle.displayMedium!
+                        style: context.textTheme.displayMedium!
                             .copyWith(color: AppColors.lightGrey),
                       ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
+                      10.verticalSpace,
                       Text(
                         title ?? "",
-                        style: textStyle.titleLarge!
+                        style: context.textTheme.titleLarge!
                             .copyWith(color: AppColors.black),
                         softWrap: true,
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        content ?? "",
-                        style: textStyle.displayMedium!
-                            .copyWith(color: AppColors.black),
-                      ),
-                      Text(
-                        content ?? "",
-                        style: textStyle.displayMedium!
-                            .copyWith(color: AppColors.black),
-                      ),
-                      Text(
-                        content ?? "",
-                        style: textStyle.displayMedium!
-                            .copyWith(color: AppColors.black),
-                      ),
-                      Text(
-                        content ?? "",
-                        style: textStyle.displayMedium!
-                            .copyWith(color: AppColors.black),
-                      ),
-                      Text(
-                        content ?? "",
-                        style: textStyle.displayMedium!
-                            .copyWith(color: AppColors.black),
-                      ),
+                      20.verticalSpace,
+                      Column(
+                        children: List<Text>.generate(
+                          5,
+                          (index) => Text(
+                            content ?? "",
+                            style: context.textTheme.displayMedium!
+                                .copyWith(color: AppColors.black),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 )

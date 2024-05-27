@@ -17,13 +17,6 @@ class PinCodeWidget extends StatelessWidget {
               controller: controller,
               cursorColor: Colors.black,
               cursorHeight: 10,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Field is empty";
-                } else {
-                  return null;
-                }
-              },
               onChanged: (value) {
                 if (value.length == 1) {
                   FocusScope.of(context).nextFocus();
@@ -47,6 +40,6 @@ class PinCodeWidget extends StatelessWidget {
   OutlineInputBorder _outlineBorder(Color color) {
     return OutlineInputBorder(
         borderSide: BorderSide(color: color),
-        borderRadius: BorderRadius.circular(12));
+        borderRadius: BorderRadius.circular(12).r);
   }
 }

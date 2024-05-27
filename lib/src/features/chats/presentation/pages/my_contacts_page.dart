@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/pages/search_contacts.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/contact_item.dart';
@@ -29,17 +30,17 @@ class _MyContactsPageState extends State<MyContactsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+          padding: REdgeInsets.symmetric(vertical: 25, horizontal: 15),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(S.of(context).myContacts, style: textStyle.titleLarge),
+                  Text(S.of(context).myContacts,
+                      style: context.textTheme.titleLarge),
                   SearchBtn(
                     onPressed: () async {
                       await showSearch(
@@ -48,9 +49,7 @@ class _MyContactsPageState extends State<MyContactsPage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 25.h,
-              ),
+              25.verticalSpace,
               Expanded(child: BlocBuilder<ContactBloc, ContactState>(
                 builder: (context, state) {
                   return state.when(
@@ -62,7 +61,6 @@ class _MyContactsPageState extends State<MyContactsPage> {
                                 itemCount: entity.count ?? 0,
                                 itemBuilder: (_, index) {
                                   return ContactCard(
-                                    textStyle: textStyle,
                                     entity: entity.results![index],
                                   );
                                 },
@@ -72,7 +70,7 @@ class _MyContactsPageState extends State<MyContactsPage> {
                             : Center(
                                 child: Text(
                                   S.of(context).contactIsEmpty,
-                                  style: textStyle.displayMedium!
+                                  style: context.textTheme.displayMedium!
                                       .copyWith(color: AppColors.black),
                                 ),
                               );

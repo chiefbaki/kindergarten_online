@@ -12,10 +12,8 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
         appBar: CustomAppBar(
-          textStyle: textStyle,
           title: title ?? "",
         ),
         body: ProductItem(

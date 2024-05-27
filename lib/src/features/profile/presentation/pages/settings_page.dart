@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/logout_cubit/logout_cubit.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/colored_container.dart';
@@ -30,11 +30,10 @@ class _SettingsPageState extends State<SettingsPage> {
   bool newEvent = false;
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      appBar: Navbar(textStyle: textStyle, title: S.of(context).Settings),
+      appBar: Navbar(title: S.of(context).Settings),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: REdgeInsets.symmetric(
             horizontal: _paddingUnit * 4, vertical: _paddingUnit * 5),
         child: Column(
           children: [
@@ -44,7 +43,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextWithArrow(
-                    textStyle: textStyle,
                     onPressed: () {
                       _goToPersonalAcc(context);
                     },
@@ -52,7 +50,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const CustomDivider(),
                   TextWithArrow(
-                    textStyle: textStyle,
                     onPressed: () {
                       _goToEditProfile(context);
                     },
@@ -60,7 +57,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const CustomDivider(),
                   TextWithArrow(
-                    textStyle: textStyle,
                     onPressed: () {
                       _gotToChangePass(context);
                     },
@@ -69,25 +65,20 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
-            Gap(
-              _paddingUnit * 2.h,
-            ),
+            10.verticalSpace,
             ColoredContainer(
-              padding: const EdgeInsets.fromLTRB(20, 17, 20, 8),
+              padding: REdgeInsets.fromLTRB(20, 17, 20, 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).notifications,
-                    style: textStyle.displaySmall!
+                    style: context.textTheme.displaySmall!
                         .copyWith(color: AppColors.white),
                   ),
-                  Gap(
-                    _paddingUnit * 2.h,
-                  ),
+                  20.verticalSpace,
                   const CustomDivider(),
                   CustomSwitchTile(
-                    textStyle: textStyle,
                     name: S.of(context).chatMessages,
                     isSelected: messagesInChat,
                     onChanged: (p0) {
@@ -98,7 +89,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const CustomDivider(),
                   CustomSwitchTile(
-                    textStyle: textStyle,
                     name: S.of(context).newsEvents,
                     isSelected: newEvent,
                     onChanged: (p0) {
@@ -109,15 +99,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const CustomDivider(),
                   TextWithArrow(
-                      textStyle: textStyle,
-                      name: S.of(context).chatBackground,
-                      onPressed: () {}),
+                      name: S.of(context).chatBackground, onPressed: () {}),
                 ],
               ),
             ),
-            Gap(
-              _paddingUnit * 2.h,
-            ),
+            10.verticalSpace,
             ColoredContainer(
               padding: const EdgeInsets.symmetric(
                   vertical: _paddingUnit, horizontal: _paddingUnit * 4),
@@ -125,7 +111,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   Text(
                     S.of(context).applicationTheme,
-                    style: textStyle.titleSmall!
+                    style: context.textTheme.titleSmall!
                         .copyWith(color: AppColors.white),
                   ),
                   const Spacer(),
@@ -146,7 +132,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           )),
                       Text(
                         S.of(context).light,
-                        style: textStyle.displaySmall!
+                        style: context.textTheme.displaySmall!
                             .copyWith(color: AppColors.white),
                       )
                     ],
@@ -154,32 +140,26 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
-            Gap(
-              _paddingUnit * 2.h,
-            ),
+            10.verticalSpace,
             ColoredContainer(
-                padding: const EdgeInsets.symmetric(
+                padding: REdgeInsets.symmetric(
                     vertical: _paddingUnit, horizontal: _paddingUnit * 4),
                 child: Column(
                   children: [
                     TextWithArrow(
-                        textStyle: textStyle,
                         name: S.of(context).termsofUse,
                         onPressed: () {
                           context.router.push(const PoliticsRoute());
                         }),
                     const CustomDivider(),
                     TextWithArrow(
-                        textStyle: textStyle,
                         name: S.of(context).privacyPolicy,
                         onPressed: () {
                           context.router.push(const RoolsRoute());
                         })
                   ],
                 )),
-            Gap(
-              _paddingUnit * 3.h,
-            ),
+            15.verticalSpace,
             BlocListener<LogoutCubit, LogoutState>(
               listener: (context, state) {
                 state.when(
@@ -195,7 +175,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     });
               },
               child: ExitBtn(
-                textStyle: textStyle,
                 onPressed: () {
                   context.read<LogoutCubit>().logout();
                   // context.router.popUntil(

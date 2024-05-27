@@ -24,14 +24,12 @@ class _ServicesPageState extends State<ServicesPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
       appBar: Navbar(
-        textStyle: textStyle,
         title: S.of(context).productsAndServices,
       ),
-      body: Column(children: [
-        ServicesTabs(textStyle: textStyle),
+      body: const Column(children: [
+        ServicesTabs(),
       ]),
     );
   }

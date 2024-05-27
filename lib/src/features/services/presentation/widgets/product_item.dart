@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:kindergarten_online/src/features/services/presentation/widgets/category_card.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
@@ -29,7 +30,7 @@ class _ProductItemState extends State<ProductItem> {
           loading: () => const CustomProgressIndicator(),
           success: (e) {
             return Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: REdgeInsets.symmetric(
                   horizontal: _paddingUnit * 4, vertical: _paddingUnit * 5),
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.77,
@@ -42,7 +43,6 @@ class _ProductItemState extends State<ProductItem> {
                             crossAxisSpacing: 30,
                             childAspectRatio: 1),
                     itemBuilder: (_, index) => CategoryCard(
-                          textStyle: Theme.of(context).textTheme,
                           entity: e.results![index],
                         )),
               ),

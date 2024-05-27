@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class ChoiceChipList extends StatefulWidget {
   const ChoiceChipList({
     super.key,
-    required this.textStyle,
   });
-
-  final TextTheme textStyle;
 
   @override
   State<ChoiceChipList> createState() => _ChoiceChipListState();
@@ -19,7 +17,7 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    final List<String> _choiceData = [
+    final List<String> choiceData = [
       S.of(context).all,
       S.of(context).outside,
       S.of(context).inside,
@@ -36,8 +34,8 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
           label: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              _choiceData[index],
-              style: widget.textStyle.displaySmall!
+              choiceData[index],
+              style: context.textTheme.displaySmall!
                   .copyWith(color: AppColors.white),
             ),
           ),

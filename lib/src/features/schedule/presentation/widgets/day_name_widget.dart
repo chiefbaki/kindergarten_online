@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class DayName extends StatelessWidget {
-  const DayName({super.key, required this.textStyle, required this.title});
+  const DayName({super.key, required this.title});
 
-  final TextTheme textStyle;
+  
   final String title;
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: textStyle.titleSmall!.copyWith(color: AppColors.white),
+      style: context.textTheme.titleSmall!.copyWith(color: AppColors.white),
     );
   }
 }

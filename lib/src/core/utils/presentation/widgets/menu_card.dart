@@ -1,18 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class MenuCard extends StatelessWidget {
   final String img;
   final String title;
   final dynamic route;
   const MenuCard(
-      {super.key,
-      required this.textStyle,
-      required this.img,
-      required this.title,
-      required this.route});
-
-  final TextTheme textStyle;
+      {super.key, required this.img, required this.title, required this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +24,7 @@ class MenuCard extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: textStyle.displaySmall,
+            style: context.textTheme.displaySmall,
           )
         ],
       ),

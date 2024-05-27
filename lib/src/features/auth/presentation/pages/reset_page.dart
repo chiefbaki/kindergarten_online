@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 
@@ -16,34 +18,27 @@ class ResetPage extends StatefulWidget {
 class _ResetPageState extends State<ResetPage> {
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: CustomAppBar(textStyle: textStyle, title: "Восстановление"),
+      appBar: CustomAppBar(title: S.of(context).resoreTitle),
       body: Center(
         child: Column(
           children: [
-            SizedBox(
-              height: 50.h,
-            ),
+            50.verticalSpace,
             Text(
-              "Восстановить",
-              style: textStyle.displayLarge!.copyWith(color: AppColors.black),
+              S.of(context).restore,
+              style: context.textTheme.displayLarge!
+                  .copyWith(color: AppColors.black),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            CustomBtn(onPressed: () {}, name: "Пароль"),
-            SizedBox(
-              height: 10.h,
-            ),
+            10.verticalSpace,
+            CustomBtn(onPressed: () {}, name: S.of(context).password),
+            10.verticalSpace,
             Text(
-              "или",
-              style: textStyle.displayLarge!.copyWith(color: AppColors.black),
+              S.of(context).or,
+              style: context.textTheme.displayLarge!
+                  .copyWith(color: AppColors.black),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            CustomBtn(onPressed: () {}, name: "Номер телефона"),
+            10.verticalSpace,
+            CustomBtn(onPressed: () {}, name: S.of(context).phoneNumber),
             const Spacer()
           ],
         ),

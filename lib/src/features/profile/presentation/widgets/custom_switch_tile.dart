@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class CustomSwitchTile extends StatefulWidget {
   final String name;
@@ -7,12 +8,9 @@ class CustomSwitchTile extends StatefulWidget {
   final Function(bool) onChanged;
   const CustomSwitchTile(
       {super.key,
-      required this.textStyle,
       required this.name,
       required this.isSelected,
       required this.onChanged});
-
-  final TextTheme textStyle;
 
   @override
   State<CustomSwitchTile> createState() => _CustomSwitchTileState();
@@ -25,7 +23,7 @@ class _CustomSwitchTileState extends State<CustomSwitchTile> {
       children: [
         Text(
           widget.name,
-          style: widget.textStyle.titleSmall!.copyWith(color: AppColors.white),
+          style: context.textTheme.titleSmall!.copyWith(color: AppColors.white),
         ),
         const Spacer(),
         Switch(

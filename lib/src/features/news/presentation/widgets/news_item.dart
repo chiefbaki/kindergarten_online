@@ -8,10 +8,7 @@ import 'package:kindergarten_online/src/features/news/presentation/widgets/custo
 class NewsItem extends StatelessWidget {
   const NewsItem({
     super.key,
-    required this.textStyle,
   });
-
-  final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +28,9 @@ class NewsItem extends StatelessWidget {
                         color: AppColors.navyBlue,
                         borderRadius: BorderRadius.circular(20)),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: REdgeInsets.all(8.0),
                       child: CustomListTile(
                         images: entity.results![index].images!.first.img ?? "",
-                        textStyle: textStyle,
                         entity: entity.results![index],
                       ),
                     ),

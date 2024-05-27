@@ -7,16 +7,15 @@ class BottomChatArea extends StatelessWidget {
   const BottomChatArea(
       {super.key,
       required FocusNode focusNode,
-      required this.textStyle,
       required TextEditingController msgController,
       required this.onPressed})
       : _focusNode = focusNode,
         _msgController = msgController;
 
   final FocusNode _focusNode;
-  final TextTheme textStyle;
+
   final TextEditingController _msgController;
-  final Function() onPressed;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +25,12 @@ class BottomChatArea extends StatelessWidget {
       decoration: BoxDecoration(
           color: AppColors.white, borderRadius: BorderRadius.circular(20)),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: REdgeInsets.all(12.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MessageForm(
               focusNode: _focusNode,
-              textStyle: textStyle,
               controller: _msgController,
             ),
             IconButton(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 
 class MenuBtn extends StatelessWidget {
-  final void Function() onPressed;
+  final VoidCallback onPressed;
   const MenuBtn({super.key, required this.onPressed});
 
   @override

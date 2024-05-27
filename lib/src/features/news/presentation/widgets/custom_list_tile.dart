@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/extensions.dart';
 import 'package:kindergarten_online/src/features/news/domain/entities/news_entity.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/cached_image.dart';
@@ -10,13 +11,7 @@ import 'package:kindergarten_online/src/core/utils/presentation/widgets/cached_i
 class CustomListTile extends StatelessWidget {
   final ResultsEntity entity;
   final String images;
-  const CustomListTile(
-      {super.key,
-      required this.textStyle,
-      required this.entity,
-      required this.images});
-
-  final TextTheme textStyle;
+  const CustomListTile({super.key, required this.entity, required this.images});
 
   @override
   Widget build(BuildContext context) {
@@ -38,28 +33,26 @@ class CustomListTile extends StatelessWidget {
                 textAlign: TextAlign.start,
                 maxLines: 2,
                 overflow: TextOverflow.clip,
-                style:
-                    textStyle.displayMedium!.copyWith(color: AppColors.white),
+                style: context.textTheme.displayMedium!
+                    .copyWith(color: AppColors.white),
               ),
               subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: REdgeInsets.only(top: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         entity.content ?? "error",
-                        style: textStyle.titleSmall!
+                        style: context.textTheme.titleSmall!
                             .copyWith(color: AppColors.white),
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.clip,
                       ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
+                      10.verticalSpace,
                       Text(
                         entity.timestamp.convertDateTime(),
-                        style: textStyle.displaySmall!
+                        style: context.textTheme.displaySmall!
                             .copyWith(color: AppColors.lightGrey),
                       )
                     ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
@@ -10,14 +12,11 @@ class ChildCard extends StatelessWidget {
   final String group;
   const ChildCard({
     super.key,
-    required this.textStyle,
     required this.name,
     required this.age,
     required this.number,
     required this.group,
   });
-
-  final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -28,27 +27,29 @@ class ChildCard extends StatelessWidget {
         children: [
           Text(
             name,
-            style: textStyle.displayMedium!.copyWith(color: AppColors.black),
+            style: context.textTheme.displayMedium!
+                .copyWith(color: AppColors.black),
           ),
           const Spacer(),
           Text(
             S.of(context).age,
-            style: textStyle.displayMedium!.copyWith(color: AppColors.grey),
+            style: context.textTheme.displayMedium!
+                .copyWith(color: AppColors.grey),
           )
         ],
       ),
       subtitle: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: REdgeInsets.symmetric(vertical: 5),
         child: RichText(
             text: TextSpan(
                 text: "Садик №$number",
-                style: textStyle.displayMedium!
+                style: context.textTheme.displayMedium!
                     .copyWith(color: AppColors.lightGrey),
                 children: [
               TextSpan(
                   text: '  группа "$group"',
-                  style:
-                      textStyle.displaySmall!.copyWith(color: AppColors.black))
+                  style: context.textTheme.displaySmall!
+                      .copyWith(color: AppColors.black))
             ])),
       ),
     );

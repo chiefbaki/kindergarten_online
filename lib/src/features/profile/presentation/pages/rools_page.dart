@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 
@@ -13,15 +15,14 @@ class RoolsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      appBar: Navbar(textStyle: textStyle, title: S.of(context).privacyPolicy),
+      appBar: Navbar(title: S.of(context).privacyPolicy),
       body: Column(
         children: [
           Expanded(
             child: ListView(children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: REdgeInsets.symmetric(
                     horizontal: _paddingUnit * 3, vertical: _paddingUnit * 5),
                 child: Column(
                   children: [
@@ -31,7 +32,7 @@ class RoolsPage extends StatelessWidget {
               3. ПРЕДОСТАВЛЕНИЕ ЛИЦЕНЗИИ:
               3.1. Мобильное приложение KLOVER SAUNA представляет собой программу для использования на мобильных устройствах.
               3.2. Данное Соглашение предназначено для пользователей приложения, установленного на устройствах, работающих под управлением мобильной операционной системы iOS и Android. Системные требования для корректной работы приложения: ОС iOS v. 12.0 и выше; Android v. 6.0 и выше. Компания """,
-                      style: textStyle.titleSmall!
+                      style: context.textTheme.titleSmall!
                           .copyWith(color: AppColors.black, height: 1.7),
                     )
                   ],

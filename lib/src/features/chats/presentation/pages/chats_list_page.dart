@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_text_btn.dart';
 import 'package:kindergarten_online/src/features/chats/domain/entities/req/create_group_req_entity.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
@@ -36,18 +36,18 @@ class _ChatsListPageState extends State<ChatsListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
+          padding: REdgeInsets.symmetric(
               vertical: _paddingUnit * 5, horizontal: _paddingUnit * 3),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(S.of(context).chats, style: textStyle.titleLarge),
+                  Text(S.of(context).chats,
+                      style: context.textTheme.titleLarge),
                   SearchBtn(
                     onPressed: () async {
                       await showSearch(
@@ -56,18 +56,14 @@ class _ChatsListPageState extends State<ChatsListPage> {
                   ),
                 ],
               ),
-              Gap(
-                10.h,
-              ),
+              10.verticalSpace,
               Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.group_add_outlined,
-                    size: 25,
+                    size: 25.h,
                   ),
-                  Gap(
-                    15.w,
-                  ),
+                  15.horizontalSpace,
                   BlocListener<CreateGroupBloc, CreateGroupState>(
                     listener: (context, state) {
                       state.when(initial: () {
@@ -81,7 +77,6 @@ class _ChatsListPageState extends State<ChatsListPage> {
                       });
                     },
                     child: CustomTextBtn(
-                        textStyle: textStyle,
                         onPressed: () {
                           context.read<CreateGroupBloc>().add(
                               const Create(entity: CreateGroupReqEntity()));
@@ -90,9 +85,7 @@ class _ChatsListPageState extends State<ChatsListPage> {
                   )
                 ],
               ),
-              Gap(
-                25.h,
-              ),
+              25.verticalSpace,
               Expanded(
                 child: CustomRefreshIndicator(
                   onRefresh: () async {
@@ -111,7 +104,6 @@ class _ChatsListPageState extends State<ChatsListPage> {
                                     itemCount: entity.length,
                                     itemBuilder: (_, index) {
                                       return ChatListItem(
-                                        textStyle: textStyle,
                                         entity: entity[index],
                                       );
                                     },
@@ -121,7 +113,7 @@ class _ChatsListPageState extends State<ChatsListPage> {
                                 : Center(
                                     child: Text(
                                       S.of(context).chatListIsEmpty,
-                                      style: textStyle.displayMedium!
+                                      style: context.textTheme.displayMedium!
                                           .copyWith(color: AppColors.black),
                                     ),
                                   );

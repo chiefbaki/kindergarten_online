@@ -10,14 +10,11 @@ class CameraPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: CustomAppBar(textStyle: textStyle, title: S.of(context).cctv),
-      body: Center(
+      appBar: CustomAppBar(title: S.of(context).cctv),
+      body: const Center(
         child: Column(
-          children: [
-            
-          ],
+          children: [],
         ),
       ),
     );

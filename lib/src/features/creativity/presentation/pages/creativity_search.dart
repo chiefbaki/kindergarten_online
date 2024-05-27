@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/widgets/creativity_item.dart';
@@ -24,10 +25,10 @@ class CustomSearch extends SearchDelegate {
             query =
                 ''; //  When pressed here the query will be cleared from the search bar.
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.close,
             color: AppColors.black,
-            size: 25,
+            size: 25.h,
           ))
     ];
   }
@@ -41,9 +42,9 @@ class CustomSearch extends SearchDelegate {
               .read<CreativityBloc>()
               .add(const CreativityEvent.creativity());
         },
-        icon: const Icon(
+        icon: Icon(
           Icons.arrow_back_ios,
-          size: 20,
+          size: 20.h,
           color: AppColors.black,
         ));
   }
@@ -52,7 +53,7 @@ class CustomSearch extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     context.read<CreativityBloc>().add(SearchCreativity(query: query));
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+      padding: REdgeInsets.symmetric(horizontal: 15, vertical: 25),
       child: BlocBuilder<CreativityBloc, CreativityState>(
         builder: (context, state) {
           return state.when(
@@ -66,9 +67,8 @@ class CustomSearch extends SearchDelegate {
                         itemCount: entity.count,
                         itemBuilder: (_, index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            padding: REdgeInsets.symmetric(vertical: 10),
                             child: CreativityItem(
-                                textStyle: Theme.of(context).textTheme,
                                 name: entity.results?[index].name ?? "",
                                 image: entity.results?[index].img ?? ""),
                           );

@@ -4,7 +4,7 @@ import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 const double _size = 24;
 
 class FavoriteBtn extends StatelessWidget {
-  final void Function() onPressed;
+  final VoidCallback onPressed;
   final bool isSelected;
   const FavoriteBtn(
       {super.key, required this.onPressed, this.isSelected = false});

@@ -93,5 +93,8 @@
   "all": "All",
   "inside": "Inside",
   "outside": "Outside",
-  "other": "Other"
+  "other": "Other",
+  "or": "или",
+  "resoreTitle": "Восстановление",
+  "restore": "Восстановить"
 }

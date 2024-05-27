@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 import 'package:kindergarten_online/src/core/utils/resources/functions.dart';
 import 'package:kindergarten_online/src/features/profile/domain/entities/edit_profile_entity.dart';
@@ -66,9 +67,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      appBar: Navbar(textStyle: textStyle, title: S.of(context).editProfile),
+      appBar: Navbar(title: S.of(context).editProfile),
       body: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: _paddingUnit * 3, vertical: _paddingUnit * 5),
@@ -86,7 +86,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       duration: const Duration(seconds: _delayDuraion),
                       content: Text(
                         S.of(context).dataChanged,
-                        style: textStyle.displaySmall!
+                        style: context.textTheme.displaySmall!
                             .copyWith(color: AppColors.white),
                       )));
                 },
@@ -99,7 +99,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             children: [
               Text(
                 S.of(context).name,
-                style: textStyle.displaySmall!
+                style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.black),
               ),
               Gap(
@@ -107,7 +107,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               PersonalInfoField(
                   textInputAction: TextInputAction.next,
-                  textStyle: textStyle,
                   hintText: S.of(context).inputName,
                   controller: _firstName),
               Gap(
@@ -115,7 +114,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               Text(
                 S.of(context).lastname,
-                style: textStyle.displaySmall!
+                style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.black),
               ),
               Gap(
@@ -123,7 +122,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               PersonalInfoField(
                   textInputAction: TextInputAction.next,
-                  textStyle: textStyle,
                   hintText: S.of(context).inputLastName,
                   controller: _lastName),
               Gap(
@@ -131,7 +129,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               Text(
                 S.of(context).middleName,
-                style: textStyle.displaySmall!
+                style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.black),
               ),
               Gap(
@@ -139,7 +137,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               PersonalInfoField(
                   textInputAction: TextInputAction.done,
-                  textStyle: textStyle,
                   hintText: S.of(context).inputMiddleName,
                   controller: _middleName),
               Gap(

@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class ServicesBtn extends StatelessWidget {
   final String name;
   final Color color;
-  final Function() onPressed;
+  final VoidCallback onPressed;
   const ServicesBtn(
       {super.key,
-      required this.textStyle,
       required this.name,
       required this.onPressed,
       this.color = AppColors.blue});
-
-  final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,8 @@ class ServicesBtn extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50))),
         child: Text(
           name,
-          style: textStyle.displaySmall!.copyWith(color: AppColors.white),
+          style:
+              context.textTheme.displaySmall!.copyWith(color: AppColors.white),
         ));
   }
 }

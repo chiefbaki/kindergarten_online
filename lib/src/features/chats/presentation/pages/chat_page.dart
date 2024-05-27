@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/services/service_locator.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/src/core/utils/resources/logger.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/back_btn.dart';
@@ -15,8 +15,6 @@ import 'package:kindergarten_online/src/features/chats/presentation/widgets/bott
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/chat_user_info_widget.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/message_bubble.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-
-final _baseUrl = dotenv.env["WSS_URL"];
 
 @RoutePage()
 class ChatPage extends StatefulWidget {
@@ -94,8 +92,6 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
-    final viewInset = MediaQuery.viewInsetsOf(context);
     return Scaffold(
         appBar: AppBar(
           leading: BackBtn(
@@ -104,7 +100,6 @@ class _ChatPageState extends State<ChatPage> {
             },
           ),
           title: ChatUserInfoWidget(
-            textStyle: textStyle,
             firstName: widget.entity.firstName ?? "",
             lastName: widget.entity.lastName ?? "",
           ),
@@ -115,7 +110,7 @@ class _ChatPageState extends State<ChatPage> {
               left: 16,
               right: 16,
               top: 8,
-              bottom: (viewInset.bottom > 25) ? 15.0 : 25),
+              bottom: (context.viewInsets.bottom > 25) ? 15.0 : 25),
           child: Column(
             children: [
               Expanded(
@@ -136,21 +131,20 @@ class _ChatPageState extends State<ChatPage> {
                                     return Center(
                                       child: MessageBubble(
                                         resultEntity: entity.results![index],
-                                        textStyle: textStyle,
                                         message: msg[index],
                                       ),
                                     );
                                   })
                               : Text(
                                   S.of(context).empty,
-                                  style: textStyle.displayMedium!
+                                  style: context.textTheme.displayMedium!
                                       .copyWith(color: AppColors.black),
                                 );
                         },
                         failure: (e) => Center(
                               child: Text(
                                 e,
-                                style: textStyle.displayMedium!
+                                style: context.textTheme.displayMedium!
                                     .copyWith(color: AppColors.black),
                               ),
                             ));
@@ -179,7 +173,6 @@ class _ChatPageState extends State<ChatPage> {
                     // debugPrint("LIST OF MESSAGE ${newMsg.toString()}");
                   },
                   focusNode: _focusNode,
-                  textStyle: textStyle,
                   msgController: _msgController),
             ],
           ),

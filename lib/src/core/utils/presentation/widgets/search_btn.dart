@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 
 class SearchBtn extends StatelessWidget {
-  final Function() onPressed;
+  final VoidCallback onPressed;
   const SearchBtn({super.key, required this.onPressed});
 
   @override

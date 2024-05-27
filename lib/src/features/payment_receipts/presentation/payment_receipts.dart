@@ -10,10 +10,8 @@ class PaymentReceiptsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
-      appBar:
-          Navbar(textStyle: textStyle, title: S.of(context).paymentReceipts),
+      appBar: Navbar(title: S.of(context).paymentReceipts),
       body: const Column(
         children: [],
       ),

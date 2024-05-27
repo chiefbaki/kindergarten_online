@@ -999,6 +999,36 @@ class S {
       args: [],
     );
   }
+
+  /// `или`
+  String get or {
+    return Intl.message(
+      'или',
+      name: 'or',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Восстановление`
+  String get resoreTitle {
+    return Intl.message(
+      'Восстановление',
+      name: 'resoreTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Восстановить`
+  String get restore {
+    return Intl.message(
+      'Восстановить',
+      name: 'restore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

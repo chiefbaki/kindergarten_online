@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
@@ -16,7 +16,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
@@ -34,28 +33,22 @@ class MainPage extends StatelessWidget {
               ClipOval(
                 child: Image.asset(
                   Imgs.img,
-                  width: 100,
+                  width: 100.w,
                 ),
               ),
-              Gap(
-                _paddingUnit * 5.h,
-              ),
+              25.verticalSpace,
               Text(
                 S.of(context).welcome,
-                style: textStyle.displayLarge,
+                style: context.textTheme.displayLarge,
               ),
-              Gap(
-                _paddingUnit * 2.h,
-              ),
+              10.verticalSpace,
               Text(
                 S.of(context).mainPageAdvice,
-                style: textStyle.displaySmall!
+                style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.lightGrey),
                 textAlign: TextAlign.center,
               ),
-              Gap(
-                _paddingUnit * 2.h,
-              ),
+              10.verticalSpace,
               Stack(
                 children: [
                   Image.asset(Imgs.back),

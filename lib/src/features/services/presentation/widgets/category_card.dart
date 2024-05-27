@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/services/domain/entities/product_entity.dart';
 import 'package:kindergarten_online/src/features/services/presentation/widgets/favorite_btn.dart';
 
@@ -11,11 +13,8 @@ class CategoryCard extends StatefulWidget {
   final ProductResultEntity entity;
   const CategoryCard({
     super.key,
-    required this.textStyle,
     required this.entity,
   });
-
-  final TextTheme textStyle;
 
   @override
   State<CategoryCard> createState() => _CategoryCardState();
@@ -30,7 +29,7 @@ class _CategoryCardState extends State<CategoryCard> {
         _goToProductDetail(context);
       },
       child: Container(
-        padding: const EdgeInsets.all(_paddingUnit * 2),
+        padding: REdgeInsets.all(_paddingUnit * 2),
         decoration: BoxDecoration(
             color: Colors.transparent,
             image: DecorationImage(
@@ -49,7 +48,7 @@ class _CategoryCardState extends State<CategoryCard> {
               children: [
                 Text(
                   widget.entity.price ?? "",
-                  style: widget.textStyle.displaySmall!
+                  style: context.textTheme.displaySmall!
                       .copyWith(color: AppColors.white),
                 ),
                 FavoriteBtn(
@@ -65,7 +64,7 @@ class _CategoryCardState extends State<CategoryCard> {
             const Spacer(),
             Text(
               widget.entity.name ?? "",
-              style: widget.textStyle.displayLarge!
+              style: context.textTheme.displayLarge!
                   .copyWith(color: AppColors.white),
             )
           ],

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 import 'package:kindergarten_online/src/features/news/presentation/bloc/news_bloc.dart';
 import 'package:kindergarten_online/src/features/news/presentation/widgets/news_item.dart';
@@ -28,14 +29,13 @@ class _NewsPageState extends State<NewsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      appBar: Navbar(textStyle: textStyle, title: S.of(context).news),
+      appBar: Navbar(title: S.of(context).news),
       body: Column(
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: REdgeInsets.fromLTRB(
                   _paddingUnit * 3, _paddingUnit * 5, _paddingUnit * 3, 0),
               child: CustomRefreshIndicator(
                   onRefresh: () async {
@@ -44,7 +44,7 @@ class _NewsPageState extends State<NewsPage> {
                       context.read<NewsBloc>().add(const NewsEvent.started());
                     });
                   },
-                  child: NewsItem(textStyle: textStyle)),
+                  child: const NewsItem()),
             ),
           )
         ],

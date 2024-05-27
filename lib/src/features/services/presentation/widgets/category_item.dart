@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/features/services/presentation/blocs/category_bloc/category_bloc.dart';
@@ -32,14 +33,13 @@ class _CategoryItemState extends State<CategoryItem> {
             loading: () => const CustomProgressIndicator(),
             success: (entity) {
               return Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: REdgeInsets.symmetric(
                     horizontal: _paddingUnit * 3, vertical: _paddingUnit * 3),
                 child: ListView.builder(
                   itemCount: entity.count,
                   itemBuilder: (_, index) => Column(
                     children: [
                       TextWithArrow(
-                          textStyle: Theme.of(context).textTheme,
                           name: entity.result?[index].name ?? "",
                           color: AppColors.black,
                           onPressed: () {

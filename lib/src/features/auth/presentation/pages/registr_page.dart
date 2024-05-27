@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_appbar.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
@@ -42,42 +42,32 @@ class _RegistrPageState extends State<RegistrPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
-      appBar:
-          CustomAppBar(textStyle: textStyle, title: S.of(context).registration),
+      appBar: CustomAppBar(title: S.of(context).registration),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 25),
+              padding: REdgeInsets.symmetric(horizontal: 44, vertical: 25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(S.of(context).phoneNumber,
-                      style: textStyle.displaySmall!
+                      style: context.textTheme.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  Gap(
-                    10.h,
-                  ),
+                  10.verticalSpace,
                   PhoneTextField(
                     controller: _phone,
-                    textStyle: textStyle,
                     hintText: "+996 (555) 555-555",
                   ),
-                  Gap(
-                    20.h,
-                  ),
+                  20.verticalSpace,
                   Text(S.of(context).password,
-                      style: textStyle.displaySmall!
+                      style: context.textTheme.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  Gap(
-                    10.h,
-                  ),
+                  10.verticalSpace,
                   CustomTextField(
                       controller: _password,
-                      textStyle: textStyle,
                       hintText: S.of(context).inputPassword,
                       obscureText: _obscureText,
                       onPressed: () {
@@ -85,51 +75,40 @@ class _RegistrPageState extends State<RegistrPage> {
                           _obscureText = !_obscureText;
                         });
                       }),
-                  Gap(
-                    20.h,
-                  ),
+                  20.verticalSpace,
                   Text(S.of(context).kindergarten,
-                      style: textStyle.displaySmall!
+                      style: context.textTheme.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  Gap(10.h),
+                  10.verticalSpace,
                   TextFieldDrop(
-                    textStyle: textStyle,
                     hintText: S.of(context).nameAndAddress,
                     controller: _nameAndAddress,
                   ),
-                  Gap(
-                    20.h,
-                  ),
+                  20.verticalSpace,
                   Text(S.of(context).group,
-                      style: textStyle.displaySmall!
+                      style: context.textTheme.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  Gap(10.h),
+                  10.verticalSpace,
                   TextFieldDrop(
-                    textStyle: textStyle,
                     hintText: S.of(context).chooseGroupOrClass,
                     controller: _group,
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+                  20.verticalSpace,
                   Center(
                     child: Column(
                       children: [
                         CustomBtn(
                             onPressed: () {}, name: S.of(context).registration),
-                        Gap(
-                          20.h,
-                        ),
+                        20.verticalSpace,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               S.of(context).alreadyHaveAnAcc,
-                              style: textStyle.displaySmall!
+                              style: context.textTheme.displaySmall!
                                   .copyWith(color: AppColors.grey),
                             ),
                             CustomTextBtn(
-                                textStyle: textStyle,
                                 onPressed: () {
                                   _goToLogin(context);
                                 },

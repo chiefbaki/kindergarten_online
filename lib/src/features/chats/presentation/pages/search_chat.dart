@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/chat_users_bloc/chat_users_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/chat_list_item.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
@@ -38,9 +40,9 @@ class SearchChat extends SearchDelegate {
           Navigator.pop(context);
           context.read<ChatUsersBloc>().add(const ChatUsersEvent.viewUsers());
         },
-        icon: const Icon(
+        icon: Icon(
           Icons.arrow_back_ios,
-          size: 20,
+          size: 20.h,
           color: AppColors.black,
         ));
   }
@@ -48,9 +50,9 @@ class SearchChat extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     context.read<ChatUsersBloc>().add(ChatUsersEvent.viewUsers(query: query));
-    final textStyle = Theme.of(context).textTheme;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+      padding: REdgeInsets.symmetric(horizontal: 15, vertical: 25),
       child: BlocBuilder<ChatUsersBloc, ChatUsersState>(
         builder: (context, state) {
           return state.when(
@@ -62,7 +64,6 @@ class SearchChat extends SearchDelegate {
                         itemCount: entity.length,
                         itemBuilder: (_, index) {
                           return ChatListItem(
-                            textStyle: textStyle,
                             entity: entity[index],
                           );
                         },
@@ -72,9 +73,7 @@ class SearchChat extends SearchDelegate {
                     : Center(
                         child: Text(
                           S.of(context).empty,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayLarge!
+                          style: context.textTheme.displayLarge!
                               .copyWith(color: AppColors.black),
                         ),
                       );
@@ -82,7 +81,7 @@ class SearchChat extends SearchDelegate {
               failure: ((error) => Center(
                       child: Text(
                     S.of(context).noConnection,
-                    style: textStyle.displayMedium!
+                    style: context.textTheme.displayMedium!
                         .copyWith(color: AppColors.black),
                   ))));
         },

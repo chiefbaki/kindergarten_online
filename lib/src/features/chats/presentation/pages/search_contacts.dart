@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/blocs/contact_bloc/contact_bloc.dart';
 import 'package:kindergarten_online/src/features/chats/presentation/widgets/contact_item.dart';
 import 'package:kindergarten_online/src/features/profile/presentation/widgets/custom_divider.dart';
@@ -39,9 +41,9 @@ class SearchContacts extends SearchDelegate {
           Navigator.pop(context);
           context.read<ContactBloc>().add(const ContactEvent.started());
         },
-        icon: const Icon(
+        icon: Icon(
           Icons.arrow_back_ios,
-          size: 20,
+          size: 20.h,
           color: AppColors.black,
         ));
   }
@@ -49,7 +51,6 @@ class SearchContacts extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     context.read<ContactBloc>().add(ContactEvent.started(query: query));
-    final textStyle = Theme.of(context).textTheme;
     return BlocBuilder<ContactBloc, ContactState>(
       builder: (context, state) {
         return state.when(
@@ -61,7 +62,6 @@ class SearchContacts extends SearchDelegate {
                       itemCount: entity.count ?? 0,
                       itemBuilder: (_, index) {
                         return ContactCard(
-                          textStyle: textStyle,
                           entity: entity.results![index],
                         );
                       },
@@ -71,7 +71,7 @@ class SearchContacts extends SearchDelegate {
                   : Center(
                       child: Text(
                         S.of(context).contactIsEmpty,
-                        style: textStyle.displayMedium!
+                        style: context.textTheme.displayMedium!
                             .copyWith(color: AppColors.black),
                       ),
                     );
@@ -79,7 +79,7 @@ class SearchContacts extends SearchDelegate {
             failure: ((error) => Center(
                   child: Text(
                     S.of(context).noConnection,
-                    style: textStyle.displayMedium!
+                    style: context.textTheme.displayMedium!
                         .copyWith(color: AppColors.black),
                   ),
                 )));

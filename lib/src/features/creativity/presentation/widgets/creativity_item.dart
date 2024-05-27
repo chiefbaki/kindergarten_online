@@ -1,47 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/colored_container.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/creativity_cached_image.dart';
 
-const _paddingUnit = 10;
+const double _paddingUnit = 10;
 
 class CreativityItem extends StatelessWidget {
   final String name;
   final String image;
-  const CreativityItem(
-      {super.key,
-      required this.textStyle,
-      required this.name,
-      required this.image});
-
-  final TextTheme textStyle;
+  const CreativityItem({super.key, required this.name, required this.image});
 
   @override
   Widget build(BuildContext context) {
     return ColoredContainer(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        margin: REdgeInsets.only(bottom: _paddingUnit),
+        padding: REdgeInsets.symmetric(
+            horizontal: _paddingUnit * 3, vertical: _paddingUnit * 4),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: CreativityCachedImage(img: image),
             ),
-            Gap(
-              _paddingUnit.h,
-            ),
+            _paddingUnit.verticalSpace,
             Text(
               name,
-              style: textStyle.displayMedium!.copyWith(color: AppColors.white),
+              style: context.textTheme.displayMedium!
+                  .copyWith(color: AppColors.white),
             ),
-            Gap(
-              _paddingUnit.h,
-            ),
+            _paddingUnit.verticalSpace,
             Text(
               "2023-02-09",
-              style: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
+              style: context.textTheme.displaySmall!
+                  .copyWith(color: AppColors.lightGrey),
             )
           ],
         ));

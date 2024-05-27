@@ -112,6 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldPass": MessageLookupByLibrary.simpleMessage("Эски Сырсөз:"),
         "oldPassField": MessageLookupByLibrary.simpleMessage("Эски Сырсөз"),
         "online": MessageLookupByLibrary.simpleMessage("Тармакта"),
+        "or": MessageLookupByLibrary.simpleMessage("или"),
         "other": MessageLookupByLibrary.simpleMessage("Башкалар"),
         "outside": MessageLookupByLibrary.simpleMessage("Ичинде"),
         "password": MessageLookupByLibrary.simpleMessage("Сырсөз:"),
@@ -127,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registration": MessageLookupByLibrary.simpleMessage("Каттоо"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Сырсөздү кайра коюу"),
+        "resoreTitle": MessageLookupByLibrary.simpleMessage("Восстановление"),
+        "restore": MessageLookupByLibrary.simpleMessage("Восстановить"),
         "restoreNumber":
             MessageLookupByLibrary.simpleMessage("Номерди калыбына келтирүү"),
         "restorePassword":

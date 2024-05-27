@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
@@ -18,13 +19,12 @@ class _AttendancePageState extends State<AttendancePage> {
   // final _focusedDay = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-      appBar: Navbar(textStyle: textStyle, title: S.of(context).attendace),
-      body: const Center(
+      appBar: Navbar(title: S.of(context).attendace),
+      body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
+          padding: REdgeInsets.symmetric(horizontal: 15),
+          child: const Column(
             children: [
               // Container(
               //   margin: const EdgeInsets.only(top: 25),

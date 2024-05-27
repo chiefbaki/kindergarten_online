@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/bloc/creativity_bloc/creativity_bloc.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/pages/creativity_search.dart';
 import 'package:kindergarten_online/src/features/creativity/presentation/widgets/creativity_card.dart';
@@ -32,12 +32,11 @@ class _CreativityPageState extends State<CreativityPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: REdgeInsets.fromLTRB(
                 _paddingUnit * 3, _paddingUnit * 5, _paddingUnit * 3, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +45,8 @@ class _CreativityPageState extends State<CreativityPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(S.of(context).creativity, style: textStyle.titleLarge),
+                    Text(S.of(context).creativity,
+                        style: context.textTheme.titleLarge),
                     IconButton(
                         onPressed: () async {
                           await showSearch(
@@ -59,9 +59,7 @@ class _CreativityPageState extends State<CreativityPage> {
                         )),
                   ],
                 ),
-                Gap(
-                  _paddingUnit * 4.h,
-                ),
+                20.verticalSpace,
                 CustomRefreshIndicator(
                   onRefresh: () async {
                     Future.delayed(const Duration(milliseconds: _duration), () {
@@ -70,7 +68,7 @@ class _CreativityPageState extends State<CreativityPage> {
                           .add(const CreativityEvent.creativity());
                     });
                   },
-                  child: CreativityCard(textStyle: textStyle),
+                  child: const CreativityCard(),
                 )
               ],
             ),

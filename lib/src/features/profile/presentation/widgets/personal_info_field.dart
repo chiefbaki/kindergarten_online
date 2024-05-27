@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
-
-const double _paddingUnit = 5;
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class PersonalInfoField extends StatelessWidget {
   final String hintText;
@@ -11,27 +11,24 @@ class PersonalInfoField extends StatelessWidget {
 
   const PersonalInfoField(
       {super.key,
-      required this.textStyle,
       required this.hintText,
       required this.controller,
       required this.textInputAction,
       this.isReadOnly = false});
 
-  final TextTheme textStyle;
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       textInputAction: textInputAction,
-      style: textStyle.displayMedium!.copyWith(color: AppColors.lightGrey),
+      style:
+          context.textTheme.displayMedium!.copyWith(color: AppColors.lightGrey),
       readOnly: isReadOnly,
       controller: controller,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-            vertical: 12, horizontal: _paddingUnit * 3),
-        hintStyle:
-            textStyle.displayMedium!.copyWith(color: AppColors.lightGrey),
+        contentPadding: REdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        hintStyle: context.textTheme.displayMedium!
+            .copyWith(color: AppColors.lightGrey),
         hintText: hintText,
       ),
     );

@@ -2,9 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
-import 'package:kindergarten_online/src/core/utils/resources/functions.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_appbar.dart';
@@ -65,43 +64,33 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
       appBar: CustomAppBar(
-        textStyle: textStyle,
         title: S.of(context).enter,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 25),
+              padding: REdgeInsets.symmetric(horizontal: 44, vertical: 25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(S.of(context).phoneNumber,
-                      style: textStyle.displaySmall!
+                      style: context.textTheme.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  Gap(
-                    10.h,
-                  ),
+                  10.verticalSpace,
                   PhoneTextField(
                     controller: _phone,
-                    textStyle: textStyle,
                     hintText: S.of(context).inputNumber,
                   ),
-                  Gap(
-                    20.h,
-                  ),
+                  20.verticalSpace,
                   Text(S.of(context).password,
-                      style: textStyle.displaySmall!
+                      style: context.textTheme.displaySmall!
                           .copyWith(color: AppColors.black)),
-                  Gap(
-                    10.h,
-                  ),
+                  10.verticalSpace,
                   CustomTextField(
                     controller: _password,
-                    textStyle: textStyle,
                     hintText: S.of(context).inputPassword,
                     obscureText: _obscureText,
                     onPressed: () {
@@ -114,18 +103,15 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomTextBtn(
-                        textStyle: textStyle,
                         onPressed: () {
-                          resetDataSheet(context, textStyle);
+                          resetDataSheet(context);
                         },
                         name: S.of(context).forgetPassOrNumber,
                         color: AppColors.grey,
                       ),
                     ],
                   ),
-                  Gap(
-                    55.h,
-                  ),
+                  55.verticalSpace,
                   Column(
                     children: [
                       BlocListener<LoginBloc, LoginState>(
@@ -136,12 +122,11 @@ class _LoginPageState extends State<LoginPage> {
                                     child: CircularProgressIndicator.adaptive(),
                                   ),
                               success: () {
-                                // context.router.push(const CameraRoute());
-                                customBottomSheet(context, textStyle,
-                                    showButton: false);
+                                // customBottomSheet(context, showButton: false);
+                                context.showAlertDialog(showButton: false);
                               },
                               failure: (e) {
-                                wrongLoginDialog(context, textStyle);
+                                context.errorAlertDialog();
                                 debugPrint(e);
                               });
                         },
@@ -158,9 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                               name: S.of(context).enter),
                         ),
                       ),
-                      Gap(
-                        20.h,
-                      ),
+                      20.verticalSpace,
                       // Row(
                       //   mainAxisAlignment: MainAxisAlignment.center,
                       //   children: [
@@ -192,31 +175,32 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<dynamic> resetDataSheet(BuildContext context, TextTheme textStyle) {
+  Future<dynamic> resetDataSheet(
+    BuildContext context,
+  ) {
     return showModalBottomSheet(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: context.height * 0.25,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 44, horizontal: 44),
+              padding: REdgeInsets.symmetric(vertical: 44, horizontal: 44),
               child: Column(
                 children: [
                   CustomTextBtn(
-                      textStyle: textStyle,
                       onPressed: () {
                         Navigator.pop(context);
-                        resetPasswordSheet(context, textStyle);
+                        resetPasswordSheet(
+                          context,
+                        );
                       },
                       name: S.of(context).restorePassword),
                   const Divider(
                     color: AppColors.grey,
                   ),
                   CustomTextBtn(
-                      textStyle: textStyle,
-                      onPressed: () {},
-                      name: S.of(context).restoreNumber),
+                      onPressed: () {}, name: S.of(context).restoreNumber),
                 ],
               ),
             ),
@@ -224,29 +208,25 @@ class _LoginPageState extends State<LoginPage> {
         });
   }
 
-  Future<dynamic> resetPasswordSheet(
-      BuildContext context, TextTheme textStyle) {
+  Future<dynamic> resetPasswordSheet(BuildContext context) {
     return showModalBottomSheet(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         context: context,
         builder: (context) {
           return Padding(
-            padding: const EdgeInsets.all(44),
+            padding: REdgeInsets.all(44),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: context.height * 0.3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).phoneNumber,
-                    style: textStyle.displaySmall!
+                    style: context.textTheme.displaySmall!
                         .copyWith(color: AppColors.black),
                   ),
-                  Gap(
-                    10.h,
-                  ),
+                  10.verticalSpace,
                   PhoneTextField(
-                      textStyle: textStyle,
                       hintText: S.of(context).phoneNumber,
                       controller: _newPhoneNumber),
                   const Spacer(),
@@ -272,16 +252,16 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: context.height * 0.4,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+              padding: REdgeInsets.symmetric(horizontal: 20, vertical: 60),
               child: Column(
                 children: [
                   Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: _controllers
                           .map((e) => Padding(
-                                padding: const EdgeInsets.only(right: 8),
+                                padding: REdgeInsets.only(right: 8),
                                 child: PinCodeWidget(controller: e),
                               ))
                           .toList()),

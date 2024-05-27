@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
@@ -48,12 +48,11 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return CustomScaffold(
-        appBar: Navbar(textStyle: textStyle, title: S.of(context).account),
+        appBar: Navbar(title: S.of(context).account),
         body: SingleChildScrollView(
             child: Column(children: [
-          const Gap(_paddingUnit * 11),
+          55.verticalSpace,
           BlocBuilder<ProfileBloc, ProfileState>(
             builder: (context, state) {
               return state.when(
@@ -81,76 +80,58 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           right: 15,
                           top: 150,
                           child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height * 0.7,
+                            width: context.width,
+                            height: context.height * 0.7,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   S.of(context).name,
-                                  style: textStyle.displaySmall!
+                                  style: context.textTheme.displaySmall!
                                       .copyWith(color: AppColors.white),
                                 ),
-                                Gap(
-                                  _paddingUnit * 2.h,
-                                ),
+                                10.verticalSpace,
                                 PersonalInfoField(
                                   textInputAction: TextInputAction.next,
                                   isReadOnly: true,
-                                  textStyle: textStyle,
                                   hintText: entity.firstName ?? "",
                                   controller: _name,
                                 ),
-                                Gap(
-                                  _paddingUnit * 4.h,
-                                ),
+                                20.verticalSpace,
                                 Text(
                                   S.of(context).lastname,
-                                  style: textStyle.displaySmall!
+                                  style: context.textTheme.displaySmall!
                                       .copyWith(color: AppColors.white),
                                 ),
-                                Gap(
-                                  _paddingUnit * 2.h,
-                                ),
+                                10.verticalSpace,
                                 PersonalInfoField(
                                   textInputAction: TextInputAction.next,
                                   isReadOnly: true,
-                                  textStyle: textStyle,
                                   hintText: entity.lastName ?? "",
                                   controller: _lastName,
                                 ),
-                                Gap(
-                                  _paddingUnit * 4.h,
-                                ),
+                                20.verticalSpace,
                                 Text(
                                   S.of(context).middleName,
-                                  style: textStyle.displaySmall!
+                                  style: context.textTheme.displaySmall!
                                       .copyWith(color: AppColors.white),
                                 ),
-                                Gap(
-                                  _paddingUnit * 2.h,
-                                ),
+                                10.verticalSpace,
                                 PersonalInfoField(
                                   textInputAction: TextInputAction.done,
                                   isReadOnly: true,
-                                  textStyle: textStyle,
                                   hintText: entity.patronymic ?? "",
                                   controller: _middleName,
                                 ),
-                                Gap(
-                                  _paddingUnit * 4.h,
-                                ),
+                                20.verticalSpace,
                                 Text(
                                   S.of(context).phoneNumber,
-                                  style: textStyle.displaySmall!
+                                  style: context.textTheme.displaySmall!
                                       .copyWith(color: AppColors.white),
                                 ),
-                                Gap(
-                                  _paddingUnit * 2.h,
-                                ),
+                                10.verticalSpace,
                                 PhoneTextField(
                                     isReadOnly: true,
-                                    textStyle: textStyle,
                                     hintText: entity.phone ?? "",
                                     controller: _phone)
                               ],

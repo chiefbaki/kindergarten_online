@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 
 class Navbar extends StatelessWidget implements PreferredSizeWidget {
   const Navbar({
     super.key,
-    required this.textStyle,
     required this.title,
   });
 
-  final TextTheme textStyle;
   final String title;
 
   @override
@@ -23,8 +22,8 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(
           title,
           style: S.of(context).cameras.length > 18
-              ? textStyle.titleMedium
-              : textStyle.titleLarge,
+              ? context.textTheme.titleMedium
+              : context.textTheme.titleLarge,
         ),
         actions: [
           Image.asset(

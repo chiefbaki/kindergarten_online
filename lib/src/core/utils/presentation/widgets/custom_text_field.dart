@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
-  final Function()? onPressed;
+  final VoidCallback? onPressed;
   final TextEditingController controller;
-  const CustomTextField(
-      {super.key,
-      required this.textStyle,
-      required this.hintText,
-      this.obscureText = false,
-      this.onPressed,
-      required this.controller});
-
-  final TextTheme textStyle;
+  const CustomTextField({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    this.obscureText = false,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      style: textStyle.displaySmall!.copyWith(color: AppColors.grey),
+      style: context.textTheme.displaySmall!.copyWith(color: AppColors.grey),
       obscureText: obscureText,
       obscuringCharacter: "*",
       decoration: InputDecoration(
@@ -36,7 +35,8 @@ class CustomTextField extends StatelessWidget {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
         hintText: hintText,
-        hintStyle: textStyle.displaySmall!.copyWith(color: AppColors.lightGrey),
+        hintStyle: context.textTheme.displaySmall!
+            .copyWith(color: AppColors.lightGrey),
       ),
     );
   }

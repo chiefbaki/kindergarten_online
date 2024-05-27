@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldPass": MessageLookupByLibrary.simpleMessage("Old password:"),
         "oldPassField": MessageLookupByLibrary.simpleMessage("Old password"),
         "online": MessageLookupByLibrary.simpleMessage("Online"),
+        "or": MessageLookupByLibrary.simpleMessage("или"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
         "outside": MessageLookupByLibrary.simpleMessage("Outside"),
         "password": MessageLookupByLibrary.simpleMessage("Password:"),
@@ -123,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reference Information"),
         "registration": MessageLookupByLibrary.simpleMessage("Registration"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "resoreTitle": MessageLookupByLibrary.simpleMessage("Восстановление"),
+        "restore": MessageLookupByLibrary.simpleMessage("Восстановить"),
         "restoreNumber":
             MessageLookupByLibrary.simpleMessage("Restore the number"),
         "restorePassword":
