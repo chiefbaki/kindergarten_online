@@ -2,8 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
+import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
 import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/custom_appbar.dart';
@@ -62,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  late bool _isLoaded = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,9 +121,11 @@ class _LoginPageState extends State<LoginPage> {
                         listener: (context, state) {
                           state.when(
                               initial: () => const SizedBox(),
-                              loading: () => const Center(
-                                    child: CircularProgressIndicator.adaptive(),
-                                  ),
+                              loading: () {
+                                _isLoaded = false;
+                                debugPrint("Loading: $_isLoaded");
+                                return const CustomProgressIndicator();
+                              },
                               success: () {
                                 // customBottomSheet(context, showButton: false);
                                 context.showAlertDialog(showButton: false);
@@ -130,17 +135,44 @@ class _LoginPageState extends State<LoginPage> {
                                 debugPrint(e);
                               });
                         },
+                        // child: Center(
+                        //   child: CustomBtn(
+                        //       onPressed: _isNotEmptyField
+                        //           ? () {
+                        //               context.read<LoginBloc>().add(
+                        //                   LoginEvent.login(
+                        //                       phone: _phone.text.trim(),
+                        //                       password: _password.text.trim()));
+                        //             }
+                        //           : null,
+                        //       name: S.of(context).enter),
+                        // ),
                         child: Center(
-                          child: CustomBtn(
-                              onPressed: _isNotEmptyField
-                                  ? () {
-                                      context.read<LoginBloc>().add(
-                                          LoginEvent.login(
-                                              phone: _phone.text.trim(),
-                                              password: _password.text.trim()));
-                                    }
-                                  : null,
-                              name: S.of(context).enter),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                context.read<LoginBloc>().add(LoginEvent.login(
+                                    phone: _phone.text.trim(),
+                                    password: _password.text.trim()));
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: const Size(237, 50),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 16.5, horizontal: 73.5),
+                                  backgroundColor: AppColors.blue,
+                                  disabledBackgroundColor: AppColors.lightBlue,
+                                  shadowColor: AppColors.black.withOpacity(0.8),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15))),
+                              child: _isLoaded
+                                  ? Text("Login",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium!
+                                          .copyWith(color: AppColors.white))
+                                  : const SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: CustomProgressIndicator())),
                         ),
                       ),
                       20.verticalSpace,

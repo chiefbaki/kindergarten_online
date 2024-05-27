@@ -63,35 +63,40 @@ extension BuildContextEntension<T> on BuildContext {
         context: this,
         builder: (BuildContext context) {
           return AlertDialog(
+            insetPadding: REdgeInsets.symmetric(vertical: 280, horizontal: 50),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             contentPadding: const EdgeInsets.all(25),
-            content: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  S.of(context).wrong,
-                  style: context.textTheme.displayLarge!
-                      .copyWith(color: AppColors.black),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  S.of(context).checkLoginAndPass,
-                  style: context.textTheme.titleSmall,
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                Center(
-                    child: CustomBtn(
-                        onPressed: () {
-                          // context.router.push(const RegistrRoute());
-                          Navigator.pop(context);
-                        },
-                        name: S.of(context).close))
-              ],
+            content: SizedBox(
+              height: context.height,
+              width: context.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S.of(context).wrong,
+                    style: context.textTheme.displayLarge!
+                        .copyWith(color: AppColors.black),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                    S.of(context).checkLoginAndPass,
+                    style: context.textTheme.titleSmall,
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Center(
+                      child: CustomBtn(
+                          onPressed: () {
+                            // context.router.push(const RegistrRoute());
+                            Navigator.pop(context);
+                          },
+                          name: S.of(context).close))
+                ],
+              ),
             ),
           );
         });

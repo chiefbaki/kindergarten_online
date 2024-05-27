@@ -28,8 +28,8 @@ class DioSettings {
       headers: {
         "Accept": "application/json",
       },
-      connectTimeout: const Duration(seconds: 20),
-      receiveTimeout: const Duration(seconds: 20),
+      connectTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 15),
     ),
   );
 

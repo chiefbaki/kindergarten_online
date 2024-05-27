@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
+import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 
 class CustomBtn extends StatelessWidget {
-  final Function()? onPressed;
+  final VoidCallback? onPressed;
 
   final String name;
   const CustomBtn({
@@ -27,13 +28,9 @@ class CustomBtn extends StatelessWidget {
         child: Text(
           name,
           style: name.length < 14
-              ? Theme.of(context)
-                  .textTheme
-                  .displayMedium!
+              ? context.textTheme.displayMedium!
                   .copyWith(color: AppColors.white)
-              : Theme.of(context)
-                  .textTheme
-                  .displaySmall!
+              : context.textTheme.displaySmall!
                   .copyWith(color: AppColors.white),
         ));
   }
