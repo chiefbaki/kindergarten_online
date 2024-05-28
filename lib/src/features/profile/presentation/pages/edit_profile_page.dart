@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/navbar.dart';
@@ -14,6 +13,7 @@ import 'package:kindergarten_online/src/features/profile/presentation/widgets/pe
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_scaffold.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
 
 const double _paddingUnit = 5;
 const int _delayDuraion = 2;
@@ -70,7 +70,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return CustomScaffold(
       appBar: Navbar(title: S.of(context).editProfile),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: REdgeInsets.symmetric(
             horizontal: _paddingUnit * 3, vertical: _paddingUnit * 5),
         child: BlocListener<EditProfileBloc, EditProfileState>(
           listener: (context, state) {
@@ -102,46 +102,34 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.black),
               ),
-              Gap(
-                _paddingUnit * 2.h,
-              ),
+              10.verticalSpace,
               PersonalInfoField(
                   textInputAction: TextInputAction.next,
                   hintText: S.of(context).inputName,
                   controller: _firstName),
-              Gap(
-                _paddingUnit * 4.h,
-              ),
+              20.verticalSpace,
               Text(
                 S.of(context).lastname,
                 style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.black),
               ),
-              Gap(
-                _paddingUnit * 2.h,
-              ),
+              10.verticalSpace,
               PersonalInfoField(
                   textInputAction: TextInputAction.next,
                   hintText: S.of(context).inputLastName,
                   controller: _lastName),
-              Gap(
-                _paddingUnit * 4.h,
-              ),
+              20.verticalSpace,
               Text(
                 S.of(context).middleName,
                 style: context.textTheme.displaySmall!
                     .copyWith(color: AppColors.black),
               ),
-              Gap(
-                _paddingUnit * 2.h,
-              ),
+              10.verticalSpace,
               PersonalInfoField(
                   textInputAction: TextInputAction.done,
                   hintText: S.of(context).inputMiddleName,
                   controller: _middleName),
-              Gap(
-                _paddingUnit * 5.h,
-              ),
+              25.verticalSpace,
               Center(
                   child: CustomBtn(
                       onPressed: switcher

@@ -137,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "site": MessageLookupByLibrary.simpleMessage("Site"),
         "technicalSupportQuestions":
             MessageLookupByLibrary.simpleMessage("technical support questions"),
+        "termsOfUs": MessageLookupByLibrary.simpleMessage("Terms of us"),
         "termsofUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
         "thisSectionIsEmpty":
             MessageLookupByLibrary.simpleMessage("This section is empty"),

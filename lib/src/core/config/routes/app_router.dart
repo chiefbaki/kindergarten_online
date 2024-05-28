@@ -37,7 +37,7 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         // Splash page
         CustomRoute(
-          initial: true,
+          
           page: SplashRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
@@ -60,7 +60,7 @@ class AppRouter extends _$AppRouter {
 
         // Camera
         CustomRoute(
-            
+            initial: true,
             page: CameraListRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
         CustomRoute(

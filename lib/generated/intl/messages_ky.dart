@@ -142,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "site": MessageLookupByLibrary.simpleMessage("Сайт"),
         "technicalSupportQuestions":
             MessageLookupByLibrary.simpleMessage("Техникалык колдоо суроолору"),
+        "termsOfUs": MessageLookupByLibrary.simpleMessage("Terms of us"),
         "termsofUse":
             MessageLookupByLibrary.simpleMessage("Пайдалануу шарттары"),
         "thisSectionIsEmpty":

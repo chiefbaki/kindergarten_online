@@ -1,4 +1,4 @@
-enum AppRouter {
+enum AppRouterNames {
   schedule,
   cctv,
   services,

@@ -8,7 +8,6 @@ import 'package:kindergarten_online/src/core/utils/resources/resources.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_btn.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
-
 @RoutePage()
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

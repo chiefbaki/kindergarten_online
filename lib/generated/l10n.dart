@@ -1029,6 +1029,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Terms of us`
+  String get termsOfUs {
+    return Intl.message(
+      'Terms of us',
+      name: 'termsOfUs',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

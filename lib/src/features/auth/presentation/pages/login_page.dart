@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kindergarten_online/src/core/config/routes/app_router.dart';
 import 'package:kindergarten_online/src/core/config/theme/app_colors.dart';
 import 'package:kindergarten_online/src/core/utils/extensions/context_extensions.dart';
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_progress_indicator.dart';
@@ -15,6 +14,7 @@ import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_t
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/src/features/auth/presentation/widgets/pin_code_widget.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
+
 
 @RoutePage()
 class LoginPage extends StatefulWidget {

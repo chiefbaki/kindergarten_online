@@ -26,7 +26,7 @@ extension BuildContextEntension<T> on BuildContext {
               content: Container(
                 height: height,
                 width: width,
-                padding: REdgeInsets.fromLTRB(0, 100, 0, 0),
+                padding: REdgeInsets.fromLTRB(15, 140, 15, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -35,9 +35,9 @@ extension BuildContextEntension<T> on BuildContext {
                         shrinkWrap: true,
                         itemCount: MenuItem.items.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: width / (height / 3.2),
+                            childAspectRatio: width / (height / 2.5),
                             crossAxisCount: 3,
-                            mainAxisSpacing: 61,
+                            mainAxisSpacing: 10,
                             crossAxisSpacing: 10),
                         itemBuilder: (_, index) {
                           return MenuCard(
@@ -51,7 +51,8 @@ extension BuildContextEntension<T> on BuildContext {
                       showButton: showButton,
                       isToSwitch: false,
                       icon: const Icon(Icons.close),
-                    )
+                    ),
+                    10.verticalSpace
                   ],
                 ),
               ),

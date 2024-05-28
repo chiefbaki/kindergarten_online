@@ -13,8 +13,6 @@ import 'package:kindergarten_online/src/core/utils/presentation/widgets/custom_s
 import 'package:kindergarten_online/src/core/utils/presentation/widgets/phone_text_field.dart';
 import 'package:kindergarten_online/generated/l10n.dart';
 
-const double _paddingUnit = 5;
-
 @RoutePage()
 class PersonalAccountPage extends StatefulWidget {
   const PersonalAccountPage({super.key});
